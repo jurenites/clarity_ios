@@ -31,6 +31,7 @@ class VCtrlMap: VCtrlBase {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         self.populate()
+        self.view.layoutIfNeeded()
     }
     
     override func viewDidAppear(animated: Bool) {
