@@ -10,6 +10,7 @@ import UIKit
 
 class BaseOverlay: VCtrlBase {
     var _onTapFunc: (() -> Void)?
+    @IBOutlet var uiTapBackground: UIView!
     private var _window: UIWindow!
     private var _isShown : Bool = false
     
@@ -17,7 +18,7 @@ class BaseOverlay: VCtrlBase {
         super.viewDidLoad()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("actTap"))
-        self.view.addGestureRecognizer(tapRecognizer)
+        self.uiTapBackground.addGestureRecognizer(tapRecognizer)
     }
     
     //MARK: Base
@@ -52,7 +53,7 @@ class BaseOverlay: VCtrlBase {
         return self._isShown
     }
     
-    @IBAction func actTap() {
+    @IBAction private func actTap() {
         if let fn = _onTapFunc {
             fn()
         }

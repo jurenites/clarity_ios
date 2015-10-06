@@ -11,7 +11,7 @@ import UIKit
 class VCtrlOrderDetails: VCtrlBase {
     
     private var orderId : Int = 0
-    var order : Order?
+    private var order : Order?
     
     @IBOutlet var uiMapButton: CustomButton!
     @IBOutlet var uiReportType: CustomButton!
@@ -30,14 +30,6 @@ class VCtrlOrderDetails: VCtrlBase {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-//    override func needNavBar() -> Bool {
-//        return true
-//    }
-//    
-//    override func needBackButton() -> Bool {
-//        return true
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +74,45 @@ class VCtrlOrderDetails: VCtrlBase {
                 nav.pushViewController(details, animated: true)
             }
         }
+    }
+    
+    @IBAction func actAccept() {
+        self.showLoadingOverlay()
+        ClarityApi.shared().acceptOrder(self.orderId)
+        .success({ () -> Void in
+            self.hideLoadingOverlay()
+            }) { (error:NSError) -> Void in
+                self.hideLoadingOverlay()
+                self.reportError(error)
+        }
+    }
+    
+    @IBAction func actAcceptWConditions() {
+        let conditions = ConditionsOverlay(isAcceptance: true, positiveAction: {(string: String) -> Void in
+            self.showLoadingOverlay()
+            ClarityApi.shared().acceptOrder(self.orderId, conditions: string)
+            .success({
+                self.hideLoadingOverlay()
+                }, error: { (error: NSError) -> Void in
+                    self.hideLoadingOverlay()
+                    self.reportError(error)
+            })
+        })
+        conditions.show()
+    }
+    
+    @IBAction func actDecline() {
+        let conditions = ConditionsOverlay(isAcceptance: false, positiveAction: {(string: String) -> Void in
+            self.showLoadingOverlay()
+            ClarityApi.shared().declineOrder(self.orderId, conditions: string)
+                .success({
+                    self.hideLoadingOverlay()
+                    }, error: { (error: NSError) -> Void in
+                        self.hideLoadingOverlay()
+                        self.reportError(error)
+                })
+        })
+        conditions.show()
     }
     
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
