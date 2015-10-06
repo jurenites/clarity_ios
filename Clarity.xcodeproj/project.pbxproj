@@ -15,6 +15,8 @@
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; settings = {ASSET_TAGS = (); }; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; settings = {ASSET_TAGS = (); }; };
 		5B71CD051BBBE9F80093833D /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B71CD041BBBE9F80093833D /* Messages.json */; settings = {ASSET_TAGS = (); }; };
+		5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */; settings = {ASSET_TAGS = (); }; };
+		5B75493D1BC408C30064BA76 /* ConditionsOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B75493C1BC408C30064BA76 /* ConditionsOverlay.xib */; settings = {ASSET_TAGS = (); }; };
 		5B88F2E71BB3C7DE009F202C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2E61BB3C7DE009F202C /* User.swift */; };
 		5B88F2FC1BB415CD009F202C /* VCtrlLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2FB1BB415CD009F202C /* VCtrlLogin.swift */; };
 		5B88F2FE1BB415EA009F202C /* VCtrlLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B88F2FD1BB415EA009F202C /* VCtrlLogin.xib */; };
@@ -250,6 +252,8 @@
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		5B71CD021BBBC7310093833D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Entities/Message.swift; sourceTree = "<group>"; };
 		5B71CD041BBBE9F80093833D /* Messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
+		5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsOverlay.swift; sourceTree = "<group>"; };
+		5B75493C1BC408C30064BA76 /* ConditionsOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConditionsOverlay.xib; sourceTree = "<group>"; };
 		5B88F2E51BB3C56B009F202C /* Clarity-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clarity-Prefix.pch"; sourceTree = "<group>"; };
 		5B88F2E61BB3C7DE009F202C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Entities/User.swift; sourceTree = "<group>"; };
 		5B88F2FB1BB415CD009F202C /* VCtrlLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlLogin.swift; sourceTree = "<group>"; };
@@ -706,6 +710,8 @@
 				5B52CEDC1BBA814E009437C5 /* Chat */,
 				5BA7FD4C1BB9967E005951E7 /* VCtrlOrderDetails.swift */,
 				5BA7FD4E1BB996E6005951E7 /* VCtrlOrderDetails.xib */,
+				5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */,
+				5B75493C1BC408C30064BA76 /* ConditionsOverlay.xib */,
 			);
 			path = OrderDetails;
 			sourceTree = "<group>";
@@ -1553,6 +1559,7 @@
 				5BE5B60E1BB2E25500671BFE /* DefaultAccessoryView.xib in Resources */,
 				5B88F30C1BB44009009F202C /* Login.json in Resources */,
 				5B8B9DEC1BB5837F006F3725 /* OrdersListCell.xib in Resources */,
+				5B75493D1BC408C30064BA76 /* ConditionsOverlay.xib in Resources */,
 				5BC79CD81BB1B42E0040AF48 /* VCtrlRoot.xib in Resources */,
 				5B88F3021BB41613009F202C /* VCtrlOrders.xib in Resources */,
 				5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */,
@@ -1775,6 +1782,7 @@
 				5BE5B4C81BB286EF00671BFE /* NSArray+Utils.m in Sources */,
 				5BE5B4E31BB286EF00671BFE /* WeakWrapper.m in Sources */,
 				5BE5B5BD1BB2B94200671BFE /* NetReachability.m in Sources */,
+				5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
