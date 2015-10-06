@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-SemiBold.ttf">
+            <string>Raleway-SemiBold</string>
+            <string>Raleway-SemiBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TipOverlay" customModule="Clarity" customModuleProvider="target">
+            <connections>
+                <outlet property="lcArrowHeight" destination="waP-9S-QVX" id="aCe-lM-haS"/>
+                <outlet property="lcTipLabelX" destination="unp-d3-aOc" id="z8l-Bl-Kmq"/>
+                <outlet property="lcTipLabelY" destination="YX7-Bv-ok5" id="Kbo-dc-eUE"/>
+                <outlet property="lcTipWidth" destination="kfL-fz-7C1" id="Yqy-Z8-fwt"/>
+                <outlet property="lcTipX" destination="Wpy-b8-smy" id="wf1-zv-NhY"/>
+                <outlet property="lcTipY" destination="P7w-pa-Sj5" id="OMU-2w-9r4"/>
+                <outlet property="uiBottomArrow" destination="hFn-e3-4gg" id="FwI-rj-BcZ"/>
+                <outlet property="uiTip" destination="gYT-B6-1Z6" id="m57-Zq-C4x"/>
+                <outlet property="uiTipHeader" destination="eTw-yK-glu" id="jh0-g5-n2I"/>
+                <outlet property="uiTipLabel" destination="mSS-Jf-7Cc" id="seF-cM-R7w"/>
+                <outlet property="uiTopArrow" destination="unL-nm-w9e" id="99e-GR-JW5"/>
+                <outlet property="view" destination="iN0-l3-epB" id="Aap-oc-RxQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GMf-QY-yx1" userLabel="Tip Container">
+                    <rect key="frame" x="35" y="208" width="270" height="74"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_select_arrow_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="unL-nm-w9e" userLabel="Arrow Up">
+                            <rect key="frame" x="128" y="0.0" width="15" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="8" id="on8-xG-uYg"/>
+                                <constraint firstAttribute="width" constant="15" id="tBq-64-t5c"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gYT-B6-1Z6" userLabel="Tip View">
+                            <rect key="frame" x="10" y="8" width="250" height="58"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Good to go!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTw-yK-glu" userLabel="Tip Header">
+                                    <rect key="frame" x="78" y="10" width="94" height="20"/>
+                                    <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
+                                    <color key="textColor" red="0.12941176470588237" green="0.65490196078431373" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-Jf-7Cc" userLabel="Tip Label">
+                                    <rect key="frame" x="10" y="30" width="230" height="18"/>
+                                    <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="15"/>
+                                    <color key="textColor" red="0.90196078431372551" green="0.90980392156862744" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.25490196078431371" green="0.31764705882352939" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="mSS-Jf-7Cc" secondAttribute="bottom" constant="10" id="8y8-tk-X82"/>
+                                <constraint firstItem="mSS-Jf-7Cc" firstAttribute="top" secondItem="eTw-yK-glu" secondAttribute="bottom" id="Coe-0s-IxM"/>
+                                <constraint firstAttribute="trailing" secondItem="mSS-Jf-7Cc" secondAttribute="trailing" constant="10" id="MYO-sa-aOa"/>
+                                <constraint firstItem="eTw-yK-glu" firstAttribute="top" secondItem="gYT-B6-1Z6" secondAttribute="top" constant="10" id="YX7-Bv-ok5"/>
+                                <constraint firstAttribute="centerX" secondItem="eTw-yK-glu" secondAttribute="centerX" id="bsD-f3-sPT"/>
+                                <constraint firstAttribute="width" constant="250" id="kfL-fz-7C1"/>
+                                <constraint firstItem="mSS-Jf-7Cc" firstAttribute="leading" secondItem="gYT-B6-1Z6" secondAttribute="leading" constant="10" id="unp-d3-aOc"/>
+                            </constraints>
+                        </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_select_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-e3-4gg" userLabel="Arrow Down">
+                            <rect key="frame" x="128" y="66" width="15" height="8"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="15" id="OPY-8Y-Jfw"/>
+                                <constraint firstAttribute="height" constant="8" id="waP-9S-QVX"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gYT-B6-1Z6" secondAttribute="trailing" constant="10" id="0JI-SO-d9y"/>
+                        <constraint firstItem="hFn-e3-4gg" firstAttribute="top" secondItem="gYT-B6-1Z6" secondAttribute="bottom" id="2p5-nL-uzB"/>
+                        <constraint firstItem="unL-nm-w9e" firstAttribute="top" secondItem="GMf-QY-yx1" secondAttribute="top" id="89B-Hr-XZt"/>
+                        <constraint firstAttribute="centerX" secondItem="hFn-e3-4gg" secondAttribute="centerX" id="EVY-g8-Z5v"/>
+                        <constraint firstItem="gYT-B6-1Z6" firstAttribute="leading" secondItem="GMf-QY-yx1" secondAttribute="leading" constant="10" id="JY0-Pf-PAo"/>
+                        <constraint firstItem="gYT-B6-1Z6" firstAttribute="top" secondItem="unL-nm-w9e" secondAttribute="bottom" id="acL-Qf-1aV"/>
+                        <constraint firstAttribute="bottom" secondItem="hFn-e3-4gg" secondAttribute="bottom" id="kce-UR-wld"/>
+                        <constraint firstAttribute="centerX" secondItem="unL-nm-w9e" secondAttribute="centerX" id="s0o-0r-T50"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="GMf-QY-yx1" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="208" id="P7w-pa-Sj5"/>
+                <constraint firstItem="GMf-QY-yx1" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="35" id="Wpy-b8-smy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="DFH-cM-nao" appends="YES" id="oN7-6g-pM5"/>
+            </connections>
+            <point key="canvasLocation" x="499" y="282"/>
+        </view>
+        <tapGestureRecognizer id="DFH-cM-nao">
+            <connections>
+                <action selector="actTap" destination="-1" id="oUY-1B-kKr"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="schedule_select_arrow.png" width="15" height="8"/>
+        <image name="schedule_select_arrow_up.png" width="15" height="8"/>
+    </resources>
+</document>

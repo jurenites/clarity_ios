@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-Medium.otf">
+            <string>Raleway-Medium</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="yh3-NU-v2R" userLabel="AccesoryView" customClass="DefaultAccessoryView" customModule="TRN" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPv-hd-b9k" userLabel="Container" customClass="UIControl">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uIL-sB-R9B" userLabel="Done" customClass="CustomButton">
+                            <rect key="frame" x="254" y="8" width="58" height="29"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Done" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rAZ-FB-f2m">
+                                    <rect key="frame" x="8" y="4" width="42" height="21"/>
+                                    <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="13"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="29" id="phg-mg-ZdA"/>
+                                <constraint firstAttribute="width" constant="58" id="ujz-Cl-I6e"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="actDone" destination="yh3-NU-v2R" eventType="touchUpInside" id="Xb4-ZK-KmE"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="centerY" secondItem="uIL-sB-R9B" secondAttribute="centerY" id="TVc-d5-tlG"/>
+                        <constraint firstAttribute="trailing" secondItem="uIL-sB-R9B" secondAttribute="trailing" constant="8" id="W1H-AH-AHq"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VyD-GY-N8a" customClass="Separator">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="1"/>
+                    <color key="backgroundColor" red="0.78431379800000001" green="0.78039222959999999" blue="0.80000007149999997" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="jvn-mI-r1f"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="top" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VyD-GY-N8a" secondAttribute="trailing" id="1LU-Xd-p6B"/>
+                <constraint firstAttribute="bottom" secondItem="aPv-hd-b9k" secondAttribute="bottom" id="KHS-iZ-KRp"/>
+                <constraint firstItem="VyD-GY-N8a" firstAttribute="top" secondItem="yh3-NU-v2R" secondAttribute="top" id="N7A-uC-7gD"/>
+                <constraint firstItem="VyD-GY-N8a" firstAttribute="leading" secondItem="yh3-NU-v2R" secondAttribute="leading" id="NxD-r2-F7R"/>
+                <constraint firstItem="aPv-hd-b9k" firstAttribute="leading" secondItem="yh3-NU-v2R" secondAttribute="leading" id="VlC-sO-ESx"/>
+                <constraint firstAttribute="trailing" secondItem="aPv-hd-b9k" secondAttribute="trailing" id="qCh-bo-dfi"/>
+                <constraint firstItem="aPv-hd-b9k" firstAttribute="top" secondItem="yh3-NU-v2R" secondAttribute="top" id="wNJ-Uq-xx5"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="uiDoneButton" destination="uIL-sB-R9B" id="uC3-vj-3Wa"/>
+            </connections>
+            <point key="canvasLocation" x="-70" y="194"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7706"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCtrlSideBar">
+            <connections>
+                <outlet property="lcContentCenterX" destination="wH6-KD-shd" id="t0v-MJ-hr1"/>
+                <outlet property="lcMenuCenterX" destination="UAM-Pb-YpM" id="rJh-k4-amp"/>
+                <outlet property="uiContainer" destination="1Uj-zo-04L" id="q6D-p3-b7q"/>
+                <outlet property="uiContentContainer" destination="LFH-lf-igT" id="43R-fz-LY9"/>
+                <outlet property="uiMenuContainer" destination="iof-Ja-8ji" id="JSG-7P-7gf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uj-zo-04L" userLabel="Container">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <subviews>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LFH-lf-igT" userLabel="СontentContainer">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iof-Ja-8ji" userLabel="MenuContainer">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="iof-Ja-8ji" secondAttribute="width" id="BPX-DS-3Yr"/>
+                        <constraint firstItem="LFH-lf-igT" firstAttribute="width" secondItem="1Uj-zo-04L" secondAttribute="width" id="Ifw-Hf-VPm"/>
+                        <constraint firstAttribute="centerY" secondItem="iof-Ja-8ji" secondAttribute="centerY" id="PB5-Yy-zkq"/>
+                        <constraint firstAttribute="centerX" secondItem="iof-Ja-8ji" secondAttribute="centerX" id="UAM-Pb-YpM"/>
+                        <constraint firstAttribute="centerY" secondItem="LFH-lf-igT" secondAttribute="centerY" id="f0i-wd-OTa"/>
+                        <constraint firstItem="LFH-lf-igT" firstAttribute="height" secondItem="1Uj-zo-04L" secondAttribute="height" id="lpT-eq-1hq"/>
+                        <constraint firstAttribute="centerX" secondItem="LFH-lf-igT" secondAttribute="centerX" id="wH6-KD-shd"/>
+                        <constraint firstAttribute="height" secondItem="iof-Ja-8ji" secondAttribute="height" id="zbY-A5-T1z"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="1Uj-zo-04L" secondAttribute="bottom" id="Ri7-dc-VaB"/>
+                <constraint firstItem="1Uj-zo-04L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="V0O-da-Sfj"/>
+                <constraint firstAttribute="trailing" secondItem="1Uj-zo-04L" secondAttribute="trailing" id="dO2-av-EoU"/>
+                <constraint firstItem="1Uj-zo-04L" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="reD-He-tNI"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="440" y="266"/>
+        </view>
+    </objects>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

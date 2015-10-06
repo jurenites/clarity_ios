@@ -1,0 +1,77 @@
+{
+"success" : true,
+"result" :
+    [
+    {
+     "id" : 1,
+     "price" : 245,
+     "status" : "assigned",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+    },
+     {
+     "id" : 2,
+     "price" : 245,
+     "status" : "submitted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 3,
+     "price" : 245,
+     "status" : "Broadkasted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 4,
+     "price" : 245,
+     "status" : "inProgress",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 5,
+     "price" : 245,
+     "status" : "Broadkasted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 6,
+     "price" : 245,
+     "status" : "assigned",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 7,
+     "price" : 245,
+     "status" : "submitted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 8,
+     "price" : 245,
+     "status" : "Broadkasted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 9,
+     "price" : 245,
+     "status" : "inProgress",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     },
+     {
+     "id" : 10,
+     "price" : 245,
+     "status" : "Broadkasted",
+     "address" : "Washington st.Greenwood 354",
+     "number" : 22
+     }
+    ],
+"code" : 200
+}

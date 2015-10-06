@@ -1,0 +1,8 @@
+{
+"success" : true,
+"result" :
+    {
+        "session_token" : "testToken-123"
+    },
+"code" : 200
+}

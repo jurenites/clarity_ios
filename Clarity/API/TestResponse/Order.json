@@ -1,0 +1,25 @@
+{
+"success" : true,
+"result" :
+    {
+        "id" : 1,
+        "price" : 245,
+        "status" : "Broadkasted",
+        "address" : "Washington st.Greenwood 354",
+        "number" : 22,
+        "report_type" : "FHA URAR",
+        "property_type" : "Residential",
+        "contact" :
+        {
+            "id" : 1,
+            "email" : "superdude78@gmail.com",
+            "full_name" : "Jeremi Clarkson",
+            "work_phone" : "+1(672)195-65-41",
+            "other_phone" : "+1(756)243-04-10"
+        },
+        "dateTo" : "09/15/2015",
+        "messanges" : 3,
+        "chat_id" : 1
+    },
+"code" : 200
+}
