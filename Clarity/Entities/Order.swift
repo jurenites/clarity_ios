@@ -10,32 +10,24 @@ import Foundation
 
 class ShortOrder: ApiEntity, Visitable {
     
-    enum Status : String {
-        case Unknown = "unknown", Submitted = "submitted", Assigned = "assigned", Progress = "inProgress", Broadkasted = "Broadkasted"
-    }
-    
     var orderId : Int = 0
     var price : Double = 0
-//    var orderNumber : Int = 0
     var address : String = ""
-    var status : Status = Status.Unknown
+    var status : String = ""
     var date: NSDate = NSDate.Empty
     
     override func fillWithApiDict(d: NSDictionary) {
         orderId  = ApiInt(d["id"])
         price = ApiDouble(d["vendor_fee"])
-//        orderNumber = ToInt(d["number"])
         address = ApiString(d["property_address"])
-        status = Status(rawValue: ApiString(d["order_status"])) ?? .Unknown
+        status = ApiString(d["order_status"])
     }
     
     func visit(v: EntityVisitor) {
-        var statusName = status.rawValue
         v.field("id", &orderId)
         .field("vendor_fee", &price)
-//        .field("number", &orderNumber)
         .field("property_address", &address)
-        .field("order_status", &statusName)
+        .field("order_status", &status)
     }
     
     func fromDict(d: NSDictionary) -> ShortOrder {
@@ -63,7 +55,7 @@ class Order: ShortOrder {
         propertyType = ApiString(d["property_type"])
         
         let user = User()
-        user.fillWithApiDict(AssureIsDict(d["contact"])) //
+        user.fillWithApiDict(AssureIsDict(d["contact"]))
         contact = user
         
         let loc = Location()

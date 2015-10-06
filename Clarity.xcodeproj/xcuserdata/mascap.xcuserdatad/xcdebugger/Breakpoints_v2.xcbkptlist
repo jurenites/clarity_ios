@@ -74,7 +74,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465843062.119022"
+                  timestampString = "465844807.586384"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -89,7 +89,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465843062.119459"
+                  timestampString = "465844807.586853"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "107"
@@ -303,7 +303,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
-            landmarkName = "baseReloadContent(_:)"
+            landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -319,23 +319,23 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "80"
             endingLineNumber = "80"
-            landmarkName = "baseReloadContent(_:)"
-            landmarkType = "5">
+            landmarkName = "VCtrlOrders"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/VCtrlOrders.swift"
-            timestampString = "465841774.459786"
+            timestampString = "465844806.343033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
-            landmarkName = "tableLoadMoreContent(_:)"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "baseReloadContent(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -362,28 +362,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/Entities/Order.swift"
-            timestampString = "465825183.341636"
+            timestampString = "465844806.343033"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "fillWithApiDict(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/Entities/Order.swift"
-            timestampString = "465825185.245604"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "visit(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -454,7 +438,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/BaseViewControllers/TableView/TableView.m"
@@ -467,14 +451,14 @@
             landmarkType = "5">
             <Locations>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "-[TableView switchToInfsLoadingState]"
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465843062.196641"
+                  timestampString = "465844807.663233"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "442"
@@ -482,14 +466,14 @@
                   offsetFromSymbolStart = "220">
                </Location>
                <Location
-                  shouldBeEnabled = "Yes"
+                  shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
                   symbolName = "__37-[TableView switchToInfsLoadingState]_block_invoke"
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465843062.196828"
+                  timestampString = "465844807.663589"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "442"

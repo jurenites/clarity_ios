@@ -29,6 +29,10 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
         return false
     }
     
+    override func isNeedInfiniteScroll() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -82,9 +86,10 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
                 UIView.animateWithDuration(0.33, animations: { () -> Void in
                     self.tableView.alpha = 1;
                 })
-                onComplete(self._orders.count >= self._pageSize, false)
+                onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
                 self.reportError(error)
+                onComplete(false, true)
         })
         
         return ApiCancelerSignal.wrap(canceler)
@@ -98,9 +103,11 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
         let canceler = ClarityApi.shared().getOrders(self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in
                 self._orders += orders
-                onComplete(self._orders.count >= self._pageSize, false)
+                self.tableView.reloadData()
+                onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
                 self.reportError(error)
+                onComplete(false, true)
             })
         
         return ApiCancelerSignal.wrap(canceler)

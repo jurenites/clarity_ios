@@ -36,7 +36,7 @@ typedef enum {
     }
     
     _pullToRefreshEnabled = YES;
-    _infiniteScrollEnabled = NO;
+    _infiniteScrollEnabled = YES;
     
     return self;
 }
@@ -44,7 +44,7 @@ typedef enum {
 - (void)awakeFromNib
 {
     _pullToRefreshEnabled = YES;
-    _infiniteScrollEnabled = NO;
+    _infiniteScrollEnabled = YES;
 }
 
 - (void)viewDidLoad
