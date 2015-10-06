@@ -9,8 +9,9 @@
 import UIKit
 
 class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
-    let _pageSize = 5
+    let _pageSize = 20
     var _messages = [Message]()
+    private var orderId: Int = 0
     private var _maxMessageInputHeight: CGFloat = 0
     private var _minMessageInputHeight: CGFloat = 0
     
@@ -19,7 +20,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     @IBOutlet var uiMessageInput : ChatTextView!
     @IBOutlet var uiMessageContainer : UIView!
     
-    init() {
+    init(orderId: Int) {
+        self.orderId = orderId
         super.init(nibName: "VCtrlChat", bundle: nil)
     }
     
@@ -136,7 +138,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().test_getMessages(0, count: 0)
+        let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 20)//test_getMessages(0, count: 0)
             .success({ (messages : [Message]) in
                 self._messages = messages
                 self.tableView.reloadData()
@@ -152,15 +154,15 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     //        return self.baseReloadContent(onComplete)
     //    }
     
-//    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-//        let canceler = ClarityApi.shared().getOrders(0, count: 0)
-//            .success({ (orders : [ShortOrder]) in
-//                self._orders += orders
-//                onComplete(self._orders.count >= self._pageSize, false)
-//                }, error: { (error: NSError) in
-//                    self.reportError(error)
-//            })
-//        
-//        return ApiCancelerSignal.wrap(canceler)
-//    }
+    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+        let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
+            .success({ (messages : [Message]) in
+                self._messages += messages
+                onComplete(self._messages.count >= self._pageSize, false)
+                }, error: { (error: NSError) in
+                    self.reportError(error)
+            })
+        
+        return ApiCancelerSignal.wrap(canceler)
+    }
 }

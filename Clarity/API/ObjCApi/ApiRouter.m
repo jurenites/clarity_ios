@@ -222,9 +222,9 @@ static ApiRouter * volatile BBSharedApiRouter = nil;
     NSParameterAssert(apiToken.length);
     
     _currentUser = user;
-    _apiToken = apiToken;
+    _apiToken = [NSString stringWithFormat:@"Bearer %@", apiToken];
     
-    [[NSUserDefaults standardUserDefaults] setObject:apiToken forKey:BBApiTokenKey];
+    [[NSUserDefaults standardUserDefaults] setObject:_apiToken forKey:BBApiTokenKey];
     [[NSUserDefaults standardUserDefaults] setObject:@(self.currentUser.userId) forKey:BBCurrentUserIdKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
     

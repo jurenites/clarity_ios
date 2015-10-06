@@ -32,7 +32,7 @@
                 <constraint firstAttribute="bottom" secondItem="RYc-f1-fMb" secondAttribute="bottom" id="GNA-k2-ZZd"/>
                 <constraint firstItem="RYc-f1-fMb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ixl-Rn-9Us"/>
             </constraints>
-            <point key="canvasLocation" x="395" y="447"/>
+            <point key="canvasLocation" x="417" y="262"/>
         </view>
     </objects>
 </document>

@@ -66,15 +66,26 @@ class VCtrlOrderDetails: VCtrlBase {
         }
     }
     
+    @IBAction func actMap() {
+        if let loc = order?.location {
+            let map = VCtrlMap(location: loc)
+            if let nav = self.navigationController {
+                nav.pushViewController(map, animated: true)
+            }
+        }
+    }
+    
     @IBAction func actChat() {
-        let details = VCtrlChat()
-        if let nav = self.navigationController {
-            nav.pushViewController(details, animated: true)
+        if let orderId = order?.orderId {
+            let details = VCtrlChat(orderId: orderId)
+            if let nav = self.navigationController {
+                nav.pushViewController(details, animated: true)
+            }
         }
     }
     
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().test_getOrder(self.orderId)
+        let canceler = ClarityApi.shared().getOrder(self.orderId)//test_getOrder(self.orderId)
             .success({ (order : Order) in
                 self.order = order
                 self.populate()
@@ -85,5 +96,4 @@ class VCtrlOrderDetails: VCtrlBase {
         
         return ApiCancelerSignal.wrap(canceler)
     }
-    
 }

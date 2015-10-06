@@ -85,22 +85,34 @@
                         <constraint firstAttribute="height" constant="55" id="Z3p-SR-f4a"/>
                     </constraints>
                 </view>
-                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wFq-uo-aCA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vg3-Ld-CV5" userLabel="Map Container">
                     <rect key="frame" x="0.0" y="90" width="320" height="423"/>
-                </mapView>
+                    <subviews>
+                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wFq-uo-aCA">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        </mapView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="wFq-uo-aCA" secondAttribute="trailing" id="THK-BQ-Dop"/>
+                        <constraint firstItem="wFq-uo-aCA" firstAttribute="top" secondItem="vg3-Ld-CV5" secondAttribute="top" id="YYO-QO-gCp"/>
+                        <constraint firstAttribute="bottom" secondItem="wFq-uo-aCA" secondAttribute="bottom" id="YxB-zW-1CP"/>
+                        <constraint firstItem="wFq-uo-aCA" firstAttribute="leading" secondItem="vg3-Ld-CV5" secondAttribute="leading" id="jcF-Te-n24"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="uPW-km-25i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="0hw-q1-pHb"/>
                 <constraint firstAttribute="trailing" secondItem="BtD-PE-cq5" secondAttribute="trailing" id="8of-N8-UlB"/>
+                <constraint firstAttribute="trailing" secondItem="vg3-Ld-CV5" secondAttribute="trailing" id="Dy5-Ob-uex"/>
+                <constraint firstItem="vg3-Ld-CV5" firstAttribute="top" secondItem="BtD-PE-cq5" secondAttribute="bottom" id="Gqk-di-Jrf"/>
                 <constraint firstItem="BtD-PE-cq5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KfJ-AM-YRE"/>
-                <constraint firstItem="wFq-uo-aCA" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="O6H-t5-Kav"/>
-                <constraint firstItem="wFq-uo-aCA" firstAttribute="top" secondItem="BtD-PE-cq5" secondAttribute="bottom" id="a4g-ra-rra"/>
-                <constraint firstAttribute="trailing" secondItem="wFq-uo-aCA" secondAttribute="trailing" id="d3h-mM-x5q"/>
+                <constraint firstItem="uPW-km-25i" firstAttribute="top" secondItem="vg3-Ld-CV5" secondAttribute="bottom" id="VFU-Mt-MXm"/>
                 <constraint firstItem="BtD-PE-cq5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="f5P-qu-YuK"/>
-                <constraint firstItem="uPW-km-25i" firstAttribute="top" secondItem="wFq-uo-aCA" secondAttribute="bottom" id="fZN-FM-ORs"/>
                 <constraint firstAttribute="bottom" secondItem="uPW-km-25i" secondAttribute="bottom" id="jwA-kc-mqd"/>
                 <constraint firstAttribute="trailing" secondItem="uPW-km-25i" secondAttribute="trailing" id="nkm-Py-dph"/>
+                <constraint firstItem="vg3-Ld-CV5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wa7-jN-a6j"/>
             </constraints>
             <point key="canvasLocation" x="385" y="336"/>
         </view>

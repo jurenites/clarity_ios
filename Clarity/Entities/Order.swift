@@ -71,7 +71,7 @@ class Order: ShortOrder {
         location = loc
         
         messagesCount = ApiInt(d["messages_count"])
-//        dateTo = 
+        dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
     
     override func visit(v: EntityVisitor) {

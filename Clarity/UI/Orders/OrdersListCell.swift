@@ -24,7 +24,7 @@ class OrdersListCell: UITableViewCell {
     }
     
     class func height() -> CGFloat {
-        return 90
+        return 110
     }
     
     func setOrder(order: ShortOrder) {
@@ -36,7 +36,6 @@ class OrdersListCell: UITableViewCell {
         let color = uiPriceContainer.backgroundColor
         uiPriceContainer.backgroundColor = UIColor.clearColor()
         uiPriceContainer.layer.backgroundColor = color?.CGColor
-//        uiStatusContainer.layer.cornerRadius = 8
         uiPriceContainer.layer.borderColor = borderColor.CGColor
         uiPriceContainer.layer.borderWidth = 0.5
         uiPriceContainer.layer.masksToBounds = false

@@ -10,7 +10,7 @@ import UIKit
 
 class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     
-    let _pageSize = 5
+    let _pageSize = 10
     var _orders = [ShortOrder]()
     
     init() {
@@ -34,13 +34,12 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
         
         self.tableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
         
-        let menu = MenuOverlay()
-        menu.show()
+//        let menu = MenuOverlay()
+//        menu.show()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
         if !self.tableView.hidden {
             self.triggerReloadContent()
         }
@@ -75,7 +74,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().test_getOrders(0, count: 0)
+        let canceler = ClarityApi.shared().getOrders(0, limit: _pageSize)
             .success({ (orders : [ShortOrder]) in
                 self._orders = orders
                 self.tableView.reloadData()
@@ -87,12 +86,12 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
         return ApiCancelerSignal.wrap(canceler)
     }
     
-//    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-//        return self.baseReloadContent(onComplete)
-//    }
+    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+        return self.baseReloadContent(onComplete)
+    }
     
     override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().test_getOrders(0, count: 0)
+        let canceler = ClarityApi.shared().getOrders(self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in
                 self._orders += orders
                 onComplete(self._orders.count >= self._pageSize, false)

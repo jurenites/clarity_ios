@@ -45,15 +45,16 @@ func PliParseResponse(result: IORequestResult) -> PipelineResult<AnyObject> {
     if let jsonData: AnyObject = try? NSJSONSerialization.JSONObjectWithData(result.data, options: NSJSONReadingOptions()) {
         if let dict = jsonData as? NSDictionary {
             if ToBool(dict["success"]) {
-                if let result: AnyObject = dict["result"] {
+                if let result: AnyObject = dict["results"] {
                     if !(result is NSNull) {
                         return PipelineResult(result)
                     }
                 } else {
                     return PipelineResult(NSNull())
                 }
-            } else if dict["code"] != nil {
-                let errorCode = ToInt(dict["code"])
+            } else if let result = dict["results"] as? NSDictionary {//dict["results"] != nil {
+                let errorCode = ToInt(result["errorCode"])
+//                let errorCode = ToInt(dict["code"])
                 
                 if errorCode == Int(ApiErrorBadSessionToken.rawValue) || errorCode == Int(ApiErrorSessionTokenExpired.rawValue) {
                     dispatch_async(dispatch_get_main_queue(), {
@@ -61,7 +62,7 @@ func PliParseResponse(result: IORequestResult) -> PipelineResult<AnyObject> {
                     })
                 }
                 var description = ""
-                if let message: AnyObject = dict["message"] {
+                if let message: AnyObject = result["userMessage"] {
                     description = message as! String
                 }
                 return PipelineResult(ApiError(code: Int(errorCode), descr: description))

@@ -429,6 +429,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
+                                                <action selector="actMap" destination="-1" eventType="touchUpInside" id="sa7-jJ-SBO"/>
                                                 <outlet property="uiTitle" destination="XHc-ew-MpE" id="3gu-ab-NPl"/>
                                             </connections>
                                         </view>

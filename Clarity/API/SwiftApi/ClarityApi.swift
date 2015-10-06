@@ -44,8 +44,10 @@ class ClarityApi: ApiManager2
     }
     
     //MARK: Orders
-    func getOrders() -> Signal<[ShortOrder]> {
-        return callMethod(ApiMethodID.AMGetOrders)
+    func getOrders(offset: Int, limit: Int) -> Signal<[ShortOrder]> {
+        return callMethod(ApiMethodID.AMGetOrders, params: [
+            "offset" : NSNumber(integer: offset),
+            "limit" : NSNumber(integer: limit)])
         .next(PliFromApiArray)
     }
     
@@ -79,7 +81,7 @@ class ClarityApi: ApiManager2
     //MARK: Messages
     func getMessages(orderId: Int, offset: Int, count: Int) -> Signal<[Message]> {
         return callMethod(ApiMethodID.AMGetMessages,
-            urlParams: ["id": NSNumber(integer: orderId)],
+            urlParams: ["order_id": NSNumber(integer: orderId)],
             params: [
                 "offset": NSNumber(integer: offset),
                 "limit": NSNumber(integer: count)
