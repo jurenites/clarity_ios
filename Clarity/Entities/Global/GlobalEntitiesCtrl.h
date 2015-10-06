@@ -20,6 +20,9 @@
 - (void)fillCurrentUserWithDict:(NSDictionary *)dict;
 - (void)silentUpdateCurrentUserWithUser:(User *)user;//Will not notify event
 - (void)updateCurrentUserWithUser:(User *)user;
+
+- (void)fillOrderStatuses:(NSDictionary *)orderStatuses;
+- (NSString *)orderStatusForKey:(NSString *)orderStatusKey;
 //- (void)updateUserLocation:(NSInteger)newLocationId;
 //- (void)setLocations:(NSArray *)locations;
 //- (void)addLocation:(TRNLocation *)location;

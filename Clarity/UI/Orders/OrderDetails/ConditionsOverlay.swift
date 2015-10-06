@@ -44,9 +44,9 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
     }
     
     @IBAction func actNegative() {
-        if let fn = _onTapFunc {
-            fn()
-        }
+//        if let fn = _onTapFunc {
+//            fn()
+//        }
         self.hide()
     }
     

@@ -22,6 +22,8 @@ class VCtrlOrderDetails: VCtrlBase {
     @IBOutlet var uiMessanges: CustomButton!
     @IBOutlet var uiStatus: OrderStatusView!
     
+    @IBOutlet var uiContainer: UIView!
+    
     init(orderId : Int) {
         self.orderId = orderId
         super.init(nibName: "VCtrlOrderDetails", bundle: nil)
@@ -36,9 +38,11 @@ class VCtrlOrderDetails: VCtrlBase {
         self.populate()
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
         if (order == nil) {
+            self.showSpinner()
+            self.uiContainer.alpha = 0
             self.triggerReloadContent()
         }
     }
@@ -120,9 +124,14 @@ class VCtrlOrderDetails: VCtrlBase {
             .success({ (order : Order) in
                 self.order = order
                 self.populate()
+                self.hideSpinner()
+                UIView.animateWithDuration(0.33, animations: { () -> Void in
+                    self.uiContainer.alpha = 1
+                })
                 onComplete(false, false)
                 }, error: { (error: NSError) in
                     self.reportError(error)
+                    self.goBackAfretDelay(1.0)
             })
         
         return ApiCancelerSignal.wrap(canceler)

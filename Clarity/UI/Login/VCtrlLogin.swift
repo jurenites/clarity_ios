@@ -117,6 +117,9 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
         
         if !_isRecovering {
             let canceler = ClarityApi.shared().login(uiLogin.text!, pass: uiPassword.text!)
+                .flatMap({ (user: User) -> PipelineResult<Signal<AnyObject>> in
+                    return PipelineResult(ClarityApi.shared().getOrderStatuses())
+                })
                 .success({
                     VCtrlRoot.current().showMainUI()
                 }, error: { (error : NSError) -> Void in

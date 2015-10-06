@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MenuOverlay" customModule="Clarity" customModuleProvider="target">
             <connections>
                 <outlet property="uiContainer" destination="57T-MO-4Ci" id="WCV-Uu-c0C"/>
+                <outlet property="uiTapBackground" destination="iN0-l3-epB" id="O7X-nT-TYb"/>
                 <outlet property="view" destination="iN0-l3-epB" id="eZ5-fK-bL3"/>
             </connections>
         </placeholder>

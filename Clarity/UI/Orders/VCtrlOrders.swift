@@ -40,7 +40,8 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
-        if !self.tableView.hidden {
+        if _orders.count == 0 {
+            self.tableView.alpha = 0;
             self.triggerReloadContent()
         }
     }
@@ -78,6 +79,9 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
             .success({ (orders : [ShortOrder]) in
                 self._orders = orders
                 self.tableView.reloadData()
+                UIView.animateWithDuration(0.33, animations: { () -> Void in
+                    self.tableView.alpha = 1;
+                })
                 onComplete(self._orders.count >= self._pageSize, false)
             }, error: { (error: NSError) in
                 self.reportError(error)

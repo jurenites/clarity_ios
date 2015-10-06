@@ -29,6 +29,7 @@
 //#import "VCtrlCreateLocation.h"
 
 static NSString * const UserDictKey = @"UserDictKey";
+static NSString * const StatusesDictKey = @"OrdersStatuses";
 //static NSString * const LocationsKey = @"LocationsKey";
 //static NSString * const RegionsKey = @"NeighborhoodsKey";
 //static NSString * const AnonymousPromoKey = @"AnonymousPromoKey";
@@ -42,6 +43,7 @@ static NSString * const UserDictKey = @"UserDictKey";
 
 @interface GlobalEntitiesCtrl() <AppDelegateDelegate, ApiRouterDelegate> //, HelpshiftDelegate
 {
+    NSDictionary *_statuses;
 //    NSMutableDictionary *_locationsDict;
 //    NSMutableDictionary *_regionsDict;
 //    
@@ -78,6 +80,7 @@ static NSString * const UserDictKey = @"UserDictKey";
     }
     
     _currentUser    = [User new];
+    _statuses = [NSDictionary new];
 //    _regions        = [NSArray new];
 //    _locationsDict  = [NSMutableDictionary new];
 //    _regionsDict    = [NSMutableDictionary new];
@@ -112,6 +115,7 @@ static NSString * const UserDictKey = @"UserDictKey";
     
     [self fillCurrentUserWithDict:dict];
     
+    _statuses = AssureIsDict([ud valueForKey:StatusesDictKey]);
 //    NSMutableArray *locs = [NSMutableArray new];
 //    NSMutableArray *nhs = [NSMutableArray new];
 //    
@@ -189,6 +193,24 @@ static NSString * const UserDictKey = @"UserDictKey";
         [ud removeObjectForKey:UserDictKey];
         [ud synchronize];
     }
+}
+
+
+- (void)fillOrderStatuses:(NSDictionary *)orderStatuses
+{
+    _statuses = orderStatuses;
+    [[NSUserDefaults standardUserDefaults] setValue:_statuses forKey:StatusesDictKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+- (NSString *)orderStatusForKey:(NSString *)orderStatusKey
+{
+    NSString *name = [_statuses objectForKey:orderStatusKey];
+    if (!name || name.length == 0) {
+        return @"Unknown Status";
+    }
+    return name;
 }
 
 //- (void)saveLocations

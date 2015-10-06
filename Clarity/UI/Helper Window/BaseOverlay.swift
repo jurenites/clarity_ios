@@ -9,7 +9,7 @@
 import UIKit
 
 class BaseOverlay: VCtrlBase {
-    var _onTapFunc: (() -> Void)?
+    private var _onTapFunc: (() -> Void)?
     @IBOutlet var uiTapBackground: UIView!
     private var _window: UIWindow!
     private var _isShown : Bool = false

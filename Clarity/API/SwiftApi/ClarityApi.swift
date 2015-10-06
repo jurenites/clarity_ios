@@ -44,6 +44,16 @@ class ClarityApi: ApiManager2
     }
     
     //MARK: Orders
+    func getOrderStatuses() -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMGetOrderStatuses)
+            .next(PliIsApiDictionary)
+            .next(PLISwitchToMain)
+            .next({(res: NSDictionary) in
+                GlobalEntitiesCtrl.shared().fillOrderStatuses(res as [NSObject : AnyObject])
+                return PipelineResult("")
+            })
+    }
+    
     func getOrders(offset: Int, limit: Int) -> Signal<[ShortOrder]> {
         return callMethod(ApiMethodID.AMGetOrders, params: [
             "offset" : NSNumber(integer: offset),
