@@ -150,9 +150,9 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let mesage = _messages[indexPath.row]
         if mesage.isEditable {
-            let overlay = ChatOptionsOverlay(actionFunc: { (action: Action) -> Void in
-                
-            })
+//            let overlay = ChatOptionsOverlay(actionFunc: { (action: Action) -> Void in
+//                
+//            })
         }
     }
     

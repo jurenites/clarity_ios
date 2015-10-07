@@ -43,6 +43,7 @@ class Order: ShortOrder {
     
     var messagesCount: Int = 0
     var dateTo: NSDate = NSDate.init()
+    var dateFrom: NSDate = NSDate.init()
     var reportType: String = ""
     var propertyType: String = ""
     var contact: User? = nil
@@ -63,6 +64,7 @@ class Order: ShortOrder {
         location = loc
         
         messagesCount = ApiInt(d["messages_count"])
+        dateFrom = FromServerDate(ApiString(d["created_at"]))
         dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
     
@@ -70,7 +72,8 @@ class Order: ShortOrder {
         super.visit(v)
         
         v.field("messanges", &messagesCount)
-//        .field("dateTo", &dateTo)
+        .field("date_needed", &dateTo)
+        .field("created_at", &dateFrom)
         .field("report_type", &reportType)
         .field("property_type", &propertyType)
         .field("contact", &contact)
