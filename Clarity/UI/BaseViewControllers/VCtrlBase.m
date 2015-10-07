@@ -91,11 +91,12 @@ static const CGFloat PlaceholderWidth = 270;
     
     if (self.isNeedAvatarButton) {
         UIButton *avatarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
+        [avatarButton addTarget:self action:@selector(showProfileOverlay) forControlEvents:UIControlEventTouchUpInside];
         
         avatarButton.backgroundColor = [UIColor greenColor];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
         
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:nil style:UIBarButtonItemStylePlain target:NULL action:NULL];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"" style:UIBarButtonItemStylePlain target:NULL action:NULL];
     }
     
     [self kbdSubscribe];
@@ -291,6 +292,12 @@ static const CGFloat PlaceholderWidth = 270;
     } else {
         _placehoderLabel.hidden = YES;
     }
+}
+
+- (void)showProfileOverlay
+{
+    MenuOverlay *mV = [MenuOverlay new];
+    [mV show];
 }
 
 //- (void)setAvatarFromUrl:(NSString *)avatarUrl

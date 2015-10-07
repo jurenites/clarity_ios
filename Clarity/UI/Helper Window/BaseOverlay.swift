@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseOverlay: VCtrlBase {
+class BaseOverlay: VCtrlBase, UIGestureRecognizerDelegate {
     private var _onTapFunc: (() -> Void)?
     @IBOutlet var uiTapBackground: UIView!
     private var _window: UIWindow!
@@ -18,7 +18,8 @@ class BaseOverlay: VCtrlBase {
         super.viewDidLoad()
         
         let tapRecognizer = UITapGestureRecognizer(target: self, action: Selector("actTap"))
-        self.uiTapBackground.addGestureRecognizer(tapRecognizer)
+        tapRecognizer.delegate = self
+        self.view.addGestureRecognizer(tapRecognizer)
     }
     
     //MARK: Base
@@ -53,11 +54,20 @@ class BaseOverlay: VCtrlBase {
         return self._isShown
     }
     
-    @IBAction private func actTap() {
+    func actTap() {
         if let fn = _onTapFunc {
             fn()
         }
         self.hide()
+    }
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if let view = touch.view {
+            if view.isKindOfClass(UIControl) {
+                return false
+            }
+        }
+        return true
     }
     
     override func shouldAutorotate() -> Bool {

@@ -324,20 +324,21 @@ static ApiRouter * volatile BBSharedApiRouter = nil;
     [self notifyWillLogout];
     
     void (^doLogout)() = ^{
+        
 //        [[TRNApiManager shared] logoutOnComplete:^{
-//            _currentUser = nil;
-//            _savedUserId = 0;
-//            [[NSUserDefaults standardUserDefaults] removeObjectForKey:BBApiTokenKey];
-//            [[NSUserDefaults standardUserDefaults] removeObjectForKey:BBCurrentUserIdKey];
-//            [[NSUserDefaults standardUserDefaults] synchronize];
-//            
+            _currentUser = nil;
+            _savedUserId = 0;
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:BBApiTokenKey];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:BBCurrentUserIdKey];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
 //            [Helpshift logout];
-//            
+        
 //            [[GlobalEntitiesCtrl shared] stopTrackingSession];
-//            [[GlobalEntitiesCtrl shared] updateCurrentUserWithUser:nil];
-//            
-//            [self.loginDelegate apiRouterLogoutComplete:self];
-//            [self notifyDidLogout];
+            [[GlobalEntitiesCtrl shared] updateCurrentUserWithUser:nil];
+            
+            [self.loginDelegate apiRouterLogoutComplete:self];
+            [self notifyDidLogout];
 //        }];
         
         _apiToken = @""; //Clear token to prevent logout again on invalid token error

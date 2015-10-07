@@ -74,7 +74,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465919156.9062"
+                  timestampString = "465927917.66504"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
@@ -89,7 +89,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465919156.906441"
+                  timestampString = "465927917.665464"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -502,15 +502,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Helper Window/BaseOverlay.swift"
-            timestampString = "465839478.585982"
+            timestampString = "465927065.408377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
             landmarkName = "actTap()"
             landmarkType = "5">
          </BreakpointContent>
@@ -522,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/MenuOverlay.swift"
-            timestampString = "465840220.438079"
+            timestampString = "465927065.408377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "31"
@@ -538,28 +538,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/MenuOverlay.swift"
-            timestampString = "465840221.198528"
+            timestampString = "465927065.408377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "35"
             endingLineNumber = "35"
             landmarkName = "actPortalTap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/MenuOverlay.swift"
-            timestampString = "465840221.990596"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "actLogOut()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -688,6 +672,38 @@
             startingLineNumber = "68"
             endingLineNumber = "68"
             landmarkName = "fillWithApiDict(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/UI/Helper Window/BaseOverlay.swift"
+            timestampString = "465927086.291041"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "gestureRecognizer(_:shouldReceiveTouch:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/UI/Orders/MenuOverlay.swift"
+            timestampString = "465927916.613755"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "actLogOut()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

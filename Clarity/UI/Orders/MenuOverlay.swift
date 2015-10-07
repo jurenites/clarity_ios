@@ -36,6 +36,12 @@ class MenuOverlay: BaseOverlay {
     }
     
     @IBAction func actLogOut() {
-//        ClarityApi.shared().logout
+        ClarityApi.shared().logout()
+            .success({ () -> Void in
+                ApiRouter.shared().logout()
+                self.hide()
+            }) { (error: NSError) -> Void in
+                self.reportError(error)
+        }
     }
 }
