@@ -16,6 +16,7 @@ class OrderStatusView: UIView {
     private let _broadcastedColor : UIColor = UIColor(fromHex: "#6DBBBC")
     
     @IBOutlet var uiTitle : UILabel!
+    @IBOutlet var uiIcon: UIImageView!
 
     class func item(status: String) -> (hex: String, image: String) {
         struct staticHolder {
@@ -53,7 +54,7 @@ class OrderStatusView: UIView {
         let result = OrderStatusView.item(status)
         
         self.backgroundColor = UIColor(fromHex: result.hex)
+        self.uiIcon.image = UIImage(named: result.image)
         self.uiTitle.text = GlobalEntitiesCtrl.shared().orderStatusForKey(status)
     }
-    
 }
