@@ -231,6 +231,8 @@
 		5BE5B61E1BB2E25500671BFE /* VCtrlSelectMultiContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6021BB2E25500671BFE /* VCtrlSelectMultiContent.xib */; };
 		5BE5B61F1BB2E25500671BFE /* VCtrlSelectSingleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */; };
 		5BE5B6201BB2E25500671BFE /* VCtrlSelectSingleContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */; };
+		8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */; settings = {ASSET_TAGS = (); }; };
+		8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */; settings = {ASSET_TAGS = (); }; };
 		5BFB9CC31BC5235B00017FDA /* ChatOptionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */; settings = {ASSET_TAGS = (); }; };
 		5BFB9CC51BC5238400017FDA /* ChatOptionsOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */; settings = {ASSET_TAGS = (); }; };
 		5BFB9D211BC5637000017FDA /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9CCB1BC5637000017FDA /* 100.png */; settings = {ASSET_TAGS = (); }; };
@@ -719,6 +721,8 @@
 		5BE5B6031BB2E25500671BFE /* VCtrlSelectSingleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlSelectSingleContent.h; sourceTree = "<group>"; };
 		5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlSelectSingleContent.m; sourceTree = "<group>"; };
 		5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlSelectSingleContent.xib; sourceTree = "<group>"; };
+		8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlAvatarMenu.swift; sourceTree = "<group>"; };
+		8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlAvatarMenu.xib; sourceTree = "<group>"; };
 		5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatOptionsOverlay.swift; sourceTree = "<group>"; };
 		5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatOptionsOverlay.xib; sourceTree = "<group>"; };
 		5BFB9CCB1BC5637000017FDA /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
@@ -872,6 +876,8 @@
 				5B8B9DEB1BB5837F006F3725 /* OrdersListCell.xib */,
 				5BE54E651BC2861F007E1173 /* MenuOverlay.swift */,
 				5BE54E671BC28647007E1173 /* MenuOverlay.xib */,
+				8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */,
+				8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */,
 			);
 			name = Orders;
 			path = UI/Orders;
@@ -1908,6 +1914,7 @@
 				5BFB9D4F1BC5637000017FDA /* add.png in Resources */,
 				5BFB9D6A1BC5637000017FDA /* mobile@2x.png in Resources */,
 				5BE5B6161BB2E25500671BFE /* SelectCtrlCellIpad.xib in Resources */,
+				8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */,
 				5BE5B6181BB2E25500671BFE /* SelectCtrlTable.xib in Resources */,
 				5BFB9D741BC5637000017FDA /* Submitted_2@2x.png in Resources */,
 				5BFB9D331BC5637000017FDA /* 80.png in Resources */,
@@ -2114,6 +2121,7 @@
 				5BE5B4BE1BB286EF00671BFE /* CIContext+Shared.m in Sources */,
 				5BE5B5CA1BB2B94200671BFE /* ApiManager.swift in Sources */,
 				5BE5B5C11BB2B94200671BFE /* PLICropAndBlur.m in Sources */,
+				8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */,
 				5BE5B58C1BB2B94200671BFE /* AvatarInfo.m in Sources */,
 				5B8B667F1BC2D499000CDD1B /* Location.swift in Sources */,
 				5BE5B5C61BB2B94200671BFE /* PLIParseJson.m in Sources */,
