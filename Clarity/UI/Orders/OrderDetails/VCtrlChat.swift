@@ -20,6 +20,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     @IBOutlet var uiMessageInput : ChatTextView!
     @IBOutlet var uiMessageContainer : UIView!
     
+    private var _accessoryView: DefaultAccessoryView!
+    
     init(orderId: Int) {
         self.orderId = orderId
         super.init(nibName: "VCtrlChat", bundle: nil)
@@ -27,14 +29,6 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func needNavBar() -> Bool {
-        return true
-    }
-    
-    override func needBackButton() -> Bool {
-        return false
     }
     
     override func viewDidLoad() {
@@ -51,12 +45,16 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         self.uiMessageContainer.layer.borderColor = UIColor.grayColor().CGColor
         
         self.setupInputHeight(false)
+        
+//        _accessoryView = DefaultAccessoryView.create()
+//        _accessoryView.onDone = WrapAction(self, method: VCtrlChat.actSend)
+//        uiMessageInput.inputAccessoryView = _accessoryView
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if !self.tableView.hidden {
+    override func viewWillFirstAppear() {
+        super.viewWillFirstAppear()
+        if _messages.count == 0 {
+            self.tableView.alpha = 0;
             self.triggerReloadContent()
         }
     }
@@ -79,6 +77,22 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
             } else {
                 self.view.layoutIfNeeded()
             }
+        }
+    }
+    
+    func actSend() {
+        let text = self.uiMessageInput.text
+        self.uiMessageInput.text = ""
+        self.view.endEditing(true)
+        self.showLoadingOverlay()
+        ClarityApi.shared().createMessage(self.orderId, text: text)
+            .success({ (message: Message) -> Void in
+                self.hideLoadingOverlay()
+                self._messages += [message]
+                self.tableView.reloadData()
+            }) { (error: NSError) -> Void in
+                self.hideLoadingOverlay()
+                self.reportError(error)
         }
     }
     
@@ -130,37 +144,38 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
-//        let details = VCtrlOrderDetails(orderId: _orders[indexPath.row].orderId)
-//        if let nav = self.navigationController {
-//            nav.pushViewController(details, animated: true)
-//        }
     }
     
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 20)//test_getMessages(0, count: 0)
+        let canceler = ClarityApi.shared().getMessages(orderId, offset: 0, count: _pageSize)
             .success({ (messages : [Message]) in
                 self._messages = messages
                 self.tableView.reloadData()
-                onComplete(false, false) //self._messages.count >= self._pageSize
+                UIView.animateWithDuration(0.33, animations: { () -> Void in
+                    self.tableView.alpha = 1;
+                })
+                onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
+                    onComplete(false, false)
             })
         
         return ApiCancelerSignal.wrap(canceler)
     }
     
-    //    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-    //        return self.baseReloadContent(onComplete)
-    //    }
+    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+        return self.baseReloadContent(onComplete)
+    }
     
     override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
             .success({ (messages : [Message]) in
                 self._messages += messages
-                onComplete(self._messages.count >= self._pageSize, false)
+                onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
+                    onComplete(false, false)
             })
         
         return ApiCancelerSignal.wrap(canceler)

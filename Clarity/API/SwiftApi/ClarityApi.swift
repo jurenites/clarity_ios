@@ -99,10 +99,11 @@ class ClarityApi: ApiManager2
         .next(PliFromApiArray)
     }
     
-    func createMessage(orderId: Int, text: String) -> Signal<AnyObject> {
+    func createMessage(orderId: Int, text: String) -> Signal<Message> {
         return callMethod(ApiMethodID.AMCreateMessage ,
-            urlParams: ["id": NSNumber(integer: orderId)],
+            urlParams: ["order_id": NSNumber(integer: orderId)],
             params: ["message" : text])
+        .next(PliFromApiDict)
     }
     
     func updateMessage(orderId: Int, messageId: Int, message: Message) -> Signal<AnyObject> {

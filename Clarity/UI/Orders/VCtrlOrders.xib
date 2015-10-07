@@ -19,6 +19,31 @@
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RYc-f1-fMb" customClass="TableView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                    <view key="tableHeaderView" contentMode="scaleToFill" id="iLa-v8-Iod" userLabel="Table Header View">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ogm-Sw-qS0">
+                                <rect key="frame" x="25" y="23" width="40" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.44705882352941179" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IMH-jA-vyR">
+                                <rect key="frame" x="75" y="23" width="57" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.45098039215686275" green="0.44705882352941179" blue="0.45882352941176469" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="IMH-jA-vyR" firstAttribute="leading" secondItem="ogm-Sw-qS0" secondAttribute="trailing" constant="10" id="0sg-W8-ymi"/>
+                            <constraint firstAttribute="bottom" secondItem="ogm-Sw-qS0" secondAttribute="bottom" constant="3" id="V1y-IZ-td7"/>
+                            <constraint firstItem="ogm-Sw-qS0" firstAttribute="leading" secondItem="iLa-v8-Iod" secondAttribute="leading" constant="25" id="aMb-kv-eGU"/>
+                            <constraint firstAttribute="bottom" secondItem="IMH-jA-vyR" secondAttribute="bottom" constant="3" id="oiB-dz-egk"/>
+                        </constraints>
+                    </view>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="G2m-et-hKE"/>
                         <outlet property="delegate" destination="-1" id="xGB-37-Mh8"/>

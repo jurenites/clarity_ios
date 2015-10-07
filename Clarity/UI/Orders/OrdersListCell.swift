@@ -14,10 +14,15 @@ class OrdersListCell: UITableViewCell {
     @IBOutlet var uiAddress : UILabel!
     @IBOutlet var uiPrice : UILabel!
     
-    @IBOutlet var uiPriceContainer : UIView!
+    @IBOutlet var uiContainer: UIView!
+    @IBOutlet var uiInfoContainer : UIView!
     @IBOutlet var uiOrderStatus : OrderStatusView!
     
     @IBInspectable var borderColor: UIColor = UIColor.blackColor()
+    @IBInspectable var highlitedColor: UIColor = UIColor.blackColor()
+    @IBInspectable var defaultColor: UIColor = UIColor.blackColor()
+    
+    private var titleDefaultColor: UIColor = UIColor.blackColor()
     
     class func nibName() -> String! {
         return "OrdersListCell"
@@ -28,19 +33,31 @@ class OrdersListCell: UITableViewCell {
     }
     
     func setOrder(order: ShortOrder) {
-//        self.uiOrderNum.text = String(format: "%d", order.orderNumber)
+        self.uiOrderNum.text = "\(order.orderId)"
         self.uiAddress.text = order.address
-        self.uiPrice.text =  String(format: "$ %d", order.price)
+        self.uiPrice.text = "$ \(order.price)"
         self.uiOrderStatus.setup(order.status)
         
-        let color = uiPriceContainer.backgroundColor
-        uiPriceContainer.backgroundColor = UIColor.clearColor()
-        uiPriceContainer.layer.backgroundColor = color?.CGColor
-        uiPriceContainer.layer.borderColor = borderColor.CGColor
-        uiPriceContainer.layer.borderWidth = 0.5
-        uiPriceContainer.layer.masksToBounds = false
-        uiPriceContainer.layer.shouldRasterize = true
-        uiPriceContainer.layer.rasterizationScale = UIScreen.mainScreen().scale
+        let color = uiInfoContainer.backgroundColor
+        uiInfoContainer.backgroundColor = UIColor.clearColor()
+        uiInfoContainer.layer.backgroundColor = color?.CGColor
+        uiInfoContainer.layer.borderColor = borderColor.CGColor
+        uiInfoContainer.layer.borderWidth = 0.5
+        uiInfoContainer.layer.masksToBounds = false
+        uiInfoContainer.layer.shouldRasterize = true
+        uiInfoContainer.layer.rasterizationScale = UIScreen.mainScreen().scale
         self.layoutIfNeeded()
+    }
+    
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    
+        if animated {
+            UIView.animateWithDuration(0.33, animations: { () -> Void in
+                self.uiInfoContainer.backgroundColor = selected ? self.highlitedColor : UIColor.whiteColor()
+            })
+        } else {
+            self.uiInfoContainer.backgroundColor = selected ? self.highlitedColor : UIColor.whiteColor()
+        }
     }
 }

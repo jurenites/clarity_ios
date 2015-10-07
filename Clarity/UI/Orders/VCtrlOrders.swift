@@ -70,7 +70,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let details = VCtrlOrderDetails(orderId: _orders[indexPath.row].orderId)
         if let nav = self.navigationController {
             nav.pushViewController(details, animated: true)

@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrdersListCell" rowHeight="100" id="gQU-ms-BXx" customClass="OrdersListCell" customModule="Clarity" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrdersListCell" rowHeight="100" id="gQU-ms-BXx" customClass="OrdersListCell" customModule="Clarity" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="gQU-ms-BXx" id="O5I-DQ-4dE">
@@ -18,7 +18,7 @@
                         <rect key="frame" x="25" y="0.0" width="270" height="52"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsT-QY-Bdi" userLabel="Separator" customClass="Separator">
-                                <rect key="frame" x="206" y="5" width="1" height="42"/>
+                                <rect key="frame" x="211" y="5" width="1" height="42"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="w2Q-0y-JRi"/>
@@ -35,13 +35,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 230" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-6a-oAJ">
-                                <rect key="frame" x="212" y="0.0" width="48" height="52"/>
+                                <rect key="frame" x="217" y="0.0" width="48" height="52"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.33333333333333331" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUZ-9x-azw" userLabel="Separator" customClass="Separator">
-                                <rect key="frame" x="33" y="5" width="1" height="42"/>
+                                <rect key="frame" x="38" y="5" width="1" height="42"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="baJ-L9-vEv"/>
@@ -51,11 +51,11 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Washington st.Greenwood 354" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf4-SE-y9L">
-                                <rect key="frame" x="42" y="17" width="156" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Washington st.Greenwood 354" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf4-SE-y9L">
+                                <rect key="frame" x="47" y="5" width="156" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -64,7 +64,7 @@
                             <constraint firstItem="QUZ-9x-azw" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="top" constant="5" id="2u1-Kt-Dxc"/>
                             <constraint firstItem="OsT-QY-Bdi" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="top" constant="5" id="9ST-9P-Ug0"/>
                             <constraint firstItem="ZxB-6a-oAJ" firstAttribute="leading" secondItem="2kJ-t2-vRl" secondAttribute="leading" constant="10" id="9fU-x8-7m8"/>
-                            <constraint firstAttribute="trailing" secondItem="ZxB-6a-oAJ" secondAttribute="trailing" constant="10" id="Hoc-Sb-h5E"/>
+                            <constraint firstAttribute="trailing" secondItem="ZxB-6a-oAJ" secondAttribute="trailing" constant="5" id="Hoc-Sb-h5E"/>
                             <constraint firstAttribute="bottom" secondItem="ZxB-6a-oAJ" secondAttribute="bottom" id="JHT-SD-s71"/>
                             <constraint firstAttribute="height" constant="30" id="L6N-9h-IpP"/>
                             <constraint firstItem="ZxB-6a-oAJ" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="top" id="MjL-ho-gjb"/>
@@ -74,8 +74,10 @@
                             <constraint firstAttribute="trailing" secondItem="OsT-QY-Bdi" secondAttribute="trailing" constant="70" id="ZaN-KF-khg"/>
                             <constraint firstAttribute="centerY" secondItem="ZxB-6a-oAJ" secondAttribute="centerY" id="gUT-ZJ-2wi"/>
                             <constraint firstItem="zf4-SE-y9L" firstAttribute="centerY" secondItem="2kJ-t2-vRl" secondAttribute="centerY" id="i1V-ti-pm6"/>
-                            <constraint firstItem="QUZ-9x-azw" firstAttribute="leading" secondItem="eQ2-zF-pqY" secondAttribute="trailing" constant="5" id="pS6-iG-2mC"/>
+                            <constraint firstItem="zf4-SE-y9L" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="top" constant="5" id="ia2-KY-gRv"/>
+                            <constraint firstItem="QUZ-9x-azw" firstAttribute="leading" secondItem="eQ2-zF-pqY" secondAttribute="trailing" constant="10" id="pS6-iG-2mC"/>
                             <constraint firstItem="eQ2-zF-pqY" firstAttribute="leading" secondItem="2kJ-t2-vRl" secondAttribute="leading" constant="10" id="qvh-nQ-Xwc"/>
+                            <constraint firstAttribute="bottom" secondItem="zf4-SE-y9L" secondAttribute="bottom" constant="5" id="tPa-8O-CSa"/>
                             <constraint firstItem="ZxB-6a-oAJ" firstAttribute="leading" secondItem="OsT-QY-Bdi" secondAttribute="trailing" constant="5" id="xVl-sq-jqu"/>
                             <constraint firstItem="eQ2-zF-pqY" firstAttribute="centerY" secondItem="2kJ-t2-vRl" secondAttribute="centerY" id="zQm-DS-aiz"/>
                         </constraints>
@@ -88,10 +90,10 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-fM-DbS" userLabel="Status View" customClass="OrderStatusView" customModule="Clarity" customModuleProvider="target">
-                        <rect key="frame" x="25" y="60" width="160" height="24"/>
+                        <rect key="frame" x="25" y="60" width="48" height="24"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4za-Bb-m3V">
-                                <rect key="frame" x="61" y="3" width="38" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4za-Bb-m3V">
+                                <rect key="frame" x="5" y="3" width="38" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -103,7 +105,14 @@
                             <constraint firstItem="4za-Bb-m3V" firstAttribute="centerY" secondItem="UM1-fM-DbS" secondAttribute="centerY" id="7oD-fK-UJ0"/>
                             <constraint firstItem="4za-Bb-m3V" firstAttribute="centerX" secondItem="UM1-fM-DbS" secondAttribute="centerX" id="ScB-gg-8bl"/>
                             <constraint firstAttribute="height" constant="24" id="aRS-ll-BzW"/>
+                            <constraint firstItem="4za-Bb-m3V" firstAttribute="leading" secondItem="UM1-fM-DbS" secondAttribute="leading" constant="5" id="g6v-UA-dbu"/>
+                            <constraint firstAttribute="trailing" secondItem="4za-Bb-m3V" secondAttribute="trailing" constant="5" id="rZT-7a-qcu"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="7kV-9D-xVB"/>
+                            </mask>
+                        </variation>
                         <connections>
                             <outlet property="uiTitle" destination="4za-Bb-m3V" id="zZV-pj-iWv"/>
                         </connections>
@@ -123,13 +132,20 @@
                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                     <color key="value" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                 </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="highlitedColor">
+                    <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
+                <userDefinedRuntimeAttribute type="color" keyPath="defaultColor">
+                    <color key="value" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
             <connections>
                 <outlet property="uiAddress" destination="zf4-SE-y9L" id="q45-lQ-Jok"/>
+                <outlet property="uiContainer" destination="O5I-DQ-4dE" id="XAd-Ws-Gf4"/>
+                <outlet property="uiInfoContainer" destination="2kJ-t2-vRl" id="bds-Vb-vhG"/>
                 <outlet property="uiOrderNum" destination="eQ2-zF-pqY" id="YCs-WH-iYx"/>
                 <outlet property="uiOrderStatus" destination="UM1-fM-DbS" id="wH9-5j-IuC"/>
                 <outlet property="uiPrice" destination="ZxB-6a-oAJ" id="JNx-KA-z4p"/>
-                <outlet property="uiPriceContainer" destination="2kJ-t2-vRl" id="cdf-yG-VRa"/>
             </connections>
             <point key="canvasLocation" x="395" y="486"/>
         </tableViewCell>

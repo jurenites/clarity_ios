@@ -55,7 +55,7 @@ class VCtrlOrderDetails: VCtrlBase {
             if let contact = ord.contact {
                 uiContact.uiTitle.text = contact.name
             }
-            uiFree.uiTitle.text = String(ord.price)
+            uiFree.uiTitle.text = "$ \(ord.price)"
 //            uiDate.uiTitle.text = ord.dateTo
             uiStatus.setup(ord.status)
             uiMessanges.uiTitle.text = String(ord.messagesCount)
