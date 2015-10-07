@@ -78,6 +78,8 @@ static const CGFloat PlaceholderWidth = 270;
     _placehoderLabel.textAlignment = NSTextAlignmentCenter;
     [self.scrollView addSubview:_placehoderLabel];
     
+    self.isNeedAvatarButton = YES;
+    
 //    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Raleway-semiBold" size:16]}];
 }
 
@@ -86,20 +88,13 @@ static const CGFloat PlaceholderWidth = 270;
     [super viewWillAppear:animated];
     
     [[ApiRouter shared] addDelegate:self];
-
-//    //GAI
-//    if ([self needTrackGAI]) {
-//        id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
-//        NSMutableString *trackName = [NSMutableString stringWithString:[GlobalEntitiesCtrl shared].currentUser.isTrainer? @"Specialist: " : @"Member: "];
-//        [trackName appendString:[self GAITrackName]];
-//        [tracker set:kGAIScreenName value:trackName];
-//        [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-//        
-//        [[EventsHub shared] screenOpened:NSStringFromClass([self class])];
-//    }
-    //
     
-    
+    if (self.isNeedAvatarButton) {
+        UIButton *avatarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
+        
+        avatarButton.backgroundColor = [UIColor greenColor];
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
+    }
     
     [self kbdSubscribe];
         
@@ -237,7 +232,7 @@ static const CGFloat PlaceholderWidth = 270;
     return NO;
 }
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }

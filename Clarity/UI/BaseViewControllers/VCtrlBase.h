@@ -38,6 +38,8 @@ typedef void (^BaseOnLoadMoreComplete)(BOOL hasMoreData, BOOL tryAgain);
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+@property (nonatomic) BOOL isNeedAvatarButton;
+
 @property (readonly, nonatomic) ClarityApiManager *api;
 @property (strong, nonatomic) ApiCanceler *pendingRequest;
 
