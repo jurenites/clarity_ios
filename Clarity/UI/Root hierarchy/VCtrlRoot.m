@@ -42,6 +42,7 @@ static VCtrlRoot *Current = nil;
 {
     [super viewDidLoad];
     [ApiRouter shared].loginDelegate = self;
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     
     Current = self;
 //    _startupPushData = [AGAppDelegate shared].pushAtStart;
@@ -329,8 +330,8 @@ static VCtrlRoot *Current = nil;
 
 - (void)apiRouterLogoutComplete:(ApiRouter *)apiRouter
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
-                                                animated:YES];
+//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault
+//                                                animated:YES];
     [self showLoginUI];
 }
 

@@ -231,6 +231,8 @@
 		5BE5B61E1BB2E25500671BFE /* VCtrlSelectMultiContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6021BB2E25500671BFE /* VCtrlSelectMultiContent.xib */; };
 		5BE5B61F1BB2E25500671BFE /* VCtrlSelectSingleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */; };
 		5BE5B6201BB2E25500671BFE /* VCtrlSelectSingleContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */; };
+		5BFB9CC31BC5235B00017FDA /* ChatOptionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */; settings = {ASSET_TAGS = (); }; };
+		5BFB9CC51BC5238400017FDA /* ChatOptionsOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -633,6 +635,8 @@
 		5BE5B6031BB2E25500671BFE /* VCtrlSelectSingleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlSelectSingleContent.h; sourceTree = "<group>"; };
 		5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlSelectSingleContent.m; sourceTree = "<group>"; };
 		5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlSelectSingleContent.xib; sourceTree = "<group>"; };
+		5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatOptionsOverlay.swift; sourceTree = "<group>"; };
+		5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatOptionsOverlay.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -665,6 +669,8 @@
 				5B52CEDE1BBA817A009437C5 /* MessageCell.swift */,
 				5B52CEE01BBA818E009437C5 /* MessageCell.xib */,
 				5B9BC7D31BBE553A0087D001 /* ChatTextView.swift */,
+				5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */,
+				5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */,
 			);
 			name = Chat;
 			sourceTree = "<group>";
@@ -1575,6 +1581,7 @@
 				5BC79CC71BB1B42E0040AF48 /* LoadingOverlay.xib in Resources */,
 				5BC79CBF1BB1B42E0040AF48 /* TablePtrView.xib in Resources */,
 				5BA7FD4F1BB996E6005951E7 /* VCtrlOrderDetails.xib in Resources */,
+				5BFB9CC51BC5238400017FDA /* ChatOptionsOverlay.xib in Resources */,
 				5BE5B6151BB2E25500671BFE /* SelectCtrlCell.xib in Resources */,
 				5BC79CBD1BB1B42E0040AF48 /* TableInfsView.xib in Resources */,
 			);
@@ -1609,6 +1616,7 @@
 				5BE5B5951BB2B94200671BFE /* UniqueObject.m in Sources */,
 				5BE5B60A1BB2E25500671BFE /* CustomTextField.m in Sources */,
 				5BE5B5931BB2B94200671BFE /* NonTypedUniqueObject.m in Sources */,
+				5BFB9CC31BC5235B00017FDA /* ChatOptionsOverlay.swift in Sources */,
 				5BE5B4C41BB286EF00671BFE /* ImageWrapper.m in Sources */,
 				5BE5B5891BB2B94200671BFE /* Database.m in Sources */,
 				5BE5B61D1BB2E25500671BFE /* VCtrlSelectMultiContent.m in Sources */,

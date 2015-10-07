@@ -12,6 +12,7 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
     
     @IBOutlet var uiLogin : CustomTextField!
     @IBOutlet var uiPassword : CustomTextField!
+    @IBOutlet var uiPasswordSeparator: Separator!
     
     @IBOutlet var uiContainer : UIView!
     @IBOutlet var uiLoginBtn : CustomButton!
@@ -116,18 +117,22 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
         }
         
         if !_isRecovering {
+            self.view.endEditing(true)
+            self.showLoadingOverlay()
             let canceler = ClarityApi.shared().login(uiLogin.text!, pass: uiPassword.text!)
                 .flatMap({ (user: User) -> PipelineResult<Signal<AnyObject>> in
                     return PipelineResult(ClarityApi.shared().getOrderStatuses())
                 })
                 .success({
+                    self.hideLoadingOverlay()
                     VCtrlRoot.current().showMainUI()
                 }, error: { (error : NSError) -> Void in
-                        self.reportError(error)
+                    self.hideLoadingOverlay()
+                    self.reportError(error)
                 })
             self.pendingRequest = ApiCancelerSignal.wrap(canceler)
         } else {
-            let canceler = ClarityApi.shared().test_recover(uiLogin.text!)
+            let canceler = ClarityApi.shared().recover(uiLogin.text!)
                 .success({
                     self.showNotice("Check your e-mail now!")
                     self.actRecovery()
@@ -143,6 +148,7 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
         _isRecovering = !_isRecovering
         
         uiPassword.hidden = _isRecovering
+        uiPasswordSeparator.hidden = uiPassword.hidden
         uiRecoveryBtn.uiTitle.attributedText = _isRecovering ? self.makeUnderline("Cancel") : self.makeUnderline("Password recovery")
         uiLoginBtn.uiTitle.text = _isRecovering ? "Reset" : "Login"
         

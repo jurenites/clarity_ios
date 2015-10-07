@@ -20,3 +20,4 @@
 #import "VCtrlRoot.h"
 #import "UIColor+Utils.h"
 #import "GlobalEntitiesCtrl.h"
+#import "Separator.h"

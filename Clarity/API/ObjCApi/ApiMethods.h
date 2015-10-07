@@ -16,7 +16,7 @@ typedef NS_ENUM(NSInteger, ApiMethodID) {
     AMGetOrders, AMGetOrder, AMUpdateOrder, AMAcceptOrder, AMAcceptOrderWithConditions, AMDeclineOrder, AMGetOrderStatuses,
     
     //Messages
-    AMGetMessages, AMCreateMessage, AMUpdateMessage,
+    AMGetMessages, AMCreateMessage, AMUpdateMessage, AMDeleteMessage,
     
     
     //not refactored

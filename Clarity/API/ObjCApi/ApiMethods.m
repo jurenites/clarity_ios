@@ -31,6 +31,7 @@
         @(AMGetMessages)        :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/:order_id/messages"],
         @(AMCreateMessage)      :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/orders/:order_id/messages"],
         @(AMUpdateMessage)      :   [ApiMethod srv:AMSLogin method:HttpMethodPut url:@"/orders/:order_id/messages/:message_id"],
+        @(AMDeleteMessage)      :   [ApiMethod srv:AMSLogin method:HttpMethodDelete url:@"/orders/:order_id/messages/:message_id"],
         
         //not refactored
         @(AMForgotPassword)     :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/user/password/update"],
