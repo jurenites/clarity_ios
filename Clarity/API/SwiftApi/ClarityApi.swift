@@ -20,6 +20,7 @@ class ClarityApi: ApiManager2
     
     //MARK: Auth
     func login(login: String, pass: String) -> Signal<User> {
+        //WARNING: TODO Should make this method as POST, connect with backend!!!
         return callMethod(ApiMethodID.AMLoginViaEmail, params: [
             "username" : login,
             "password" : pass])
@@ -113,6 +114,13 @@ class ClarityApi: ApiManager2
                 "message_id" : NSNumber(integer: messageId)
             ],
             params: message.toDict() as! [String : AnyObject])
+    }
+    
+    func deleteMessage(orderId: Int, messageId: Int) -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMDeleteMessage, params: [
+            "order_id" : NSNumber(integer: orderId),
+            "message_id" : NSNumber(integer: messageId)
+            ])
     }
     
     

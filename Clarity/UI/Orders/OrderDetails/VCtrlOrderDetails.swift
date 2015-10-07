@@ -56,9 +56,14 @@ class VCtrlOrderDetails: VCtrlBase {
                 uiContact.uiTitle.text = contact.name
             }
             uiFree.uiTitle.text = "$ \(ord.price)"
-//            uiDate.uiTitle.text = ord.dateTo
+            
             uiStatus.setup(ord.status)
             uiMessanges.uiTitle.text = String(ord.messagesCount)
+            
+            let fmt = NSDateFormatter()
+//            fmt.locale = NSLocale(localeIdentifier: "en_US")
+            fmt.dateFormat = "MM.dd.YYYY"
+            uiDate.uiTitle.text = fmt.stringFromDate(ord.dateTo)
         }
     }
     
@@ -120,7 +125,7 @@ class VCtrlOrderDetails: VCtrlBase {
     }
     
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().getOrder(self.orderId)//test_getOrder(self.orderId)
+        let canceler = ClarityApi.shared().getOrder(self.orderId)
             .success({ (order : Order) in
                 self.order = order
                 self.populate()

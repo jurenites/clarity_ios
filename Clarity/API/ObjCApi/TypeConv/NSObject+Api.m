@@ -173,8 +173,9 @@ NSDate *FromServerDate(NSString *serverDate)
         
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:enUSPOSIXLocale];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm a"];
     });
 
     NSDate *dt = [dateFormatter dateFromString:serverDate];

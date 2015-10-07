@@ -17,39 +17,42 @@ class OrderStatusView: UIView {
     
     @IBOutlet var uiTitle : UILabel!
 
-    class func statusHexColor(status: String) -> String {
+    class func item(status: String) -> (hex: String, image: String) {
         struct staticHolder {
-            static var colorsMap: [String : String] = [:]
+            static var itemsMap: [String : [String : String]] = [:]
         }
         dispatch_once(&dispatchToken) {
             CallSyncOnMainThread({
-                staticHolder.colorsMap = [
-                    "assigned" : "#5C6EC7",
-                    "scheduled" : "#759B62",
-                    "in_progress" : "#9AC55A",
-                    "in_review" : "#BFAE3A",
-                    "bid" : "#5C6EC7",
-                    "accepted_by_vendor_with_conditions" : "#6DBBBC",
-                    "assignment_pending" : "#6381CF",
-                    "broadcasted" : "#5C6EC7",
-                    "declined_by_vendor" : "#6DBBBC",
-                    "corrections_requested_by_amc" : "#F8A717",
-                    "accepted_by_vendor" : "#6DBBBC",
-                    "submitted" : "#A9B35D",
-                    "pending_approval" : "#7A93DA",
-                    "completed" : "#D28100"
+                staticHolder.itemsMap = [
+                    "assigned" : ["hex" : "#5C6EC7", "image" : "Assigned"],
+                    "scheduled" : ["hex" : "#759B62", "image" : "Scheduled"],
+                    "in_progress" : ["hex" : "#9AC55A", "image" : "in-Progress"],
+                    "in_review" : ["hex" : "#BFAE3A", "image" : "in-Review"],
+                    "bid" : ["hex" : "#5C6EC7", "image" : "Bid"],
+                    "accepted_by_vendor_with_conditions" : ["hex" : "#6DBBBC", "image" : "Accepted-with-conditions"],
+                    "assignment_pending" : ["hex" : "#6381CF", "image" : "Assignment-Pending"],
+                    "broadcasted" : ["hex" : "#5C6EC7", "image" : "Broadcasted"],
+                    "declined_by_vendor" : ["hex" : "#6DBBBC", "image" : "Declined-by-Vendor"],
+                    "corrections_requested_by_amc" : ["hex" : "#F8A717", "image" : "Corrections-requested"],
+                    "accepted_by_vendor" : ["hex" : "#6DBBBC", "image" : "Accepted-by-Vendor"],
+                    "submitted" : ["hex" : "#A9B35D", "image" : "Submitted"],
+                    "pending_approval" : ["hex" : "#7A93DA", "image" : "Pending-Approval"],
+                    "completed" : ["hex" : "#D28100", "image" : "Completed"]
                 ]
             })
         }
         
-        if let hex = staticHolder.colorsMap[status] {
-            return hex
+        if let result = staticHolder.itemsMap[status] {
+            return (result["hex"]!, result["image"]!)
         }
-        return "#5C6EC7"
+        return ("#5C6EC7", "Declined-by-Vendor")
     }
     
     func setup(status : String) {
-        self.backgroundColor = UIColor(fromHex: OrderStatusView.statusHexColor(status))
+        
+        let result = OrderStatusView.item(status)
+        
+        self.backgroundColor = UIColor(fromHex: result.hex)
         self.uiTitle.text = GlobalEntitiesCtrl.shared().orderStatusForKey(status)
     }
     

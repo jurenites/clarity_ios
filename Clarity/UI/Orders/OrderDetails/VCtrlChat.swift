@@ -46,9 +46,9 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         
         self.setupInputHeight(false)
         
-//        _accessoryView = DefaultAccessoryView.create()
-//        _accessoryView.onDone = WrapAction(self, method: VCtrlChat.actSend)
-//        uiMessageInput.inputAccessoryView = _accessoryView
+        _accessoryView = DefaultAccessoryView.create()
+        _accessoryView.onDone = WrapAction(self, method: VCtrlChat.actSend)
+        uiMessageInput.inputAccessoryView = _accessoryView
     }
     
     override func viewWillFirstAppear() {
@@ -83,16 +83,20 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     func actSend() {
         let text = self.uiMessageInput.text
         self.uiMessageInput.text = ""
+        self.setupInputHeight(true)
         self.view.endEditing(true)
-        self.showLoadingOverlay()
-        ClarityApi.shared().createMessage(self.orderId, text: text)
-            .success({ (message: Message) -> Void in
-                self.hideLoadingOverlay()
-                self._messages += [message]
-                self.tableView.reloadData()
-            }) { (error: NSError) -> Void in
-                self.hideLoadingOverlay()
-                self.reportError(error)
+        if text.length > 0 {
+            self.showLoadingOverlay()
+            ClarityApi.shared().createMessage(self.orderId, text: text)
+                .success({ (message: Message) -> Void in
+                    self.hideLoadingOverlay()
+                    self._messages += [message]
+                    self.tableView.reloadData()
+                    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    }) { (error: NSError) -> Void in
+                        self.hideLoadingOverlay()
+                        self.reportError(error)
+            }
         }
     }
     
@@ -144,6 +148,12 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        let mesage = _messages[indexPath.row]
+        if mesage.isEditable {
+//            let overlay = ChatOptionsOverlay(actionFunc: { (action: Action) -> Void in
+//                
+//            })
+        }
     }
     
     //MARK: Load Content
