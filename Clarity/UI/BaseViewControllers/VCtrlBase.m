@@ -94,6 +94,8 @@ static const CGFloat PlaceholderWidth = 270;
         
         avatarButton.backgroundColor = [UIColor greenColor];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
+        
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:nil style:UIBarButtonItemStylePlain target:NULL action:NULL];
     }
     
     [self kbdSubscribe];
