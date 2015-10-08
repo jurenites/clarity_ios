@@ -231,8 +231,6 @@
 		5BE5B61E1BB2E25500671BFE /* VCtrlSelectMultiContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6021BB2E25500671BFE /* VCtrlSelectMultiContent.xib */; };
 		5BE5B61F1BB2E25500671BFE /* VCtrlSelectSingleContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */; };
 		5BE5B6201BB2E25500671BFE /* VCtrlSelectSingleContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */; };
-		8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */; settings = {ASSET_TAGS = (); }; };
-		8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */; settings = {ASSET_TAGS = (); }; };
 		5BFB9CC31BC5235B00017FDA /* ChatOptionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */; settings = {ASSET_TAGS = (); }; };
 		5BFB9CC51BC5238400017FDA /* ChatOptionsOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */; settings = {ASSET_TAGS = (); }; };
 		5BFB9D211BC5637000017FDA /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9CCB1BC5637000017FDA /* 100.png */; settings = {ASSET_TAGS = (); }; };
@@ -319,6 +317,8 @@
 		5BFB9D721BC5637000017FDA /* Submitted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D1E1BC5637000017FDA /* Submitted@2x.png */; settings = {ASSET_TAGS = (); }; };
 		5BFB9D731BC5637000017FDA /* Submitted_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D1F1BC5637000017FDA /* Submitted_2.png */; settings = {ASSET_TAGS = (); }; };
 		5BFB9D741BC5637000017FDA /* Submitted_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D201BC5637000017FDA /* Submitted_2@2x.png */; settings = {ASSET_TAGS = (); }; };
+		8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */; settings = {ASSET_TAGS = (); }; };
+		8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -721,8 +721,6 @@
 		5BE5B6031BB2E25500671BFE /* VCtrlSelectSingleContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlSelectSingleContent.h; sourceTree = "<group>"; };
 		5BE5B6041BB2E25500671BFE /* VCtrlSelectSingleContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlSelectSingleContent.m; sourceTree = "<group>"; };
 		5BE5B6051BB2E25500671BFE /* VCtrlSelectSingleContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlSelectSingleContent.xib; sourceTree = "<group>"; };
-		8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlAvatarMenu.swift; sourceTree = "<group>"; };
-		8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlAvatarMenu.xib; sourceTree = "<group>"; };
 		5BFB9CC21BC5235A00017FDA /* ChatOptionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatOptionsOverlay.swift; sourceTree = "<group>"; };
 		5BFB9CC41BC5238400017FDA /* ChatOptionsOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatOptionsOverlay.xib; sourceTree = "<group>"; };
 		5BFB9CCB1BC5637000017FDA /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
@@ -809,6 +807,8 @@
 		5BFB9D1E1BC5637000017FDA /* Submitted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Submitted@2x.png"; sourceTree = "<group>"; };
 		5BFB9D1F1BC5637000017FDA /* Submitted_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Submitted_2.png; sourceTree = "<group>"; };
 		5BFB9D201BC5637000017FDA /* Submitted_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Submitted_2@2x.png"; sourceTree = "<group>"; };
+		8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlAvatarMenu.swift; sourceTree = "<group>"; };
+		8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlAvatarMenu.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1807,9 +1807,11 @@
 				TargetAttributes = {
 					5BC79C0E1BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z9VZA3TTXZ;
 					};
 					5BC79C271BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z9VZA3TTXZ;
 						TestTargetID = 5BC79C0E1BB1ADE70040AF48;
 					};
 				};
@@ -2270,8 +2272,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Clarity/Clarity-Prefix.pch";
 				INFOPLIST_FILE = Clarity/Info.plist;
@@ -2279,6 +2281,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "976542be-678f-4204-8413-617d746de182";
 				SERVER_URL = "http://claritystage.pilgrimconsulting.com/api";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clarity/Clarity-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2290,7 +2293,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Clarity/Clarity-Prefix.pch";
 				INFOPLIST_FILE = Clarity/Info.plist;
@@ -2298,6 +2302,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "46e7b47e-c5f2-437d-ac24-23ac3344722a";
 				SERVER_URL = "http://claritystage.pilgrimconsulting.com/api";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clarity/Clarity-Bridging-Header.h";
 			};
@@ -2307,6 +2312,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2317,8 +2324,9 @@
 				);
 				INFOPLIST_FILE = ClarityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "976542be-678f-4204-8413-617d746de182";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Debug;
@@ -2327,14 +2335,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClarityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "976542be-678f-4204-8413-617d746de182";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Release;
