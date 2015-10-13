@@ -11,7 +11,7 @@
 typedef enum {
     ApiErrorBadSessionToken = 1001,
     ApiErrorCustomMessage = 2001,
-    ApiErrorSessionTokenExpired = 4003
+    ApiErrorSessionTokenExpired = 401
 } ApiErrorCode;
 
 @interface ApiError : Error

@@ -74,7 +74,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465928400.798746"
+                  timestampString = "466355291.766088"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "124"
@@ -89,7 +89,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-                  timestampString = "465928400.79917"
+                  timestampString = "466355291.766818"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "125"
@@ -214,7 +214,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/Base/SwiftBase/ApiManager.swift"
@@ -246,7 +246,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/Base/SwiftBase/ApiManager.swift"
@@ -704,6 +704,38 @@
             startingLineNumber = "41"
             endingLineNumber = "41"
             landmarkName = "actLogOut()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/API/SwiftApi/ClarityApi.swift"
+            timestampString = "466355205.108605"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "login(_:pass:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/API/SwiftApi/ClarityApi.swift"
+            timestampString = "466355215.909069"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "logout()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
