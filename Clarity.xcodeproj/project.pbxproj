@@ -1817,6 +1817,7 @@
 					};
 					5BC79C271BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z9VZA3TTXZ;
 						TestTargetID = 5BC79C0E1BB1ADE70040AF48;
 					};
 				};
@@ -2319,6 +2320,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -2329,8 +2332,9 @@
 				);
 				INFOPLIST_FILE = ClarityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "976542be-678f-4204-8413-617d746de182";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Debug;
@@ -2339,14 +2343,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: KENNEN PALM (6H4GQLWG87)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ClarityTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "976542be-678f-4204-8413-617d746de182";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Release;
