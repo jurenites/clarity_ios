@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -37,6 +37,7 @@
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_select_arrow_up.png" translatesAutoresizingMaskIntoConstraints="NO" id="unL-nm-w9e" userLabel="Arrow Up">
                             <rect key="frame" x="128" y="0.0" width="15" height="8"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="8" id="on8-xG-uYg"/>
                                 <constraint firstAttribute="width" constant="15" id="tBq-64-t5c"/>
@@ -47,17 +48,20 @@
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Good to go!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTw-yK-glu" userLabel="Tip Header">
                                     <rect key="frame" x="78" y="10" width="94" height="20"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="17"/>
                                     <color key="textColor" red="0.12941176470588237" green="0.65490196078431373" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mSS-Jf-7Cc" userLabel="Tip Label">
                                     <rect key="frame" x="10" y="30" width="230" height="18"/>
+                                    <animations/>
                                     <fontDescription key="fontDescription" name="Raleway-SemiBold" family="Raleway" pointSize="15"/>
                                     <color key="textColor" red="0.90196078431372551" green="0.90980392156862744" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" red="0.25490196078431371" green="0.31764705882352939" blue="0.38431372549019605" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="mSS-Jf-7Cc" secondAttribute="bottom" constant="10" id="8y8-tk-X82"/>
@@ -71,12 +75,14 @@
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="schedule_select_arrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="hFn-e3-4gg" userLabel="Arrow Down">
                             <rect key="frame" x="128" y="66" width="15" height="8"/>
+                            <animations/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="15" id="OPY-8Y-Jfw"/>
                                 <constraint firstAttribute="height" constant="8" id="waP-9S-QVX"/>
                             </constraints>
                         </imageView>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="gYT-B6-1Z6" secondAttribute="trailing" constant="10" id="0JI-SO-d9y"/>
@@ -90,6 +96,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.5" colorSpace="calibratedRGB"/>
             <gestureRecognizers/>
             <constraints>

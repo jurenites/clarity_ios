@@ -13,6 +13,7 @@
 		5B52CEDB1BBA79D9009437C5 /* VCtrlChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */; settings = {ASSET_TAGS = (); }; };
 		5B52CEDF1BBA817A009437C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CEDE1BBA817A009437C5 /* MessageCell.swift */; settings = {ASSET_TAGS = (); }; };
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; settings = {ASSET_TAGS = (); }; };
+		5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5971D41BCE764800CED18C /* gray_hawk_logo.png */; settings = {ASSET_TAGS = (); }; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; settings = {ASSET_TAGS = (); }; };
 		5B71CD051BBBE9F80093833D /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B71CD041BBBE9F80093833D /* Messages.json */; settings = {ASSET_TAGS = (); }; };
 		5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */; settings = {ASSET_TAGS = (); }; };
@@ -338,6 +339,7 @@
 		5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlChat.xib; sourceTree = "<group>"; };
 		5B52CEDE1BBA817A009437C5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		5B5971D41BCE764800CED18C /* gray_hawk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gray_hawk_logo.png; path = Resources/gray_hawk_logo.png; sourceTree = "<group>"; };
 		5B71CD021BBBC7310093833D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Entities/Message.swift; sourceTree = "<group>"; };
 		5B71CD041BBBE9F80093833D /* Messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsOverlay.swift; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 		5BC79C3B1BB1AE630040AF48 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B5971D41BCE764800CED18C /* gray_hawk_logo.png */,
 				5BFB9CCA1BC5637000017FDA /* Application_icon */,
 				5BFB9CDF1BC5637000017FDA /* Internal_icons */,
 				5BFB9CF61BC5637000017FDA /* Status_icons */,
@@ -1932,6 +1935,7 @@
 				5BFB9D251BC5637000017FDA /* 144.png in Resources */,
 				5BFB9D511BC5637000017FDA /* Assigned.png in Resources */,
 				5BFB9D681BC5637000017FDA /* Mail@2x.png in Resources */,
+				5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */,
 				5BE5B6201BB2E25500671BFE /* VCtrlSelectSingleContent.xib in Resources */,
 				5BFB9D371BC5637000017FDA /* Contact.png in Resources */,
 				5BFB9D591BC5637000017FDA /* Broadcasted.png in Resources */,

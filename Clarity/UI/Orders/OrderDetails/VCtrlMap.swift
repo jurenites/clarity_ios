@@ -11,6 +11,7 @@ import MapKit
 
 class VCtrlMap: VCtrlBase {
     private var location: Location
+    private let _locationDistance: Double = 1000
     
     @IBOutlet var uiMapView: MKMapView!
     @IBOutlet var uiStreetView: UIView!
@@ -49,14 +50,14 @@ class VCtrlMap: VCtrlBase {
     }
     
     @IBAction func actShowMe() {
-        let regionRadius: CLLocationDistance = 1000
+        let regionRadius: CLLocationDistance = _locationDistance
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.uiMapView.userLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         self.uiMapView.setRegion(coordinateRegion, animated: true)
     }
     
     @IBAction func actShowLocation() {
         let loc = CLLocation(latitude: ToDouble(self.location.lat), longitude: ToDouble(self.location.lng))
-        let regionRadius: CLLocationDistance = 1000
+        let regionRadius: CLLocationDistance = _locationDistance
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(loc.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         self.uiMapView.setRegion(coordinateRegion, animated: true)
     }

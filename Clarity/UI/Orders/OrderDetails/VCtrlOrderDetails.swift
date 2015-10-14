@@ -51,7 +51,9 @@ class VCtrlOrderDetails: VCtrlBase {
         if let ord = order {
             uiMapButton.uiTitle.text = ord.address
             uiReportType.uiTitle.text = ord.reportType
+            uiReportType.enabled = false
             uiPropertyType.uiTitle.text = ord.propertyType
+            uiPropertyType.enabled = false
             if let contact = ord.contact {
                 uiContact.uiTitle.text = contact.name
             }

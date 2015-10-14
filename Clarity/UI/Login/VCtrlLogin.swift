@@ -10,13 +10,17 @@ import UIKit
 
 class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
     
-    @IBOutlet var uiLogin : CustomTextField!
-    @IBOutlet var uiPassword : CustomTextField!
-    @IBOutlet var uiPasswordSeparator: Separator!
+    @IBOutlet var uiLogin: CustomTextField!
+    @IBOutlet var uiPassword: CustomTextField!
     
-    @IBOutlet var uiContainer : UIView!
-    @IBOutlet var uiLoginBtn : CustomButton!
-    @IBOutlet var uiRecoveryBtn : CustomButton!
+    @IBOutlet var uiLoginContainer: UIView!
+    @IBOutlet var uiPassContainer: UIView!
+    @IBInspectable var borderColor: UIColor = UIColor.grayColor()
+    
+    @IBOutlet var uiContainer: UIView!
+    @IBOutlet var uiLoginBtn: CustomButton!
+    @IBOutlet var uiRecoveryBtn: CustomButton!
+    @IBOutlet var uiTapControl: UIControl!
     
     @IBOutlet var lcContainerCenter : NSLayoutConstraint!
     
@@ -47,15 +51,19 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
     
     private func populate() {
         uiRecoveryBtn.uiTitle.attributedText = self.makeUnderline(uiRecoveryBtn.uiTitle.text!)
+        uiLoginContainer.layer.borderColor = borderColor.CGColor
+        uiPassContainer.layer.borderColor = borderColor.CGColor
+        uiLoginContainer.layer.borderWidth = 0.5
+        uiPassContainer.layer.borderWidth = 0.5
     }
     
     override func keyboardWillShowWithSize(kbdSize: CGSize, duration: NSTimeInterval, curve: UIViewAnimationOptions) {
         UIView.animateWithDuration(duration) {
-            let keyboardFrame = CGRectMake(0, self.view.bounds.height - kbdSize.height, kbdSize.width, kbdSize.height)
+            let keyboardFrame = CGRectMake(0, self.uiTapControl.bounds.height - kbdSize.height, kbdSize.width, kbdSize.height)
     
             let intersection = CGRectIntersection(self.uiContainer.frame, keyboardFrame)
             if  intersection != CGRectZero {
-                self.lcContainerCenter.constant = intersection.height
+                self.lcContainerCenter.constant = -intersection.height
             }
             self.view.layoutIfNeeded()
         }
@@ -147,8 +155,8 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
         
         _isRecovering = !_isRecovering
         
-        uiPassword.hidden = _isRecovering
-        uiPasswordSeparator.hidden = uiPassword.hidden
+//        uiPassword.hidden = _isRecovering
+        uiPassContainer.hidden = _isRecovering
         uiRecoveryBtn.uiTitle.attributedText = _isRecovering ? self.makeUnderline("Cancel") : self.makeUnderline("Password recovery")
         uiLoginBtn.uiTitle.text = _isRecovering ? "Reset" : "Login"
         

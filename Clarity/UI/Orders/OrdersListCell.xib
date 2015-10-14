@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -15,10 +15,11 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2kJ-t2-vRl" userLabel="Container View">
-                        <rect key="frame" x="25" y="0.0" width="270" height="51"/>
+                        <rect key="frame" x="25" y="15" width="270" height="51"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OsT-QY-Bdi" userLabel="Separator" customClass="Separator">
                                 <rect key="frame" x="211" y="5" width="1" height="41"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="w2Q-0y-JRi"/>
@@ -30,18 +31,21 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eQ2-zF-pqY" userLabel="Number Label">
                                 <rect key="frame" x="10" y="16" width="18" height="20"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                 <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.30980392156862746" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$ 230" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZxB-6a-oAJ">
                                 <rect key="frame" x="217" y="0.0" width="48" height="51"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="textColor" red="0.20000000000000001" green="0.33333333333333331" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QUZ-9x-azw" userLabel="Separator" customClass="Separator">
                                 <rect key="frame" x="38" y="5" width="1" height="41"/>
+                                <animations/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="1" id="baJ-L9-vEv"/>
@@ -53,11 +57,13 @@
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" text="Washington st.Greenwood 354" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf4-SE-y9L">
                                 <rect key="frame" x="47" y="5" width="156" height="41"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.49411764705882355" green="0.49411764705882355" blue="0.50588235294117645" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </label>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="zf4-SE-y9L" firstAttribute="leading" secondItem="QUZ-9x-azw" secondAttribute="trailing" constant="8" id="0U9-oL-qmy"/>
@@ -90,22 +96,25 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-fM-DbS" userLabel="Status View" customClass="OrderStatusView" customModule="Clarity" customModuleProvider="target">
-                        <rect key="frame" x="25" y="59" width="78" height="25"/>
+                        <rect key="frame" x="25" y="74" width="78" height="25"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4za-Bb-m3V">
                                 <rect key="frame" x="35" y="4" width="38" height="18"/>
+                                <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-0d-csy">
                                 <rect key="frame" x="5" y="0.0" width="25" height="25"/>
+                                <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="3QX-C5-cSQ"/>
                                     <constraint firstAttribute="height" constant="25" id="rnL-oZ-ulC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" red="0.42745098039215684" green="0.73333333333333328" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="DZa-0d-csy" secondAttribute="bottom" id="13m-dA-YBV"/>
@@ -129,17 +138,33 @@
                             <outlet property="uiTitle" destination="4za-Bb-m3V" id="zZV-pj-iWv"/>
                         </connections>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="74B-SZ-sTJ" userLabel="Separator" customClass="Separator">
+                        <rect key="frame" x="25" y="108" width="270" height="1"/>
+                        <animations/>
+                        <color key="backgroundColor" red="0.63921568627450975" green="0.69019607843137254" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="6Mz-jq-bGr"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
+                <animations/>
                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
                     <constraint firstItem="UM1-fM-DbS" firstAttribute="leading" secondItem="O5I-DQ-4dE" secondAttribute="leading" constant="25" id="Kse-KI-5zh"/>
-                    <constraint firstItem="2kJ-t2-vRl" firstAttribute="top" secondItem="O5I-DQ-4dE" secondAttribute="top" id="Q1u-69-dd3"/>
+                    <constraint firstAttribute="trailing" secondItem="74B-SZ-sTJ" secondAttribute="trailing" constant="25" id="M2W-br-pec"/>
+                    <constraint firstItem="2kJ-t2-vRl" firstAttribute="top" secondItem="O5I-DQ-4dE" secondAttribute="top" constant="15" id="Q1u-69-dd3"/>
                     <constraint firstItem="2kJ-t2-vRl" firstAttribute="leading" secondItem="O5I-DQ-4dE" secondAttribute="leading" constant="25" id="Rdh-Ad-OJu"/>
+                    <constraint firstAttribute="bottom" secondItem="74B-SZ-sTJ" secondAttribute="bottom" id="Sfa-BP-qpi"/>
+                    <constraint firstItem="74B-SZ-sTJ" firstAttribute="leading" secondItem="O5I-DQ-4dE" secondAttribute="leading" constant="25" id="dU6-jc-i4D"/>
                     <constraint firstItem="UM1-fM-DbS" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="bottom" constant="8" id="kWx-7A-SDF"/>
                     <constraint firstAttribute="trailing" secondItem="2kJ-t2-vRl" secondAttribute="trailing" constant="25" id="nHh-NA-e2x"/>
-                    <constraint firstAttribute="bottom" secondItem="UM1-fM-DbS" secondAttribute="bottom" constant="25" id="okh-w4-EB6"/>
+                    <constraint firstAttribute="bottom" secondItem="UM1-fM-DbS" secondAttribute="bottom" constant="10" id="okh-w4-EB6"/>
                 </constraints>
             </tableViewCellContentView>
+            <animations/>
             <userDefinedRuntimeAttributes>
                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                     <color key="value" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>

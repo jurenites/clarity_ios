@@ -40,6 +40,7 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
         if let fn = self.positiveTapFunc {
             fn(string: uiMessageInput.text)
         }
+        self.view.endEditing(true)
         self.hide()
     }
     
@@ -47,6 +48,7 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
 //        if let fn = _onTapFunc {
 //            fn()
 //        }
+        self.view.endEditing(true)
         self.hide()
     }
     
@@ -66,6 +68,7 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
         UIView.animateWithDuration(duration) {
             self.lcBottom.constant = kbdSize.height
             self.view.layoutIfNeeded()
+            self.uiMessageInput.setNeedsDisplay()
         }
     }
     
@@ -73,6 +76,7 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
         UIView.animateWithDuration(duration) {
             self.lcBottom.constant = 0
             self.view.layoutIfNeeded()
+            self.uiMessageInput.setNeedsDisplay()
         }
     }
 }
