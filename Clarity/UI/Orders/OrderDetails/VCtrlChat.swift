@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     let _pageSize = 20
@@ -150,9 +151,61 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         let mesage = _messages[indexPath.row]
         if mesage.isEditable {
-//            let overlay = ChatOptionsOverlay(actionFunc: { (action: Action) -> Void in
-//                
-//            })
+            
+            let sheet = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.ActionSheet)
+            
+            sheet.addAction(UIAlertAction(title: "Copy text", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction) -> Void in
+                UIPasteboard.generalPasteboard().persistent = true
+                UIPasteboard.generalPasteboard().items = [[kUTTypeUTF8PlainText as String: mesage.text]]
+            }));
+            
+            sheet.addAction(UIAlertAction(title: "Mark Unread", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction) -> Void in
+                self.showLoadingOverlay()
+                ClarityApi.shared().setMessageRead(self.orderId, messageId: mesage.messageId, isRead: false)
+                    .success({
+                        self.hideLoadingOverlay()
+                        mesage.isRead = false
+                        self.tableView.reloadData()
+                    }, error: { (error: NSError) -> Void in
+                        self.reportError(error)
+                        self.hideLoadingOverlay()
+                    })
+            }));
+            
+            sheet.addAction(UIAlertAction(title: "Edit Message", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction) -> Void in
+                let editMessage = VCtrlEditMessage(orderId: self.orderId, message: mesage)
+                
+                editMessage.onChange = {text in
+                    mesage.text = text
+                    self.tableView.reloadData()
+                }
+                
+                editMessage.show()
+            }));
+            
+            sheet.addAction(UIAlertAction(title: "Delete Message", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction) -> Void in
+                self.showLoadingOverlay()
+                ClarityApi.shared().deleteMessage(self.orderId, messageId: mesage.messageId)
+                    .success({
+                        self.hideLoadingOverlay()
+                        self.removeMessageWithId(mesage.messageId)
+                    }, error: {(error: NSError) -> Void in
+                        self.reportError(error)
+                        self.hideLoadingOverlay()
+                    })
+            }));
+            
+            sheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil));
+            
+            self.presentViewController(sheet, animated: true, completion: nil)
+            
+        }
+    }
+    
+    func removeMessageWithId(messageId: NSInteger) {
+        if let idx = _messages.find({message in message.messageId == messageId}) {
+            _messages.removeAtIndex(idx)
+            self.tableView.reloadData()
         }
     }
     

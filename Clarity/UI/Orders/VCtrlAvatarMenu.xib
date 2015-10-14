@@ -18,27 +18,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8b1-0c-VJG">
                     <rect key="frame" x="146" y="89" width="126" height="128"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWw-ZD-NcB" customClass="CustomButton">
-                            <rect key="frame" x="0.0" y="0.0" width="126" height="40"/>
-                            <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aez-sl-ZBc" customClass="Separator">
-                                    <rect key="frame" x="4" y="39" width="118" height="1"/>
-                                    <animations/>
-                                    <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="1" id="6Ne-Hq-zbE"/>
-                                    </constraints>
-                                </view>
-                            </subviews>
-                            <animations/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <constraints>
-                                <constraint firstItem="Aez-sl-ZBc" firstAttribute="leading" secondItem="hWw-ZD-NcB" secondAttribute="leading" constant="4" id="Ys1-Zr-PiF"/>
-                                <constraint firstAttribute="height" constant="40" id="aJn-JK-eMh"/>
-                                <constraint firstAttribute="bottom" secondItem="Aez-sl-ZBc" secondAttribute="bottom" id="cjE-QI-4n6"/>
-                                <constraint firstAttribute="trailing" secondItem="Aez-sl-ZBc" secondAttribute="trailing" constant="4" id="yRW-Q1-8t4"/>
-                            </constraints>
-                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kLP-lZ-bwy" customClass="CustomButton">
                             <rect key="frame" x="0.0" y="40" width="126" height="40"/>
                             <subviews>
@@ -66,6 +45,25 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="40" id="d6o-pf-xJO"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hWw-ZD-NcB" customClass="CustomButton">
+                            <rect key="frame" x="0.0" y="0.0" width="126" height="40"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aez-sl-ZBc" customClass="Separator">
+                                    <rect key="frame" x="4" y="39" width="118" height="1"/>
+                                    <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="6Ne-Hq-zbE"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Aez-sl-ZBc" firstAttribute="leading" secondItem="hWw-ZD-NcB" secondAttribute="leading" constant="4" id="Ys1-Zr-PiF"/>
+                                <constraint firstAttribute="height" constant="40" id="aJn-JK-eMh"/>
+                                <constraint firstAttribute="bottom" secondItem="Aez-sl-ZBc" secondAttribute="bottom" id="cjE-QI-4n6"/>
+                                <constraint firstAttribute="trailing" secondItem="Aez-sl-ZBc" secondAttribute="trailing" constant="4" id="yRW-Q1-8t4"/>
                             </constraints>
                         </view>
                     </subviews>
