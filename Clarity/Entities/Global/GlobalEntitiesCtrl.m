@@ -178,7 +178,8 @@ static NSString * const StatusesDictKey = @"OrdersStatuses";
 
 - (void)fillCurrentUserWithDict:(NSDictionary *)dict
 {
-//    _currentUser = [User fromApiDict:dict];
+    _currentUser = [User new];
+    [_currentUser fillWithApiDict:dict];
 }
 
 - (void)saveUser
