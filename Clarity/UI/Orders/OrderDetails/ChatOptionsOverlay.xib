@@ -20,15 +20,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BkM-4Q-zZC">
-                    <rect key="frame" x="30" y="306" width="260" height="182"/>
+                    <rect key="frame" x="10" y="326" width="300" height="182"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jBP-Ui-edR" userLabel="Copy Button" customClass="CustomButton">
-                            <rect key="frame" x="0.0" y="0.0" width="260" height="60"/>
+                            <rect key="frame" x="0.0" y="0.0" width="300" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copy Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhY-3i-SQX">
-                                    <rect key="frame" x="94" y="20" width="73" height="20"/>
+                                    <rect key="frame" x="114" y="20" width="73" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" red="0.027450980392156862" green="0.25882352941176473" blue="0.40392156862745099" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -51,13 +51,23 @@
                                 <outlet property="uiTitle" destination="hhY-3i-SQX" id="tc2-u7-ZZY"/>
                             </connections>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36e-gv-Z8P" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="0.0" y="60" width="300" height="1"/>
+                            <color key="backgroundColor" red="0.10196078431372549" green="0.33333333333333331" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="y0z-qY-6Ig"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hJG-fi-geA" userLabel="Mark Button" customClass="CustomButton">
-                            <rect key="frame" x="0.0" y="61" width="260" height="60"/>
+                            <rect key="frame" x="0.0" y="61" width="300" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark Unread" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GXg-Af-Brw">
-                                    <rect key="frame" x="83" y="20" width="94" height="20"/>
+                                    <rect key="frame" x="103" y="20" width="94" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" red="0.027450980390000001" green="0.25882352939999997" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -80,13 +90,23 @@
                                 <outlet property="uiTitle" destination="GXg-Af-Brw" id="1zk-BT-Flo"/>
                             </connections>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNM-Mu-lkm" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="0.0" y="121" width="300" height="1"/>
+                            <color key="backgroundColor" red="0.1019607843" green="0.33333333329999998" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="Euv-qw-SJo"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CRM-1P-UKZ" userLabel="Delete Button" customClass="CustomButton">
-                            <rect key="frame" x="0.0" y="122" width="260" height="60"/>
+                            <rect key="frame" x="0.0" y="122" width="300" height="60"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHo-ZE-XiD">
-                                    <rect key="frame" x="72" y="20" width="117" height="20"/>
+                                    <rect key="frame" x="92" y="20" width="117" height="20"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <color key="textColor" red="0.027450980390000001" green="0.25882352939999997" blue="0.4039215686" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
@@ -108,26 +128,6 @@
                                 <action selector="actionTap:" destination="-1" eventType="touchUpInside" id="1oi-fV-Ap3"/>
                                 <outlet property="uiTitle" destination="xHo-ZE-XiD" id="xap-k6-QXd"/>
                             </connections>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="36e-gv-Z8P" userLabel="Separator" customClass="Separator">
-                            <rect key="frame" x="0.0" y="60" width="260" height="1"/>
-                            <color key="backgroundColor" red="0.68627450980392157" green="0.76078431372549016" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="y0z-qY-6Ig"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
-                            </userDefinedRuntimeAttributes>
-                        </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rNM-Mu-lkm" userLabel="Separator" customClass="Separator">
-                            <rect key="frame" x="0.0" y="121" width="260" height="1"/>
-                            <color key="backgroundColor" red="0.68627450980392157" green="0.76078431372549016" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="1" id="Euv-qw-SJo"/>
-                            </constraints>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
-                            </userDefinedRuntimeAttributes>
                         </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,9 +183,9 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.45000000000000001" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="oUY-hM-MUd" secondAttribute="trailing" id="5a2-4z-844"/>
-                <constraint firstItem="oUY-hM-MUd" firstAttribute="top" secondItem="BkM-4Q-zZC" secondAttribute="bottom" constant="30" id="HCU-Ci-2jQ"/>
-                <constraint firstItem="BkM-4Q-zZC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="30" id="Pb1-MQ-hPR"/>
-                <constraint firstAttribute="trailing" secondItem="BkM-4Q-zZC" secondAttribute="trailing" constant="30" id="UrT-b4-9LD"/>
+                <constraint firstItem="oUY-hM-MUd" firstAttribute="top" secondItem="BkM-4Q-zZC" secondAttribute="bottom" constant="10" id="HCU-Ci-2jQ"/>
+                <constraint firstItem="BkM-4Q-zZC" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="Pb1-MQ-hPR"/>
+                <constraint firstAttribute="trailing" secondItem="BkM-4Q-zZC" secondAttribute="trailing" constant="10" id="UrT-b4-9LD"/>
                 <constraint firstAttribute="bottom" secondItem="oUY-hM-MUd" secondAttribute="bottom" id="lbT-rn-PKM"/>
                 <constraint firstItem="oUY-hM-MUd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="wDR-bZ-GgL"/>
             </constraints>

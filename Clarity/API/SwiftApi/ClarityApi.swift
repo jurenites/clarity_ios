@@ -116,8 +116,26 @@ class ClarityApi: ApiManager2
             params: message.toDict() as! [String : AnyObject])
     }
     
+    func setMessageRead(orderId: Int, messageId: Int, isRead: Bool) -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMUpdateMessage,
+            urlParams: [
+                "order_id" : NSNumber(integer: orderId),
+                "message_id" : NSNumber(integer: messageId)
+            ],
+            params: ["is_read": NSNumber(bool: isRead)])
+    }
+    
+    func setMessageText(orderId: Int, messageId: Int, text: String) -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMUpdateMessage,
+            urlParams: [
+                "order_id" : NSNumber(integer: orderId),
+                "message_id" : NSNumber(integer: messageId)
+            ],
+            params: ["message": text])
+    }
+    
     func deleteMessage(orderId: Int, messageId: Int) -> Signal<AnyObject> {
-        return callMethod(ApiMethodID.AMDeleteMessage, params: [
+        return callMethod(ApiMethodID.AMDeleteMessage, urlParams: [
             "order_id" : NSNumber(integer: orderId),
             "message_id" : NSNumber(integer: messageId)
             ])
