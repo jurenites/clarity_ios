@@ -30,6 +30,7 @@ class VCtrlMap: VCtrlBase {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = NSLocalizedString("Location Details", comment: "")
     }
     
     override func viewWillAppear(animated: Bool) {

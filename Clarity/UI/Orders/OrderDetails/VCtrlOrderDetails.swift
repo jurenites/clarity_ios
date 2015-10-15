@@ -8,10 +8,16 @@
 
 import UIKit
 
+protocol VCtrlOrderDetailsProtocol {
+    func orderChanged(shortOrder: ShortOrder)
+}
+
 class VCtrlOrderDetails: VCtrlBase {
     
     private var orderId : Int = 0
     private var order : Order?
+    
+    var delegate: VCtrlOrderDetailsProtocol?
     
     @IBOutlet var uiMapButton: CustomButton!
     @IBOutlet var uiReportType: CustomButton!
@@ -35,6 +41,9 @@ class VCtrlOrderDetails: VCtrlBase {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.title = NSLocalizedString("Order Details", comment: "")
+        
         self.populate()
     }
     
@@ -69,6 +78,16 @@ class VCtrlOrderDetails: VCtrlBase {
         }
     }
     
+//    private func 
+    
+    private func orderChanged() {
+        if let delegate = self.delegate, order = self.order {
+            let dict: NSDictionary = order.toDict()
+            let shortOrder = ShortOrder().fromDict(dict)
+            delegate.orderChanged(shortOrder)
+        }
+    }
+    
     @IBAction func actMap() {
         if let loc = order?.location {
             let map = VCtrlMap(location: loc)
@@ -90,24 +109,34 @@ class VCtrlOrderDetails: VCtrlBase {
     @IBAction func actAccept() {
         self.showLoadingOverlay()
         ClarityApi.shared().acceptOrder(self.orderId)
-        .success({ () -> Void in
-            self.hideLoadingOverlay()
-            }) { (error:NSError) -> Void in
+            .flatMap({ (obj: AnyObject) -> PipelineResult<Signal<Order>> in
+                return PipelineResult(ClarityApi.shared().getOrder(self.orderId))
+            }).success({ (order : Order) in
+                self.order = order
+                self.populate()
                 self.hideLoadingOverlay()
-                self.reportError(error)
-        }
+                self.orderChanged()
+                }, error: { (error: NSError) in
+                    self.hideLoadingOverlay()
+                    self.reportError(error)
+            })
     }
     
     @IBAction func actAcceptWConditions() {
         let conditions = ConditionsOverlay(isAcceptance: true, positiveAction: {(string: String) -> Void in
             self.showLoadingOverlay()
             ClarityApi.shared().acceptOrder(self.orderId, conditions: string)
-            .success({
-                self.hideLoadingOverlay()
-                }, error: { (error: NSError) -> Void in
+                .flatMap({ (obj: AnyObject) -> PipelineResult<Signal<Order>> in
+                    return PipelineResult(ClarityApi.shared().getOrder(self.orderId))
+                }).success({ (order : Order) in
+                    self.order = order
+                    self.populate()
                     self.hideLoadingOverlay()
-                    self.reportError(error)
-            })
+                    self.orderChanged()
+                    }, error: { (error: NSError) in
+                        self.hideLoadingOverlay()
+                        self.reportError(error)
+                })
         })
         conditions.show()
     }
@@ -116,9 +145,14 @@ class VCtrlOrderDetails: VCtrlBase {
         let conditions = ConditionsOverlay(isAcceptance: false, positiveAction: {(string: String) -> Void in
             self.showLoadingOverlay()
             ClarityApi.shared().declineOrder(self.orderId, conditions: string)
-                .success({
+                .flatMap({ (obj: AnyObject) -> PipelineResult<Signal<Order>> in
+                    return PipelineResult(ClarityApi.shared().getOrder(self.orderId))
+                }).success({ (order : Order) in
+                    self.order = order
+                    self.populate()
                     self.hideLoadingOverlay()
-                    }, error: { (error: NSError) -> Void in
+                    self.orderChanged()
+                    }, error: { (error: NSError) in
                         self.hideLoadingOverlay()
                         self.reportError(error)
                 })

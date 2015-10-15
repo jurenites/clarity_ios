@@ -35,6 +35,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = NSLocalizedString("Messages", comment: "")
+        
         self.tableView.registerNib(UINib(nibName: MessageCell.nibName(), bundle: nil), forCellReuseIdentifier: MessageCell.nibName())
         
         self.uiMessageInput.text = "X\n"

@@ -80,7 +80,9 @@ static const CGFloat PlaceholderWidth = 270;
     
     self.isNeedAvatarButton = YES;
     
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Raleway-semiBold" size:16]}];
+    if (self.navigationController.navigationBar) {
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated

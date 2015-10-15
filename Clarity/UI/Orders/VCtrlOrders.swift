@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
+class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol {
     
     let _pageSize = 10
     var _orders = [ShortOrder]()
@@ -36,10 +36,8 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = NSLocalizedString("Order List", comment: "")
         self.tableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
-        
-//        let menu = MenuOverlay()
-//        menu.show()
     }
     
     override func viewWillFirstAppear() {
@@ -52,6 +50,14 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     
     private func populate() {
         
+    }
+    
+    //MARK: VCtrlOrderDetailsProtocol
+    func orderChanged(shortOrder: ShortOrder) {
+        if let currOrderIndex = _orders.indexOf({$0.orderId == shortOrder.orderId}) {
+            _orders[currOrderIndex] = shortOrder
+            self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+        }
     }
     
     //MARK: TableViewDelegate
@@ -72,6 +78,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let details = VCtrlOrderDetails(orderId: _orders[indexPath.row].orderId)
+        details.delegate = self
         if let nav = self.navigationController {
             nav.pushViewController(details, animated: true)
         }

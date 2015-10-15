@@ -103,6 +103,7 @@ static VCtrlRoot *Current = nil;
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[VCtrlOrders new]];//[VCtrlNavigation createWithRootVC:[VCtrlOrders new]];
     nav.navigationBar.translucent = NO;
     nav.navigationBar.barTintColor = [UIColor colorFromHex:@"#1A5574"];
+    nav.navigationBar.tintColor = [UIColor whiteColor];
     [self moveToVctrl:nav animated:YES onComplete:NULL];
 //    VCtrlSideBar *sideBar = [VCtrlSideBar new];
 //    if (_startupPushData) {
