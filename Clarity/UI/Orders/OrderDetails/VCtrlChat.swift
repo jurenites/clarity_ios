@@ -9,9 +9,14 @@
 import UIKit
 import MobileCoreServices
 
+protocol VCtrlChatDelegate {
+    func chatUpdated()
+}
+
 class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     let _pageSize = 20
     var _messages = [Message]()
+    var delegate: VCtrlChatDelegate?
     private var orderId: Int = 0
     private var _maxMessageInputHeight: CGFloat = 0
     private var _minMessageInputHeight: CGFloat = 0
@@ -60,6 +65,11 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
             self.tableView.alpha = 0;
             self.triggerReloadContent()
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        
     }
     
     private func populate() {

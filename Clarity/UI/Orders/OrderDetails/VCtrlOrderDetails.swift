@@ -78,8 +78,6 @@ class VCtrlOrderDetails: VCtrlBase {
         }
     }
     
-//    private func 
-    
     private func orderChanged() {
         if let delegate = self.delegate, order = self.order {
             let dict: NSDictionary = order.toDict()
@@ -106,6 +104,7 @@ class VCtrlOrderDetails: VCtrlBase {
         }
     }
     
+    //would be greate to merge actAccept and actAcceptWConditions methods it one, and also on a serverside.
     @IBAction func actAccept() {
         self.showLoadingOverlay()
         ClarityApi.shared().acceptOrder(self.orderId)
