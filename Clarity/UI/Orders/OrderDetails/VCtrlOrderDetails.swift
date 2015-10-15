@@ -12,7 +12,7 @@ protocol VCtrlOrderDetailsProtocol {
     func orderChanged(shortOrder: ShortOrder)
 }
 
-class VCtrlOrderDetails: VCtrlBase {
+class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
     
     private var orderId : Int = 0
     private var order : Order?
@@ -86,6 +86,10 @@ class VCtrlOrderDetails: VCtrlBase {
         }
     }
     
+    func chatUpdated() {
+        self.triggerReloadContent()
+    }
+    
     @IBAction func actMap() {
         if let loc = order?.location {
             let map = VCtrlMap(location: loc)
@@ -97,9 +101,10 @@ class VCtrlOrderDetails: VCtrlBase {
     
     @IBAction func actChat() {
         if let orderId = order?.orderId {
-            let details = VCtrlChat(orderId: orderId)
+            let chat = VCtrlChat(orderId: orderId)
+            chat.delegate = self
             if let nav = self.navigationController {
-                nav.pushViewController(details, animated: true)
+                nav.pushViewController(chat, animated: true)
             }
         }
     }

@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-            timestampString = "466587701.42748"
+            timestampString = "466603763.64118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
             landmarkName = "setupInputHeight(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-            timestampString = "466587701.42748"
+            timestampString = "466603763.64118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "actSend()"
             landmarkType = "5">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
-            timestampString = "466594131.642717"
+            timestampString = "466603763.64118"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "90"
-            endingLineNumber = "90"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
             landmarkName = "actMap()"
             landmarkType = "5">
          </BreakpointContent>
@@ -474,11 +474,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/OrderDetails/VCtrlChat.swift"
-            timestampString = "466587701.42748"
+            timestampString = "466603996.6322"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "165"
-            endingLineNumber = "165"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "tableView(_:didSelectRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -628,7 +628,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/VCtrlOrders.swift"
-                  timestampString = "466594228.577695"
+                  timestampString = "466603765.037424"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -643,7 +643,7 @@
                   moduleName = "Clarity"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/VCtrlOrders.swift"
-                  timestampString = "466594228.57791"
+                  timestampString = "466603765.037604"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "57"
@@ -666,6 +666,22 @@
             startingLineNumber = "83"
             endingLineNumber = "83"
             landmarkName = "orderChanged()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
+            timestampString = "466603726.839043"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "chatUpdated()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

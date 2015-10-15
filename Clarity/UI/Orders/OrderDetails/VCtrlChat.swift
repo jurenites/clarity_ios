@@ -17,6 +17,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     let _pageSize = 20
     var _messages = [Message]()
     var delegate: VCtrlChatDelegate?
+    
+    private var _messagesCountChanged: Bool = false
     private var orderId: Int = 0
     private var _maxMessageInputHeight: CGFloat = 0
     private var _minMessageInputHeight: CGFloat = 0
@@ -69,7 +71,11 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        
+        if _messagesCountChanged {
+            if let delegate = self.delegate {
+                delegate.chatUpdated()
+            }
+        }
     }
     
     private func populate() {
@@ -102,6 +108,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
             self.showLoadingOverlay()
             ClarityApi.shared().createMessage(self.orderId, text: text)
                 .success({ (message: Message) -> Void in
+                    self._messagesCountChanged = true
                     self.hideLoadingOverlay()
                     self._messages += [message]
                     self.tableView.reloadData()
@@ -199,6 +206,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
                 self.showLoadingOverlay()
                 ClarityApi.shared().deleteMessage(self.orderId, messageId: mesage.messageId)
                     .success({
+                        self._messagesCountChanged = true
                         self.hideLoadingOverlay()
                         self.removeMessageWithId(mesage.messageId)
                     }, error: {(error: NSError) -> Void in
