@@ -197,6 +197,12 @@ static ApiRouter * volatile BBSharedApiRouter = nil;
 - (void)checkApnsToken
 {
     if (self.isLoggedIn && self.apnsToken.length > 0 && _currentUser.userId > 0 && _needSendApnsToken) {
+        [[ClarityApi shared] setApnsToken:self.apnsToken
+                                onSuccess:^{
+                                    _needSendApnsToken = NO;
+                                } onError:^(NSError * error) {
+                                    _needSendApnsToken = YES;
+                                }];
 //        [[TRNApiManager shared] setApnsToken:self.apnsToken forUserId:_currentUser.userId onSuccess:^{
 //            _needSendApnsToken = NO;
 //       } onError:^(NSError *error) {

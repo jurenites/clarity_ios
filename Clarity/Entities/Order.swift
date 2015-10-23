@@ -48,9 +48,16 @@ class Order: ShortOrder {
     var propertyType: String = ""
     var contact: User? = nil
     var location: Location? = nil
+    var canAccept: Bool = false
+    var canAcceptWConditions: Bool = false
+    var canDecline: Bool = false
     
     override func fillWithApiDict(d: NSDictionary) {
         super.fillWithApiDict(d)
+        
+        canAccept = ApiBool(d["accept_allowed"])
+        canAcceptWConditions = ApiBool(d["accept_with_condition_allowed"])
+        canDecline = ApiBool(d["decline_allowed"])
         
         reportType = ApiString(d["report_type"])
         propertyType = ApiString(d["property_type"])
@@ -64,7 +71,7 @@ class Order: ShortOrder {
         location = loc
         
         messagesCount = ApiInt(d["messages_count"])
-        dateFrom = FromServerDate(ApiString(d["created_at"]))
+        dateFrom = FromServerDateTime(ApiString(d["created_at"]))
         dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
     
@@ -77,6 +84,9 @@ class Order: ShortOrder {
         .field("report_type", &reportType)
         .field("property_type", &propertyType)
         .field("contact", &contact)
+        .field("accept_allowed", &canAccept)
+        .field("accept_with_condition_allowed", &canAcceptWConditions)
+        .field("decline_allowed", &canDecline)
     }
     
     override func fromDict(d: NSDictionary) -> Order {

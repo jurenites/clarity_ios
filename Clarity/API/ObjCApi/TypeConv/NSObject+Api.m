@@ -174,14 +174,36 @@ NSDate *FromServerDate(NSString *serverDate)
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:enUSPOSIXLocale];
 //        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
-        //[dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        [dateFormatter setDateFormat:@"MM/dd/yyyy HH:mm a"];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     });
 
     NSDate *dt = [dateFormatter dateFromString:serverDate];
     
     return dt ? dt : [NSDate dateWithTimeIntervalSince1970:0];
 }
+
+NSDate *FromServerDateTime(NSString *serverDateTime)
+{
+    serverDateTime = ToString(serverDateTime);
+    
+    static NSDateFormatter *dateFormatter = nil;
+    
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:enUSPOSIXLocale];
+        //        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    });
+    
+    NSDate *dt = [dateFormatter dateFromString:serverDateTime];
+    
+    return dt ? dt : [NSDate dateWithTimeIntervalSince1970:0];
+}
+
 
 NSString *ToServerDate(NSDate *date)
 {
@@ -194,7 +216,29 @@ NSString *ToServerDate(NSDate *date)
         
         dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setLocale:enUSPOSIXLocale];
-        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+//        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    });
+    
+    if (!date) {
+        return @"";
+    }
+    
+    return [dateFormatter stringFromDate:date];
+}
+
+NSString *ToServerDateTime(NSDate *date)
+{
+    static NSDateFormatter *dateFormatter = nil;
+    
+    static dispatch_once_t onceToken = 0;
+    dispatch_once(&onceToken, ^{
+        
+        NSLocale *enUSPOSIXLocale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
+        
+        dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setLocale:enUSPOSIXLocale];
+//        [dateFormatter setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     });
     

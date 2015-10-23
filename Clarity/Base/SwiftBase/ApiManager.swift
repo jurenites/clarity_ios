@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ApiManager2
+class ApiManager2: NSObject
 {
     private var _apiRouter = ApiRouter.shared()
     private var _apiIO = ApiRouter.shared().apiIO

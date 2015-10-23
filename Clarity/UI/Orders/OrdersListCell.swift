@@ -22,6 +22,9 @@ class OrdersListCell: UITableViewCell {
     @IBInspectable var highlitedColor: UIColor = UIColor.blackColor()
     @IBInspectable var defaultColor: UIColor = UIColor.blackColor()
     
+    @IBInspectable var evenColor: UIColor = UIColor.lightGrayColor()
+    @IBInspectable var notEvenColor: UIColor = UIColor.darkGrayColor()
+    
     private var titleDefaultColor: UIColor = UIColor.blackColor()
     
     class func nibName() -> String! {
@@ -32,11 +35,17 @@ class OrdersListCell: UITableViewCell {
         return 110
     }
     
-    func setOrder(order: ShortOrder) {
+    func setOrder(order: ShortOrder, even: Bool) {
         self.uiOrderNum.text = "\(order.orderId)"
         self.uiAddress.text = order.address
         self.uiPrice.text = "$ \(order.price)"
         self.uiOrderStatus.setup(order.status)
+        
+        if even {
+             uiContainer.backgroundColor = evenColor
+        } else {
+             uiContainer.backgroundColor = notEvenColor
+        }
         
         let color = uiInfoContainer.backgroundColor
         uiInfoContainer.backgroundColor = UIColor.clearColor()

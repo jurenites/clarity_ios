@@ -52,12 +52,14 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aez-sl-ZBc" customClass="Separator">
                                     <rect key="frame" x="4" y="39" width="118" height="1"/>
+                                    <animations/>
                                     <color key="backgroundColor" red="0.85490196078431369" green="0.85490196078431369" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="6Ne-Hq-zbE"/>
                                     </constraints>
                                 </view>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="Aez-sl-ZBc" firstAttribute="leading" secondItem="hWw-ZD-NcB" secondAttribute="leading" constant="4" id="Ys1-Zr-PiF"/>

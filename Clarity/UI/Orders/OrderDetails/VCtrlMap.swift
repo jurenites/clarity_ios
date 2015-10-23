@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class VCtrlMap: VCtrlBase {
+class VCtrlMap: VCtrlBase, MKMapViewDelegate {
     private var location: Location
     private let _locationDistance: Double = 1000
     
@@ -50,6 +50,7 @@ class VCtrlMap: VCtrlBase {
         self.actShowLocation()
     }
     
+    //MARK: Actions
     @IBAction func actShowMe() {
         let regionRadius: CLLocationDistance = _locationDistance
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.uiMapView.userLocation.coordinate, regionRadius * 2.0, regionRadius * 2.0)
@@ -61,6 +62,22 @@ class VCtrlMap: VCtrlBase {
         let regionRadius: CLLocationDistance = _locationDistance
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(loc.coordinate, regionRadius * 2.0, regionRadius * 2.0)
         self.uiMapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    //MARK: MKMapViewDelegate
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation.isKindOfClass(MKUserLocation) {
+            return nil
+        }
+        
+        if let av = mapView.dequeueReusableAnnotationViewWithIdentifier("AnnotationIdentifier") {
+            return av
+        } else {
+            let av = MKAnnotationView(annotation: annotation, reuseIdentifier: "AnnotationIdentifier")
+            av.image = UIImage(named: "Address")
+            av.canShowCallout = true
+            return av
+        }
     }
 }
 

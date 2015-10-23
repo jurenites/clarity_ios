@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ClarityApi: ApiManager2
+@objc class ClarityApi: ApiManager2
 {
     class func shared() -> ClarityApi {
         struct S {
@@ -42,6 +42,12 @@ class ClarityApi: ApiManager2
     
     func recover(login: String) -> Signal<AnyObject> {
         return callMethod(ApiMethodID.AMRecoverPassword, urlParams: ["username" : login])
+    }
+    
+    func sendApns(token: String) -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMSetAPNS, params:
+            ["device_type" : "ios",
+            "device_token" : token])
     }
     
     //MARK: Orders
@@ -97,7 +103,8 @@ class ClarityApi: ApiManager2
                 "offset": NSNumber(integer: offset),
                 "limit": NSNumber(integer: count)
             ])
-        .next(PliFromApiArray)
+            .next(PliFromApiArray) //async
+//        .next(PliFromApiArray)
     }
     
     func createMessage(orderId: Int, text: String) -> Signal<Message> {
@@ -141,6 +148,17 @@ class ClarityApi: ApiManager2
             ])
     }
     
+    
+//    MARK: OBJC
+    func setApnsToken(token: String, onSuccess: Void -> Void, onError: (NSError) -> Void) -> ApiCanceler {
+        let canceler = sendApns(token)
+        .success({ () -> Void in
+            onSuccess()
+            },error: { (error: NSError) in
+                onError(error)
+        })
+        return ApiCancelerSignal.wrap(canceler)
+}
     
 //    MARK: Tests
     func test_getMessages(offset: Int, count: Int) -> Signal<[Message]> {

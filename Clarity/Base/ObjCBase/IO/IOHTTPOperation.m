@@ -218,8 +218,8 @@
                 NSLog(@"%@", str);
             }
         } else {
-//            NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-//            NSLog(@"%@", str);
+            NSString *str = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+            NSLog(@"%@", str);
         }
     }
 

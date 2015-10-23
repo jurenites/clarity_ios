@@ -47,5 +47,7 @@ NSArray* AssureIsStringArray(id obj);
 NSDictionary* AssureIsDict(id obj);
 
 NSDate *FromServerDate(NSString *serverDate);
+NSDate *FromServerDateTime(NSString *serverDateTime);
 NSString *ToServerDate(NSDate *date);
+NSString *ToServerDateTime(NSDate *date);
 

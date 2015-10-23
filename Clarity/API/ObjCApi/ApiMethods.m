@@ -19,6 +19,7 @@
         @(AMLoginViaEmail)      :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/login"],
         @(AMLogout)             :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/logout"],
         @(AMRecoverPassword)    :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/reset_password"],
+        @(AMSetAPNS)            :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/pushes"],
         //Orders
         @(AMGetOrderStatuses)   :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/statuses"],
         @(AMGetOrders)          :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders"],

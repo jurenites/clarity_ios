@@ -9,7 +9,7 @@
 import UIKit
 
 protocol VCtrlOrderDetailsProtocol {
-    func orderChanged(shortOrder: ShortOrder)
+    func orderChanged(shortOrder: ShortOrder, delete: Bool)
 }
 
 class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
@@ -29,6 +29,10 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
     @IBOutlet var uiStatus: OrderStatusView!
     
     @IBOutlet var uiContainer: UIView!
+    
+    @IBOutlet var uiAcceptBtn: CustomButton!
+    @IBOutlet var uiAcceptWConditionsBtn: CustomButton!
+    @IBOutlet var uiDeclineBtn: CustomButton!
     
     init(orderId : Int) {
         self.orderId = orderId
@@ -75,14 +79,19 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
 //            fmt.locale = NSLocale(localeIdentifier: "en_US")
             fmt.dateFormat = "MM.dd.YYYY"
             uiDate.uiTitle.text = fmt.stringFromDate(ord.dateTo)
+            
+            let needButtons = ord.canAccept && ord.canAcceptWConditions && ord.canDecline //Now we manipulate all buttons
+            uiAcceptBtn.hidden = !needButtons
+            uiAcceptWConditionsBtn.hidden = !needButtons
+            uiDeclineBtn.hidden = !needButtons
         }
     }
     
-    private func orderChanged() {
+    private func orderChanged(delete: Bool = false) {
         if let delegate = self.delegate, order = self.order {
             let dict: NSDictionary = order.toDict()
             let shortOrder = ShortOrder().fromDict(dict)
-            delegate.orderChanged(shortOrder)
+            delegate.orderChanged(shortOrder, delete: delete)
         }
     }
     
@@ -149,18 +158,14 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
         let conditions = ConditionsOverlay(isAcceptance: false, positiveAction: {(string: String) -> Void in
             self.showLoadingOverlay()
             ClarityApi.shared().declineOrder(self.orderId, conditions: string)
-                .flatMap({ (obj: AnyObject) -> PipelineResult<Signal<Order>> in
-                    return PipelineResult(ClarityApi.shared().getOrder(self.orderId))
-                }).success({ (order : Order) in
-                    self.order = order
-                    self.populate()
+                .success({ () -> Void in
                     self.hideLoadingOverlay()
-                    self.orderChanged()
+                    self.orderChanged(true)
                     }, error: { (error: NSError) in
                         self.hideLoadingOverlay()
                         self.reportError(error)
                 })
-        })
+            })
         conditions.show()
     }
     
