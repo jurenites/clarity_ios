@@ -51,6 +51,16 @@ import Foundation
     }
     
     //MARK: Orders
+    func getCommonInfo() -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMGetCommonInfo)
+            .next(PliIsApiDictionary)
+            .next(PLISwitchToMain)
+            .next({(res: NSDictionary) in
+                GlobalEntitiesCtrl.shared().fillCommonInfo(res as [NSObject : AnyObject])//fillOrderStatuses(res as [NSObject : AnyObject])
+                return PipelineResult("")
+            })
+    }
+    
     func getOrderStatuses() -> Signal<AnyObject> {
         return callMethod(ApiMethodID.AMGetOrderStatuses)
             .next(PliIsApiDictionary)
@@ -61,8 +71,9 @@ import Foundation
             })
     }
     
-    func getOrders(offset: Int, limit: Int) -> Signal<[ShortOrder]> {
+    func getOrders(filter: String = "", offset: Int, limit: Int) -> Signal<[ShortOrder]> {
         return callMethod(ApiMethodID.AMGetOrders, params: [
+            "filters[order_status]" : filter,
             "offset" : NSNumber(integer: offset),
             "limit" : NSNumber(integer: limit)])
         .next(PliFromApiArray)
@@ -158,7 +169,17 @@ import Foundation
                 onError(error)
         })
         return ApiCancelerSignal.wrap(canceler)
-}
+    }
+    
+    func loadCommonInfo(onSuccess: Void -> Void, onError: (NSError) -> Void) -> ApiCanceler {
+        let canceler = getCommonInfo()
+            .success({ () -> Void in
+                onSuccess()
+                },error: { (error: NSError) in
+                    onError(error)
+            })
+        return ApiCancelerSignal.wrap(canceler)
+    }
     
 //    MARK: Tests
     func test_getMessages(offset: Int, count: Int) -> Signal<[Message]> {

@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Raleway-Medium.otf">
+            <string>Raleway-Medium</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCtrlOrders" customModule="Clarity" customModuleProvider="target">
             <connections>
                 <outlet property="tableView" destination="RYc-f1-fMb" id="UjV-Kh-4oU"/>
+                <outlet property="uiFilter" destination="BeC-qy-sC8" id="umf-Py-q1K"/>
                 <outlet property="uiTableHeader" destination="iLa-v8-Iod" id="60Q-Mz-VvD"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bNe-F4-1sr"/>
             </connections>
@@ -18,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RYc-f1-fMb" customClass="TableView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="42" width="320" height="526"/>
                     <animations/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                     <view key="tableHeaderView" hidden="YES" contentMode="scaleToFill" id="iLa-v8-Iod" userLabel="Table Header View">
@@ -77,14 +83,61 @@
                         <outlet property="delegate" destination="-1" id="xGB-37-Mh8"/>
                     </connections>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BeC-qy-sC8" customClass="SelectCtrl">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OCl-td-UnC">
+                            <rect key="frame" x="25" y="12" width="285" height="18"/>
+                            <animations/>
+                            <fontDescription key="fontDescription" name="Raleway-Medium" family="Raleway" pointSize="15"/>
+                            <color key="textColor" red="0.45098039220000002" green="0.44705882349999998" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GSW-mB-Nqy" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="0.0" y="41" width="320" height="1"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="qaC-UA-srL"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="GSW-mB-Nqy" secondAttribute="trailing" id="8Lt-SV-dfa"/>
+                        <constraint firstAttribute="height" constant="42" id="EdE-gv-Ars"/>
+                        <constraint firstItem="GSW-mB-Nqy" firstAttribute="leading" secondItem="BeC-qy-sC8" secondAttribute="leading" id="Myc-Zq-fbI"/>
+                        <constraint firstAttribute="trailing" secondItem="OCl-td-UnC" secondAttribute="trailing" constant="10" id="P8S-d3-eMi"/>
+                        <constraint firstItem="OCl-td-UnC" firstAttribute="leading" secondItem="BeC-qy-sC8" secondAttribute="leading" constant="25" id="Pcc-Jq-DFh"/>
+                        <constraint firstAttribute="centerY" secondItem="OCl-td-UnC" secondAttribute="centerY" id="ct0-r6-t7x"/>
+                        <constraint firstAttribute="bottom" secondItem="GSW-mB-Nqy" secondAttribute="bottom" id="oB8-DB-LsK"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="placeholderColor">
+                            <color key="value" red="0.45098039220000002" green="0.44705882349999998" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="actFilterChanged" destination="-1" eventType="valueChanged" id="s3W-q3-QTX"/>
+                        <outlet property="uiSeparator" destination="GSW-mB-Nqy" id="HfK-C3-GB3"/>
+                        <outlet property="uiText" destination="OCl-td-UnC" id="Y7P-AP-kSg"/>
+                    </connections>
+                </view>
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
+                <constraint firstItem="BeC-qy-sC8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="1Ic-U2-aOA"/>
                 <constraint firstAttribute="trailing" secondItem="RYc-f1-fMb" secondAttribute="trailing" id="2jV-Dv-MaP"/>
                 <constraint firstItem="RYc-f1-fMb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="8N7-Ql-nj9"/>
                 <constraint firstAttribute="bottom" secondItem="RYc-f1-fMb" secondAttribute="bottom" id="GNA-k2-ZZd"/>
-                <constraint firstItem="RYc-f1-fMb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Ixl-Rn-9Us"/>
+                <constraint firstAttribute="trailing" secondItem="BeC-qy-sC8" secondAttribute="trailing" id="UX4-1g-ds4"/>
+                <constraint firstItem="RYc-f1-fMb" firstAttribute="top" secondItem="BeC-qy-sC8" secondAttribute="bottom" id="V4u-AV-rjZ"/>
+                <constraint firstItem="BeC-qy-sC8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="nbw-RC-W3P"/>
             </constraints>
             <point key="canvasLocation" x="417" y="262"/>
         </view>

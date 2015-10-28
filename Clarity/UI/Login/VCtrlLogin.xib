@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -53,6 +53,13 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bNE-i4-Q8n" customClass="UIControl">
                     <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_hawk_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kwn-of-sdK">
+                            <rect key="frame" x="30" y="35" width="260" height="60"/>
+                            <animations/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="kwn-of-sdK" secondAttribute="height" multiplier="640:148" id="pKh-iy-Fjn"/>
+                            </constraints>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iK7-JQ-XFg" userLabel="Container">
                             <rect key="frame" x="0.0" y="145" width="320" height="215"/>
                             <subviews>
@@ -69,6 +76,10 @@
                                     </subviews>
                                     <animations/>
                                     <color key="backgroundColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.32941176470588235" alpha="1" colorSpace="calibratedRGB"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="" label="CBLogin">
+                                        <accessibilityTraits key="traits" button="YES"/>
+                                        <bool key="isElement" value="YES"/>
+                                    </accessibility>
                                     <constraints>
                                         <constraint firstAttribute="centerY" secondItem="E4E-L1-dDb" secondAttribute="centerY" id="2qd-18-EMg"/>
                                         <constraint firstAttribute="centerX" secondItem="E4E-L1-dDb" secondAttribute="centerX" id="nb6-ys-CtY"/>
@@ -116,6 +127,9 @@
                                             <rect key="frame" x="5" y="0.0" width="234" height="30"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration" hint="" identifier="logintf" label="logintf">
+                                                <bool key="isElement" value="YES"/>
+                                            </accessibility>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="gW1-oS-Va0"/>
                                             </constraints>
@@ -181,6 +195,7 @@
                                             <rect key="frame" x="5" y="0.0" width="234" height="30"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <accessibility key="accessibilityConfiguration" hint="" identifier="passtf" label="passtf"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="WKz-fO-wqL"/>
                                             </constraints>
@@ -241,7 +256,10 @@
                                 </view>
                             </subviews>
                             <animations/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <accessibility key="accessibilityConfiguration" identifier="" label="">
+                                <bool key="isElement" value="NO"/>
+                            </accessibility>
                             <constraints>
                                 <constraint firstAttribute="trailing" secondItem="d4p-La-HWx" secondAttribute="trailing" constant="25" id="2m7-iS-U3z"/>
                                 <constraint firstAttribute="trailing" secondItem="unh-4f-fuc" secondAttribute="trailing" constant="25" id="6NR-5C-Tch"/>
@@ -257,13 +275,6 @@
                                 <constraint firstItem="IPD-lE-gJa" firstAttribute="top" secondItem="unh-4f-fuc" secondAttribute="bottom" constant="50" id="uHB-DV-iET"/>
                             </constraints>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gray_hawk_logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="kwn-of-sdK">
-                            <rect key="frame" x="30" y="35" width="260" height="60"/>
-                            <animations/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="kwn-of-sdK" secondAttribute="height" multiplier="640:148" id="pKh-iy-Fjn"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <animations/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -271,9 +282,10 @@
                         <constraint firstItem="kwn-of-sdK" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bNE-i4-Q8n" secondAttribute="leading" constant="30" id="FIi-DI-YWc"/>
                         <constraint firstItem="iK7-JQ-XFg" firstAttribute="centerY" secondItem="bNE-i4-Q8n" secondAttribute="centerY" id="GaB-Jc-mRU"/>
                         <constraint firstAttribute="trailing" secondItem="iK7-JQ-XFg" secondAttribute="trailing" id="Kim-Ru-eY1"/>
-                        <constraint firstItem="iK7-JQ-XFg" firstAttribute="top" secondItem="kwn-of-sdK" secondAttribute="bottom" constant="50" id="Rya-C8-7BA"/>
+                        <constraint firstItem="iK7-JQ-XFg" firstAttribute="top" secondItem="kwn-of-sdK" secondAttribute="bottom" priority="750" constant="50" id="Rya-C8-7BA"/>
                         <constraint firstItem="iK7-JQ-XFg" firstAttribute="centerX" secondItem="bNE-i4-Q8n" secondAttribute="centerX" id="a2F-RE-sBX"/>
                         <constraint firstItem="iK7-JQ-XFg" firstAttribute="leading" secondItem="bNE-i4-Q8n" secondAttribute="leading" id="cgH-3g-Xbx"/>
+                        <constraint firstItem="kwn-of-sdK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bNE-i4-Q8n" secondAttribute="top" constant="15" id="dpZ-u4-dyJ"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kwn-of-sdK" secondAttribute="trailing" constant="30" id="jHP-xp-R19"/>
                         <constraint firstItem="kwn-of-sdK" firstAttribute="centerX" secondItem="bNE-i4-Q8n" secondAttribute="centerX" id="yxT-wt-dAO"/>
                     </constraints>
@@ -284,6 +296,9 @@
             </subviews>
             <animations/>
             <color key="backgroundColor" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <accessibility key="accessibilityConfiguration" label="VCtrlLogin">
+                <bool key="isElement" value="NO"/>
+            </accessibility>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="zzk-hs-8xv" secondAttribute="trailing" id="8LE-E1-ugA"/>
                 <constraint firstAttribute="trailing" secondItem="bNE-i4-Q8n" secondAttribute="trailing" id="9ks-6J-14W"/>

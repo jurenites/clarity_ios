@@ -237,11 +237,17 @@ static VCtrlRoot *Current = nil;
 
 - (void)startup
 {
-    DispatchAfter(0.5, ^{
+    DispatchAfter(0.5, ^{ //
         if (_splash) {
             BOOL loaded = [[GlobalEntitiesCtrl shared] loadFromDefaults];
             if ([ApiRouter shared].isLoggedIn) {
-                [self showMainUI];
+                [[ClarityApi shared] loadCommonInfo:^{
+                    [self showMainUI];
+                } onError:^(NSError *error) {
+                    [self reportError:error];
+                    [self showLoginUI];
+                }];
+                
 //                [[TRNApi shared] loadInitialData:[ApiRouter shared].currentUserId onSuccess:^{
 //                    [self showAnonymousUIIfNeed];
 //                } onError:^(NSError *error) {

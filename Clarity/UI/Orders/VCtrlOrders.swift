@@ -13,7 +13,11 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
     let _pageSize = 10
     var _orders = [ShortOrder]()
     
+    var _filterString: String = ""
+    var _needUpdate: Bool = false
+    
     @IBOutlet var uiTableHeader: UIView!
+    @IBOutlet var uiFilter: SelectCtrl!
     
     init() {
         super.init(nibName: "VCtrlOrders", bundle: nil)
@@ -40,6 +44,22 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         
         self.navigationItem.title = NSLocalizedString("Order List", comment: "")
         self.tableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
+        
+        let accessoryView = DefaultAccessoryView.create()
+        uiFilter.inputAccessoryView = accessoryView
+        accessoryView.onDone = WrapAction(self, method: VCtrlOrders.actKbdDone)
+        
+        var selectItems = [SelectCtrlItem]()
+        
+        for str in GlobalEntitiesCtrl.shared().orderFilters{
+            let item = SelectCtrlItem()
+            item.key = str
+            item.name = GlobalEntitiesCtrl.shared().orderFilterForKey(str as! String)
+            
+            selectItems.append(item)
+        }
+        
+        uiFilter.setItems(selectItems)
     }
     
     override func viewWillFirstAppear() {
@@ -49,9 +69,34 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
             self.triggerReloadContent()
         }
     }
-    
+
     private func populate() {
         
+    }
+    
+    @IBAction func actFilterChanged() {
+        let prevFilter = _filterString
+        if let key = uiFilter.selectedItem {
+            if let keyName = key.key as? String {
+                _filterString = keyName
+                if prevFilter != _filterString {
+                    _needUpdate = true
+                }
+            }
+        } else {
+            _filterString = ""
+            if prevFilter != _filterString {
+                _needUpdate = true
+            }
+        }
+    }
+    
+    private func actKbdDone() {
+        if (_needUpdate) {
+            _needUpdate = false
+            self.triggerReloadContent()
+        }
+        self.view.endEditing(true)
     }
     
     //MARK: VCtrlOrderDetailsProtocol
@@ -96,7 +141,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
     
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().getOrders(0, limit: _pageSize)
+        let canceler = ClarityApi.shared().getOrders(_filterString, offset: 0, limit: _pageSize)
             .success({ (orders : [ShortOrder]) in
                 self._orders = orders
                 self.uiTableHeader.hidden = false
@@ -120,7 +165,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
     }
     
     override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-        let canceler = ClarityApi.shared().getOrders(self._orders.count, limit: 5)
+        let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in
                 self._orders += orders
                 self.tableView.reloadData()

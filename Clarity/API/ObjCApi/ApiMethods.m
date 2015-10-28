@@ -20,7 +20,9 @@
         @(AMLogout)             :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/logout"],
         @(AMRecoverPassword)    :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/reset_password"],
         @(AMSetAPNS)            :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/pushes"],
+        
         //Orders
+        @(AMGetCommonInfo)      :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/common_info"],
         @(AMGetOrderStatuses)   :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/statuses"],
         @(AMGetOrders)          :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders"],
         @(AMGetOrder)           :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/:id"],

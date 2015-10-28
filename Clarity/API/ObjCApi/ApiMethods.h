@@ -12,6 +12,9 @@ typedef NS_ENUM(NSInteger, ApiMethodID) {
     
     AMLoginViaEmail = 1, AMLogout, AMRecoverPassword, AMSetAPNS,
     
+    //common info
+    AMGetCommonInfo,
+    
     //orders
     AMGetOrders, AMGetOrder, AMUpdateOrder, AMAcceptOrder, AMAcceptOrderWithConditions, AMDeclineOrder, AMGetOrderStatuses,
     

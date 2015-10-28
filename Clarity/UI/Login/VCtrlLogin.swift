@@ -60,10 +60,12 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
     override func keyboardWillShowWithSize(kbdSize: CGSize, duration: NSTimeInterval, curve: UIViewAnimationOptions) {
         UIView.animateWithDuration(duration) {
             let keyboardFrame = CGRectMake(0, self.uiTapControl.bounds.height - kbdSize.height, kbdSize.width, kbdSize.height)
-    
-            let intersection = CGRectIntersection(self.uiContainer.frame, keyboardFrame)
-            if  intersection != CGRectZero {
-                self.lcContainerCenter.constant = -intersection.height
+            
+            let rect = self.uiTapControl.convertRect(self.uiLoginBtn.frame, fromView:self.uiContainer)
+            let intersection = CGRectIntersection(keyboardFrame, rect)
+ 
+            if  intersection.height != 0 {
+                self.lcContainerCenter.constant = -intersection.height-(intersection.origin.y-keyboardFrame.origin.y)
             }
             self.view.layoutIfNeeded()
         }
@@ -129,7 +131,7 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
             self.showLoadingOverlay()
             let canceler = ClarityApi.shared().login(uiLogin.text!, pass: uiPassword.text!)
                 .flatMap({ (user: User) -> PipelineResult<Signal<AnyObject>> in
-                    return PipelineResult(ClarityApi.shared().getOrderStatuses())
+                    return PipelineResult(ClarityApi.shared().getCommonInfo())
                 })
                 .success({
                     self.hideLoadingOverlay()
@@ -158,7 +160,7 @@ class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
 //        uiPassword.hidden = _isRecovering
         uiPassContainer.hidden = _isRecovering
         uiRecoveryBtn.uiTitle.attributedText = _isRecovering ? self.makeUnderline("Cancel") : self.makeUnderline("Password recovery")
-        uiLoginBtn.uiTitle.text = _isRecovering ? "Reset" : "Login"
+        uiLoginBtn.uiTitle.text = _isRecovering ? NSLocalizedString("Reset", comment: "") : NSLocalizedString("Login", comment: "")
         
         self.view.layoutIfNeeded()
     }

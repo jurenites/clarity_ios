@@ -18,6 +18,8 @@
 		5B71CD051BBBE9F80093833D /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B71CD041BBBE9F80093833D /* Messages.json */; };
 		5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */; };
 		5B75493D1BC408C30064BA76 /* ConditionsOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B75493C1BC408C30064BA76 /* ConditionsOverlay.xib */; };
+		5B7860EF1BDA77350073290A /* ClarityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7860EE1BDA77350073290A /* ClarityUITests.swift */; };
+		5B7860F61BDA77380073290A /* LoginTC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B7860E61BDA6D8C0073290A /* LoginTC.swift */; };
 		5B88F2E71BB3C7DE009F202C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2E61BB3C7DE009F202C /* User.swift */; };
 		5B88F2FC1BB415CD009F202C /* VCtrlLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B88F2FB1BB415CD009F202C /* VCtrlLogin.swift */; };
 		5B88F2FE1BB415EA009F202C /* VCtrlLogin.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B88F2FD1BB415EA009F202C /* VCtrlLogin.xib */; };
@@ -330,6 +332,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5B7860F11BDA77350073290A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5BC79C071BB1ADE70040AF48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BC79C0E1BB1ADE70040AF48;
+			remoteInfo = Clarity;
+		};
 		5BC79C291BB1ADE70040AF48 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5BC79C071BB1ADE70040AF48 /* Project object */;
@@ -351,6 +360,11 @@
 		5B71CD041BBBE9F80093833D /* Messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsOverlay.swift; sourceTree = "<group>"; };
 		5B75493C1BC408C30064BA76 /* ConditionsOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConditionsOverlay.xib; sourceTree = "<group>"; };
+		5B7860E31BDA69610073290A /* ClarityTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ClarityTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		5B7860E61BDA6D8C0073290A /* LoginTC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTC.swift; sourceTree = "<group>"; };
+		5B7860EC1BDA77350073290A /* ClarityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClarityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B7860EE1BDA77350073290A /* ClarityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClarityUITests.swift; sourceTree = "<group>"; };
+		5B7860F01BDA77350073290A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B88F2E51BB3C56B009F202C /* Clarity-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Clarity-Prefix.pch"; sourceTree = "<group>"; };
 		5B88F2E61BB3C7DE009F202C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Entities/User.swift; sourceTree = "<group>"; };
 		5B88F2FB1BB415CD009F202C /* VCtrlLogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlLogin.swift; sourceTree = "<group>"; };
@@ -828,6 +842,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5B7860E91BDA77340073290A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BC79C0C1BB1ADE70040AF48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -872,6 +893,15 @@
 				5B52CED61BBA6CD9009437C5 /* VCtrlMap.xib */,
 			);
 			name = Map;
+			sourceTree = "<group>";
+		};
+		5B7860ED1BDA77350073290A /* ClarityUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5B7860EE1BDA77350073290A /* ClarityUITests.swift */,
+				5B7860F01BDA77350073290A /* Info.plist */,
+			);
+			path = ClarityUITests;
 			sourceTree = "<group>";
 		};
 		5B88F2EF1BB41537009F202C /* Login */ = {
@@ -962,6 +992,7 @@
 				5B88F30D1BB44885009F202C /* libsqlite3.0.dylib */,
 				5BC79C111BB1ADE70040AF48 /* Clarity */,
 				5BC79C2B1BB1ADE70040AF48 /* ClarityTests */,
+				5B7860ED1BDA77350073290A /* ClarityUITests */,
 				5BC79C101BB1ADE70040AF48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -971,6 +1002,7 @@
 			children = (
 				5BC79C0F1BB1ADE70040AF48 /* Clarity.app */,
 				5BC79C281BB1ADE70040AF48 /* ClarityTests.xctest */,
+				5B7860EC1BDA77350073290A /* ClarityUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1007,6 +1039,8 @@
 			children = (
 				5BC79C2E1BB1ADE70040AF48 /* ClarityTests.m */,
 				5BC79C2C1BB1ADE70040AF48 /* Supporting Files */,
+				5B7860E31BDA69610073290A /* ClarityTests-Bridging-Header.h */,
+				5B7860E61BDA6D8C0073290A /* LoginTC.swift */,
 			);
 			path = ClarityTests;
 			sourceTree = "<group>";
@@ -1792,6 +1826,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5B7860EB1BDA77340073290A /* ClarityUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5B7860F31BDA77350073290A /* Build configuration list for PBXNativeTarget "ClarityUITests" */;
+			buildPhases = (
+				5B7860E81BDA77340073290A /* Sources */,
+				5B7860E91BDA77340073290A /* Frameworks */,
+				5B7860EA1BDA77340073290A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5B7860F21BDA77350073290A /* PBXTargetDependency */,
+			);
+			name = ClarityUITests;
+			productName = ClarityUITests;
+			productReference = 5B7860EC1BDA77350073290A /* ClarityUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		5BC79C0E1BB1ADE70040AF48 /* Clarity */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5BC79C321BB1ADE70040AF48 /* Build configuration list for PBXNativeTarget "Clarity" */;
@@ -1834,10 +1886,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0700;
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = Spring;
 				TargetAttributes = {
+					5B7860EB1BDA77340073290A = {
+						CreatedOnToolsVersion = 7.1;
+						TestTargetID = 5BC79C0E1BB1ADE70040AF48;
+					};
 					5BC79C0E1BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = Z9VZA3TTXZ;
@@ -1864,11 +1920,19 @@
 			targets = (
 				5BC79C0E1BB1ADE70040AF48 /* Clarity */,
 				5BC79C271BB1ADE70040AF48 /* ClarityTests */,
+				5B7860EB1BDA77340073290A /* ClarityUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5B7860EA1BDA77340073290A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BC79C0D1BB1ADE70040AF48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2012,6 +2076,15 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5B7860E81BDA77340073290A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B7860F61BDA77380073290A /* LoginTC.swift in Sources */,
+				5B7860EF1BDA77350073290A /* ClarityUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		5BC79C0B1BB1ADE70040AF48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2219,6 +2292,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5B7860F21BDA77350073290A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5BC79C0E1BB1ADE70040AF48 /* Clarity */;
+			targetProxy = 5B7860F11BDA77350073290A /* PBXContainerItemProxy */;
+		};
 		5BC79C2A1BB1ADE70040AF48 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5BC79C0E1BB1ADE70040AF48 /* Clarity */;
@@ -2227,6 +2305,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		5B7860F41BDA77350073290A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = ClarityUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.ClarityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_TARGET_NAME = Clarity;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		5B7860F51BDA77350073290A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = ClarityUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Spring.ClarityUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				TEST_TARGET_NAME = Clarity;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
 		5BC79C301BB1ADE70040AF48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2353,6 +2461,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2368,6 +2477,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClarityTests/ClarityTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Debug;
@@ -2376,6 +2487,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2387,6 +2499,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				SWIFT_OBJC_BRIDGING_HEADER = "ClarityTests/ClarityTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
 			name = Release;
@@ -2394,6 +2507,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5B7860F31BDA77350073290A /* Build configuration list for PBXNativeTarget "ClarityUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5B7860F41BDA77350073290A /* Debug */,
+				5B7860F51BDA77350073290A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		5BC79C0A1BB1ADE70040AF48 /* Build configuration list for PBXProject "Clarity" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

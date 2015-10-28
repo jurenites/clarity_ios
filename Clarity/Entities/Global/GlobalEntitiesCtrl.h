@@ -21,6 +21,9 @@
 - (void)silentUpdateCurrentUserWithUser:(User *)user;//Will not notify event
 - (void)updateCurrentUserWithUser:(User *)user;
 
+- (void)fillCommonInfo:(NSDictionary *)commonInfo;
+- (NSString *)orderFilterForKey:(NSString *)filterKey;
+
 - (void)fillOrderStatuses:(NSDictionary *)orderStatuses;
 - (NSString *)orderStatusForKey:(NSString *)orderStatusKey;
 //- (void)updateUserLocation:(NSInteger)newLocationId;
@@ -66,6 +69,7 @@
 //- (void)cleanAnonymousPromos;
 
 @property (readonly, nonatomic) User *currentUser;
+@property (readonly, nonatomic) NSArray *orderFilters;
 //@property (readonly, nonatomic) NSArray *regions;
 //@property (readonly, nonatomic) NSTimeZone *myTimeZone;
 //

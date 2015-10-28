@@ -7,55 +7,16 @@
 //
 
 #import "GlobalEntitiesCtrl.h"
-//#import "User+API.h"
-//#import "TRNLocation+API.h"
-//#import "Neighborhood.h"
-//#import "Neighborhood+API.h"
-//#import "TRNApiManager.h"
-//#import "HealthProfile+API.h"
-//#import "TRNApiManager+Session.h"
 #import "DeviceHardware.h"
-//#import "Helpshift.h"
-//
-//#import "VCtrlDashboard.h"
-//#import "VCtrlFindTrainer.h"
-//#import "VCtrlSpecialistsList.h"
-//#import "VCtrlMenu.h"
-//#import "VCtrlLogin.h"
-//#import "VCtrlCreateChoose.h"
-//#import "VCtrlMemberSignUp.h"
-//#import "VCtrlSpecialistSignIn.h"
-//#import "VCtrlSpecialistType.h"
-//#import "VCtrlCreateLocation.h"
 
 static NSString * const UserDictKey = @"UserDictKey";
 static NSString * const StatusesDictKey = @"OrdersStatuses";
-//static NSString * const LocationsKey = @"LocationsKey";
-//static NSString * const RegionsKey = @"NeighborhoodsKey";
-//static NSString * const AnonymousPromoKey = @"AnonymousPromoKey";
-//
-////Session
-//static NSString * const TimeToStartSession = @"TimeToStartSession";
-//static NSInteger const InSessionInterval = 60;
-//static NSInteger const BeforeSessionInterval = 5 *60;
+static NSString * const OrderFiltersDictKey = @"OrderFilters";
 
-//#define USER_ONBOARDING     @"onboarding_flow"
-
-@interface GlobalEntitiesCtrl() <AppDelegateDelegate, ApiRouterDelegate> //, HelpshiftDelegate
+@interface GlobalEntitiesCtrl() <AppDelegateDelegate, ApiRouterDelegate>
 {
     NSDictionary *_statuses;
-//    NSMutableDictionary *_locationsDict;
-//    NSMutableDictionary *_regionsDict;
-//    
-//    NSTimer *_sessionTimer;
-//    
-//    ApiCanceler *_updSession;
-//    ApiCanceler *_updCounters;
-//    ApiCanceler *_loadSessions;
-//    
-//    Session *_startedSession;
-//    
-//    NSMutableOrderedSet *_cachedAnonymousPromos;
+    NSDictionary *_orderFiltersDict;
 }
 @end
 
@@ -80,26 +41,11 @@ static NSString * const StatusesDictKey = @"OrdersStatuses";
     }
     
     _currentUser    = [User new];
-    _statuses = [NSDictionary new];
-//    _regions        = [NSArray new];
-//    _locationsDict  = [NSMutableDictionary new];
-//    _regionsDict    = [NSMutableDictionary new];
-//    
-//    _bookedSessions     = [NSArray new];
-//    _completedSessions  = [NSArray new];
-//    _canceledSessions   = [NSArray new];
-//    _notRatedSessions   = [NSArray new];
-//    
-//    _cachedAnonymousPromos = [NSMutableOrderedSet new];
-//    
-//    _startedSession = nil;
-//    
-//    _messageCount = 0;
-//    _sessionCount = 0;
-//    _helpshiftCount = 0;
-//    
+    _statuses       = [NSDictionary new];
+    _orderFiltersDict   = [NSDictionary new];
+    _orderFilters = [NSArray new];
+
     [[AppDelegate shared] addDelegate:self];
-//    [[Helpshift sharedInstance] setDelegate:self];
     [[ApiRouter shared] addDelegate:self];
     
     return self;
@@ -116,42 +62,8 @@ static NSString * const StatusesDictKey = @"OrdersStatuses";
     [self fillCurrentUserWithDict:dict];
     
     _statuses = AssureIsDict([ud valueForKey:StatusesDictKey]);
-//    NSMutableArray *locs = [NSMutableArray new];
-//    NSMutableArray *nhs = [NSMutableArray new];
-//    
-//    for (NSDictionary *d in AssureIsArray([[NSUserDefaults standardUserDefaults] valueForKey:UserDictKey])) {
-//        if ([d isKindOfClass:[NSDictionary class]]) {
-//            [locs addObject:[TRNLocation fromApiDict:d]];
-//        }
-//    }
-//    
-//    for (NSDictionary *nhDict in AssureIsArray([[NSUserDefaults standardUserDefaults] valueForKey:RegionsKey])) {
-//        if ([nhDict isKindOfClass:[NSDictionary class]]) {
-//            [nhs addObject:[Region fromDict:nhDict]];
-//        }
-//    }
-//    
-//    NSMutableDictionary *locsMap = [NSMutableDictionary dictionary];
-//    NSMutableDictionary *regionsMap = [NSMutableDictionary dictionary];
-//    
-//    for (TRNLocation *loc in locs) {
-//        locsMap[@(loc.locationId)] = loc;
-//    }
-//    
-//    for (Region *nh in nhs) {
-//        regionsMap[@(nh.regionId)] = nh;
-//    }
-//    
-//    _locationsDict = locsMap;
-//    _regionsDict = regionsMap;
-//    
-//    NSArray *promos = AssureIsArray([ud objectForKey:AnonymousPromoKey]);
-//    for (NSDictionary *pD in promos) {
-//        Promo *p = [Promo fromDict:pD];
-//        if (p) {
-//           [_cachedAnonymousPromos addObject:p];
-//        }
-//    }
+    _orderFiltersDict = AssureIsDict([ud valueForKey:OrderFiltersDictKey]);
+    _orderFilters = _orderFiltersDict.allKeys;
     
     return YES;
 }
@@ -196,13 +108,31 @@ static NSString * const StatusesDictKey = @"OrdersStatuses";
     }
 }
 
+- (void)fillCommonInfo:(NSDictionary *)commonInfo
+{
+    _orderFiltersDict = AssureIsDict(commonInfo[@"order_filters"]);
+    [[NSUserDefaults standardUserDefaults] setValue:_orderFiltersDict forKey:OrderFiltersDictKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    _orderFilters = _orderFiltersDict.allKeys;
+    
+    [self fillOrderStatuses:AssureIsDict(commonInfo[@"statuses"])];
+}
+
+- (NSString *)orderFilterForKey:(NSString *)filterKey
+{
+    NSString *name = [_orderFiltersDict objectForKey:filterKey];
+    if (!name || name.length == 0) {
+        return nil;
+    }
+    return name;
+}
 
 - (void)fillOrderStatuses:(NSDictionary *)orderStatuses
 {
     _statuses = orderStatuses;
     [[NSUserDefaults standardUserDefaults] setValue:_statuses forKey:StatusesDictKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
 }
 
 - (NSString *)orderStatusForKey:(NSString *)orderStatusKey

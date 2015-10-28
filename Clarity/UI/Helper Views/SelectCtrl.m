@@ -308,6 +308,9 @@ static UIPopoverController *ShownPopover = nil;
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    if (!self.isFirstResponder) {
+        return;
+    }
     if (row == 0) {
         self.uiText.text = _placeholderText;
         self.uiText.textColor = _placeholderTextColor;
