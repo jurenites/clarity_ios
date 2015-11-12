@@ -55,6 +55,15 @@
     [_delegates removeDelegate:listener];
 }
 
+- (void)chatWasUpdated:(NSInteger)chatId
+{
+    for (id<EventsHubProtocol> d in [_delegates getDelegates]) {
+        if ([d respondsToSelector:@selector(updateChat:)]) {
+            [d updateChat:chatId];
+        }
+    }
+}
+
 - (void)scheduleDidUpdate
 {
     for (id<EventsHubProtocol> d in [_delegates getDelegates]) {

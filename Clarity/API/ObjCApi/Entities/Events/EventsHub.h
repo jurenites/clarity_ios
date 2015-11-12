@@ -22,8 +22,8 @@
 //- (void)finishSession:(Session *)session;
 //- (void)rateSessions:(NSArray *)sessions;
 //
-//- (void)addListener:(id<EventsHubProtocol>)listener;
-//- (void)removeListener:(id<EventsHubProtocol>)listener;
+- (void)addListener:(id<EventsHubProtocol>)listener;
+- (void)removeListener:(id<EventsHubProtocol>)listener;
 
 //- (Flow *)flowByMethod:(ApiMethodID)method;
 - (void)screenOpened:(NSString *)screenName;

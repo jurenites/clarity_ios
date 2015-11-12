@@ -14,6 +14,7 @@
 
 @optional
 - (void)scheduleDidUpdate;
+- (void)updateChat:(NSInteger)orderId;
 
 - (void)flowFinished:(Flow *)flow;
 

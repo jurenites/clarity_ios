@@ -13,7 +13,7 @@ protocol VCtrlChatDelegate {
     func chatUpdated()
 }
 
-class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
+class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
     let _pageSize = 20
     var _messages = [Message]()
     var delegate: VCtrlChatDelegate?
@@ -59,6 +59,12 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         _accessoryView = DefaultAccessoryView.create()
         _accessoryView.onDone = WrapAction(self, method: VCtrlChat.actSend)
         uiMessageInput.inputAccessoryView = _accessoryView
+        
+        EventsHub.shared().addListener(self)
+    }
+    
+    deinit {
+        EventsHub.shared().removeListener(self)
     }
     
     override func viewWillFirstAppear() {
@@ -255,6 +261,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
         let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
             .success({ (messages : [Message]) in
                 self._messages += messages
+                self.tableView.reloadData()
                 onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
@@ -262,5 +269,12 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate {
             })
         
         return ApiCancelerSignal.wrap(canceler)
+    }
+    
+    //MARK: EventsHubProtocol
+    func updateChat(orderId: Int) {
+        if self.isOnScreen && self.orderId == orderId {
+            self.triggerInfiniteScroll()
+        }
     }
 }

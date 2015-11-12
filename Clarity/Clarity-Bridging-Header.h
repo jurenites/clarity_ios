@@ -22,3 +22,4 @@
 #import "GlobalEntitiesCtrl.h"
 #import "Separator.h"
 #import "SelectCtrl.h"
+#import "EventsHub.h"

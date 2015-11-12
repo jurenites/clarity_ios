@@ -93,7 +93,7 @@ static const CGFloat PlaceholderWidth = 270;
     
     if (self.isNeedAvatarButton) {
         UIButton *avatarButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 37, 37)];
-
+        avatarButton.accessibilityLabel = @"LogoutButton";
         [avatarButton setImage:[UIImage imageNamed:@"96"] forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(showProfileOverlay) forControlEvents:UIControlEventTouchUpInside];
         

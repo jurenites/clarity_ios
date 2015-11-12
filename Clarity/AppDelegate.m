@@ -58,6 +58,14 @@
     NSLog(@"Failed to get Push token, error: %@", error);
 }
 
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    NSInteger chatId = ToInt(userInfo[@"order_id"]);
+    if (chatId) {
+        [[EventsHub shared] chatWasUpdated:chatId];
+    }
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application {
     for (id<AppDelegateDelegate> d in [_delegates getDelegates]) {
         if ([d respondsToSelector:@selector(appWillResignActive)]) {

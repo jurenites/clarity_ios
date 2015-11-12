@@ -36,6 +36,13 @@ class LoginTC: XCTestCase {
     func waitSplash(completion: WaitCompletionHandler?) {
         let app = XCUIApplication()
         let splash = app.otherElements["VCtrlSplash"]
+        
+        if !splash.exists {
+            if let compl = completion {
+                compl(nil)
+            }
+        }
+        
         let exists = NSPredicate(format: "exists == false")
         
         expectationForPredicate(exists, evaluatedWithObject: splash, handler: nil)
@@ -49,6 +56,12 @@ class LoginTC: XCTestCase {
     func waitActivity(completion: WaitCompletionHandler?) {
         let app = XCUIApplication()
         let activity = app.otherElements["LoadingOverlay"]
+        if !activity.exists {
+            if let compl = completion {
+                compl(nil)
+            }
+        }
+        
         let exists = NSPredicate(format: "exists == false")
         
         expectationForPredicate(exists, evaluatedWithObject: activity, handler: nil)
@@ -69,18 +82,26 @@ class LoginTC: XCTestCase {
                 compl(nil)
             }
         }
-//        
-//        if let navBar = app.navigationBars[0] {
-//            
-//        }
+        
+        app.navigationBars["Order List"].buttons["LogoutButton"].tap()
+        let logoutOverlay = app.otherElements["LogoutMenu"]
+        logoutOverlay.buttons["LogoutButton"].tap()
+        
+        self.waitActivity { (error: NSError?) -> Void in
+            let loginUI = app.otherElements["VCtrlLogin"]
+            let exists = NSPredicate(format: "exists == true")
+            self.expectationForPredicate(exists, evaluatedWithObject: loginUI, handler: nil)
+            self.waitForExpectationsWithTimeout(5.0){ (error: NSError?) in
+                if let compl = completion {
+                    compl(error)
+                }
+            }
+        }
     }
     
     func testLogin() {
         self.waitSplash { (error: NSError?) -> Void in
-//            XCTAssertNotNil(error, "Splash waiting time more than: \(self.splashWaitTime)")
             let app = XCUIApplication()
-
-//            let loginTextField = app.textFields["logintf"]
             
             let vctrlloginElement = XCUIApplication().otherElements["VCtrlLogin"]
             let loginTextField = vctrlloginElement.textFields["logintf"]
