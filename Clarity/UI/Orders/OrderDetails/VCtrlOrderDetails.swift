@@ -70,7 +70,10 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
             if let contact = ord.contact {
                 uiContact.uiTitle.text = contact.name
             }
+            uiContact.enabled = false
+            
             uiFree.uiTitle.text = "$ \(ord.price)"
+            uiFree.enabled = false
             
             uiStatus.setup(ord.status)
             uiMessanges.uiTitle.text = String(ord.messagesCount)
@@ -79,6 +82,7 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
 //            fmt.locale = NSLocale(localeIdentifier: "en_US")
             fmt.dateFormat = "MM.dd.YYYY"
             uiDate.uiTitle.text = fmt.stringFromDate(ord.dateTo)
+            uiDate.enabled = false
             
             let needButtons = ord.canAccept && ord.canAcceptWConditions && ord.canDecline //Now we manipulate all buttons
             uiAcceptBtn.hidden = !needButtons
