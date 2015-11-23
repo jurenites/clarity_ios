@@ -244,7 +244,10 @@ static VCtrlRoot *Current = nil;
                 [[ClarityApi shared] loadCommonInfo:^{
                     [self showMainUI];
                 } onError:^(NSError *error) {
-                    [self reportError:error];
+                    if (error.code != ApiErrorSessionTokenExpired) {
+                        [self reportError:error];
+                    }
+                    
                     [self showLoginUI];
                 }];
                 
