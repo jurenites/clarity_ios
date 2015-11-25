@@ -238,7 +238,7 @@
     } else if (self.length > maxLength) {
         errorDescription = NSLocalizedString(@"Full name is too long.", nil);
     } else {
-        NSString *regex = [NSString stringWithFormat:@"[A-Z0-9a-z\\s'\"_-]{2,%d}$", maxLength];
+        NSString *regex = [NSString stringWithFormat:@"[A-Z0-9a-z\\s'\"_-]{2,%ld}$", (long)maxLength];
         if (![self validateWithRegex:regex]) {
             errorDescription = NSLocalizedString(@"Full name is incorrect.", nil);
         }

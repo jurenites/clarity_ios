@@ -14,7 +14,7 @@
 + (EventsHub *)shared;
 
 - (void)chatWasUpdated:(NSInteger)chatId;
-- (void)updateDashboardCounters;
+//- (void)updateDashboardCounters;
 //- (void)updateCurrentUser;
 //
 //- (void)enqueueSession:(Session *)session;
