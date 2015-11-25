@@ -32,8 +32,6 @@ typedef void (^BaseOnLoadMoreComplete)(BOOL hasMoreData, BOOL tryAgain);
 
 - (BOOL)isTransitionAvailable;
 
-- (void)updateSessionInfo;
-
 - (NSString *)GAITrackName;
 
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;

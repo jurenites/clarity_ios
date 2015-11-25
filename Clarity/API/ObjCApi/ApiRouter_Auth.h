@@ -19,6 +19,6 @@
 - (void)invalidateLogin;
 - (void)logout;
 
-- (void)updateCurrentUser:(User *)user;
+//- (void)updateCurrentUser:(User *)user;
 
 @end

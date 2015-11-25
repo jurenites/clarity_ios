@@ -56,19 +56,28 @@ import Foundation
             .next(PliIsApiDictionary)
             .next(PLISwitchToMain)
             .next({(res: NSDictionary) in
-                GlobalEntitiesCtrl.shared().fillCommonInfo(res as [NSObject : AnyObject])//fillOrderStatuses(res as [NSObject : AnyObject])
+                if let statuses = res["statuses"] as? NSArray {
+                    var array = [Status]()
+                    for dict in statuses {
+                        if let _dict = dict as? NSDictionary {
+                            let entity: Status = Status.create()
+                            
+                            entity.fillWithApiDict(_dict)
+                            array.append(entity)
+                        }
+                    }
+                    GlobalEntitiesCtrl.shared().fillOrderStatuses(array)
+                }
+                
+                if let filters = res["order_filters"] as? NSDictionary {
+                   GlobalEntitiesCtrl.shared().fillFilters(filters as [NSObject : AnyObject])
+                }
                 return PipelineResult("")
             })
     }
     
-    func getOrderStatuses() -> Signal<AnyObject> {
-        return callMethod(ApiMethodID.AMGetOrderStatuses)
-            .next(PliIsApiDictionary)
-            .next(PLISwitchToMain)
-            .next({(res: NSDictionary) in
-                GlobalEntitiesCtrl.shared().fillOrderStatuses(res as [NSObject : AnyObject])
-                return PipelineResult("")
-            })
+    func getOrderStatuses() -> Signal<[Status]> {
+        return callMethod(ApiMethodID.AMGetOrderStatuses).next(PliFromApiArray)
     }
     
     func getOrders(filter: String = "", offset: Int, limit: Int) -> Signal<[ShortOrder]> {

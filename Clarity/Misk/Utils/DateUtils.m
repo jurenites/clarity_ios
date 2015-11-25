@@ -45,9 +45,9 @@
     
     
     
-    NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateStyle:NSDateFormatterMediumStyle];
-    return [df stringFromDate:date];
+//    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+//    [df setDateStyle:NSDateFormatterMediumStyle];
+//    return [df stringFromDate:date];
 }
 
 + (NSString *)chatTimeSins:(NSDate *)date
