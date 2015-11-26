@@ -7,7 +7,7 @@
 //
 
 #import "VCtrlNavigation.h"
-#import "VCtrlBase.h"
+#import "VCtrlBaseOld.h"
 #import "DeviceHardware.h"
 #import "NibLoader.h"
 //#import "VCtrlDashboard.h"
@@ -28,7 +28,7 @@ static VCtrlNavigation *Current = nil;
 @interface VCtrlNavigation () <UINavigationControllerDelegate>
 {
     CurrentAction _currentAction;
-    VCtrlBase *_currentScreen;
+    VCtrlBaseOld *_currentScreen;
     
     UIBarButtonItem *_uiPromoBarButton;
     UIBarButtonItem *_uiInfoBarButton;
@@ -78,7 +78,7 @@ static VCtrlNavigation *Current = nil;
 {
     Current = self;
 }
-+ (instancetype)createWithRootVC:(VCtrlBase *)vc
++ (instancetype)createWithRootVC:(VCtrlBaseOld *)vc
 {
     VCtrlNavigation *navigation = [VCtrlNavigation new];
     [navigation setViewControllers:@[vc] animated:NO];

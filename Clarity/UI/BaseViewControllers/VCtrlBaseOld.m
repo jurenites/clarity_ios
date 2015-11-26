@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 OysterLabs. All rights reserved.
 //
 
-#import "VCtrlBase.h"
+#import "VCtrlBaseOld.h"
 #import "DeviceHardware.h"
 #import "Spinner.h"
 #import "UIView+Utils.h"
@@ -22,7 +22,7 @@
 static const CGFloat PlaceholderWidth = 270;
 
 
-@interface VCtrlBase () <ApiRouterDelegate, AppDelegateDelegate>
+@interface VCtrlBaseOld () <ApiRouterDelegate, AppDelegateDelegate>
 {
     BOOL _wasFirstAppear;
     BOOL _wasFirstLayout;
@@ -39,7 +39,7 @@ static const CGFloat PlaceholderWidth = 270;
 }
 @end
 
-@implementation VCtrlBase
+@implementation VCtrlBaseOld
 
 - (void)goBack
 {
@@ -68,7 +68,7 @@ static const CGFloat PlaceholderWidth = 270;
     _spinner = loadViewFromNib(@"Spinner");
     _api = [ClarityApiManager new];
     [self.view addSubview:_spinner];
-        
+    
     _placehoderFont = [UIFont systemFontOfSize:16];
     _placehoderColor = [UIColor colorWithWhite:0.66 alpha:1];
     _placehoderLabel = [UILabel new];
@@ -553,7 +553,7 @@ static const CGFloat PlaceholderWidth = 270;
 
 - (void)triggerReloadContent
 {
-    VCtrlBase * __weak weakSelf = self;
+    VCtrlBaseOld * __weak weakSelf = self;
     
     self.pendingRequest = [self baseReloadContent:^(BOOL hasMoreData, BOOL tryAgain){
         weakSelf.pendingRequest = nil;

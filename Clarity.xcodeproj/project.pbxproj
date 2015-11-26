@@ -17,6 +17,12 @@
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; };
 		5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5971D41BCE764800CED18C /* gray_hawk_logo.png */; };
 		5B59E5C61C05E111000B7BD7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5C51C05E111000B7BD7 /* Status.swift */; };
+		5B59E5D91C070346000B7BD7 /* PtrCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */; };
+		5B59E5DA1C070346000B7BD7 /* PtrCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */; };
+		5B59E5DB1C070346000B7BD7 /* PtrScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D11C070346000B7BD7 /* PtrScrollView.m */; };
+		5B59E5DC1C070346000B7BD7 /* PtrSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D31C070346000B7BD7 /* PtrSpinner.m */; };
+		5B59E5DD1C070346000B7BD7 /* PtrTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D51C070346000B7BD7 /* PtrTableView.m */; };
+		5B59E5DE1C070346000B7BD7 /* VCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D71C070346000B7BD7 /* VCtrlBase.m */; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; };
 		5B71CD051BBBE9F80093833D /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B71CD041BBBE9F80093833D /* Messages.json */; };
 		5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */; };
@@ -65,7 +71,7 @@
 		5BC79CBE1BB1B42E0040AF48 /* TablePtrView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C871BB1B42E0040AF48 /* TablePtrView.m */; };
 		5BC79CBF1BB1B42E0040AF48 /* TablePtrView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BC79C881BB1B42E0040AF48 /* TablePtrView.xib */; };
 		5BC79CC01BB1B42E0040AF48 /* TableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C8A1BB1B42E0040AF48 /* TableView.m */; };
-		5BC79CC11BB1B42E0040AF48 /* VCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C8D1BB1B42E0040AF48 /* VCtrlBase.m */; };
+		5BC79CC11BB1B42E0040AF48 /* VCtrlBaseOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C8D1BB1B42E0040AF48 /* VCtrlBaseOld.m */; };
 		5BC79CC21BB1B42E0040AF48 /* VCtrlBaseTable.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C901BB1B42E0040AF48 /* VCtrlBaseTable.m */; };
 		5BC79CC61BB1B42E0040AF48 /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C961BB1B42E0040AF48 /* LoadingOverlay.swift */; };
 		5BC79CC71BB1B42E0040AF48 /* LoadingOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BC79C971BB1B42E0040AF48 /* LoadingOverlay.xib */; };
@@ -361,6 +367,21 @@
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		5B5971D41BCE764800CED18C /* gray_hawk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gray_hawk_logo.png; path = Resources/gray_hawk_logo.png; sourceTree = "<group>"; };
 		5B59E5C51C05E111000B7BD7 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Entities/Status.swift; sourceTree = "<group>"; };
+		5B59E5CA1C070346000B7BD7 /* PtrCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrCollectionView.h; sourceTree = "<group>"; };
+		5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrCollectionView.m; sourceTree = "<group>"; };
+		5B59E5CC1C070346000B7BD7 /* PtrCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrCtrl.h; sourceTree = "<group>"; };
+		5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrCtrl.m; sourceTree = "<group>"; };
+		5B59E5CE1C070346000B7BD7 /* PtrCtrl_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrCtrl_Private.h; sourceTree = "<group>"; };
+		5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrScrollProtocol.h; sourceTree = "<group>"; };
+		5B59E5D01C070346000B7BD7 /* PtrScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrScrollView.h; sourceTree = "<group>"; };
+		5B59E5D11C070346000B7BD7 /* PtrScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrScrollView.m; sourceTree = "<group>"; };
+		5B59E5D21C070346000B7BD7 /* PtrSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrSpinner.h; sourceTree = "<group>"; };
+		5B59E5D31C070346000B7BD7 /* PtrSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrSpinner.m; sourceTree = "<group>"; };
+		5B59E5D41C070346000B7BD7 /* PtrTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrTableView.h; sourceTree = "<group>"; };
+		5B59E5D51C070346000B7BD7 /* PtrTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrTableView.m; sourceTree = "<group>"; };
+		5B59E5D61C070346000B7BD7 /* VCtrlBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBase.h; sourceTree = "<group>"; };
+		5B59E5D71C070346000B7BD7 /* VCtrlBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBase.m; sourceTree = "<group>"; };
+		5B59E5D81C070346000B7BD7 /* VCtrlBaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseProtocol.h; sourceTree = "<group>"; };
 		5B71CD021BBBC7310093833D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Entities/Message.swift; sourceTree = "<group>"; };
 		5B71CD041BBBE9F80093833D /* Messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsOverlay.swift; sourceTree = "<group>"; };
@@ -428,8 +449,8 @@
 		5BC79C891BB1B42E0040AF48 /* TableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView.h; sourceTree = "<group>"; };
 		5BC79C8A1BB1B42E0040AF48 /* TableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableView.m; sourceTree = "<group>"; };
 		5BC79C8B1BB1B42E0040AF48 /* TableView_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_Private.h; sourceTree = "<group>"; };
-		5BC79C8C1BB1B42E0040AF48 /* VCtrlBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBase.h; sourceTree = "<group>"; };
-		5BC79C8D1BB1B42E0040AF48 /* VCtrlBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBase.m; sourceTree = "<group>"; };
+		5BC79C8C1BB1B42E0040AF48 /* VCtrlBaseOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseOld.h; sourceTree = "<group>"; };
+		5BC79C8D1BB1B42E0040AF48 /* VCtrlBaseOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBaseOld.m; sourceTree = "<group>"; };
 		5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseProtocol.h; sourceTree = "<group>"; };
 		5BC79C8F1BB1B42E0040AF48 /* VCtrlBaseTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseTable.h; sourceTree = "<group>"; };
 		5BC79C901BB1B42E0040AF48 /* VCtrlBaseTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBaseTable.m; sourceTree = "<group>"; };
@@ -898,6 +919,36 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
+		5B59E5C81C070346000B7BD7 /* NewBase */ = {
+			isa = PBXGroup;
+			children = (
+				5B59E5C91C070346000B7BD7 /* TableVIew */,
+				5B59E5D61C070346000B7BD7 /* VCtrlBase.h */,
+				5B59E5D71C070346000B7BD7 /* VCtrlBase.m */,
+				5B59E5D81C070346000B7BD7 /* VCtrlBaseProtocol.h */,
+			);
+			path = NewBase;
+			sourceTree = "<group>";
+		};
+		5B59E5C91C070346000B7BD7 /* TableVIew */ = {
+			isa = PBXGroup;
+			children = (
+				5B59E5CA1C070346000B7BD7 /* PtrCollectionView.h */,
+				5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */,
+				5B59E5CC1C070346000B7BD7 /* PtrCtrl.h */,
+				5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */,
+				5B59E5CE1C070346000B7BD7 /* PtrCtrl_Private.h */,
+				5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */,
+				5B59E5D01C070346000B7BD7 /* PtrScrollView.h */,
+				5B59E5D11C070346000B7BD7 /* PtrScrollView.m */,
+				5B59E5D21C070346000B7BD7 /* PtrSpinner.h */,
+				5B59E5D31C070346000B7BD7 /* PtrSpinner.m */,
+				5B59E5D41C070346000B7BD7 /* PtrTableView.h */,
+				5B59E5D51C070346000B7BD7 /* PtrTableView.m */,
+			);
+			path = TableVIew;
+			sourceTree = "<group>";
+		};
 		5B7860ED1BDA77350073290A /* ClarityUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1133,11 +1184,12 @@
 		5BC79C771BB1B42E0040AF48 /* BaseViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				5B59E5C81C070346000B7BD7 /* NewBase */,
 				5BC79C781BB1B42E0040AF48 /* Spinner */,
 				5BC79C7C1BB1B42E0040AF48 /* TableContentCtrl */,
 				5BC79C801BB1B42E0040AF48 /* TableView */,
-				5BC79C8C1BB1B42E0040AF48 /* VCtrlBase.h */,
-				5BC79C8D1BB1B42E0040AF48 /* VCtrlBase.m */,
+				5BC79C8C1BB1B42E0040AF48 /* VCtrlBaseOld.h */,
+				5BC79C8D1BB1B42E0040AF48 /* VCtrlBaseOld.m */,
 				5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocol.h */,
 				5BC79C8F1BB1B42E0040AF48 /* VCtrlBaseTable.h */,
 				5BC79C901BB1B42E0040AF48 /* VCtrlBaseTable.m */,
@@ -2124,6 +2176,7 @@
 				5BA7FD4B1BB980B0005951E7 /* OrderStatusView.swift in Sources */,
 				5BC79D791BB1B75B0040AF48 /* ClarityApiManager.m in Sources */,
 				5BE5B4BB1BB286EF00671BFE /* AlertView.m in Sources */,
+				5B59E5DC1C070346000B7BD7 /* PtrSpinner.m in Sources */,
 				5BE5B61A1BB2E25500671BFE /* SlideToCall.m in Sources */,
 				5BC79D7B1BB1B75B0040AF48 /* NSObject+Api.m in Sources */,
 				5BE5B5AD1BB2B94200671BFE /* AvatarFileCache.m in Sources */,
@@ -2137,6 +2190,7 @@
 				5BE5B5AC1BB2B94200671BFE /* AvatarCacheRequest.m in Sources */,
 				5BE5B4C21BB286EF00671BFE /* DeviceHardware.m in Sources */,
 				5BE5B58B1BB2B94200671BFE /* DBTranslatedResult.m in Sources */,
+				5B59E5DB1C070346000B7BD7 /* PtrScrollView.m in Sources */,
 				5BE5B5C21BB2B94200671BFE /* PLICropAndOverlay.m in Sources */,
 				5BE5B5B81BB2B94200671BFE /* IOManager.m in Sources */,
 				5BE5B60D1BB2E25500671BFE /* DefaultAccessoryView.swift in Sources */,
@@ -2249,6 +2303,7 @@
 				5BE5B5C61BB2B94200671BFE /* PLIParseJson.m in Sources */,
 				5BE5B58F1BB2B94200671BFE /* FMResultSet+DB.m in Sources */,
 				5BC79CD51BB1B42E0040AF48 /* VCtrlNavigation.m in Sources */,
+				5B59E5DD1C070346000B7BD7 /* PtrTableView.m in Sources */,
 				5BE5B5A51BB2B94200671BFE /* ImageCacheKey.m in Sources */,
 				5BE5B5C81BB2B94200671BFE /* PLIProcessListViewImage.m in Sources */,
 				5B8B9DEA1BB5832E006F3725 /* OrdersListCell.swift in Sources */,
@@ -2263,10 +2318,11 @@
 				5BE5B5CC1BB2B94200671BFE /* DictArchive.swift in Sources */,
 				5B88F2E71BB3C7DE009F202C /* User.swift in Sources */,
 				5BC79D721BB1B75B0040AF48 /* ApiCanceler.m in Sources */,
+				5B59E5DE1C070346000B7BD7 /* VCtrlBase.m in Sources */,
 				5BE5B5B51BB2B94200671BFE /* IOHTTPOperation.m in Sources */,
 				5BE5B4DF1BB286EF00671BFE /* UILabel+Utils.m in Sources */,
 				5BC79D741BB1B75B0040AF48 /* ApiCancelerFlag.m in Sources */,
-				5BC79CC11BB1B42E0040AF48 /* VCtrlBase.m in Sources */,
+				5BC79CC11BB1B42E0040AF48 /* VCtrlBaseOld.m in Sources */,
 				5BE5B4CF1BB286EF00671BFE /* NSMutableDictionary+DB.m in Sources */,
 				5BE5B5BE1BB2B94200671BFE /* NSError+IO.m in Sources */,
 				5BE5B4CC1BB286EF00671BFE /* NSDictionary+DB.m in Sources */,
@@ -2274,6 +2330,7 @@
 				5BE5B5A81BB2B94200671BFE /* ImageCacheResult.m in Sources */,
 				5BC79CBB1BB1B42E0040AF48 /* PtrSpinner.m in Sources */,
 				5BE5B5B71BB2B94200671BFE /* IOHTTPStream.m in Sources */,
+				5B59E5D91C070346000B7BD7 /* PtrCollectionView.m in Sources */,
 				5BC79D7A1BB1B75B0040AF48 /* NSDate+Api.m in Sources */,
 				5BE5B4D01BB286EF00671BFE /* NSMutableOrderedSet+Utils.m in Sources */,
 				5BE5B59E1BB2B94200671BFE /* FMDatabaseAdditions.m in Sources */,
@@ -2284,6 +2341,7 @@
 				5BE5B4E31BB286EF00671BFE /* WeakWrapper.m in Sources */,
 				5BE5B5BD1BB2B94200671BFE /* NetReachability.m in Sources */,
 				5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */,
+				5B59E5DA1C070346000B7BD7 /* PtrCtrl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

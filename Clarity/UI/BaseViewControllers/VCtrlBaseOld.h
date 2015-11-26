@@ -15,7 +15,7 @@
 
 typedef void (^BaseOnLoadMoreComplete)(BOOL hasMoreData, BOOL tryAgain);
 
-@interface VCtrlBase : UIViewController <VCtrlBaseProtocol>
+@interface VCtrlBaseOld : UIViewController <VCtrlBaseProtocol>
 
 + (CGFloat)statusBarHeight;
 

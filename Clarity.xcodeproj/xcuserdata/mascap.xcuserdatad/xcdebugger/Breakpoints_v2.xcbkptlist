@@ -185,54 +185,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/BaseViewControllers/TableView/TableView.m"
-            timestampString = "465826168.423071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
-            landmarkName = "-switchToInfsLoadingState"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TableView switchToInfsLoadingState]"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465844807.663233"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "442"
-                  endingLineNumber = "442"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[TableView switchToInfsLoadingState]_block_invoke"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465844807.663589"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "442"
-                  endingLineNumber = "442"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Helper Window/BaseOverlay.swift"
             timestampString = "465927065.408377"
             startingColumnNumber = "9223372036854775807"
@@ -650,22 +602,6 @@
             startingLineNumber = "263"
             endingLineNumber = "263"
             landmarkName = "tableLoadMoreContent(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/BaseViewControllers/TableView/TableView.m"
-            timestampString = "469613415.628975"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-setContentSize:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
