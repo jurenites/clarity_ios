@@ -36,11 +36,7 @@ static NSString *const kTokenName = @"Authorization";
 
 static NSString * const ServerURLKey = @"ServerUrl";
 
-//static NSString * const ProtocolScheme = @"http://";
-//static NSString * const Server = @"hurricanegold.lifechurch.tv/api/v1";//@"staff-portal-d7.local.stagingmonster.com/api/v1";
-
 static ApiRouter * volatile BBSharedApiRouter = nil;
-
 
 @interface ApiRouter () <IOManagerDelegate>
 {

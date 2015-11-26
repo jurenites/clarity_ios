@@ -16,6 +16,7 @@
 		5B52CEDF1BBA817A009437C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CEDE1BBA817A009437C5 /* MessageCell.swift */; };
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; };
 		5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5971D41BCE764800CED18C /* gray_hawk_logo.png */; };
+		5B59E5C61C05E111000B7BD7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5C51C05E111000B7BD7 /* Status.swift */; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; };
 		5B71CD051BBBE9F80093833D /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B71CD041BBBE9F80093833D /* Messages.json */; };
 		5B75493B1BC408950064BA76 /* ConditionsOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */; };
@@ -70,7 +71,6 @@
 		5BC79CC71BB1B42E0040AF48 /* LoadingOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BC79C971BB1B42E0040AF48 /* LoadingOverlay.xib */; };
 		5BC79CC81BB1B42E0040AF48 /* TipOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C981BB1B42E0040AF48 /* TipOverlay.swift */; };
 		5BC79CC91BB1B42E0040AF48 /* TipOverlay.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BC79C991BB1B42E0040AF48 /* TipOverlay.xib */; };
-		5BC79CCA1BB1B42E0040AF48 /* VCtrlDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79C9B1BB1B42E0040AF48 /* VCtrlDatePicker.m */; };
 		5BC79CCB1BB1B42E0040AF48 /* VCtrlDatePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BC79C9C1BB1B42E0040AF48 /* VCtrlDatePicker.xib */; };
 		5BC79CD41BB1B42E0040AF48 /* CustomNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79CAB1BB1B42E0040AF48 /* CustomNavigationBar.m */; };
 		5BC79CD51BB1B42E0040AF48 /* VCtrlNavigation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BC79CAD1BB1B42E0040AF48 /* VCtrlNavigation.m */; };
@@ -360,6 +360,7 @@
 		5B52CEDE1BBA817A009437C5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		5B5971D41BCE764800CED18C /* gray_hawk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gray_hawk_logo.png; path = Resources/gray_hawk_logo.png; sourceTree = "<group>"; };
+		5B59E5C51C05E111000B7BD7 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Entities/Status.swift; sourceTree = "<group>"; };
 		5B71CD021BBBC7310093833D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Message.swift; path = Entities/Message.swift; sourceTree = "<group>"; };
 		5B71CD041BBBE9F80093833D /* Messages.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		5B75493A1BC408950064BA76 /* ConditionsOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConditionsOverlay.swift; sourceTree = "<group>"; };
@@ -436,8 +437,6 @@
 		5BC79C971BB1B42E0040AF48 /* LoadingOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingOverlay.xib; sourceTree = "<group>"; };
 		5BC79C981BB1B42E0040AF48 /* TipOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipOverlay.swift; sourceTree = "<group>"; };
 		5BC79C991BB1B42E0040AF48 /* TipOverlay.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TipOverlay.xib; sourceTree = "<group>"; };
-		5BC79C9A1BB1B42E0040AF48 /* VCtrlDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlDatePicker.h; sourceTree = "<group>"; };
-		5BC79C9B1BB1B42E0040AF48 /* VCtrlDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlDatePicker.m; sourceTree = "<group>"; };
 		5BC79C9C1BB1B42E0040AF48 /* VCtrlDatePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlDatePicker.xib; sourceTree = "<group>"; };
 		5BC79CAA1BB1B42E0040AF48 /* CustomNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomNavigationBar.h; sourceTree = "<group>"; };
 		5BC79CAB1BB1B42E0040AF48 /* CustomNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomNavigationBar.m; sourceTree = "<group>"; };
@@ -1118,6 +1117,7 @@
 				5B71CD021BBBC7310093833D /* Message.swift */,
 				5B8B9DE51BB556AC006F3725 /* Order.swift */,
 				5B88F2E61BB3C7DE009F202C /* User.swift */,
+				5B59E5C51C05E111000B7BD7 /* Status.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1191,8 +1191,6 @@
 				5BC79C971BB1B42E0040AF48 /* LoadingOverlay.xib */,
 				5BC79C981BB1B42E0040AF48 /* TipOverlay.swift */,
 				5BC79C991BB1B42E0040AF48 /* TipOverlay.xib */,
-				5BC79C9A1BB1B42E0040AF48 /* VCtrlDatePicker.h */,
-				5BC79C9B1BB1B42E0040AF48 /* VCtrlDatePicker.m */,
 				5BC79C9C1BB1B42E0040AF48 /* VCtrlDatePicker.xib */,
 				5BE54E631BC284D1007E1173 /* BaseOverlay.swift */,
 			);
@@ -2228,6 +2226,7 @@
 				5BE5B5AA1BB2B94200671BFE /* CIImage+Crop.m in Sources */,
 				5BE5B6141BB2E25500671BFE /* SelectCtrlCell.m in Sources */,
 				5BE5B4E11BB286EF00671BFE /* UITextView+Utils.m in Sources */,
+				5B59E5C61C05E111000B7BD7 /* Status.swift in Sources */,
 				5BE5B5D71BB2B94200671BFE /* StrongTypedContainers.swift in Sources */,
 				5BE5B6171BB2E25500671BFE /* SelectCtrlItem.m in Sources */,
 				5BE5B5A21BB2B94200671BFE /* ImageCache.m in Sources */,
@@ -2260,7 +2259,6 @@
 				5BC79D6E1BB1B75B0040AF48 /* ApiManager.m in Sources */,
 				5BC79CBA1BB1B42E0040AF48 /* TableContentCtrl.m in Sources */,
 				5BE5B4C31BB286EF00671BFE /* EventsTracker.m in Sources */,
-				5BC79CCA1BB1B42E0040AF48 /* VCtrlDatePicker.m in Sources */,
 				8AA4BC651BCD5FBB00191397 /* VCtrlEditMessage.swift in Sources */,
 				5BE5B5CC1BB2B94200671BFE /* DictArchive.swift in Sources */,
 				5B88F2E71BB3C7DE009F202C /* User.swift in Sources */,

@@ -13,9 +13,8 @@
 + (instancetype)current;
 
 - (void)showMainUI;
-- (void)showAnonymousUIIfNeed;
 
-- (void)setStartupPushData:(NSDictionary *)pushData;
-- (void)processPush:(NSDictionary *)pushData;
+//- (void)setStartupPushData:(NSDictionary *)pushData;
+//- (void)processPush:(NSDictionary *)pushData;
 
 @end

@@ -10,22 +10,24 @@
 
 @class GlobalEntitiesCtrl;
 @class User;
+@class Status;
 
 @interface GlobalEntitiesCtrl : NSObject
 
 + (GlobalEntitiesCtrl *)shared;
 
-- (BOOL)loadFromDefaults;
+//- (BOOL)loadFromDefaults;
 
 - (void)fillCurrentUserWithDict:(NSDictionary *)dict;
 - (void)silentUpdateCurrentUserWithUser:(User *)user;//Will not notify event
 - (void)updateCurrentUserWithUser:(User *)user;
 
-- (void)fillCommonInfo:(NSDictionary *)commonInfo;
+- (void)fillFilters:(NSDictionary *)filters;
 - (NSString *)orderFilterForKey:(NSString *)filterKey;
 
-- (void)fillOrderStatuses:(NSDictionary *)orderStatuses;
-- (NSString *)orderStatusForKey:(NSString *)orderStatusKey;
+- (void)fillOrderStatuses:(NSArray *)orderStatuses;
+- (Status *)orderStatusForKey:(NSString *)orderStatusKey;
+//- (NSString *)orderStatusForKey:(NSString *)orderStatusKey;
 //- (void)updateUserLocation:(NSInteger)newLocationId;
 //- (void)setLocations:(NSArray *)locations;
 //- (void)addLocation:(TRNLocation *)location;
