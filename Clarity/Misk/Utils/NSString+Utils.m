@@ -233,7 +233,9 @@
 - (NSString *)validateFullNameWithMaxLength:(NSInteger)maxLength
 {
     NSString *errorDescription = nil;
-    if (self.length < 2) {
+    if (self.length == 0) {
+       errorDescription = NSLocalizedString(@"Missing Information:\nPlease enter login.", nil);
+    } else if (self.length < 2) {
         errorDescription = NSLocalizedString(@"Full name is too small.", nil);
     } else if (self.length > maxLength) {
         errorDescription = NSLocalizedString(@"Full name is too long.", nil);
