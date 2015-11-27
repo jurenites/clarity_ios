@@ -1900,7 +1900,7 @@
 					};
 					5BC79C0E1BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = 6HG57BVZLP;
+						DevelopmentTeam = 5444TF3Z6L;
 					};
 					5BC79C271BB1ADE70040AF48 = {
 						CreatedOnToolsVersion = 6.4;
@@ -2437,7 +2437,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Spring.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				PROVISIONING_PROFILE = "";
 				SERVER_URL = "https://grayhawkvs.com/api";
 				SWIFT_OBJC_BRIDGING_HEADER = "Clarity/Clarity-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -2450,7 +2450,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: PILGRIM CONSULTING, INC. (5444TF3Z6L)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: PILGRIM CONSULTING, INC. (5444TF3Z6L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Clarity/Clarity-Prefix.pch";
