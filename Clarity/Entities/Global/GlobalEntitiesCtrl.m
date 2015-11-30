@@ -51,22 +51,22 @@ static NSString * const OrderFiltersDictKey = @"OrderFilters";
     return self;
 }
 
-//- (BOOL)loadFromDefaults
-//{
-//    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-//    NSDictionary *dict = [ud objectForKey:UserDictKey];
-//    if (!dict) {
-//        return NO;
-//    }
-//    
-//    [self fillCurrentUserWithDict:dict];
-//    
+- (BOOL)loadFromDefaults
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSDictionary *dict = [ud objectForKey:UserDictKey];
+    if (!dict) {
+        return NO;
+    }
+    
+    [self fillCurrentUserWithDict:dict];
+    
 //    _statuses = AssureIsDict([ud valueForKey:StatusesDictKey]);
 //    _orderFiltersDict = AssureIsDict([ud valueForKey:OrderFiltersDictKey]);
 //    _orderFilters = _orderFiltersDict.allKeys;
-//    
-//    return YES;
-//}
+    
+    return YES;
+}
 
 - (void)silentUpdateCurrentUserWithUser:(User *)user
 {
@@ -78,6 +78,15 @@ static NSString * const OrderFiltersDictKey = @"OrderFilters";
 {
     _currentUser = user;
     [self saveUser];
+}
+
+- (BOOL)isMyId:(NSInteger)userId
+{
+    if (userId == self.currentUser.userId) {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (void)updateUserLocation:(NSInteger)newLocationId

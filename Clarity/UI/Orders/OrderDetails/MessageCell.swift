@@ -32,6 +32,7 @@ class MessageCell : UITableViewCell {
             self.lcTextHeight.constant = m.textHeight
             self.uiText.text = m.text
             self.uiUserName.text = m.authorName
+            self.uiBackground.leftSide = !GlobalEntitiesCtrl.shared().isMyId(m.authorId)
         }
     }
     
@@ -87,7 +88,7 @@ class MessageBack : UIView {
         CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
         
         let x = triangleSide/2 + thickness
-        let lineEdge = thickness*0.5 //For lower thickness
+        let lineEdge = thickness*0.5 //For  better thickness
         CGContextMoveToPoint(context, x+lineEdge, thickness+lineEdge)
         if leftSide {
             CGContextAddLineToPoint(context, rect.width-x+lineEdge, thickness+lineEdge)

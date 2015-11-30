@@ -77,6 +77,7 @@ static VCtrlRoot *Current = nil;
     DispatchAfter(0.5, ^{
         if (_splash) {
             if ([ApiRouter shared].isLoggedIn) {
+                [[GlobalEntitiesCtrl shared] loadFromDefaults];
                 [[ClarityApi shared] loadCommonInfo:^{
                     [self showMainUI];
                 } onError:^(NSError *error) {
