@@ -102,15 +102,13 @@ static NSString * const OrderFiltersDictKey = @"OrderFilters";
 
 - (void)saveUser
 {
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     if (_currentUser) {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud setObject:[_currentUser toDict] forKey:UserDictKey];
-        [ud synchronize];
     } else {
-        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         [ud removeObjectForKey:UserDictKey];
-        [ud synchronize];
     }
+    [ud synchronize];
 }
 
 - (void)fillFilters:(NSDictionary *)filters

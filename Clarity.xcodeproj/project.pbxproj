@@ -327,8 +327,6 @@
 		5BFB9D721BC5637000017FDA /* Submitted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D1E1BC5637000017FDA /* Submitted@2x.png */; };
 		5BFB9D731BC5637000017FDA /* Submitted_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D1F1BC5637000017FDA /* Submitted_2.png */; };
 		5BFB9D741BC5637000017FDA /* Submitted_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5BFB9D201BC5637000017FDA /* Submitted_2@2x.png */; };
-		8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */; };
-		8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */; };
 		8AA4BC651BCD5FBB00191397 /* VCtrlEditMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA4BC631BCD5FBB00191397 /* VCtrlEditMessage.swift */; };
 		8AA4BC661BCD5FBB00191397 /* VCtrlEditMessage.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AA4BC641BCD5FBB00191397 /* VCtrlEditMessage.xib */; };
 /* End PBXBuildFile section */
@@ -838,8 +836,6 @@
 		5BFB9D1E1BC5637000017FDA /* Submitted@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Submitted@2x.png"; sourceTree = "<group>"; };
 		5BFB9D1F1BC5637000017FDA /* Submitted_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Submitted_2.png; sourceTree = "<group>"; };
 		5BFB9D201BC5637000017FDA /* Submitted_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Submitted_2@2x.png"; sourceTree = "<group>"; };
-		8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlAvatarMenu.swift; sourceTree = "<group>"; };
-		8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlAvatarMenu.xib; sourceTree = "<group>"; };
 		8AA4BC631BCD5FBB00191397 /* VCtrlEditMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlEditMessage.swift; sourceTree = "<group>"; };
 		8AA4BC641BCD5FBB00191397 /* VCtrlEditMessage.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlEditMessage.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -927,8 +923,6 @@
 				5B8B9DEB1BB5837F006F3725 /* OrdersListCell.xib */,
 				5BE54E651BC2861F007E1173 /* MenuOverlay.swift */,
 				5BE54E671BC28647007E1173 /* MenuOverlay.xib */,
-				8A03FE191BC531EC00964FDC /* VCtrlAvatarMenu.swift */,
-				8A03FE1A1BC531EC00964FDC /* VCtrlAvatarMenu.xib */,
 			);
 			name = Orders;
 			path = UI/Orders;
@@ -2026,7 +2020,6 @@
 				5BFB9D4F1BC5637000017FDA /* add.png in Resources */,
 				5BFB9D6A1BC5637000017FDA /* mobile@2x.png in Resources */,
 				5BE5B6161BB2E25500671BFE /* SelectCtrlCellIpad.xib in Resources */,
-				8A03FE1C1BC531EC00964FDC /* VCtrlAvatarMenu.xib in Resources */,
 				5BE5B6181BB2E25500671BFE /* SelectCtrlTable.xib in Resources */,
 				8AA4BC661BCD5FBB00191397 /* VCtrlEditMessage.xib in Resources */,
 				5BFB9D741BC5637000017FDA /* Submitted_2@2x.png in Resources */,
@@ -2243,7 +2236,6 @@
 				5BE5B4BE1BB286EF00671BFE /* CIContext+Shared.m in Sources */,
 				5BE5B5CA1BB2B94200671BFE /* ApiManager.swift in Sources */,
 				5BE5B5C11BB2B94200671BFE /* PLICropAndBlur.m in Sources */,
-				8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */,
 				5BE5B58C1BB2B94200671BFE /* AvatarInfo.m in Sources */,
 				5B8B667F1BC2D499000CDD1B /* Location.swift in Sources */,
 				5BE5B5C61BB2B94200671BFE /* PLIParseJson.m in Sources */,

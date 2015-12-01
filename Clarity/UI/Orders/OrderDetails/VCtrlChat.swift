@@ -84,10 +84,6 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
         }
     }
     
-    private func populate() {
-        
-    }
-    
     private func setupInputHeight(animated: Bool) {
         let newHeight = min(max(self.uiMessageInput.calculateHeight(), _minMessageInputHeight), _maxMessageInputHeight)
         if newHeight != self.uiMessageInput.height {
@@ -224,7 +220,6 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
             sheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil));
             
             self.presentViewController(sheet, animated: true, completion: nil)
-            
         }
     }
     

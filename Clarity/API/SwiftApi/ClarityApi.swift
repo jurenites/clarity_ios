@@ -124,7 +124,6 @@ import Foundation
                 "limit": NSNumber(integer: count)
             ])
             .next(PliFromApiArray) //async
-//        .next(PliFromApiArray)
     }
     
     func createMessage(orderId: Int, text: String) -> Signal<Message> {

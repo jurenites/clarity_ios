@@ -88,7 +88,7 @@ class MessageBack : UIView {
         CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
         
         let x = triangleSide/2 + thickness
-        let lineEdge = thickness*0.5 //For  better thickness
+        let lineEdge = thickness*0.5 //thickness
         CGContextMoveToPoint(context, x+lineEdge, thickness+lineEdge)
         if leftSide {
             CGContextAddLineToPoint(context, rect.width-x+lineEdge, thickness+lineEdge)

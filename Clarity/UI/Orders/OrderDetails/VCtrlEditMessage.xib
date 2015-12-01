@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCtrlEditMessage" customModule="Clarity" customModuleProvider="target">
@@ -27,12 +27,14 @@
                             <subviews>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Text" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xh6-qB-HzJ">
                                     <rect key="frame" x="8" y="14" width="288" height="145"/>
+                                    <animations/>
                                     <color key="textColor" red="0.29411764705882354" green="0.29411764705882354" blue="0.30196078431372547" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6U-9u-6Lo">
                                     <rect key="frame" x="237" y="167" width="59" height="30"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="59" id="0gP-Ns-Enf"/>
                                         <constraint firstAttribute="height" constant="30" id="vt2-1I-slq"/>
@@ -44,6 +46,7 @@
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ake-Vw-Skf">
                                     <rect key="frame" x="168" y="167" width="59" height="30"/>
+                                    <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="59" id="M29-Zb-48X"/>
                                         <constraint firstAttribute="height" constant="30" id="YAt-Xg-9ad"/>
@@ -54,6 +57,7 @@
                                     </connections>
                                 </button>
                             </subviews>
+                            <animations/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="Xh6-qB-HzJ" firstAttribute="leading" secondItem="cf5-Jy-0GF" secondAttribute="leading" constant="8" id="4cw-J5-OrW"/>
@@ -68,6 +72,7 @@
                             </constraints>
                         </view>
                     </subviews>
+                    <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="cf5-Jy-0GF" secondAttribute="trailing" constant="8" id="9Vc-oV-Iav"/>
@@ -76,6 +81,7 @@
                     </constraints>
                 </view>
             </subviews>
+            <animations/>
             <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="71d-c5-zxm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Pke-0B-san"/>

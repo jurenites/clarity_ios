@@ -60,7 +60,7 @@ static VCtrlRoot *Current = nil;
 
 - (void)showMainUI
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[VCtrlOrders new]];//[VCtrlNavigation createWithRootVC:[VCtrlOrders new]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[VCtrlOrders new]];
     nav.navigationBar.translucent = NO;
     nav.navigationBar.barTintColor = [UIColor colorFromHex:@"#1A5574"];
     nav.navigationBar.tintColor = [UIColor whiteColor];
