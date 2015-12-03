@@ -12,7 +12,7 @@ protocol VCtrlOrderDetailsProtocol {
     func orderChanged(shortOrder: ShortOrder, delete: Bool)
 }
 
-class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
+class VCtrlOrderDetails: VCtrlBaseOld, VCtrlChatDelegate {
     
     private var orderId : Int = 0
     private var order : Order?

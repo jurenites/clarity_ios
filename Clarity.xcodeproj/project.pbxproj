@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5B0A83C31BFF25E00007735E /* FIlter_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A83C11BFF25E00007735E /* FIlter_arrow@2x.png */; };
 		5B0A83C41BFF25E00007735E /* Filter_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A83C21BFF25E00007735E /* Filter_arrow.png */; };
+		5B381E251C0D896D003C02FA /* VCtrlTestTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B381E231C0D896D003C02FA /* VCtrlTestTable.swift */; };
+		5B381E261C0D896D003C02FA /* VCtrlTestTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */; };
+		5B381E2D1C0DC514003C02FA /* RevercedPtrCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */; };
 		5B52CED51BBA6CC6009437C5 /* VCtrlMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CED41BBA6CC6009437C5 /* VCtrlMap.swift */; };
 		5B52CED71BBA6CD9009437C5 /* VCtrlMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CED61BBA6CD9009437C5 /* VCtrlMap.xib */; };
 		5B52CED91BBA79C6009437C5 /* VCtrlChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CED81BBA79C6009437C5 /* VCtrlChat.swift */; };
@@ -20,7 +23,6 @@
 		5B59E5D91C070346000B7BD7 /* PtrCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */; };
 		5B59E5DA1C070346000B7BD7 /* PtrCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */; };
 		5B59E5DB1C070346000B7BD7 /* PtrScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D11C070346000B7BD7 /* PtrScrollView.m */; };
-		5B59E5DC1C070346000B7BD7 /* PtrSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D31C070346000B7BD7 /* PtrSpinner.m */; };
 		5B59E5DD1C070346000B7BD7 /* PtrTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D51C070346000B7BD7 /* PtrTableView.m */; };
 		5B59E5DE1C070346000B7BD7 /* VCtrlBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5D71C070346000B7BD7 /* VCtrlBase.m */; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; };
@@ -359,6 +361,10 @@
 /* Begin PBXFileReference section */
 		5B0A83C11BFF25E00007735E /* FIlter_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIlter_arrow@2x.png"; sourceTree = "<group>"; };
 		5B0A83C21BFF25E00007735E /* Filter_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter_arrow.png; sourceTree = "<group>"; };
+		5B381E231C0D896D003C02FA /* VCtrlTestTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCtrlTestTable.swift; path = TestTableClasses/VCtrlTestTable.swift; sourceTree = "<group>"; };
+		5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCtrlTestTable.xib; path = TestTableClasses/VCtrlTestTable.xib; sourceTree = "<group>"; };
+		5B381E2B1C0DC514003C02FA /* RevercedPtrCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevercedPtrCtrl.h; sourceTree = "<group>"; };
+		5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevercedPtrCtrl.m; sourceTree = "<group>"; };
 		5B52CED41BBA6CC6009437C5 /* VCtrlMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlMap.swift; sourceTree = "<group>"; };
 		5B52CED61BBA6CD9009437C5 /* VCtrlMap.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlMap.xib; sourceTree = "<group>"; };
 		5B52CED81BBA79C6009437C5 /* VCtrlChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlChat.swift; sourceTree = "<group>"; };
@@ -375,8 +381,6 @@
 		5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrScrollProtocol.h; sourceTree = "<group>"; };
 		5B59E5D01C070346000B7BD7 /* PtrScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrScrollView.h; sourceTree = "<group>"; };
 		5B59E5D11C070346000B7BD7 /* PtrScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrScrollView.m; sourceTree = "<group>"; };
-		5B59E5D21C070346000B7BD7 /* PtrSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrSpinner.h; sourceTree = "<group>"; };
-		5B59E5D31C070346000B7BD7 /* PtrSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrSpinner.m; sourceTree = "<group>"; };
 		5B59E5D41C070346000B7BD7 /* PtrTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrTableView.h; sourceTree = "<group>"; };
 		5B59E5D51C070346000B7BD7 /* PtrTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PtrTableView.m; sourceTree = "<group>"; };
 		5B59E5D61C070346000B7BD7 /* VCtrlBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBase.h; sourceTree = "<group>"; };
@@ -451,7 +455,7 @@
 		5BC79C8B1BB1B42E0040AF48 /* TableView_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableView_Private.h; sourceTree = "<group>"; };
 		5BC79C8C1BB1B42E0040AF48 /* VCtrlBaseOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseOld.h; sourceTree = "<group>"; };
 		5BC79C8D1BB1B42E0040AF48 /* VCtrlBaseOld.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBaseOld.m; sourceTree = "<group>"; };
-		5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseProtocol.h; sourceTree = "<group>"; };
+		5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocolOld.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseProtocolOld.h; sourceTree = "<group>"; };
 		5BC79C8F1BB1B42E0040AF48 /* VCtrlBaseTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VCtrlBaseTable.h; sourceTree = "<group>"; };
 		5BC79C901BB1B42E0040AF48 /* VCtrlBaseTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VCtrlBaseTable.m; sourceTree = "<group>"; };
 		5BC79C961BB1B42E0040AF48 /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
@@ -894,6 +898,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B381E221C0D8914003C02FA /* TestTableClasses */ = {
+			isa = PBXGroup;
+			children = (
+				5B381E231C0D896D003C02FA /* VCtrlTestTable.swift */,
+				5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */,
+			);
+			name = TestTableClasses;
+			sourceTree = "<group>";
+		};
 		5B52CEDC1BBA814E009437C5 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -937,12 +950,12 @@
 				5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */,
 				5B59E5CC1C070346000B7BD7 /* PtrCtrl.h */,
 				5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */,
+				5B381E2B1C0DC514003C02FA /* RevercedPtrCtrl.h */,
+				5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */,
 				5B59E5CE1C070346000B7BD7 /* PtrCtrl_Private.h */,
 				5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */,
 				5B59E5D01C070346000B7BD7 /* PtrScrollView.h */,
 				5B59E5D11C070346000B7BD7 /* PtrScrollView.m */,
-				5B59E5D21C070346000B7BD7 /* PtrSpinner.h */,
-				5B59E5D31C070346000B7BD7 /* PtrSpinner.m */,
 				5B59E5D41C070346000B7BD7 /* PtrTableView.h */,
 				5B59E5D51C070346000B7BD7 /* PtrTableView.m */,
 			);
@@ -1140,6 +1153,7 @@
 		5BC79C3D1BB1AE800040AF48 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				5B381E221C0D8914003C02FA /* TestTableClasses */,
 				5B88F2F51BB4157D009F202C /* Orders */,
 				5B88F2EF1BB41537009F202C /* Login */,
 				5BE5B5D81BB2E25500671BFE /* Helper Views */,
@@ -1190,7 +1204,7 @@
 				5BC79C801BB1B42E0040AF48 /* TableView */,
 				5BC79C8C1BB1B42E0040AF48 /* VCtrlBaseOld.h */,
 				5BC79C8D1BB1B42E0040AF48 /* VCtrlBaseOld.m */,
-				5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocol.h */,
+				5BC79C8E1BB1B42E0040AF48 /* VCtrlBaseProtocolOld.h */,
 				5BC79C8F1BB1B42E0040AF48 /* VCtrlBaseTable.h */,
 				5BC79C901BB1B42E0040AF48 /* VCtrlBaseTable.m */,
 			);
@@ -2121,6 +2135,7 @@
 				5BFB9D501BC5637000017FDA /* add@2x.png in Resources */,
 				5BFB9D361BC5637000017FDA /* Address@2x.png in Resources */,
 				5BC79CBD1BB1B42E0040AF48 /* TableInfsView.xib in Resources */,
+				5B381E261C0D896D003C02FA /* VCtrlTestTable.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2162,6 +2177,7 @@
 				5BE5B60A1BB2E25500671BFE /* CustomTextField.m in Sources */,
 				5BE5B5931BB2B94200671BFE /* NonTypedUniqueObject.m in Sources */,
 				5BFB9CC31BC5235B00017FDA /* ChatOptionsOverlay.swift in Sources */,
+				5B381E2D1C0DC514003C02FA /* RevercedPtrCtrl.m in Sources */,
 				5BE5B4C41BB286EF00671BFE /* ImageWrapper.m in Sources */,
 				5BE5B5891BB2B94200671BFE /* Database.m in Sources */,
 				5BE5B61D1BB2E25500671BFE /* VCtrlSelectMultiContent.m in Sources */,
@@ -2176,7 +2192,6 @@
 				5BA7FD4B1BB980B0005951E7 /* OrderStatusView.swift in Sources */,
 				5BC79D791BB1B75B0040AF48 /* ClarityApiManager.m in Sources */,
 				5BE5B4BB1BB286EF00671BFE /* AlertView.m in Sources */,
-				5B59E5DC1C070346000B7BD7 /* PtrSpinner.m in Sources */,
 				5BE5B61A1BB2E25500671BFE /* SlideToCall.m in Sources */,
 				5BC79D7B1BB1B75B0040AF48 /* NSObject+Api.m in Sources */,
 				5BE5B5AD1BB2B94200671BFE /* AvatarFileCache.m in Sources */,
@@ -2297,6 +2312,7 @@
 				5BE5B4BE1BB286EF00671BFE /* CIContext+Shared.m in Sources */,
 				5BE5B5CA1BB2B94200671BFE /* ApiManager.swift in Sources */,
 				5BE5B5C11BB2B94200671BFE /* PLICropAndBlur.m in Sources */,
+				5B381E251C0D896D003C02FA /* VCtrlTestTable.swift in Sources */,
 				8A03FE1B1BC531EC00964FDC /* VCtrlAvatarMenu.swift in Sources */,
 				5BE5B58C1BB2B94200671BFE /* AvatarInfo.m in Sources */,
 				5B8B667F1BC2D499000CDD1B /* Location.swift in Sources */,
@@ -2508,7 +2524,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: PILGRIM CONSULTING, INC. (5444TF3Z6L)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: PILGRIM CONSULTING, INC. (5444TF3Z6L)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Clarity/Clarity-Prefix.pch";

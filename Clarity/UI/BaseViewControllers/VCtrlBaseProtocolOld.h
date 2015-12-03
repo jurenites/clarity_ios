@@ -11,7 +11,7 @@
 #import "UIView+Utils.h"
 #import "ClarityApiManager.h"
 
-@protocol VCtrlBaseProtocol <NSObject>
+@protocol VCtrlBaseProtocolOld <NSObject>
 
 - (void)reportError:(NSError *)error;
 - (void)reportErrorString:(NSString *)string;

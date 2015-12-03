@@ -17,7 +17,8 @@
 {
     [super awakeFromNib];
     
-    _ptrCtrl = [[PtrCtrl alloc] initWithScrollView:self];
+    _ptrCtrl = [[RevercedPtrCtrl alloc] initRevercedWithScrollView:self];
+//    _ptrCtrl = [[PtrCtrl alloc] initWithScrollView:self];
 }
 
 - (void)layoutSubviews

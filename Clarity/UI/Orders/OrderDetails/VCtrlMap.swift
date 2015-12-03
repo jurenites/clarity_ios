@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class VCtrlMap: VCtrlBase, MKMapViewDelegate {
+class VCtrlMap: VCtrlBaseOld, MKMapViewDelegate {
     private var location: Location
     private let _locationDistance: Double = 1000
     

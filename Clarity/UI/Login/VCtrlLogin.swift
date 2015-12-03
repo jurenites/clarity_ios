@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VCtrlLogin : VCtrlBase, UITextFieldDelegate {
+class VCtrlLogin : VCtrlBaseOld, UITextFieldDelegate {
     
     @IBOutlet var uiLogin: CustomTextField!
     @IBOutlet var uiPassword: CustomTextField!

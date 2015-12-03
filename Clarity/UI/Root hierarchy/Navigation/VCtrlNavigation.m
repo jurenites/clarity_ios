@@ -231,7 +231,7 @@ static VCtrlNavigation *Current = nil;
     
     BOOL needNavBar = NO;
     if ([viewController respondsToSelector:@selector(needNavBar)]) {
-        needNavBar = [(VCtrlBase *)viewController needNavBar];
+        needNavBar = [(VCtrlBaseOld *)viewController needNavBar];
     }
     [self setNavigationBarHidden:!needNavBar animated:YES];
     
@@ -245,14 +245,14 @@ static VCtrlNavigation *Current = nil;
     if (self.viewControllers.count > 1) {
         BOOL needBackButton = YES;
         if ([viewController respondsToSelector:@selector(needBackButton)]) {
-            needBackButton = [(VCtrlBase *)viewController needBackButton];
+            needBackButton = [(VCtrlBaseOld *)viewController needBackButton];
         }
         viewController.navigationItem.leftBarButtonItems = needBackButton ? _backBarButtons : nil;
     }
     
     NSArray *customButtons = nil;
     if ([viewController isKindOfClass:[VCtrlBase class]]) {
-        customButtons = [(VCtrlBase *)viewController needCustomButtons];
+        customButtons = [(VCtrlBaseOld *)viewController needCustomButtons];
     }
     
     if (customButtons) {
@@ -261,9 +261,9 @@ static VCtrlNavigation *Current = nil;
     }
     
     if ([viewController isKindOfClass:[VCtrlBase class]]) {
-        if([(VCtrlBase *)viewController needTimer]) {
+        if([(VCtrlBaseOld *)viewController needTimer]) {
             viewController.navigationItem.rightBarButtonItems = _timerBarButtons;
-        } else if([(VCtrlBase *)viewController needLock]) {
+        } else if([(VCtrlBaseOld *)viewController needLock]) {
             viewController.navigationItem.rightBarButtonItems = _lockBarButtons;
         }
     }

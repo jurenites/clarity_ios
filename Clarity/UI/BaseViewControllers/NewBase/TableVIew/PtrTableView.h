@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "PtrScrollProtocol.h"
 #import "PtrCtrl.h"
+#import "RevercedPtrCtrl.h"
 
 @interface PtrTableView : UITableView <PtrScrollProtocol>
 

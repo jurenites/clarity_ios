@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCtrlBaseProtocol.h"
+#import "VCtrlBaseProtocolOld.h"
 #import "VCtrlBaseOld.h"
 #import "TableView.h"
 #import "TableContentCtrl.h"

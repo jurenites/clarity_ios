@@ -1,12 +1,13 @@
 //
-//  PtrCtrl.m
-//  Yingo Yango
+//  RevercedPtrCtrl.m
+//  Clarity
 //
-//  Created by Alexey Klyotzin on 05/10/15.
-//  Copyright © 2015 LucienRucci. All rights reserved.
+//  Created by Oleg Kasimov on 12/1/15.
+//  Copyright © 2015 Spring. All rights reserved.
 //
 
-#import "PtrCtrl.h"
+#import "RevercedPtrCtrl.h"
+
 #import "TablePtrView.h"
 #import "TableInfsView.h"
 #import "NibLoader.h"
@@ -16,21 +17,7 @@
 static const CGFloat AnimationDuration = 0.33;
 static const CGFloat DefaultTriggerTreshold = 1500;
 
-//typedef enum {
-//    PtrStateDefault,
-//    PtrStateReleasePtr,
-//    PtrStateLoading,
-//    PtrStateInfsLoading
-//} PtrState;
-//
-//typedef enum {
-//    InfsStateDefault,
-//    InfsStateLoading,
-//    InfsStateTryAgain,
-//    InfsStateNoMore
-//} InfsState;
-
-@interface PtrCtrl ()
+@interface RevercedPtrCtrl ()
 {
     BOOL _wasTracking;
     UIEdgeInsets _requestedInsets;
@@ -57,9 +44,14 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 
 @end
 
-@implementation PtrCtrl
+@implementation RevercedPtrCtrl
 
-- (instancetype)initWithScrollView:(UIScrollView<PtrScrollProtocol> *)scroll
+@synthesize scroll = _scroll;
+@synthesize ptrEnabled = _ptrEnabled;
+@synthesize infsEnabled = _infsEnabled;
+@synthesize infsTriggerTreshold = _infsTriggerTreshold;
+
+- (instancetype)initRevercedWithScrollView:(UIScrollView<PtrScrollProtocol> *)scroll
 {
     self = [super init];
     if (!self) {
@@ -96,37 +88,6 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     return self;
 }
 
-- (void)setupPtrPos
-{
-    CGFloat offset = -(_scroll.contentOffset.y + _requestedInsets.top);
-    
-    if (_scroll.subviews.lastObject != _ptrView) {
-        [_scroll sendSubviewToBack:_ptrView];
-    }
-    
-    CGRect ptrFrame = _ptrView.frame;
-    
-    if (offset > _ptrViewHeight) {
-        ptrFrame.origin.y = -_requestedInsets.top * (self.shiftPtrByInsets ? 0 : 0) - _ptrViewHeight - 0.5f * (offset - _ptrViewHeight);
-    } else {
-        ptrFrame.origin.y = -_requestedInsets.top * (self.shiftPtrByInsets ? 0 : 0) - _ptrViewHeight - 0.5f * (offset - _ptrViewHeight) * 0;
-    }
-    
-    ptrFrame.origin.x = 0.5f * (_scroll.width - ptrFrame.size.width);
-    _ptrView.frame = ptrFrame;
-    
-    if (PtrStateLoading != _ptrState) {
-        _ptrView.alpha = powf(MAX(MIN(offset / _ptrViewHeight, 1.0f), 0.0f), 0.2f);
-    } else {
-        _ptrView.alpha = 1;
-    }
-}
-
-- (void)setupInfsPos
-{
-    _infsView.y = _scroll.contentSize.height;
-}
-
 - (void)layoutSubviews
 {
     if (_wasTracking && !_scroll.tracking) {
@@ -142,11 +103,11 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     }
     
     if (self.ptrEnabled) {
-        [self setupPtrPos];
+        [self setupPtrPosition];
     }
     
     if (self.infsEnabled) {
-        [self setupInfsPos];
+        [self setupInfPosition];
     }
     
     if (!_spinner.hidden) {
@@ -170,7 +131,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     _spinner.hidden = YES;
 }
 
-//=================== Content insets =====================
+#pragma mark Content Insets
 - (void)setupInsetsAnimated:(BOOL)animated onComplete:(void(^)())onComplete
 {
     UIEdgeInsets actualInsets = _requestedInsets;
@@ -179,14 +140,14 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     
     if (self.ptrEnabled) {
         if (PtrStateLoading == _ptrState) {
-            CGFloat shift = MAX(0, MIN(-_scroll.contentOffset.y, _ptrViewHeight));
-            actualInsets.top += shift;
+            actualInsets.bottom += _ptrViewHeight;
         }
     }
     
     if (self.infsEnabled) {
-        if (InfsStateLoading == _infsState || InfsStateDefault == _infsState) {
-            actualInsets.bottom += _infsViewHeight;
+        if (InfsStateLoading == _infsState) { // || InfsStateDefault == _infsState
+            CGFloat shift = MAX(0, MIN(-_scroll.contentOffset.y, _infsViewHeight));
+            actualInsets.top += shift;
         }
     }
     
@@ -203,7 +164,8 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                             options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              [_scroll setSuperContentInsets:actualInsets];
-                             [self setupPtrPos];
+                             [self setupInfPosition];
+//                             [self setupPtrPosition];
                          }
                          completion:^(BOOL completed){
                              if (onComplete) {
@@ -212,7 +174,8 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                          }];
     } else {
         [_scroll setSuperContentInsets:actualInsets];
-        [self setupPtrPos];
+        [self setupInfPosition];
+//        [self setupPtrPosition];
         if (onComplete) {
             onComplete();
         }
@@ -238,8 +201,8 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 
 - (void)setContentSize:(CGSize)contentSize
 {
-    if (self.infsEnabled) {
-        _infsView.y = _scroll.contentSize.height;
+    if (self.ptrEnabled) {
+        _ptrView.y = _scroll.contentSize.height;
     }
 }
 
@@ -260,15 +223,69 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     [self setupInsetsAnimated:animated];
 }
 
-//=============== Pull to refresh ========================
+#pragma mark Content Offset
+- (void)contentOffsetDidChange:(CGPoint)contentOffset isForward:(BOOL)isForward
+{
+    if (self.ptrEnabled && isForward) {
+        [self processPtrContentOffsetChange:contentOffset];
+    }
+    
+    if (self.infsEnabled && !isForward
+        && (!self.ptrEnabled || _ptrState == PtrStateDefault)) {
+        [self processInfScrollContentOffsetChange:contentOffset];
+    }
+}
+
+- (void)trackingDidEnd
+{
+    if (self.ptrEnabled) {
+        if (PtrStateReleasePtr == _ptrState) {
+            [self switchToPtrLoadState];
+        }
+    }
+    
+    if (self.infsEnabled && (!self.ptrEnabled || _ptrState == PtrStateDefault)) {
+        if (InfsStateTryAgain == _infsState && (-_scroll.contentOffset.y > _infsViewHeight * 1.2f)) {
+            [self switchToInfsLoadingState];
+        }
+    }
+}
+
+#pragma mark PTR
+- (void)setupPtrPosition
+{
+    //PTR View in reverced version should be on the bottom of a scroll
+    CGFloat bottomSpacing = -(_scroll.contentSize.height - _scroll.contentOffset.y - _scroll.height);
+    
+    if (_scroll.subviews.lastObject != _ptrView) {
+        [_scroll sendSubviewToBack:_ptrView];
+    }
+    
+    _ptrView.y = _scroll.contentSize.height;
+    
+    if (PtrStateLoading != _ptrState) {
+        _ptrView.alpha = powf(MAX(MIN(bottomSpacing / _ptrViewHeight, 1.0f), 0.0f), 0.2f);
+    } else {
+        _ptrView.alpha = 1;
+    }
+}
+
 - (void)enablePtr
 {
     _ptrState = PtrStateDefault;
+    _ptrView.frame = CGRectMake(0, 0, _scroll.width, _ptrViewHeight);
+    
     [_ptrView switchToDefaultStateAnimated:NO];
-    _ptrView.alpha = 0;
-    [_scroll addSubview:_ptrView];
+//    _ptrView.alpha = 0;
     [self setupInsetsAnimated:NO];
-    [_scroll setNeedsLayout];
+    [_scroll addSubview:_ptrView];
+    
+    
+//    [_ptrView switchToDefaultStateAnimated:NO];
+//    _ptrView.alpha = 0;
+//    [_scroll addSubview:_ptrView];
+//    [self setupInsetsAnimated:NO];
+//    [_scroll setNeedsLayout];
 }
 
 - (void)disablePtr
@@ -344,12 +361,15 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 
 - (void)processPtrContentOffsetChange:(CGPoint)contentOffset
 {
+    CGFloat bottomSpacing = _scroll.contentSize.height - _scroll.contentOffset.y - _scroll.height;
+    CGFloat hh = (-_ptrViewHeight*1.1f - _requestedInsets.top);
+    
     if (PtrStateDefault == _ptrState) {
-        if (_scroll.tracking && contentOffset.y < (-_ptrViewHeight*1.1f - _requestedInsets.top)) {
+        if (_scroll.tracking && bottomSpacing < hh) {
             [self switchToPtrReleaseState];
         }
     } else if (PtrStateReleasePtr == _ptrState) {
-        if (_scroll.tracking && contentOffset.y > (-_ptrViewHeight*1.1f - _requestedInsets.top)) {
+        if (_scroll.tracking && bottomSpacing > hh) {
             [self switchToPtrDefaultState];
         }
     } else if (PtrStateLoading == _ptrState) {
@@ -366,13 +386,39 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     }
 }
 
-//=================== Infinite scrolling ============================
+
+#pragma mark INF
+- (void)setupInfPosition
+{
+    //Inf View in reverced version should be on the top of a scroll
+    CGFloat topOffset = -(_scroll.contentOffset.y + _requestedInsets.top);
+    
+    CGRect infFrame = _infsView.frame;
+    
+    if (topOffset > _infsViewHeight) {
+        infFrame.origin.y = -_requestedInsets.top * (self.shiftPtrByInsets ? 0 : 0) - _infsViewHeight - 0.5f * (topOffset - _infsViewHeight);
+    } else {
+        infFrame.origin.y = -_requestedInsets.top * (self.shiftPtrByInsets ? 0 : 0) - _infsViewHeight - 0.5f * (topOffset - _infsViewHeight) * 0;
+    }
+    
+    infFrame.origin.x = 0.5f * (_scroll.width - infFrame.size.width);
+    _infsView.frame = infFrame;
+}
+
 - (void)enableInfs
 {
     _infsState = InfsStateDefault;
-    _infsView.frame = CGRectMake(0, 0, _scroll.width, _infsViewHeight);
-    [self setupInsetsAnimated:NO];
+//    _infsView.frame = CGRectMake(0, 0, _scroll.width, _infsViewHeight);
     [_scroll addSubview:_infsView];
+    [self setupInsetsAnimated:NO];
+    [_scroll setNeedsLayout];
+    
+//    _ptrState = PtrStateDefault;
+//    [_ptrView switchToDefaultStateAnimated:NO];
+//    _ptrView.alpha = 0;
+//    [_scroll addSubview:_ptrView];
+//    [self setupInsetsAnimated:NO];
+//    [_scroll setNeedsLayout];
 }
 
 - (void)disableInfs
@@ -398,21 +444,21 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 {
     _infsState = InfsStateDefault;
     [_infsView switchToDefault];
-    [self setupInsetsAnimated:YES onComplete:NULL];
+    [self setupInsetsAnimated:YES];
 }
 
 - (void)switchToTryAgainState
 {
     _infsState = InfsStateTryAgain;
     [_infsView switchToNoMore];
-    [self setupInsetsAnimated:YES onComplete:NULL];
+    [self setupInsetsAnimated:YES];
 }
 
 - (void)switchToNoMoreState
 {
     _infsState = InfsStateNoMore;
     [_infsView switchToNoMore];
-    [self setupInsetsAnimated:YES onComplete:NULL];
+    [self setupInsetsAnimated:YES];
 }
 
 - (void)switchToInfsLoadingState
@@ -444,10 +490,10 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     }];
 }
 
-- (void)processInfScroll
+- (void)processInfScrollContentOffsetChange:(CGPoint)contentOffset
 {
     if (InfsStateDefault == _infsState) {
-        if ((_scroll.contentSize.height - _scroll.contentOffset.y - _scroll.height) < self.infsTriggerTreshold) {
+        if (contentOffset.y < self.infsTriggerTreshold) {
             [self switchToInfsLoadingState];
         }
     }
@@ -477,45 +523,5 @@ static const CGFloat DefaultTriggerTreshold = 1500;
         [self switchToNoMoreState];
     }
 }
-
-//==================================
-
-- (void)contentOffsetDidChange:(CGPoint)contentOffset isForward:(BOOL)isForward
-{
-    if (self.ptrEnabled) {
-        [self processPtrContentOffsetChange:contentOffset];
-    }
-    
-    if (self.infsEnabled && isForward
-        && (!self.ptrEnabled || _ptrState == PtrStateDefault)) {
-        [self processInfScroll];
-    }
-}
-
-- (void)trackingDidEnd
-{
-    if (self.ptrEnabled) {
-        if (PtrStateReleasePtr == _ptrState) {
-            [self switchToPtrLoadState];
-        }
-    }
-    
-    if (self.infsEnabled && (!self.ptrEnabled || _ptrState == PtrStateDefault)) {
-        if (InfsStateTryAgain == _infsState) {
-            CGFloat diff = _scroll.contentOffset.y;
-            
-            if ((_scroll.contentSize.height + [_scroll superContentInsets].bottom) > _scroll.height) {
-                diff -= (_scroll.contentSize.height + [_scroll superContentInsets].bottom - _scroll.height);
-            } else {
-                diff += [_scroll superContentInsets].top;
-            }
-            
-            if (diff > _infsViewHeight * 1.2f) {
-                [self switchToInfsLoadingState];
-            }
-        }
-    }
-}
-
 
 @end

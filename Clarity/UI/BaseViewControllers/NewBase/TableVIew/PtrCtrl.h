@@ -34,7 +34,6 @@
 @property (assign, nonatomic) BOOL ptrEnabled;
 @property (assign, nonatomic) BOOL infsEnabled;
 @property (assign, nonatomic) CGFloat infsTriggerTreshold;
-@property (assign, nonatomic) BOOL isReverced;
 
 @property (readonly, nonatomic) UIScrollView<PtrScrollProtocol> *scroll;
 @property (weak, nonatomic) id<PtrCtrlDelegate> delegate;

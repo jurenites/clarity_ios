@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCtrlBaseProtocol.h"
+#import "VCtrlBaseProtocolOld.h"
 #import "VCtrlNavigation.h"
 #import "NibLoader.h"
 #import "MiscUtils.h"
@@ -15,7 +15,7 @@
 
 typedef void (^BaseOnLoadMoreComplete)(BOOL hasMoreData, BOOL tryAgain);
 
-@interface VCtrlBaseOld : UIViewController <VCtrlBaseProtocol>
+@interface VCtrlBaseOld : UIViewController <VCtrlBaseProtocolOld>
 
 + (CGFloat)statusBarHeight;
 
