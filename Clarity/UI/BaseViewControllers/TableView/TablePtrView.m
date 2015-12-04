@@ -38,10 +38,18 @@
     
     if (animated) {
         [UIView animateWithDuration:0.2 animations:^{
-            self.uiArrow.transform = CGAffineTransformIdentity;
+            if (self.isReverced) {
+                self.uiArrow.transform = CGAffineTransformMakeRotation(M_PI);
+            } else {
+                self.uiArrow.transform = CGAffineTransformIdentity;
+            }
         }];
     } else {
-        self.uiArrow.transform = CGAffineTransformIdentity;
+        if (self.isReverced) {
+            self.uiArrow.transform = CGAffineTransformMakeRotation(M_PI);
+        } else {
+            self.uiArrow.transform = CGAffineTransformIdentity;
+        }
     }
 }
 
@@ -53,7 +61,12 @@
     self.uiTitle.text = NSLocalizedString(@"Release to refresh...", nil);
     
     [UIView animateWithDuration:0.2 animations:^{
-        self.uiArrow.transform = CGAffineTransformMakeRotation(-M_PI);
+        if (self.isReverced) {
+            self.uiArrow.transform = CGAffineTransformIdentity;
+        } else {
+            self.uiArrow.transform = CGAffineTransformMakeRotation(-M_PI);
+        }
+        
     }];
 }
 

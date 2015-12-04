@@ -17,8 +17,11 @@
 {
     [super awakeFromNib];
     
-    _ptrCtrl = [[RevercedPtrCtrl alloc] initRevercedWithScrollView:self];
-//    _ptrCtrl = [[PtrCtrl alloc] initWithScrollView:self];
+    if (self.isReverced) {
+        _ptrCtrl = [[RevercedPtrCtrl alloc] initRevercedWithScrollView:self];
+    } else {
+        _ptrCtrl = [[PtrCtrl alloc] initWithScrollView:self];
+    }
 }
 
 - (void)layoutSubviews

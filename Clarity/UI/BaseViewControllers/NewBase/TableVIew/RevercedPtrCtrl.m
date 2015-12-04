@@ -61,6 +61,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
     _scroll = scroll;
     _ptrView = loadViewFromNib(@"TablePtrView");
     _ptrViewHeight = _ptrView.height;
+    _ptrView.isReverced = YES;
     
     _infsView = loadViewFromNib(@"TableInfsView");
     _infsViewHeight = _infsView.height;
@@ -164,8 +165,8 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                             options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              [_scroll setSuperContentInsets:actualInsets];
-                             [self setupInfPosition];
-//                             [self setupPtrPosition];
+//                             [self setupInfPosition];
+                             [self setupPtrPosition];
                          }
                          completion:^(BOOL completed){
                              if (onComplete) {
@@ -174,8 +175,8 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                          }];
     } else {
         [_scroll setSuperContentInsets:actualInsets];
-        [self setupInfPosition];
-//        [self setupPtrPosition];
+//        [self setupInfPosition];
+        [self setupPtrPosition];
         if (onComplete) {
             onComplete();
         }
@@ -202,7 +203,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 - (void)setContentSize:(CGSize)contentSize
 {
     if (self.ptrEnabled) {
-        _ptrView.y = _scroll.contentSize.height;
+//        _ptrView.y = _scroll.contentSize.height;
     }
 }
 
@@ -226,7 +227,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 #pragma mark Content Offset
 - (void)contentOffsetDidChange:(CGPoint)contentOffset isForward:(BOOL)isForward
 {
-    if (self.ptrEnabled && isForward) {
+    if (self.ptrEnabled ) { //&& isForward
         [self processPtrContentOffsetChange:contentOffset];
     }
     
@@ -274,18 +275,10 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 {
     _ptrState = PtrStateDefault;
     _ptrView.frame = CGRectMake(0, 0, _scroll.width, _ptrViewHeight);
-    
+    _ptrView.alpha = 0;
     [_ptrView switchToDefaultStateAnimated:NO];
-//    _ptrView.alpha = 0;
     [self setupInsetsAnimated:NO];
     [_scroll addSubview:_ptrView];
-    
-    
-//    [_ptrView switchToDefaultStateAnimated:NO];
-//    _ptrView.alpha = 0;
-//    [_scroll addSubview:_ptrView];
-//    [self setupInsetsAnimated:NO];
-//    [_scroll setNeedsLayout];
 }
 
 - (void)disablePtr
@@ -319,7 +312,6 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 - (void)switchToPtrDefaultStateAfterLoading
 {
     _ptrState = PtrStateDefault;
-    
     [self setupInsetsAnimated:YES onComplete:^{
         [_ptrView switchToDefaultStateAnimated:NO];
     }];
@@ -408,17 +400,10 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 - (void)enableInfs
 {
     _infsState = InfsStateDefault;
-//    _infsView.frame = CGRectMake(0, 0, _scroll.width, _infsViewHeight);
+
     [_scroll addSubview:_infsView];
     [self setupInsetsAnimated:NO];
     [_scroll setNeedsLayout];
-    
-//    _ptrState = PtrStateDefault;
-//    [_ptrView switchToDefaultStateAnimated:NO];
-//    _ptrView.alpha = 0;
-//    [_scroll addSubview:_ptrView];
-//    [self setupInsetsAnimated:NO];
-//    [_scroll setNeedsLayout];
 }
 
 - (void)disableInfs

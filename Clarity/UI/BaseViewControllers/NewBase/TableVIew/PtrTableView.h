@@ -13,4 +13,6 @@
 
 @interface PtrTableView : UITableView <PtrScrollProtocol>
 
+@property (assign, nonatomic) IBInspectable BOOL isReverced;
+
 @end

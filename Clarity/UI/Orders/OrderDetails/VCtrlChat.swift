@@ -13,7 +13,8 @@ protocol VCtrlChatDelegate {
     func chatUpdated()
 }
 
-class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
+//class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
+class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, EventsHubProtocol {
     let _pageSize = 20
     var _messages = [Message]()
     var delegate: VCtrlChatDelegate?
@@ -22,6 +23,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
     private var orderId: Int = 0
     private var _maxMessageInputHeight: CGFloat = 0
     private var _minMessageInputHeight: CGFloat = 0
+    
+    @IBOutlet var uiTableView: PtrTableView!
     
     @IBOutlet var lcBottomMargin: NSLayoutConstraint!
     @IBOutlet var lcInputHeight: NSLayoutConstraint!
@@ -39,12 +42,20 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func isNeedPullToRefresh() -> Bool {
+        return true
+    }
+    
+    override func isNeedInfiniteScroll() -> Bool {
+        return true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = NSLocalizedString("Messages", comment: "")
         
-        self.tableView.registerNib(UINib(nibName: MessageCell.nibName(), bundle: nil), forCellReuseIdentifier: MessageCell.nibName())
+        self.uiTableView.registerNib(UINib(nibName: MessageCell.nibName(), bundle: nil), forCellReuseIdentifier: MessageCell.nibName())
         
         self.uiMessageInput.text = "X\n"
         _minMessageInputHeight = self.uiMessageInput.calculateHeight()
@@ -70,7 +81,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         if _messages.count == 0 {
-            self.tableView.alpha = 0;
+            self.uiTableView.alpha = 0;
             self.triggerReloadContent()
         }
     }
@@ -117,8 +128,8 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
                     self._messagesCountChanged = true
                     self.hideLoadingOverlay()
                     self._messages += [message]
-                    self.tableView.reloadData()
-                    self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
+                    self.uiTableView.reloadData()
+                    self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                     }) { (error: NSError) -> Void in
                         self.hideLoadingOverlay()
                         self.reportError(error)
@@ -132,11 +143,6 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
         self.setupInputHeight(true)
     }
     
-//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-//        let currentString = textView.text
-//        let newString = currentString.stringByReplacingCharactersInRange(range, withString: text)
-//        return true
-//    }
     
     //MARK: Keyboard
     override func keyboardWillShowWithSize(kbdSize: CGSize, duration: NSTimeInterval, curve: UIViewAnimationOptions) {
@@ -190,7 +196,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
                     .success({
                         self.hideLoadingOverlay()
                         mesage.isRead = false
-                        self.tableView.reloadData()
+                        self.uiTableView.reloadData()
                     }, error: { (error: NSError) -> Void in
                         self.reportError(error)
                         self.hideLoadingOverlay()
@@ -202,7 +208,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
                 
                 editMessage.onChange = {text in
                     mesage.text = text
-                    self.tableView.reloadData()
+                    self.uiTableView.reloadData()
                 }
                 
                 editMessage.show()
@@ -231,7 +237,7 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
     func removeMessageWithId(messageId: NSInteger) {
         if let idx = _messages.find({message in message.messageId == messageId}) {
             _messages.removeAtIndex(idx)
-            self.tableView.reloadData()
+            self.uiTableView.reloadData()
         }
     }
     
@@ -240,10 +246,11 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
         let canceler = ClarityApi.shared().getMessages(orderId, offset: 0, count: _pageSize)
             .success({ (messages : [Message]) in
                 self._messages = messages
-                self.tableView.reloadData()
+                self.uiTableView.reloadData()
                 UIView.animateWithDuration(0.33, animations: { () -> Void in
-                    self.tableView.alpha = 1;
+                    self.uiTableView.alpha = 1;
                 })
+                self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
                 onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
@@ -253,28 +260,71 @@ class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
         return ApiCancelerSignal.wrap(canceler)
     }
     
-    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+//    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+//        return self.baseReloadContent(onComplete)
+//    }
+    
+//    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+//        let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
+//            .success({ (messages : [Message]) in
+//                self._messages += messages
+//                self.tableView.reloadData()
+//                onComplete(self._messages.count >= self._pageSize, true)
+//                }, error: { (error: NSError) in
+//                    self.reportError(error)
+//                    onComplete(false, false)
+//            })
+//        
+//        return ApiCancelerSignal.wrap(canceler)
+//    }
+    
+    override func ptrReloadContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         return self.baseReloadContent(onComplete)
     }
     
-    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+    override func ptrLoadMoreContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
             .success({ (messages : [Message]) in
-                self._messages += messages
-                self.tableView.reloadData()
+                if messages.count > 0 {
+                    let prev = self.uiTableView.contentSize.height - self.uiTableView.contentOffset.y
+                    self._messages.insertContentsOf(messages, at: 0)
+                    
+                    self.uiTableView.reloadData()
+                    self.uiTableView.contentOffset = CGPoint(x: 0, y: self.uiTableView.contentSize.height - prev)
+
+                }
+//                self._messages += messages
+//                self.uiTableView.reloadData()
                 onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
                     onComplete(false, false)
             })
+//        let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
+//            .success({ (orders : [ShortOrder]) in
+//                if orders.count > 0 {
+//                    //                    self._orders += orders
+//                    let prev = self.uiTable.contentSize.height - self.uiTable.contentOffset.y
+//                    self._orders.insertContentsOf(orders, at: 0)
+//                    
+//                    self.uiTable.reloadData()
+//                    self.uiTable.contentOffset = CGPoint(x: 0, y: self.uiTable.contentSize.height - prev)
+//                }
+//                
+//                onComplete(self._orders.count >= self._pageSize, true)
+//                }, error: { (error: NSError) in
+//                    self.reportError(error)
+//                    onComplete(false, true)
+//            })
         
         return ApiCancelerSignal.wrap(canceler)
     }
+
     
     //MARK: EventsHubProtocol
     func updateChat(orderId: Int) {
         if self.isOnScreen && self.orderId == orderId {
-            self.triggerInfiniteScroll()
+            self.triggerReloadContent()
         }
     }
 }
