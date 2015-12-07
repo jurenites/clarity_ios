@@ -65,9 +65,9 @@
     
     if (_connection) {
     
-//#if defined(DEBUG) || defined(TESTING)
-//        NSLog(@"%@", [self curlString:req]);
-//#endif
+#if defined(DEBUG)
+        NSLog(@"%@", [self curlString:req]);
+#endif
     
         [_connection start];
         [self needSpinner];
@@ -185,9 +185,9 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     
-//#if defined(DEBUG) || defined(TESTING)
-//    [[self class] printJsonData:_receivedData];
-//#endif
+#if defined(DEBUG)
+    [[self class] printJsonData:_receivedData];
+#endif
     
     if (_outFileHandle) {
         [_outFileHandle closeFile];

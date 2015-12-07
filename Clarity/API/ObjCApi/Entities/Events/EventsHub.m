@@ -64,15 +64,6 @@
     }
 }
 
-- (void)scheduleDidUpdate
-{
-    for (id<EventsHubProtocol> d in [_delegates getDelegates]) {
-        if ([d respondsToSelector:@selector(scheduleDidUpdate)]) {
-            [d scheduleDidUpdate];
-        }
-    }
-}
-
 #pragma mark -- Flows
 - (void)setupFlows
 {

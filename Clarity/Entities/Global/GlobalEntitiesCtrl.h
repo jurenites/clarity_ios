@@ -16,11 +16,12 @@
 
 + (GlobalEntitiesCtrl *)shared;
 
-//- (BOOL)loadFromDefaults;
+- (BOOL)loadFromDefaults;
 
 - (void)fillCurrentUserWithDict:(NSDictionary *)dict;
 - (void)silentUpdateCurrentUserWithUser:(User *)user;//Will not notify event
 - (void)updateCurrentUserWithUser:(User *)user;
+- (BOOL)isMyId:(NSInteger)userId;
 
 - (void)fillFilters:(NSDictionary *)filters;
 - (NSString *)orderFilterForKey:(NSString *)filterKey;

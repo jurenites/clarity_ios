@@ -13,7 +13,6 @@ protocol VCtrlChatDelegate {
     func chatUpdated()
 }
 
-//class VCtrlChat: VCtrlBaseTable, UITextViewDelegate, EventsHubProtocol {
 class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, EventsHubProtocol {
     let _pageSize = 20
     var _messages = [Message]()
@@ -93,10 +92,6 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                 delegate.chatUpdated()
             }
         }
-    }
-    
-    private func populate() {
-        
     }
     
     private func setupInputHeight(animated: Bool) {
@@ -230,7 +225,6 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
             sheet.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil));
             
             self.presentViewController(sheet, animated: true, completion: nil)
-            
         }
     }
     

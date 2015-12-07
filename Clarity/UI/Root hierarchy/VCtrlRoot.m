@@ -60,7 +60,7 @@ static VCtrlRoot *Current = nil;
 
 - (void)showMainUI
 {
-    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[VCtrlOrders new]];// [VCtrlTestTable new]];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[VCtrlOrders new]];
     nav.navigationBar.translucent = NO;
     nav.navigationBar.barTintColor = [UIColor colorFromHex:@"#1A5574"];
     nav.navigationBar.tintColor = [UIColor whiteColor];
@@ -77,6 +77,7 @@ static VCtrlRoot *Current = nil;
     DispatchAfter(0.5, ^{
         if (_splash) {
             if ([ApiRouter shared].isLoggedIn) {
+                [[GlobalEntitiesCtrl shared] loadFromDefaults];
                 [[ClarityApi shared] loadCommonInfo:^{
                     [self showMainUI];
                 } onError:^(NSError *error) {
