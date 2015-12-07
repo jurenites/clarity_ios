@@ -11,7 +11,4 @@
 
 @interface RevercedPtrCtrl : PtrCtrl
 
-- (instancetype)initRevercedWithScrollView:(UIScrollView<PtrScrollProtocol> *)scroll;
-
-
 @end

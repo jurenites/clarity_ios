@@ -250,7 +250,11 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                 UIView.animateWithDuration(0.33, animations: { () -> Void in
                     self.uiTableView.alpha = 1;
                 })
-                self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                
+                if (self.uiTableView.indexPathsForVisibleRows?.contains(NSIndexPath(forRow: self._messages.count-1, inSection: 0)) == false) {
+                    self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                }
+                
                 onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
@@ -259,24 +263,6 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
         
         return ApiCancelerSignal.wrap(canceler)
     }
-    
-//    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-//        return self.baseReloadContent(onComplete)
-//    }
-    
-//    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-//        let canceler = ClarityApi.shared().getMessages(orderId, offset: self._messages.count, count: 10)
-//            .success({ (messages : [Message]) in
-//                self._messages += messages
-//                self.tableView.reloadData()
-//                onComplete(self._messages.count >= self._pageSize, true)
-//                }, error: { (error: NSError) in
-//                    self.reportError(error)
-//                    onComplete(false, false)
-//            })
-//        
-//        return ApiCancelerSignal.wrap(canceler)
-//    }
     
     override func ptrReloadContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         return self.baseReloadContent(onComplete)
@@ -293,29 +279,12 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     self.uiTableView.contentOffset = CGPoint(x: 0, y: self.uiTableView.contentSize.height - prev)
 
                 }
-//                self._messages += messages
-//                self.uiTableView.reloadData()
+                
                 onComplete(self._messages.count >= self._pageSize, true)
                 }, error: { (error: NSError) in
                     self.reportError(error)
                     onComplete(false, false)
             })
-//        let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
-//            .success({ (orders : [ShortOrder]) in
-//                if orders.count > 0 {
-//                    //                    self._orders += orders
-//                    let prev = self.uiTable.contentSize.height - self.uiTable.contentOffset.y
-//                    self._orders.insertContentsOf(orders, at: 0)
-//                    
-//                    self.uiTable.reloadData()
-//                    self.uiTable.contentOffset = CGPoint(x: 0, y: self.uiTable.contentSize.height - prev)
-//                }
-//                
-//                onComplete(self._orders.count >= self._pageSize, true)
-//                }, error: { (error: NSError) in
-//                    self.reportError(error)
-//                    onComplete(false, true)
-//            })
         
         return ApiCancelerSignal.wrap(canceler)
     }

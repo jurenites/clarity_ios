@@ -8,13 +8,15 @@
 
 import UIKit
 
-class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol {
+class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol { //Table
     
     let _pageSize = 10
     var _orders = [ShortOrder]()
     
     var _filterString: String = ""
     var _needUpdate: Bool = false
+    
+    @IBOutlet var uiTableView: PtrTableView!
     
     @IBOutlet var uiTableHeader: UIView!
     @IBOutlet var uiFilter: SelectCtrl!
@@ -27,13 +29,13 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func needNavBar() -> Bool {
-        return true
-    }
+//    override func needNavBar() -> Bool {
+//        return true
+//    }
     
-    override func needBackButton() -> Bool {
-        return false
-    }
+//    override func needBackButton() -> Bool {
+//        return false
+//    }
     
     override func isNeedInfiniteScroll() -> Bool {
         return true
@@ -43,7 +45,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         super.viewDidLoad()
         
         self.navigationItem.title = NSLocalizedString("Order List", comment: "")
-        self.tableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
+        self.uiTableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
         
         let accessoryView = DefaultAccessoryView.create()
         uiFilter.inputAccessoryView = accessoryView
@@ -65,7 +67,7 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         if _orders.count == 0 {
-            self.tableView.alpha = 0;
+            self.uiTableView.alpha = 0;
             self.triggerReloadContent()
         }
     }
@@ -104,13 +106,13 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         if let currOrderIndex = _orders.indexOf({$0.orderId == shortOrder.orderId}) {
             if !delete {
                 _orders[currOrderIndex] = shortOrder
-                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
             } else {
                 if let nav = self.navigationController {
                     nav.popViewControllerAnimated(true)
                 }
                 _orders.removeAtIndex(currOrderIndex)
-                self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
             }
         }
     }
@@ -145,13 +147,13 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
             .success({ (orders : [ShortOrder]) in
                 self._orders = orders
                 self.uiTableHeader.hidden = false
-                self.tableView.reloadData()
+                self.uiTableView.reloadData()
                 UIView.animateWithDuration(0.33, animations: { () -> Void in
-                    self.tableView.alpha = 1;
+                    self.uiTableView.alpha = 1;
                 })
                 onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
-                self.tableView.alpha = 1
+                self.uiTableView.alpha = 1
                 self.uiTableHeader.hidden = true
                 self.reportError(error)
                 onComplete(false, true)
@@ -160,15 +162,20 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         return ApiCancelerSignal.wrap(canceler)
     }
     
-    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+    override func ptrReloadContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         return self.baseReloadContent(onComplete)
     }
     
-    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+//    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+//        return self.baseReloadContent(onComplete)
+//    }
+    
+//    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+    override func ptrLoadMoreContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in
                 self._orders += orders
-                self.tableView.reloadData()
+                self.uiTableView.reloadData()
                 onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
                 self.reportError(error)

@@ -145,11 +145,9 @@ static const CGFloat PlaceholderWidth = 270;
         [avatarButton setImage:[UIImage imageNamed:@"96"] forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(showProfileOverlay) forControlEvents:UIControlEventTouchUpInside];
         
-        //        avatarButton.backgroundColor = [UIColor greenColor];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
-        
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"" style:UIBarButtonItemStylePlain target:NULL action:NULL];
     }
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"" style:UIBarButtonItemStylePlain target:NULL action:NULL];
     
     [self kbdSubscribe];
     [self configurePtr];
@@ -160,8 +158,8 @@ static const CGFloat PlaceholderWidth = 270;
     }
     [self.view setNeedsLayout];
 
-//    [self configureBackButton];
-//    
+    [self configureBackButton];
+//
 //    if ([self needCompanyLogo] && ![Settings shared].logoInCircles) {
 //        if (self.navigationController.viewControllers.count == 1) {
 //            NSString *companyId = ToString(@([Settings shared].companyId));
@@ -305,16 +303,16 @@ static const CGFloat PlaceholderWidth = 270;
 //    }];
 //}
 
-//- (void)configureBarButton:(UIBarButtonItem *)barButton
-//{
+- (void)configureBarButton:(UIBarButtonItem *)barButton
+{
 //    [barButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont safeFontWithName:@"Cabin-Regular" size:15]}
 //                             forState:UIControlStateNormal];
-//}
+}
 
 - (void)configureBackButton
 {
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:self.navigationItem.title style:UIBarButtonItemStylePlain
-                                                            target:nil action:NULL];
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain
+                                                            target:nil action:NULL]; //self.navigationItem.title
     
     [self configureBarButton:back];
     self.navigationItem.backBarButtonItem = back;

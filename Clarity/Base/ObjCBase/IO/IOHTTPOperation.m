@@ -66,7 +66,7 @@
     if (_connection) {
     
 //#if defined(DEBUG) || defined(TESTING)
-        NSLog(@"%@", [self curlString:req]);
+//        NSLog(@"%@", [self curlString:req]);
 //#endif
     
         [_connection start];
@@ -186,7 +186,7 @@
 {
     
 //#if defined(DEBUG) || defined(TESTING)
-    [[self class] printJsonData:_receivedData];
+//    [[self class] printJsonData:_receivedData];
 //#endif
     
     if (_outFileHandle) {

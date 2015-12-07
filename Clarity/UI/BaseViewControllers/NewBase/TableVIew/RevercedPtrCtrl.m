@@ -51,7 +51,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 @synthesize infsEnabled = _infsEnabled;
 @synthesize infsTriggerTreshold = _infsTriggerTreshold;
 
-- (instancetype)initRevercedWithScrollView:(UIScrollView<PtrScrollProtocol> *)scroll
+- (instancetype)initWithScrollView:(UIScrollView<PtrScrollProtocol> *)scroll
 {
     self = [super init];
     if (!self) {
@@ -165,7 +165,6 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                             options:UIViewAnimationOptionAllowUserInteraction|UIViewAnimationOptionBeginFromCurrentState
                          animations:^{
                              [_scroll setSuperContentInsets:actualInsets];
-//                             [self setupInfPosition];
                              [self setupPtrPosition];
                          }
                          completion:^(BOOL completed){
@@ -175,7 +174,6 @@ static const CGFloat DefaultTriggerTreshold = 1500;
                          }];
     } else {
         [_scroll setSuperContentInsets:actualInsets];
-//        [self setupInfPosition];
         [self setupPtrPosition];
         if (onComplete) {
             onComplete();
@@ -203,7 +201,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 - (void)setContentSize:(CGSize)contentSize
 {
     if (self.ptrEnabled) {
-//        _ptrView.y = _scroll.contentSize.height;
+        _ptrView.y = _scroll.contentSize.height;
     }
 }
 
@@ -227,7 +225,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 #pragma mark Content Offset
 - (void)contentOffsetDidChange:(CGPoint)contentOffset isForward:(BOOL)isForward
 {
-    if (self.ptrEnabled ) { //&& isForward
+    if (self.ptrEnabled ) {
         [self processPtrContentOffsetChange:contentOffset];
     }
     
@@ -313,7 +311,7 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 {
     _ptrState = PtrStateDefault;
     [self setupInsetsAnimated:YES onComplete:^{
-        [_ptrView switchToDefaultStateAnimated:NO];
+        [_ptrView switchToDefaultStateAnimated:YES];
     }];
 }
 

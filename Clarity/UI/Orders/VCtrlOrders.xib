@@ -13,9 +13,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCtrlOrders" customModule="Clarity" customModuleProvider="target">
             <connections>
-                <outlet property="tableView" destination="RYc-f1-fMb" id="UjV-Kh-4oU"/>
+                <outlet property="ptrScrollView" destination="RYc-f1-fMb" id="tsr-RH-uO7"/>
                 <outlet property="uiFilter" destination="BeC-qy-sC8" id="umf-Py-q1K"/>
                 <outlet property="uiTableHeader" destination="iLa-v8-Iod" id="60Q-Mz-VvD"/>
+                <outlet property="uiTableView" destination="RYc-f1-fMb" id="UXL-mO-Lei"/>
                 <outlet property="view" destination="iN0-l3-epB" id="bNe-F4-1sr"/>
             </connections>
         </placeholder>
@@ -24,7 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RYc-f1-fMb" customClass="TableView">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="RYc-f1-fMb" customClass="PtrTableView">
                     <rect key="frame" x="0.0" y="42" width="320" height="526"/>
                     <animations/>
                     <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,6 +80,9 @@
                             <constraint firstAttribute="bottom" secondItem="IMH-jA-vyR" secondAttribute="bottom" constant="3" id="oiB-dz-egk"/>
                         </constraints>
                     </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReverced" value="NO"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="G2m-et-hKE"/>
                         <outlet property="delegate" destination="-1" id="xGB-37-Mh8"/>
