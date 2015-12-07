@@ -114,13 +114,10 @@ static const CGFloat PlaceholderWidth = 270;
 {
     [super viewDidLoad];
     
-//    self.healthKit = [HealthKitAccess new];
-    
     _spinner = loadViewFromNib(@"Spinner");
-//    _api = [YYApi new];
     _api = [ClarityApiManager new];
     [self.view addSubview:_spinner];
-        
+
     _placehoderFont = [UIFont systemFontOfSize:16];
     _placehoderColor = [UIColor colorWithWhite:0.66 alpha:1];
     _placehoderLabel = [UILabel new];
@@ -131,6 +128,12 @@ static const CGFloat PlaceholderWidth = 270;
     [self.scrollView addSubview:_placehoderLabel];
     
     self.ptrScrollView.ptrCtrl.delegate = self;
+    
+    self.isNeedAvatarButton = YES;
+    
+    if (self.navigationController.navigationBar) {
+        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -147,7 +150,6 @@ static const CGFloat PlaceholderWidth = 270;
         
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
     }
-//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"" style:UIBarButtonItemStylePlain target:NULL action:NULL];
     
     [self kbdSubscribe];
     [self configurePtr];

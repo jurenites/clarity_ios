@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BaseOverlay: VCtrlBaseOld, UIGestureRecognizerDelegate {
+class BaseOverlay: VCtrlBase, UIGestureRecognizerDelegate {
     private var _onTapFunc: (() -> Void)?
     @IBOutlet var uiTapBackground: UIView!
     private var _window: UIWindow!
