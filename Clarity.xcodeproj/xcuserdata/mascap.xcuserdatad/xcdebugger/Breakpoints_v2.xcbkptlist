@@ -121,54 +121,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/BaseViewControllers/TableView/TableView.m"
-            timestampString = "465826168.423071"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
-            landmarkName = "-switchToInfsLoadingState"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[TableView switchToInfsLoadingState]"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465844807.663233"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "442"
-                  endingLineNumber = "442"
-                  offsetFromSymbolStart = "220">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[TableView switchToInfsLoadingState]_block_invoke"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/BaseViewControllers/TableView/TableView.m"
-                  timestampString = "465844807.663589"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "442"
-                  endingLineNumber = "442"
-                  offsetFromSymbolStart = "22">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Helper Window/BaseOverlay.swift"
             timestampString = "465927065.408377"
             startingColumnNumber = "9223372036854775807"
@@ -176,22 +128,6 @@
             startingLineNumber = "58"
             endingLineNumber = "58"
             landmarkName = "actTap()"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/Entities/Order.swift"
-            timestampString = "466612935.575095"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "75"
-            endingLineNumber = "75"
-            landmarkName = "fillWithApiDict(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -355,22 +291,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
-            timestampString = "469709683.606606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "orderChanged(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Clarity/Base/ObjCBase/IO/IOHTTPOperation.m"
             timestampString = "467050249.549356"
             startingColumnNumber = "9223372036854775807"
@@ -499,13 +419,13 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/BaseViewControllers/TableView/TableView.m"
-            timestampString = "469613415.628975"
+            filePath = "Clarity/UI/BaseViewControllers/TableView/TablePtrView.m"
+            timestampString = "470932053.9277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "254"
-            endingLineNumber = "254"
-            landmarkName = "-setContentSize:"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
+            landmarkName = "-switchToDefaultStateAnimated:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -515,45 +435,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/VCtrlOrders.swift"
-            timestampString = "469638717.726015"
+            filePath = "Clarity/UI/BaseViewControllers/NewBase/TableVIew/RevercedPtrCtrl.m"
+            timestampString = "471183180.705186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "baseReloadContent(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/Entities/Global/GlobalEntitiesCtrl.m"
-            timestampString = "470577353.350737"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "-isMyId:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/Entities/Global/GlobalEntitiesCtrl.m"
-            timestampString = "470577354.022003"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "89"
-            endingLineNumber = "89"
-            landmarkName = "-isMyId:"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "-initWithScrollView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
