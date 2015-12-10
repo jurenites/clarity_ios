@@ -29,14 +29,6 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         fatalError("init(coder:) has not been implemented")
     }
     
-//    override func needNavBar() -> Bool {
-//        return true
-//    }
-    
-//    override func needBackButton() -> Bool {
-//        return false
-//    }
-    
     override func isNeedInfiniteScroll() -> Bool {
         return true
     }

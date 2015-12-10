@@ -255,17 +255,19 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 {
     //PTR View in reverced version should be on the bottom of a scroll
     CGFloat bottomSpacing = -(_scroll.contentSize.height - _scroll.contentOffset.y - _scroll.height);
-    
+   
     if (_scroll.subviews.lastObject != _ptrView) {
         [_scroll sendSubviewToBack:_ptrView];
     }
     
     _ptrView.y = _scroll.contentSize.height;
-    
-    if (PtrStateLoading != _ptrState) {
-        _ptrView.alpha = powf(MAX(MIN(bottomSpacing / _ptrViewHeight, 1.0f), 0.0f), 0.2f);
-    } else {
+
+    if (PtrStateDefault == _ptrState && (_scroll.height-_scroll.contentSize.height > 0)){
+        _ptrView.alpha = MIN(MAX(_scroll.contentOffset.y/20.0, 0), 1.0f);
+    } else if (PtrStateLoading == _ptrState) {
         _ptrView.alpha = 1;
+    } else {
+        _ptrView.alpha = powf(MAX(MIN(bottomSpacing / _ptrViewHeight, 1.0f), 0.0f), 0.2f);
     }
 }
 
@@ -353,6 +355,11 @@ static const CGFloat DefaultTriggerTreshold = 1500;
 {
     CGFloat bottomSpacing = _scroll.contentSize.height - _scroll.contentOffset.y - _scroll.height;
     CGFloat hh = (-_ptrViewHeight*1.1f - _requestedInsets.top);
+    
+    //If _scroll height bigger then scroll content height then use content offset instead of bottom spacing
+    if (_scroll.height-_scroll.contentSize.height > 0) {
+        bottomSpacing = -_scroll.contentOffset.y;
+    }
     
     if (PtrStateDefault == _ptrState) {
         if (_scroll.tracking && bottomSpacing < hh) {
