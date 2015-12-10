@@ -289,33 +289,22 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
     
     //MARK: EventsHubProtocol
     func updateChat(orderId: Int) {
-        //Add here check on existiong message
         if self.isOnScreen && self.orderId == orderId {
             ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
                 .success({ (messages: [Message]) in
                     if messages.count > 0 {
-                        var indexPaths = [NSIndexPath]()
-                        for index in self._messages.count-1...self._messages.count-1 + messages.count {
-                            indexPaths.append(NSIndexPath(forRow: index, inSection: 0))
-                        }
-                        
-                        self._messages.insertContentsOf(messages, at: self._messages.count-1)
-                        
+                        //Add here check on existiong message
+
+                        let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
+                        self._messages.insertContentsOf(messages, at: self._messages.count)
                         self.uiTableView.beginUpdates()
-                        self.uiTableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: UITableViewRowAnimation.Bottom)
+                        self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.uiTableView.endUpdates()
+                        self._messagesCountChanged = true
                     }
                     }, error: { (error: NSError) in
                         self.reportError(error)
                 })
-            //Should do something like this
-            //self._messages.insertContentsOf(messages, at: 0)
-            //begin updates
-            //self.uiTableView.addRows...
-            //end updates
-            //scroll to bottom
-            
-//            self.triggerReloadContent()
         }
     }
 }
