@@ -338,7 +338,7 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
     
     if (self.image) {
         NSData *imageData = UIImagePNGRepresentation(self.image);
-        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"staffImage.png"];
+        [mailer addAttachmentData:imageData mimeType:@"image/png" fileName:@"GHImage.png"];
     }
     
     [self.presentingViewController presentViewController:mailer animated:YES completion:NULL];
@@ -435,78 +435,104 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
         return;
     }
     
-    ABRecordRef newPerson = ABPersonCreate();
-    CFErrorRef error = NULL;
-    
-//    //First name
-//    if ([self.user.firstName length]) {
-//        ABRecordSetValue(newPerson, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.user.firstName, &error);
-//    }
-//    
-//    //Last name
-//    if ([self.user.lastName length]) {
-//        ABRecordSetValue(newPerson, kABPersonLastNameProperty, (__bridge CFTypeRef)self.user.lastName, &error);
-//    }
-    //Name
-    if (self.user.name.length > 0) {
-        if ([BBDeviceHardware sha]) {
-            <#statements#>
+    if ([BBDeviceHardware lowerThaniOS9]) {
+        ABRecordRef newPerson = ABPersonCreate();
+        CFErrorRef error = NULL;
+//              We might split user first and last name in future
+        //    //First name.
+        //    if ([self.user.firstName length]) {
+        //        ABRecordSetValue(newPerson, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.user.firstName, &error);
+        //    }
+        //
+        //    //Last name
+        //    if ([self.user.lastName length]) {
+        //        ABRecordSetValue(newPerson, kABPersonLastNameProperty, (__bridge CFTypeRef)self.user.lastName, &error);
+        //    }
+        
+        //Name
+        if (self.user.name.length > 0) {
+            ABRecordSetValue(newPerson, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.user.name, &error);
         }
-        ABRecordSetValue(newPerson, kABPersonFirstNameProperty, (__bridge CFTypeRef)self.user.name, &error);
+        
+//        We might add organization in future
+        //Organization
+        //    NSString *position = NSLocalizedString(@"LifeChurch.tv", nil);
+        //    NSMutableString *position  = [NSMutableString stringWithFormat:@"Life church"];
+        //    if ([self.user.position length]) {
+        //        [position appendFormat:@", %@", self.user.position];
+        //    }
+        //    ABRecordSetValue(newPerson, kABPersonOrganizationProperty, (__bridge CFTypeRef)position, &error);
+        
+        //Email
+        if ([self.user.email length]) {
+            ABMultiValueRef emailMultiValue = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+            ABMultiValueAddValueAndLabel(emailMultiValue, (__bridge CFTypeRef)self.user.email, kABOtherLabel, NULL);
+            ABRecordSetValue(newPerson, kABPersonEmailProperty, emailMultiValue, &error);
+            CFRelease(emailMultiValue);
+        }
+        
+        //Phone Work
+        ABMultiValueRef phoneMultiValue = ABMultiValueCreateMutable(kABMultiStringPropertyType);
+        if ([self.user.workPhone length]) {
+            ABMultiValueAddValueAndLabel(phoneMultiValue, (__bridge CFTypeRef)self.user.workPhone, kABPersonPhoneMainLabel, NULL);
+        }
+        
+        //Phone Mobile
+        if ([self.user.otherPhone length]) {
+            ABMultiValueAddValueAndLabel(phoneMultiValue, (__bridge CFTypeRef)self.user.otherPhone, kABPersonPhoneMobileLabel, NULL);
+        }
+        
+        ABRecordSetValue(newPerson, kABPersonPhoneProperty, phoneMultiValue, &error);
+        CFRelease(phoneMultiValue);
+        
+        //Image
+        if (self.image) {
+            NSData *dataRef = UIImagePNGRepresentation(self.image);
+            ABPersonSetImageData(newPerson, (__bridge CFDataRef)dataRef, nil);
+        }
+        
+        if (error) {
+            [self showAlert:CFBridgingRelease(CFErrorCopyDescription(error))];
+        }
+        
+        ABNewPersonViewController* newPersonViewController = [[ABNewPersonViewController alloc] init];
+        newPersonViewController.displayedPerson = newPerson;
+        newPersonViewController.newPersonViewDelegate = self;
+        
+        //According to guidelines from Apple it should be wrapped in Navigation
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newPersonViewController];
+        [self.presentingViewController presentViewController:navController animated:YES completion:NULL];
+        
+        //Hold self to make delegate work
+        self.strongSelf = self;
+        
+        CFRelease(newPerson);
+    } else {
+        CNMutableContact *contact = [CNMutableContact new];
+//        contact.givenName =
+//        contact.familyName
+        contact.givenName = self.user.name.length ? self.user.name : @"";
+//        if (self.user.email.length) {
+//            CNLabeledValue *email = [CNLabeledValue labeledValueWithLabel:CNLabelEmailiCloud value:[CN]]
+//        }
+//        contact.emailAddresses = //self.user.email.length ?  self.user.email : @"";
+        NSMutableArray *phoneNumbers = [NSMutableArray new];
+        if (self.user.workPhone.length) {
+            CNLabeledValue *workPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMain value:[CNPhoneNumber phoneNumberWithStringValue:self.user.workPhone]];
+            [phoneNumbers addObject:workPhone];
+        }
+        
+        if (self.user.otherPhone.length) {
+            CNLabeledValue *otherPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMobile value:[CNPhoneNumber phoneNumberWithStringValue:self.user.otherPhone]];
+            [phoneNumbers addObject:otherPhone];
+        }
+        
+        if (phoneNumbers.count) {
+            contact.phoneNumbers = phoneNumbers;
+        }
+        
+        CNContactViewController *ctrl = [CNContactViewController viewControllerForNewContact:contact];
     }
-    
-    //Organization
-//    NSString *position = NSLocalizedString(@"LifeChurch.tv", nil);
-//    NSMutableString *position  = [NSMutableString stringWithFormat:@"Life church"];
-//    if ([self.user.position length]) {
-//        [position appendFormat:@", %@", self.user.position];
-//    }
-//    ABRecordSetValue(newPerson, kABPersonOrganizationProperty, (__bridge CFTypeRef)position, &error);
-    
-    //Email
-    if ([self.user.email length]) {
-        ABMultiValueRef emailMultiValue = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-        ABMultiValueAddValueAndLabel(emailMultiValue, (__bridge CFTypeRef)self.user.email, kABOtherLabel, NULL);
-        ABRecordSetValue(newPerson, kABPersonEmailProperty, emailMultiValue, &error);
-        CFRelease(emailMultiValue);
-    }
-    
-    //Phone Work
-    ABMultiValueRef phoneMultiValue = ABMultiValueCreateMutable(kABMultiStringPropertyType);
-    if ([self.user.workPhone length]) {
-        ABMultiValueAddValueAndLabel(phoneMultiValue, (__bridge CFTypeRef)self.user.workPhone, kABPersonPhoneMainLabel, NULL);
-    }
-    
-    //Phone Mobile
-    if ([self.user.otherPhone length]) {
-        ABMultiValueAddValueAndLabel(phoneMultiValue, (__bridge CFTypeRef)self.user.otherPhone, kABPersonPhoneMobileLabel, NULL);
-    }
-    
-    ABRecordSetValue(newPerson, kABPersonPhoneProperty, phoneMultiValue, &error);
-    CFRelease(phoneMultiValue);
-    
-    //Image
-    if (self.image) {
-        NSData *dataRef = UIImagePNGRepresentation(self.image);
-        ABPersonSetImageData(newPerson, (__bridge CFDataRef)dataRef, nil);
-    }
-    
-    if (error) {
-        [self showAlert:CFBridgingRelease(CFErrorCopyDescription(error))];
-    }
-    
-    ABNewPersonViewController* newPersonViewController = [[ABNewPersonViewController alloc] init];
-    newPersonViewController.displayedPerson = newPerson;
-    newPersonViewController.newPersonViewDelegate = self;
-    
-    //According to guidelines from Apple it should be wrapped in Navigation
-    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:newPersonViewController];
-    [self.presentingViewController presentViewController:navController animated:YES completion:NULL];
-    
-    //Hold self to make delegate work
-    self.strongSelf = self;
-    
-    CFRelease(newPerson);
 }
 
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person

@@ -23,3 +23,4 @@
 #import "Separator.h"
 #import "SelectCtrl.h"
 #import "EventsHub.h"
+#import "SharingHelper.h"

@@ -204,6 +204,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <action selector="mailAction" destination="-1" eventType="touchUpInside" id="xTc-l6-wRQ"/>
                         <outlet property="uiTitle" destination="ajm-qP-cjB" id="lrm-a4-aPs"/>
                     </connections>
                 </view>
@@ -240,6 +241,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
+                        <action selector="contactAction" destination="-1" eventType="touchUpInside" id="gck-No-9tF"/>
                         <outlet property="uiTitle" destination="NdA-Oq-GAv" id="6K4-A0-eXh"/>
                     </connections>
                 </view>

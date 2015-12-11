@@ -26,6 +26,8 @@
 + (BOOL)lowerThaniOS8;
 + (BOOL)iOS8AndHiger;
 
++ (BOOL)lowerThaniOS9;
+
 + (BOOL)phone5Screen;
 
 + (BOOL)canCropImage:(UIImage *)image;

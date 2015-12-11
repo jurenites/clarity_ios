@@ -23,8 +23,6 @@
 		5B5922741C180BAB003B1836 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922731C180BAB003B1836 /* MessageUI.framework */; };
 		5B5922761C180BBE003B1836 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922751C180BBE003B1836 /* AddressBook.framework */; };
 		5B5922781C180BE0003B1836 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922771C180BE0003B1836 /* Social.framework */; };
-		5B59227B1C180DC4003B1836 /* Contacts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922791C180DC4003B1836 /* Contacts.framework */; };
-		5B59227C1C180DC4003B1836 /* ContactsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B59227A1C180DC4003B1836 /* ContactsUI.framework */; };
 		5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5971D41BCE764800CED18C /* gray_hawk_logo.png */; };
 		5B59E5C61C05E111000B7BD7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5C51C05E111000B7BD7 /* Status.swift */; };
 		5B71CD031BBBC7310093833D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B71CD021BBBC7310093833D /* Message.swift */; };
@@ -873,8 +871,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5B59227B1C180DC4003B1836 /* Contacts.framework in Frameworks */,
-				5B59227C1C180DC4003B1836 /* ContactsUI.framework in Frameworks */,
 				5B5922781C180BE0003B1836 /* Social.framework in Frameworks */,
 				5B5922721C180B99003B1836 /* AddressBookUI.framework in Frameworks */,
 				5B5922761C180BBE003B1836 /* AddressBook.framework in Frameworks */,
@@ -2542,7 +2538,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				PROVISIONING_PROFILE = "296e32ab-0179-47f0-92c8-73c827f6bda1";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClarityTests/ClarityTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
@@ -2564,7 +2560,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Spring.Clarity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "64e9fdee-494c-4eb1-bd48-f2b31db31c94";
+				PROVISIONING_PROFILE = "296e32ab-0179-47f0-92c8-73c827f6bda1";
 				SWIFT_OBJC_BRIDGING_HEADER = "ClarityTests/ClarityTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clarity.app/Clarity";
 			};
