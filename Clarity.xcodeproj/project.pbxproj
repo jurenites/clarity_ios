@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B0A83C31BFF25E00007735E /* FIlter_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A83C11BFF25E00007735E /* FIlter_arrow@2x.png */; };
 		5B0A83C41BFF25E00007735E /* Filter_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B0A83C21BFF25E00007735E /* Filter_arrow.png */; };
-		5B381E261C0D896D003C02FA /* VCtrlTestTable.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */; };
 		5B381E2D1C0DC514003C02FA /* RevercedPtrCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */; };
 		5B52CED51BBA6CC6009437C5 /* VCtrlMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CED41BBA6CC6009437C5 /* VCtrlMap.swift */; };
 		5B52CED71BBA6CD9009437C5 /* VCtrlMap.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CED61BBA6CD9009437C5 /* VCtrlMap.xib */; };
@@ -358,8 +357,6 @@
 /* Begin PBXFileReference section */
 		5B0A83C11BFF25E00007735E /* FIlter_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FIlter_arrow@2x.png"; sourceTree = "<group>"; };
 		5B0A83C21BFF25E00007735E /* Filter_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Filter_arrow.png; sourceTree = "<group>"; };
-		5B381E231C0D896D003C02FA /* VCtrlTestTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VCtrlTestTable.swift; path = TestTableClasses/VCtrlTestTable.swift; sourceTree = "<group>"; };
-		5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = VCtrlTestTable.xib; path = TestTableClasses/VCtrlTestTable.xib; sourceTree = "<group>"; };
 		5B381E2B1C0DC514003C02FA /* RevercedPtrCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RevercedPtrCtrl.h; sourceTree = "<group>"; };
 		5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RevercedPtrCtrl.m; sourceTree = "<group>"; };
 		5B52CED41BBA6CC6009437C5 /* VCtrlMap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlMap.swift; sourceTree = "<group>"; };
@@ -893,15 +890,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5B381E221C0D8914003C02FA /* TestTableClasses */ = {
-			isa = PBXGroup;
-			children = (
-				5B381E231C0D896D003C02FA /* VCtrlTestTable.swift */,
-				5B381E241C0D896D003C02FA /* VCtrlTestTable.xib */,
-			);
-			name = TestTableClasses;
-			sourceTree = "<group>";
-		};
 		5B52CEDC1BBA814E009437C5 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -1146,7 +1134,6 @@
 		5BC79C3D1BB1AE800040AF48 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5B381E221C0D8914003C02FA /* TestTableClasses */,
 				5B88F2F51BB4157D009F202C /* Orders */,
 				5B88F2EF1BB41537009F202C /* Login */,
 				5BE5B5D81BB2E25500671BFE /* Helper Views */,
@@ -2127,7 +2114,6 @@
 				5BFB9D501BC5637000017FDA /* add@2x.png in Resources */,
 				5BFB9D361BC5637000017FDA /* Address@2x.png in Resources */,
 				5BC79CBD1BB1B42E0040AF48 /* TableInfsView.xib in Resources */,
-				5B381E261C0D896D003C02FA /* VCtrlTestTable.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

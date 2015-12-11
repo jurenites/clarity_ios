@@ -296,7 +296,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
             ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
                 .success({ (messages: [Message]) in
                     if messages.count > 0 {
-                        //Add here check on existiong message
+                        //WARNING: TODO - Add here check on existiong message
 
                         let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
                         self._messages.insertContentsOf(messages, at: self._messages.count)
@@ -304,6 +304,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                         self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.uiTableView.endUpdates()
                         
+                        //WARNING: TODO - Add here scroll to new message if needed
 //                        self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
                         
                         self._messagesCountChanged = true
