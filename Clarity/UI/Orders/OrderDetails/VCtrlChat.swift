@@ -122,9 +122,18 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
             ClarityApi.shared().createMessage(self.orderId, text: text)
                 .success({ (message: Message) -> Void in
                     self._messagesCountChanged = true
+                    if self._messages.count == 0 {
+                        UIView.animateWithDuration(0.33, animations: { () -> Void in
+                            self.uiTableView.alpha = 1;
+                        })
+                        self._isFirstLoad = false
+                    }
+                    
                     self.hideLoadingOverlay()
                     self._messages += [message]
+                    //WARNING: TODO - insert rows to not reload all rows
                     self.uiTableView.reloadData()
+
                     self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
                     }) { (error: NSError) -> Void in
                         self.hideLoadingOverlay()
