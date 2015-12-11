@@ -157,12 +157,7 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
     override func ptrReloadContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         return self.baseReloadContent(onComplete)
     }
-    
-//    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
-//        return self.baseReloadContent(onComplete)
-//    }
-    
-//    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+
     override func ptrLoadMoreContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in

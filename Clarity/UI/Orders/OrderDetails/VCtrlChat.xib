@@ -123,7 +123,7 @@
                 <constraint firstAttribute="trailing" secondItem="SKK-Ye-gFo" secondAttribute="trailing" id="pva-zh-zFd"/>
                 <constraint firstItem="SKK-Ye-gFo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ynn-dv-QSV"/>
             </constraints>
-            <point key="canvasLocation" x="385" y="336"/>
+            <point key="canvasLocation" x="574" y="330"/>
         </view>
     </objects>
 </document>

@@ -22,6 +22,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
     private var orderId: Int = 0
     private var _maxMessageInputHeight: CGFloat = 0
     private var _minMessageInputHeight: CGFloat = 0
+    private var _isFirstLoad: Bool = true
     
     @IBOutlet var uiTableView: PtrTableView!
     
@@ -79,7 +80,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
     
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
-        if _messages.count == 0 {
+        if self._isFirstLoad {
             self.uiTableView.alpha = 0;
             self.triggerReloadContent()
         }
@@ -242,16 +243,18 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                 if messages.count > 0 {
                     self._messages = messages
                     self.uiTableView.reloadData()
-                    UIView.animateWithDuration(0.33, animations: { () -> Void in
-                        self.uiTableView.alpha = 1;
-                    })
-                    
-                    if (self.uiTableView.indexPathsForVisibleRows?.contains(NSIndexPath(forRow: self._messages.count-1, inSection: 0)) == false) {
-                        self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+
+                    if self._isFirstLoad {
+                       self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        UIView.animateWithDuration(0.33, animations: { () -> Void in
+                            self.uiTableView.alpha = 1;
+                        })
+                        self._isFirstLoad = false
                     }
+                    
                     onComplete(self._messages.count >= self._pageSize, true)
                 } else {
-                    onComplete(false, false)
+                    onComplete(false, true)
                 }
                 }, error: { (error: NSError) in
                     self.reportError(error)
@@ -276,7 +279,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     self.uiTableView.contentOffset = CGPoint(x: 0, y: self.uiTableView.contentSize.height - prev)
                     onComplete(self._messages.count >= self._pageSize, true)
                 } else {
-                    onComplete(false, false)
+                    onComplete(false, true)
                 }
                 }, error: { (error: NSError) in
                     self.reportError(error)
@@ -300,6 +303,9 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                         self.uiTableView.beginUpdates()
                         self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.uiTableView.endUpdates()
+                        
+//                        self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        
                         self._messagesCountChanged = true
                     }
                     }, error: { (error: NSError) in
