@@ -295,17 +295,20 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
         if self.isOnScreen && self.orderId == orderId {
             ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
                 .success({ (messages: [Message]) in
-                    if messages.count > 0 {
+                    if let message = messages.first {
                         //WARNING: TODO - Add here check on existiong message
-
+                        
                         let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
-                        self._messages.insertContentsOf(messages, at: self._messages.count)
+                        self._messages.insertContentsOf([message], at: self._messages.count)
                         self.uiTableView.beginUpdates()
                         self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.uiTableView.endUpdates()
                         
                         //WARNING: TODO - Add here scroll to new message if needed
-//                        self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        let bottomSpacing = self.uiTableView.contentSize.height - self.uiTableView.contentOffset.y - self.uiTableView.height
+                        if bottomSpacing <= message.messageCellHeight*1.5 {
+                            self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        }
                         
                         self._messagesCountChanged = true
                     }
