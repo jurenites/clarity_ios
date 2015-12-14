@@ -40,7 +40,7 @@
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"My Push token is: %@", deviceToken);
+    GHLog(@"My Push token is: %@", deviceToken);
     const unsigned *tokenBytes = [deviceToken bytes];
     NSString *hexToken = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
                           ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
@@ -49,21 +49,18 @@
     
     if (hexToken.length) {
         [ApiRouter shared].apnsToken = hexToken;
-        NSLog(@"APNS token: %@", hexToken);
+        GHLog(@"APNS token: %@", hexToken);
     }
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    NSLog(@"Failed to get Push token, error: %@", error);
+    GHLog(@"Failed to get Push token, error: %@", error);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
-    NSInteger chatId = ToInt(userInfo[@"order_id"]);
-    if (chatId) {
-        [[EventsHub shared] chatWasUpdated:chatId];
-    }
+    [[VCtrlRoot current] processPush:userInfo active:application.applicationState == UIApplicationStateActive];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

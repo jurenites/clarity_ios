@@ -42,6 +42,7 @@ class ShortOrder: ApiEntity, Visitable {
 class Order: ShortOrder {
     
     var messagesCount: Int = 0
+    var unreadMessagesCount : Int = 0
     var dateTo: NSDate = NSDate.init()
     var dateFrom: NSDate = NSDate.init()
     var reportType: String = ""
@@ -71,6 +72,7 @@ class Order: ShortOrder {
         location = loc
         
         messagesCount = ApiInt(d["messages_count"])
+        unreadMessagesCount = ApiInt(d["messages_unread"])
         dateFrom = FromServerDateTime(ApiString(d["created_at"]))
         dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
@@ -79,14 +81,15 @@ class Order: ShortOrder {
         super.visit(v)
         
         v.field("messanges", &messagesCount)
-        .field("date_needed", &dateTo)
-        .field("created_at", &dateFrom)
-        .field("report_type", &reportType)
-        .field("property_type", &propertyType)
-        .field("contact", &contact)
-        .field("accept_allowed", &canAccept)
-        .field("accept_with_condition_allowed", &canAcceptWConditions)
-        .field("decline_allowed", &canDecline)
+            .field("unreadMessagesCount", &unreadMessagesCount)
+            .field("date_needed", &dateTo)
+            .field("created_at", &dateFrom)
+            .field("report_type", &reportType)
+            .field("property_type", &propertyType)
+            .field("contact", &contact)
+            .field("accept_allowed", &canAccept)
+            .field("accept_with_condition_allowed", &canAcceptWConditions)
+            .field("decline_allowed", &canDecline)
     }
     
     override func fromDict(d: NSDictionary) -> Order {

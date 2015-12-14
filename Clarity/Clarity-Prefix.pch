@@ -11,11 +11,11 @@
 
 #import <Availability.h>
 
-#ifndef TRNLog
+#ifndef GHLog
 #ifdef DEBUG
-#define TRNLog(fmt, ...) { NSLog(fmt,##__VA_ARGS__); }
+#define GHLog(fmt, ...) { NSLog(fmt,##__VA_ARGS__); }
 #else
-#define TRNLog(fmt, ...) { }
+#define GHLog(fmt, ...) { }
 #endif
 #endif
 

@@ -14,6 +14,8 @@
 
 - (void)showMainUI;
 
+- (void)showChatFromPush:(NSInteger)chatId;
+- (void)processPush:(NSDictionary *)pushInfo active:(BOOL)isActive;
 //- (void)setStartupPushData:(NSDictionary *)pushData;
 //- (void)processPush:(NSDictionary *)pushData;
 

@@ -10,7 +10,7 @@ import UIKit
 import MobileCoreServices
 
 protocol VCtrlChatDelegate {
-    func chatUpdated()
+    func chatUpdated(byMe: Bool)
 }
 
 class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, EventsHubProtocol {
@@ -40,6 +40,10 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        EventsHub.shared().removeListener(self)
     }
     
     override func isNeedPullToRefresh() -> Bool {
@@ -74,10 +78,6 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
         EventsHub.shared().addListener(self)
     }
     
-    deinit {
-        EventsHub.shared().removeListener(self)
-    }
-    
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         if self._isFirstLoad {
@@ -88,10 +88,8 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        if _messagesCountChanged {
-            if let delegate = self.delegate {
-                delegate.chatUpdated()
-            }
+        if let delegate = self.delegate {
+            delegate.chatUpdated(_messagesCountChanged)
         }
     }
     
@@ -131,7 +129,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     
                     self.hideLoadingOverlay()
                     self._messages += [message]
-                    //WARNING: TODO - insert rows to not reload all rows
+                    //WARNING: TODO - insert rows to or reload all rows?
                     self.uiTableView.reloadData()
 
                     self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)
@@ -141,6 +139,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
             }
         }
     }
+    
     
     //MARK: UITextViewDelegate
     func textViewDidChange(textView: UITextView) {
@@ -245,6 +244,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
         }
     }
     
+    
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getMessages(orderId, offset: 0, count: _pageSize)
@@ -305,7 +305,10 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
             ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
                 .success({ (messages: [Message]) in
                     if let message = messages.first {
-                        //WARNING: TODO - Add here check on existiong message
+
+                        if self._messages.contains( {$0.messageId == message.messageId} ) {
+                           return
+                        }
                         
                         let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
                         self._messages.insertContentsOf([message], at: self._messages.count)

@@ -12,9 +12,9 @@ protocol VCtrlOrderDetailsProtocol {
     func orderChanged(shortOrder: ShortOrder, delete: Bool)
 }
 
-class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
+class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
     
-    private var orderId : Int = 0
+    let orderId : Int
     private var order : Order?
     
     var delegate: VCtrlOrderDetailsProtocol?
@@ -43,10 +43,15 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        EventsHub.shared().removeListener(self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.navigationItem.title = NSLocalizedString("Order Details", comment: "")
+        EventsHub.shared().addListener(self)
         
         self.populate()
     }
@@ -76,7 +81,19 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
             uiFree.enabled = false
             
             uiStatus.setup(ord.status)
-            uiMessanges.uiTitle.text = String(ord.messagesCount)
+            
+            let messagesString = NSMutableString(format: "%d", ord.messagesCount)
+            if ord.unreadMessagesCount != 0 {
+                let unread = "(\(ord.unreadMessagesCount))"
+                messagesString.appendString(" "+unread)
+                let attrString = NSMutableAttributedString(string: messagesString as String,
+                    attributes: [NSForegroundColorAttributeName : uiMessanges.uiTitle.textColor,
+                        NSFontAttributeName : uiMessanges.uiTitle.font])
+                attrString.addAttribute(NSForegroundColorAttributeName, value: UIColor(fromHex: "#ff6600"), range: messagesString.rangeOfString(unread))
+                uiMessanges.uiTitle.attributedText = attrString
+            } else {
+                uiMessanges.uiTitle.text = messagesString as String
+            }
             
             let fmt = NSDateFormatter()
 //            fmt.locale = NSLocale(localeIdentifier: "en_US")
@@ -99,8 +116,15 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
         }
     }
     
-    func chatUpdated() {
-        self.triggerReloadContent()
+    func chatUpdated(byMe: Bool) {
+        var hasUnreadMessages = false
+        if let ord = order {
+            hasUnreadMessages = ord.unreadMessagesCount > 0
+        }
+        
+        if byMe || hasUnreadMessages {
+            self.triggerReloadContent()
+        }
     }
     
     @IBAction func actMap() {
@@ -189,5 +213,13 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
             })
         
         return ApiCancelerSignal.wrap(canceler)
+    }
+    
+    //MARK: EventsHubProtocol
+    func updateChat(orderId: Int) {
+        if self.isOnScreen && self.orderId == orderId {
+            //WARNING: TODO - do I need to check if user changing status now?
+            self.triggerReloadContent()
+        }
     }
 }

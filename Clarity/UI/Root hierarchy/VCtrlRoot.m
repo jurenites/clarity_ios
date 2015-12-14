@@ -72,6 +72,29 @@ static VCtrlRoot *Current = nil;
     [self moveToVctrl:[VCtrlLogin new] animated:YES onComplete:NULL];
 }
 
+- (void)showChatFromPush:(NSInteger)chatId
+{
+    if (_currentVCtrl.class == [UINavigationController class] && _currentVCtrl.navigationController.viewControllers.lastObject.class != [VCtrlChat class]) {
+        NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:chatId], [[VCtrlChat alloc] initWithOrderId:chatId]];
+        [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:YES];
+    }
+}
+
+- (void)processPush:(NSDictionary *)pushInfo active:(BOOL)isActive
+{
+    if ([ToString(pushInfo[@"type"]) isEqualToString:@"NewNotice"]) {
+        NSInteger chatId = ToInt(pushInfo[@"order_id"]);
+        if (isActive) {
+            [[EventsHub shared] chatWasUpdated:chatId];
+        } else {
+            if (_currentVCtrl.class == [UINavigationController class] && _currentVCtrl.navigationController.viewControllers.lastObject.class != [VCtrlChat class]) {
+                NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:chatId], [[VCtrlChat alloc] initWithOrderId:chatId]];
+                [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:YES];
+            }
+        }
+    }
+}
+
 - (void)startup
 {
     DispatchAfter(0.5, ^{
