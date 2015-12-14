@@ -29,7 +29,7 @@
 static NSString * const GPlusClientId = @"184337902451-cu3t3sm8k9g3h2f5544t5mtubkfvuuu2.apps.googleusercontent.com";
 static NSString * const InstagramUrl = @"instagram://location?id=1";
 
-@interface SharingHelper () <UIDocumentInteractionControllerDelegate, MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate> //VCtrlTwitterDialogDelegate GPPSignInDelegate, GPPShareDelegate,
+@interface SharingHelper () <UIDocumentInteractionControllerDelegate, MFMailComposeViewControllerDelegate, ABNewPersonViewControllerDelegate, CNContactViewControllerDelegate> //VCtrlTwitterDialogDelegate GPPSignInDelegate, GPPShareDelegate,
 {
 //    id<GPPNativeShareBuilder> _gplusShareController;
 //    GPPSignIn *_gplusSignIn;
@@ -532,6 +532,8 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
         }
         
         CNContactViewController *ctrl = [CNContactViewController viewControllerForNewContact:contact];
+        [self.presentingViewController presentViewController:ctrl animated:YES completion:NULL];
+        self.strongSelf = self;
     }
 }
 
@@ -547,6 +549,11 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
     
     //Release self
     self.strongSelf = nil;
+}
+
+- (void)contactViewController:(CNContactViewController *)viewController didCompleteWithContact:(nullable CNContact *)contact
+{
+    [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end
