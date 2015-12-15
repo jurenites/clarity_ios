@@ -13,7 +13,8 @@
 @protocol EventsHubProtocol <NSObject>
 
 @optional
-- (void)updateChat:(NSInteger)orderId;
+- (void)updateChat:(NSInteger)orderId messageId:(NSInteger)messageId action:(NSString *)action;
+- (void)updateOrder:(NSInteger)orderId action:(NSString *)action;
 
 - (void)flowFinished:(Flow *)flow;
 

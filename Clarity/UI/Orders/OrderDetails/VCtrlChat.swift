@@ -300,16 +300,32 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
 
     
     //MARK: EventsHubProtocol
-    func updateChat(orderId: Int) {
-        if self.isOnScreen && self.orderId == orderId {
-            ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
-                .success({ (messages: [Message]) in
-                    if let message = messages.first {
+    func updateChat(orderId: Int, messageId: Int, action: String!) {
+        if !self.isOnScreen || self.orderId != orderId {
+            return
+        }
 
-                        if self._messages.contains( {$0.messageId == message.messageId} ) {
-                           return
-                        }
-                        
+        let index = _messages.indexOf( {$0.messageId == messageId} )
+            
+        if action == PushMessageRemove && index != nil {
+            _messages.removeAtIndex(index!)
+            uiTableView.beginUpdates()
+            uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation:UITableViewRowAnimation.Fade)
+            uiTableView.endUpdates()
+            
+            self._messagesCountChanged = true
+            return
+        }
+        
+        if action == PushMessageNew || (action == PushMessageUpdate && index != nil) {
+            ClarityApi.shared().getMessage(orderId, messageId: messageId)
+                .success({ (message: Message) in
+                    if action == PushMessageUpdate {
+                        self._messages[index!] = message
+                        self.uiTableView.beginUpdates()
+                        self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.endUpdates()
+                    } else { //New
                         let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
                         self._messages.insertContentsOf([message], at: self._messages.count)
                         self.uiTableView.beginUpdates()
@@ -324,9 +340,35 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                         
                         self._messagesCountChanged = true
                     }
-                    }, error: { (error: NSError) in
-                        self.reportError(error)
-                })
+                }, error: { (error: NSError) in
+                    self.reportError(error)
+            })
         }
+        
+//            ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
+//                .success({ (messages: [Message]) in
+//                    if let message = messages.first {
+//
+//                        if self._messages.contains( {$0.messageId == message.messageId} ) {
+//                           return
+//                        }
+//                        
+//                        let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
+//                        self._messages.insertContentsOf([message], at: self._messages.count)
+//                        self.uiTableView.beginUpdates()
+//                        self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
+//                        self.uiTableView.endUpdates()
+//                        
+//                        //WARNING: TODO - Add here scroll to new message if needed
+//                        let bottomSpacing = self.uiTableView.contentSize.height - self.uiTableView.contentOffset.y - self.uiTableView.height
+//                        if bottomSpacing <= message.messageCellHeight*1.5 {
+//                            self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+//                        }
+//                        
+//                        self._messagesCountChanged = true
+//                    }
+//                    }, error: { (error: NSError) in
+//                        self.reportError(error)
+//                })
     }
 }

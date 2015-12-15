@@ -31,6 +31,7 @@
         @(AMAcceptOrderWithConditions) : [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/orders/:id/accept_with_condition"],
         @(AMDeclineOrder)       :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/orders/:id/decline"],
         //Messages
+        @(AMGetMessage)         :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/:order_id/messages/:message_id"],
         @(AMGetMessages)        :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/orders/:order_id/messages"],
         @(AMCreateMessage)      :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/orders/:order_id/messages"],
         @(AMUpdateMessage)      :   [ApiMethod srv:AMSLogin method:HttpMethodPut url:@"/orders/:order_id/messages/:message_id"],

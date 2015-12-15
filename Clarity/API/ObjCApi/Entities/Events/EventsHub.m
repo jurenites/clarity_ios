@@ -55,11 +55,20 @@
     [_delegates removeDelegate:listener];
 }
 
-- (void)chatWasUpdated:(NSInteger)chatId
+- (void)chatUpdated:(NSInteger)chatId messageId:(NSInteger)messageId action:(NSString *)action
 {
     for (id<EventsHubProtocol> d in [_delegates getDelegates]) {
-        if ([d respondsToSelector:@selector(updateChat:)]) {
-            [d updateChat:chatId];
+        if ([d respondsToSelector:@selector(updateChat:messageId:action:)]) {
+            [d updateChat:chatId messageId:messageId action:action];
+        }
+    }
+}
+
+- (void)orderUpdated:(NSInteger)orderId action:(NSString *)action
+{
+    for (id<EventsHubProtocol> d in [_delegates getDelegates]) {
+        if ([d respondsToSelector:@selector(updateOrder:action:)]) {
+            [d updateOrder:orderId action:action];
         }
     }
 }

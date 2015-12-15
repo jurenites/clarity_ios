@@ -116,6 +116,15 @@ import Foundation
     }
     
     //MARK: Messages
+    func getMessage(orderId: Int, messageId: Int) -> Signal<Message> {
+        return callMethod(ApiMethodID.AMGetMessage,
+            urlParams: [
+                "order_id" : NSNumber(integer: orderId),
+                "message_id" : NSNumber(integer: messageId)
+            ])
+            .next(PliFromApiDict)
+    }
+    
     func getMessages(orderId: Int, offset: Int, count: Int) -> Signal<[Message]> {
         return callMethod(ApiMethodID.AMGetMessages,
             urlParams: ["order_id": NSNumber(integer: orderId)],

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol { //Table
+class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol, EventsHubProtocol {
     
     let _pageSize = 10
     var _orders = [ShortOrder]()
@@ -170,5 +170,42 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
             })
         
         return ApiCancelerSignal.wrap(canceler)
+    }
+    
+    
+    //MARK: EventsHubProtocol
+    func updateOrder(orderId: Int, action: String!) {
+        if !self.isOnScreen {
+            return
+        }
+        
+        let index = _orders.indexOf( {$0.orderId == orderId} )
+        
+        if action == PushOrderRemove && index != nil {
+            _orders.removeAtIndex(index!)
+            uiTableView.beginUpdates()
+            uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation:UITableViewRowAnimation.Fade)
+            uiTableView.endUpdates()
+            return
+        }
+        
+        if action == PushOrderNew || (action == PushOrderUpdate && index != nil) {
+            ClarityApi.shared().getOrder(orderId)
+                .success({ (order: Order) in
+                    if action == PushOrderUpdate {
+                        self._orders[index!] = order
+                        self.uiTableView.beginUpdates()
+                        self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.endUpdates()
+                    } else { //New
+                        self._orders.append(order)
+                        self.uiTableView.beginUpdates()
+                        self.uiTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.endUpdates()
+                    }
+                    }, error: { (error: NSError) in
+                        self.reportError(error)
+                })
+        }
     }
 }

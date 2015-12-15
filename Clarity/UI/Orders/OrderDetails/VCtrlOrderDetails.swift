@@ -216,7 +216,14 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
     }
     
     //MARK: EventsHubProtocol
-    func updateChat(orderId: Int) {
+    func updateChat(orderId: Int, messageId: Int, action: String!) {
+        if self.isOnScreen && self.orderId == orderId {
+            //WARNING: TODO - do I need to check if user changing status now?
+            self.triggerReloadContent()
+        }
+    }
+    
+    func updateOrder(orderId: Int, action: String!) {
         if self.isOnScreen && self.orderId == orderId {
             //WARNING: TODO - do I need to check if user changing status now?
             self.triggerReloadContent()
