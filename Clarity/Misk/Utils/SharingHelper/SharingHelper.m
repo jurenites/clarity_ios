@@ -328,6 +328,10 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
     mailer = [MFMailComposeViewController new];
     mailer.mailComposeDelegate = self;
     
+    if (self.user.email.length) {
+        [mailer setCcRecipients:@[self.user.email]];
+    }
+    
     if (self.title.length) {
         [mailer setSubject:self.title];
     }
