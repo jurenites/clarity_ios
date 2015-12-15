@@ -91,14 +91,15 @@ static VCtrlRoot *Current = nil;
     
     if ([type isEqualToString:PushMessageNew] || [type isEqualToString:PushMessageUpdate] || [type isEqualToString:PushMessageRemove]) {
         if (isActive) {
-            [[EventsHub shared] chatUpdated:orderId];
+            NSInteger messageId = ToInt(pushInfo[@"message_id"]);
+            [[EventsHub shared] chatUpdated:orderId messageId:messageId action:type];
         } else {
             NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:orderId], [[VCtrlChat alloc] initWithOrderId:orderId]];
             [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:NO];
         }
     } else if ([type isEqualToString:PushOrderNew] || [type isEqualToString:PushOrderUpdate] || [type isEqualToString:PushOrderRemove]) {
         if (isActive) {
-            [[EventsHub shared] orderUpdated:orderId];
+            [[EventsHub shared] orderUpdated:orderId action:type];
         } else {
             NSArray *navStack = @[[VCtrlOrders new]];
             if (![type isEqualToString:PushOrderRemove]) {
