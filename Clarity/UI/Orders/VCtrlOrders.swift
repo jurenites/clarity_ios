@@ -104,7 +104,9 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
                     nav.popViewControllerAnimated(true)
                 }
                 _orders.removeAtIndex(currOrderIndex)
+                self.uiTableView.beginUpdates()
                 self.uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.endUpdates()
             }
         }
     }
