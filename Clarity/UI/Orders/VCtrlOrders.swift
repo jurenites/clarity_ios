@@ -61,7 +61,6 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         
         uiFilter.setItems(selectItems)
         uiFilter.selectedItem = defaultItem
-
     }
     
     override func viewWillFirstAppear() {
