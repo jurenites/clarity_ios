@@ -98,7 +98,9 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         if let currOrderIndex = _orders.indexOf({$0.orderId == shortOrder.orderId}) {
             if !delete {
                 _orders[currOrderIndex] = shortOrder
+                self.uiTableView.beginUpdates()
                 self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.endUpdates()
             } else {
                 if let nav = self.navigationController {
                     nav.popViewControllerAnimated(true)
