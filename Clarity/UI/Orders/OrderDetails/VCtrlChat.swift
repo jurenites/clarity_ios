@@ -323,8 +323,12 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     if action == PushMessageUpdate {
                         self._messages[index!] = message
                         self.uiTableView.beginUpdates()
-                        self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.None)
                         self.uiTableView.endUpdates()
+                        
+                        if index! == self._messages.count-1 {
+                            self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
+                        }
                     } else { //New
                         let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
                         self._messages.insertContentsOf([message], at: self._messages.count)
