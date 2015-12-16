@@ -294,7 +294,7 @@ static UIPopoverController *ShownPopover = nil;
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     if (row == 0) {
-        return @"None";
+        return @"All";
     }
     
     SelectCtrlItem *item = _items[row - 1];

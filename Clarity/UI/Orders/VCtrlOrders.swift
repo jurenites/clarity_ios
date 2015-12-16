@@ -44,6 +44,7 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         accessoryView.onDone = WrapAction(self, method: VCtrlOrders.actKbdDone)
         
         var selectItems = [SelectCtrlItem]()
+        var defaultItem = SelectCtrlItem()
         
         for str in GlobalEntitiesCtrl.shared().orderFilters{
             let item = SelectCtrlItem()
@@ -51,9 +52,16 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
             item.name = GlobalEntitiesCtrl.shared().orderFilterForKey(str as! String)
             
             selectItems.append(item)
+            
+            if "action_needed" == item.key as! String {
+                defaultItem = item
+                _filterString = item.key as! String
+            }
         }
         
         uiFilter.setItems(selectItems)
+        uiFilter.selectedItem = defaultItem
+
     }
     
     override func viewWillFirstAppear() {
