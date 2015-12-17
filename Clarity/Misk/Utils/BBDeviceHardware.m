@@ -187,10 +187,14 @@ static int const CropImageSizeLimit5thIphone = 80;
     return [UIDevice currentDevice].systemVersion.floatValue < 7.99f;
 }
 
-
 + (BOOL)iOS8AndHiger
 {
     return [UIDevice currentDevice].systemVersion.floatValue > 7.99f;
+}
+
++ (BOOL)lowerThaniOS9
+{
+    return [UIDevice currentDevice].systemVersion.floatValue < 8.99f;
 }
 
 + (BOOL)phone5Screen

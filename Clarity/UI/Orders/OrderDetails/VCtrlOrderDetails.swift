@@ -67,10 +67,12 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
             uiReportType.enabled = false
             uiPropertyType.uiTitle.text = ord.propertyType
             uiPropertyType.enabled = false
+            
             if let contact = ord.contact {
                 uiContact.uiTitle.text = contact.name
+            } else {
+                uiContact.enabled = false
             }
-            uiContact.enabled = false
             
             uiFree.uiTitle.text = "$ \(ord.price)"
             uiFree.enabled = false
@@ -103,11 +105,21 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate {
         self.triggerReloadContent()
     }
     
+    //MARK: Actions
     @IBAction func actMap() {
         if let loc = order?.location {
             let map = VCtrlMap(location: loc)
             if let nav = self.navigationController {
                 nav.pushViewController(map, animated: true)
+            }
+        }
+    }
+    
+    @IBAction func actContact() {
+        if let contact = order?.contact {
+            let contact = VCtrlContact(contact: contact)
+            if let nav = self.navigationController {
+                nav.pushViewController(contact, animated: true)
             }
         }
     }
