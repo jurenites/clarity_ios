@@ -439,7 +439,7 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
         return;
     }
     
-    if ([BBDeviceHardware lowerThaniOS9]) {
+//    if ([BBDeviceHardware lowerThaniOS9]) {
         ABRecordRef newPerson = ABPersonCreate();
         CFErrorRef error = NULL;
 //              We might split user first and last name in future
@@ -511,34 +511,34 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
         self.strongSelf = self;
         
         CFRelease(newPerson);
-    } else {
-        CNMutableContact *contact = [CNMutableContact new];
-//        contact.givenName =
-//        contact.familyName
-        contact.givenName = self.user.name.length ? self.user.name : @"";
-//        if (self.user.email.length) {
-//            CNLabeledValue *email = [CNLabeledValue labeledValueWithLabel:CNLabelEmailiCloud value:[CN]]
+//    } else {
+//        CNMutableContact *contact = [CNMutableContact new];
+////        contact.givenName =
+////        contact.familyName
+//        contact.givenName = self.user.name.length ? self.user.name : @"";
+////        if (self.user.email.length) {
+////            CNLabeledValue *email = [CNLabeledValue labeledValueWithLabel:CNLabelEmailiCloud value:[CN]]
+////        }
+////        contact.emailAddresses = //self.user.email.length ?  self.user.email : @"";
+//        NSMutableArray *phoneNumbers = [NSMutableArray new];
+//        if (self.user.workPhone.length) {
+//            CNLabeledValue *workPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMain value:[CNPhoneNumber phoneNumberWithStringValue:self.user.workPhone]];
+//            [phoneNumbers addObject:workPhone];
 //        }
-//        contact.emailAddresses = //self.user.email.length ?  self.user.email : @"";
-        NSMutableArray *phoneNumbers = [NSMutableArray new];
-        if (self.user.workPhone.length) {
-            CNLabeledValue *workPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMain value:[CNPhoneNumber phoneNumberWithStringValue:self.user.workPhone]];
-            [phoneNumbers addObject:workPhone];
-        }
-        
-        if (self.user.otherPhone.length) {
-            CNLabeledValue *otherPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMobile value:[CNPhoneNumber phoneNumberWithStringValue:self.user.otherPhone]];
-            [phoneNumbers addObject:otherPhone];
-        }
-        
-        if (phoneNumbers.count) {
-            contact.phoneNumbers = phoneNumbers;
-        }
-        
-        CNContactViewController *ctrl = [CNContactViewController viewControllerForNewContact:contact];
-        [self.presentingViewController presentViewController:ctrl animated:YES completion:NULL];
-        self.strongSelf = self;
-    }
+//        
+//        if (self.user.otherPhone.length) {
+//            CNLabeledValue *otherPhone = [CNLabeledValue labeledValueWithLabel:CNLabelPhoneNumberMobile value:[CNPhoneNumber phoneNumberWithStringValue:self.user.otherPhone]];
+//            [phoneNumbers addObject:otherPhone];
+//        }
+//        
+//        if (phoneNumbers.count) {
+//            contact.phoneNumbers = phoneNumbers;
+//        }
+//        
+//        CNContactViewController *ctrl = [CNContactViewController viewControllerForNewContact:contact];
+//        [self.presentingViewController presentViewController:ctrl animated:YES completion:NULL];
+//        self.strongSelf = self;
+//    }
 }
 
 - (void)newPersonViewController:(ABNewPersonViewController *)newPersonView didCompleteWithNewPerson:(ABRecordRef)person
@@ -558,6 +558,8 @@ static NSString * const InstagramUrl = @"instagram://location?id=1";
 - (void)contactViewController:(CNContactViewController *)viewController didCompleteWithContact:(nullable CNContact *)contact
 {
     [self.presentingViewController dismissViewControllerAnimated:YES completion:NULL];
+    
+    self.strongSelf = nil;
 }
 
 @end
