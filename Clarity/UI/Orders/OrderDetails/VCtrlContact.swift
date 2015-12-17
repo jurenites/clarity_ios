@@ -78,28 +78,18 @@ class VCtrlContact: VCtrlBase {
         sharingHelper.sendViaEmail()
     }
     
-    @IBAction func callAction() {
-//        if (![DeviceHardware isIphone]) {
-//            [[AlertView new] showWithTitle:@""
-//            text:NSLocalizedString(@"Sorry!\nYour device cannot make phone calls.", nil)
-//            cancelButtonTitle:NSLocalizedString(@"Ok", nil)
-//            otherButtonTitles:@[]
-//            onComplete:nil];
-//            onComplete();
-//            return;
-//        }
-//        NSString *number = [NSString stringWithFormat:@"tel://646-416-7901"];
-//        if([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:number]]){
-//            onComplete();
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:number]];
-//        }else{
-//            onComplete();
-//        }
-
+    @IBAction func callAction(sender: CustomButton) {
+        if !DeviceHardware.isIphone() {
+            AlertView().showWithTitle("", text: NSLocalizedString("Sorry!\nYour device cannot make phone calls.", comment: ""), cancelButtonTitle: "Ok", otherButtonTitles: [], onComplete:nil)
+        } else {
+            let phone = "tel://\(sender == uiMobilePhoneButton ? self.contact.otherPhone : self.contact.workPhone)"
+            if UIApplication.sharedApplication().canOpenURL(NSURL(string: phone)!) {
+                UIApplication.sharedApplication().openURL(NSURL(string: phone)!)
+            }
+        }
     }
     
     @IBAction func contactAction() {
         sharingHelper.saveContact()
     }
-    
 }
