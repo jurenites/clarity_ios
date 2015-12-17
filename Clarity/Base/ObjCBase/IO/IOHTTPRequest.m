@@ -287,8 +287,8 @@ NSString *const BBDefaultFileName = @"file";
         }
     }
     
-    NSString *body = [[NSString alloc] initWithData:req.HTTPBody encoding:NSUTF8StringEncoding];
-    NSLog(@"Body : %@", body);
+//    NSString *body = [[NSString alloc] initWithData:req.HTTPBody encoding:NSUTF8StringEncoding];
+//    NSLog(@"Body : %@", body);
     [req setHTTPMethod:[self methodAsString]];
     [req setAllHTTPHeaderFields:self.headers];
     

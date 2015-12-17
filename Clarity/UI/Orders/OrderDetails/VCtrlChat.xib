@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VCtrlChat" customModule="Clarity" customModuleProvider="target">
             <connections>
                 <outlet property="lcBottomMargin" destination="KZR-PL-cO8" id="sz5-xo-hvJ"/>
                 <outlet property="lcInputHeight" destination="we3-wt-xd4" id="A0o-UH-icc"/>
-                <outlet property="tableView" destination="5AH-Vb-rph" id="yJa-Ci-e8I"/>
+                <outlet property="ptrScrollView" destination="5AH-Vb-rph" id="vaw-mE-KKD"/>
                 <outlet property="uiMessageContainer" destination="KOm-Y8-T1m" id="prc-hR-lC5"/>
                 <outlet property="uiMessageInput" destination="puz-WZ-MuZ" id="Max-VG-gJe"/>
+                <outlet property="uiTableView" destination="5AH-Vb-rph" id="67N-Hd-Dsi"/>
                 <outlet property="view" destination="iN0-l3-epB" id="mT5-Im-r8E"/>
             </connections>
         </placeholder>
@@ -20,14 +21,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5AH-Vb-rph" customClass="TableView">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="5AH-Vb-rph" customClass="PtrTableView">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="452"/>
                     <animations/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="isReverced" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="6GU-eR-gcu"/>
-                        <outlet property="delegate" destination="-1" id="kvC-Cd-low"/>
+                        <outlet property="dataSource" destination="-1" id="4yX-6r-NtR"/>
+                        <outlet property="delegate" destination="-1" id="A8c-3H-slZ"/>
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SKK-Ye-gFo" userLabel="BottomView">
@@ -119,7 +123,7 @@
                 <constraint firstAttribute="trailing" secondItem="SKK-Ye-gFo" secondAttribute="trailing" id="pva-zh-zFd"/>
                 <constraint firstItem="SKK-Ye-gFo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ynn-dv-QSV"/>
             </constraints>
-            <point key="canvasLocation" x="385" y="336"/>
+            <point key="canvasLocation" x="574" y="330"/>
         </view>
     </objects>
 </document>

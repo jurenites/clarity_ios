@@ -14,4 +14,6 @@
 - (void)switchToReleaseState;
 - (void)switchToLoadingState;
 
+@property (assign, nonatomic) BOOL isReverced;
+
 @end

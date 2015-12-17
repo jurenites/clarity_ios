@@ -7,22 +7,32 @@
 //
 
 #import "VCtrlBase.h"
-#import "DeviceHardware.h"
 #import "Spinner.h"
 #import "UIView+Utils.h"
 #import "NetworkError.h"
-
+#import "MiscUtils.h"
 #import "NSAttributedString+Utils.h"
-
-#import "PLICropAndBlur.h"
 #import "UIImage+Utils.h"
-//#import "TRN-Swift.h"
-#import "Clarity-Swift.h"
+//#import "LoadingOverlay.h"
+//#import "NoticeView.h"
+#import "VCtrlNavigation.h"
+//#import <SDWebImage/UIImageView+WebCache.h>
+//#import <Google/Analytics.h>
+#import "VCtrlRoot.h"
+//#import "NavBarLogo.h"
+#import "PtrCtrl.h"
+//#import "VCtrlTab.h"
+//#import "LayoutGuide.h"
+
+typedef enum {
+    ContentCurrentActionNone,
+    ContentCurrentActionPullToRefresh,
+    ContentCurrentActionInfiniteScroll
+} ContentCurrentAction;
 
 static const CGFloat PlaceholderWidth = 270;
 
-
-@interface VCtrlBase () <ApiRouterDelegate, AppDelegateDelegate>
+@interface VCtrlBase () <ApiRouterDelegate, AppDelegateDelegate, PtrCtrlDelegate>
 {
     BOOL _wasFirstAppear;
     BOOL _wasFirstLayout;
@@ -36,10 +46,20 @@ static const CGFloat PlaceholderWidth = 270;
     LoadingOverlay *_loadingOverlay;
     
     BOOL _transitionIsDenied;
+    
+    BOOL _blockPtrWhileReload;
+    BOOL _blockInfWhileReload;
 }
 @end
 
 @implementation VCtrlBase
+
+//+ (void)trackScreenWithName:(NSString *)name
+//{
+//    id<GAITracker> tracker = [[GAI sharedInstance] defaultTracker];
+//    [tracker set:kGAIScreenName value:name];
+//    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+//}
 
 - (void)goBack
 {
@@ -47,19 +67,48 @@ static const CGFloat PlaceholderWidth = 270;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)showSettings
+- (void)goBackPages:(NSInteger)pages
 {
+    [self.view endEditing:YES];
+    
+    NSArray *vctrls = self.navigationController.viewControllers;
+    
+    if (pages < vctrls.count) {
+        [self.navigationController setViewControllers:[vctrls subarrayWithRange:NSMakeRange(0, vctrls.count - pages)] animated:YES];
+    }
+}
 
-//    VCtrlSettings *settingsVC = [VCtrlSettings new];
-//    if (settingsVC) {
-//        [settingsVC show];
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (!self) {
+        return nil;
+    }
+    
+    _pullToRefreshEnabled = YES;
+    _infiniteScrollEnabled = YES;
+    
+    return self;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    _pullToRefreshEnabled = YES;
+    _infiniteScrollEnabled = YES;
+}
+
+//- (id<UILayoutSupport>)bottomLayoutGuide
+//{
+//    VCtrlTab *tab = (VCtrlTab *)self.parentViewController.parentViewController;
+//    
+//    if ([tab isKindOfClass:[VCtrlTab class]]) {
+//        return [[LayoutGuide alloc] initWithLenght:49];
 //    }
-}
-
-+ (CGFloat)statusBarHeight
-{
-    return [DeviceHardware lowerThaniOS7] ? 0 : [UIApplication sharedApplication].statusBarFrame.size.height;
-}
+//    
+//    return [super bottomLayoutGuide];
+//}
 
 - (void)viewDidLoad
 {
@@ -68,7 +117,7 @@ static const CGFloat PlaceholderWidth = 270;
     _spinner = loadViewFromNib(@"Spinner");
     _api = [ClarityApiManager new];
     [self.view addSubview:_spinner];
-        
+
     _placehoderFont = [UIFont systemFontOfSize:16];
     _placehoderColor = [UIColor colorWithWhite:0.66 alpha:1];
     _placehoderLabel = [UILabel new];
@@ -77,6 +126,8 @@ static const CGFloat PlaceholderWidth = 270;
     _placehoderLabel.numberOfLines = 0;
     _placehoderLabel.textAlignment = NSTextAlignmentCenter;
     [self.scrollView addSubview:_placehoderLabel];
+    
+    self.ptrScrollView.ptrCtrl.delegate = self;
     
     self.isNeedAvatarButton = YES;
     
@@ -97,19 +148,62 @@ static const CGFloat PlaceholderWidth = 270;
         [avatarButton setImage:[UIImage imageNamed:@"96"] forState:UIControlStateNormal];
         [avatarButton addTarget:self action:@selector(showProfileOverlay) forControlEvents:UIControlEventTouchUpInside];
         
-//        avatarButton.backgroundColor = [UIColor greenColor];
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:avatarButton];
-        
-        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]  initWithTitle:@"" style:UIBarButtonItemStylePlain target:NULL action:NULL];
     }
     
     [self kbdSubscribe];
-        
+    [self configurePtr];
+    
     if (!_wasFirstAppear) {
         _wasFirstAppear = YES;
         [self viewWillFirstAppear];
     }
     [self.view setNeedsLayout];
+
+    [self configureBackButton];
+//
+//    if ([self needCompanyLogo] && ![Settings shared].logoInCircles) {
+//        if (self.navigationController.viewControllers.count == 1) {
+//            NSString *companyId = ToString(@([Settings shared].companyId));
+//         
+//            if (companyId.length) {
+//                NavBarLogo *logo = [NavBarLogo new];
+//                
+//                logo.frame = CGRectMake(0, 0, 80, 36);
+//                [logo setup];
+//                
+//                self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:logo];
+//            }
+//        } else {
+//            self.navigationItem.leftBarButtonItem = nil;
+//        }
+//    }
+//        
+//    [[ApiRouter shared] addDelegate:self];
+//    [[YYAppDelegate shared] addDelegate:self];
+//    
+//    [self kbdSubscribe];
+//    [self configurePtr];
+//        
+//    if (!_wasFirstAppear) {
+//        _wasFirstAppear = YES;
+//        [self viewWillFirstAppear];
+//    }
+//    
+//    if (self.trackScreenName.length > 0) {
+//        [[self class] trackScreenWithName:self.trackScreenName];
+//    }
+//    
+//    [self checkHealthKitAccess];
+//    [self.view setNeedsLayout];
+    
+    
+}
+
+- (void)showProfileOverlay
+{
+    MenuOverlay *mV = [MenuOverlay new];
+    [mV show];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -128,11 +222,50 @@ static const CGFloat PlaceholderWidth = 270;
     [_api cancelAllRequests];
     
     [[ApiRouter shared] removeDelegate:self];
-//    [[AGAppDelegate shared] removeDelegate:self];
+//    [[YYAppDelegate shared] removeDelegate:self];
 
     [self kbdUnsubscribe];
-    
     [self hideLoadingOverlay];
+    
+    [self.ptrScrollView.ptrCtrl cancelPtrLoading];
+    [self.ptrScrollView.ptrCtrl cancelInfsLoading];
+    
+    [self.view setNeedsLayout];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    void (^iterateSv)(UIView *view) = NULL;
+    void (^ __block iterateSvWeak)(UIView *view) = NULL;
+    
+    iterateSv = ^(UIView *view) {
+        view.exclusiveTouch = YES;
+        for (UIView *subview in view.subviews) {
+            iterateSvWeak(subview);
+        }
+    };
+    
+    iterateSvWeak = iterateSv;
+    
+    if (self.navigationController.navigationBar) {
+        iterateSv(self.navigationController.navigationBar);
+    }
+    
+    self.navigationItem.backBarButtonItem.accessibilityIdentifier = @"nav_back";
+}
+
+- (void)viewWillLayoutSubviews
+{
+    [super viewWillLayoutSubviews];
+    
+    if (self.scrollView) {
+        UIEdgeInsets insets = UIEdgeInsetsMake([self.topLayoutGuide length], 0, [self.bottomLayoutGuide length], 0);
+        
+        self.scrollView.contentInset = insets;
+        self.scrollView.scrollIndicatorInsets = insets;
+    }
 }
 
 - (void)viewDidLayoutSubviews
@@ -147,17 +280,83 @@ static const CGFloat PlaceholderWidth = 270;
     }
 }
 
-- (NSString *)GAITrackName
+//- (void)setBadgeNumber:(NSInteger)badgeNumber
+//{
+//    [[VCtrlTab current] setBageNumber:badgeNumber forVctrl:self];
+//}
+
+//- (void)checkHealthKitAccess
+//{
+//    if (!self.healthKit.isAvailable) {
+//        return;
+//    }
+//    
+//    NSArray *readDataTypes = [self hkReadDataTypes];
+//    NSArray *writeDataTypes = [self hkWriteDataTypes];
+//    
+//    if (readDataTypes.count == 0 && writeDataTypes.count == 0) {
+//        return;
+//    }
+//    
+//    [self.healthKit requestAccessForReadTypes:[self hkReadDataTypes] writeTypes:[self hkWriteDataTypes] onComplete:^(BOOL hasAccess, NSError *error) {
+//        if (!hasAccess) {
+//            NSLog(@"You didn't allow HealthKit to access these read/write data types. In your app, try to handle this error gracefully when a user decides not to provide access. The error was: %@. If you're using a simulator, try it on a device.", error);
+//        }
+//    }];
+//}
+
+- (void)configureBarButton:(UIBarButtonItem *)barButton
 {
-    return NSStringFromClass([self class]);
+//    [barButton setTitleTextAttributes:@{NSFontAttributeName: [UIFont safeFontWithName:@"Cabin-Regular" size:15]}
+//                             forState:UIControlStateNormal];
+}
+
+- (void)configureBackButton
+{
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain
+                                                            target:nil action:NULL]; //self.navigationItem.title
+    
+    [self configureBarButton:back];
+    self.navigationItem.backBarButtonItem = back;
+}
+
+- (void)configureBackButtonWithTitle:(NSString *)title
+{
+    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain
+                                                            target:nil action:NULL];
+    
+    [self configureBarButton:back];
+    self.navigationItem.backBarButtonItem = back;
+}
+
+//- (NSArray *)hkReadDataTypes
+//{
+//    return @[];
+//}
+//
+//- (NSArray *)hkWriteDataTypes
+//{
+//    return @[];
+//}
+
+- (BOOL)needCompanyLogo
+{
+    return NO;
+}
+
+- (void)willAppearInTabBar
+{
 }
 
 #pragma mark StatusBar
+
 - (BOOL)prefersStatusBarHidden
 {
     return NO;
 }
+
 #pragma mark VCtrlBaseProtocol
+
 - (void)viewWillFirstAppear
 {
 }
@@ -165,7 +364,6 @@ static const CGFloat PlaceholderWidth = 270;
 - (void)viewDidFirstLayoutSubviews
 {
 }
-
 
 - (void)appWillEnterForeground
 {
@@ -181,57 +379,12 @@ static const CGFloat PlaceholderWidth = 270;
 
 - (void)appWentOnline
 {
-//    if ([GlobalEntitiesCtrl shared].currentUser.isTrainer) {
-//        [self updateSessionInfo];
-//    }
+    [self configurePtr];
 }
 
 - (void)appWentOffline
 {
-//    [[AlertView new] showWithTitle:@"No internet connection."
-//                              text:@""
-//                 cancelButtonTitle:@"Ok"
-//                 otherButtonTitles:@[]
-//                        onComplete:nil];
-}
-
-- (BOOL)needNavBar
-{
-    return YES;
-}
-
-- (BOOL)needBackButton
-{
-    return YES;
-}
-
-- (BOOL)needMenu
-{
-    return NO;
-}
-
-- (void)checkPromoAndShow
-{
-}
-
-- (BOOL)needTimer
-{
-    return NO;
-}
-
-- (BOOL)needLock
-{
-    return NO;
-}
-
-- (BOOL)needTrackGAI
-{
-    return YES;
-}
-
-- (NSArray *)needCustomButtons
-{
-    return nil;
+    [self configurePtr];
 }
 
 - (BOOL)shouldAutorotate
@@ -248,6 +401,8 @@ static const CGFloat PlaceholderWidth = 270;
 {
     return interfaceOrientation == UIInterfaceOrientationPortrait;
 }
+
+#pragma mark Placeholder
 
 - (BOOL)isNeedPlaceholder
 {
@@ -297,63 +452,6 @@ static const CGFloat PlaceholderWidth = 270;
         _placehoderLabel.hidden = YES;
     }
 }
-
-- (void)showProfileOverlay
-{
-    MenuOverlay *mV = [MenuOverlay new];
-    [mV show];
-}
-
-//- (void)setAvatarFromUrl:(NSString *)avatarUrl
-//          withAvatarData:(NSData *)notUpdatedAvatarData
-//                  sizeOf:(CGSize)size
-//               onSuccess:(void(^)(UIImage *image, BOOL animated))onSuccess
-//{
-//    NSData *avatarData = [[ApiRouter shared].avatarFileCache loadFileWithName:[AvatarFileCache avatarNameFromUrl:avatarUrl]];
-//    if (notUpdatedAvatarData.length) {
-//        avatarData = notUpdatedAvatarData;
-//    }
-//    
-//    void (^setAvatarImage)(UIImage *image, BOOL animated) = ^(UIImage *image, BOOL animated) {
-//        if (!image) {
-//            return;
-//        }
-//        
-//        CIImage *ciImg = [CIImage imageWithCGImage:image.CGImage];
-//        UIImage *circleImg = [[PLICropAndBlur processAvatar:ciImg
-//                                            withOrientation:image.imageOrientation
-//                                                    dstSize:size
-//                                                   avatarId:[AvatarFileCache avatarNameFromUrl:avatarUrl]
-//                                                 updateTime:nil] applyCircleMask];
-//        
-//        if (onSuccess) {
-//            onSuccess(circleImg, animated);
-//        }
-//    };
-//    
-//    if (avatarData) {
-//        setAvatarImage([UIImage imageWithData:avatarData], NO);
-//    } else {
-//        self.pendingRequest = [self.api avatarFromUrl:avatarUrl pipeline:@[] onSuccess:^(UIImage *image){
-//            setAvatarImage(image, YES);
-//        } onError:^(NSError *error) {
-//        }];
-//    }
-//}
-//
-//- (void)setAvatarFromUrl:(NSString *)avatarUrl
-//          withAvatarData:(NSData *)notUpdatedAvatarData
-//             toImageView:(UIImageView *)avatarView
-//         withPlaceholder:(UIImageView *)placeholder
-//{
-//    [self setAvatarFromUrl:avatarUrl withAvatarData:notUpdatedAvatarData sizeOf:avatarView.frame.size onSuccess:^(UIImage *image, BOOL animated) {
-//        [UIView placeholderTransition:placeholder
-//                            imageView:avatarView
-//                                image:image
-//                             animated:animated];
-//    }];
-//}
-
 
 #pragma mark Keyboard
 
@@ -456,6 +554,11 @@ static const CGFloat PlaceholderWidth = 270;
                         onComplete:NULL];
 }
 
+//- (void)showTopNotice:(NSString *)notice withColor:(UIColor *)color
+//{
+//    [[VCtrlRoot current] showTopNotice:notice withColor:color];
+//}
+
 - (void)goBackAfretDelay:(NSTimeInterval)delay
 {
     dispatch_time_t fireTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC));
@@ -504,6 +607,11 @@ static const CGFloat PlaceholderWidth = 270;
     [_spinner show];
 }
 
+- (void)hideSpinner
+{
+    [_spinner hide];
+}
+
 - (void)showLoadingOverlay
 {
     if (_loadingOverlay) {
@@ -518,11 +626,6 @@ static const CGFloat PlaceholderWidth = 270;
 {
     [_loadingOverlay hide];
     _loadingOverlay = nil;
-}
-
-- (void)hideSpinner
-{
-    [_spinner hide];
 }
 
 - (BOOL)isTransitionAvailable
@@ -540,7 +643,82 @@ static const CGFloat PlaceholderWidth = 270;
     return YES;
 }
 
+#pragma mark PtrCtrlDelegate
+
+- (void)ptrCtrl:(PtrCtrl *)ptr ptrTriggered:(void (^)(BOOL hasMoreData, BOOL tryAgain))onComplete
+{
+    VCtrlBase * __weak weakSelf = self;
+    
+    ApiCanceler *canceler = [self ptrReloadContent:^(BOOL hasMoreData, BOOL tryAgain) {
+        onComplete(hasMoreData, tryAgain);
+        [weakSelf clearPendingRequest];
+        [weakSelf configurePtr];
+    }];
+    
+    [self setPendingRequestAfterPtrOrInfs:canceler];
+}
+
+- (void)ptrCtrl:(PtrCtrl *)ptr infsTriggered:(void (^)(BOOL hasMoreData, BOOL tryAgain))onComplete
+{
+    VCtrlBase * __weak weakSelf = self;
+    
+    ApiCanceler *canceler = [self ptrLoadMoreContent:^(BOOL hasMoreData, BOOL tryAgain){
+        onComplete(hasMoreData, tryAgain);
+        [weakSelf clearPendingRequest];
+        [weakSelf configurePtr];
+    }];
+    
+    [self setPendingRequestAfterPtrOrInfs:canceler];
+}
+
+- (void)ptrCtrlDidReloadData:(PtrCtrl *)ptr
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self configurePtr];
+    });
+}
+
 #pragma mark Content related
+
+- (void)configurePtr
+{
+    if (!self.ptrScrollView) {
+        return;
+    }
+    
+    self.ptrScrollView.ptrCtrl.ptrEnabled = [self isNeedPullToRefresh] && self.pullToRefreshEnabled
+        && !_blockPtrWhileReload;
+    
+    self.ptrScrollView.ptrCtrl.infsEnabled = [self isNeedInfiniteScroll] && self.infiniteScrollEnabled
+        && !_blockInfWhileReload;
+}
+
+- (void)triggerInfiniteScroll
+{
+    [self.ptrScrollView.ptrCtrl triggerInfs];
+}
+
+- (void)setInfiniteScrollEnabled:(BOOL)infinityScrollEnabled
+{
+    _infiniteScrollEnabled = infinityScrollEnabled;
+    [self configurePtr];
+}
+
+- (void)setPullToRefreshEnabled:(BOOL)pullToRefreshEnabled
+{
+    _pullToRefreshEnabled = pullToRefreshEnabled;
+    [self configurePtr];
+}
+
+- (BOOL)isNeedPullToRefresh
+{
+    return YES;
+}
+
+- (BOOL)isNeedInfiniteScroll
+{
+    return NO;
+}
 
 - (ApiCanceler *)baseReloadContent:(void(^)(BOOL hasMoreData, BOOL tryAgain))onComplete
 {
@@ -551,15 +729,51 @@ static const CGFloat PlaceholderWidth = 270;
     return nil;
 }
 
-- (void)triggerReloadContent
+- (ApiCanceler *)ptrReloadContent:(BaseOnLoadMoreComplete)onComplete
 {
-    VCtrlBase * __weak weakSelf = self;
-    
-    self.pendingRequest = [self baseReloadContent:^(BOOL hasMoreData, BOOL tryAgain){
-        weakSelf.pendingRequest = nil;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        onComplete(NO, NO);
+    });
+    return nil;
+}
+
+- (ApiCanceler *)ptrLoadMoreContent:(BaseOnLoadMoreComplete)onComplete
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        onComplete(NO, NO);
+    });
+    return nil;
+}
+
+- (void)triggerReloadContentWithBlockPtr:(BOOL)blockPtr andIs:(BOOL)blockIs
+{
+    self.pendingRequest = [self baseReloadContent:^(BOOL hasMoreData, BOOL tryAgain) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self clearPendingRequest];
+            
+            _blockPtrWhileReload = NO;
+            _blockInfWhileReload = NO;
+            
+            [self hideSpinner];
+            [self configurePtr];
+            [self.ptrScrollView.ptrCtrl resetInfiniteScrolling:hasMoreData tryAgain:tryAgain];
+        });
     }];
     
-    [self showSpinner];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self showSpinner];
+        
+        _blockPtrWhileReload = blockPtr;
+        _blockInfWhileReload = blockIs;
+        
+        [self.ptrScrollView.ptrCtrl resetInfiniteScrolling:NO tryAgain:NO];
+        [self configurePtr];
+    });
+}
+
+- (void)triggerReloadContent
+{
+    [self triggerReloadContentWithBlockPtr:YES andIs:YES];
 }
 
 - (void)clearPendingRequest
@@ -569,6 +783,18 @@ static const CGFloat PlaceholderWidth = 270;
 
 - (void)setPendingRequest:(ApiCanceler *)canceler
 {
+    [self.ptrScrollView.ptrCtrl cancelPtrLoading];
+    [self.ptrScrollView.ptrCtrl cancelInfsLoading];
+    
+    [self setPendingRequestAfterPtrOrInfs:canceler];
+}
+
+- (void)setPendingRequestAfterPtrOrInfs:(ApiCanceler *)canceler
+{
+    _blockPtrWhileReload = NO;
+    _blockInfWhileReload = NO;
+    [self configurePtr];
+    
     if (_pendingRequest) {
         [_pendingRequest cancel];
         

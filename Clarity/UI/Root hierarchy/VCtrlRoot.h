@@ -6,14 +6,16 @@
 //  Copyright (c) 2014 OysterLabs. All rights reserved.
 //
 
-#import "VCtrlBase.h"
+#import "VCtrlBaseOld.h"
 
-@interface VCtrlRoot : VCtrlBase
+@interface VCtrlRoot : VCtrlBaseOld
 
 + (instancetype)current;
 
 - (void)showMainUI;
 
+- (void)showChatFromPush:(NSInteger)chatId;
+- (void)processPush:(NSDictionary *)pushInfo active:(BOOL)isActive;
 //- (void)setStartupPushData:(NSDictionary *)pushData;
 //- (void)processPush:(NSDictionary *)pushData;
 

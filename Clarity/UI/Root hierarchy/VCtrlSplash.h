@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 OysterLabs. All rights reserved.
 //
 
-#import "VCtrlBase.h"
+#import "VCtrlBaseOld.h"
 
-@interface VCtrlSplash : VCtrlBase
+@interface VCtrlSplash : VCtrlBaseOld
 
 @end

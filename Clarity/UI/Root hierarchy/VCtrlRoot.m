@@ -72,6 +72,44 @@ static VCtrlRoot *Current = nil;
     [self moveToVctrl:[VCtrlLogin new] animated:YES onComplete:NULL];
 }
 
+- (void)showChatFromPush:(NSInteger)chatId
+{
+    if (_currentVCtrl.class == [UINavigationController class] && _currentVCtrl.navigationController.viewControllers.lastObject.class != [VCtrlChat class]) {
+        NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:chatId], [[VCtrlChat alloc] initWithOrderId:chatId]];
+        [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:YES];
+    }
+}
+
+- (void)processPush:(NSDictionary *)pushInfo active:(BOOL)isActive
+{
+    NSInteger orderId = ToInt(pushInfo[@"order_id"]);
+    NSString *type = ToString(pushInfo[@"type"]);
+    
+    if (_currentVCtrl.class != [UINavigationController class]) {
+        return;
+    }
+    
+    if ([type isEqualToString:PushMessageNew] || [type isEqualToString:PushMessageUpdate] || [type isEqualToString:PushMessageRemove]) {
+        if (isActive) {
+            NSInteger messageId = ToInt(pushInfo[@"message_id"]);
+            [[EventsHub shared] chatUpdated:orderId messageId:messageId action:type];
+        } else {
+            NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:orderId], [[VCtrlChat alloc] initWithOrderId:orderId]];
+            [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:NO];
+        }
+    } else if ([type isEqualToString:PushOrderNew] || [type isEqualToString:PushOrderUpdate] || [type isEqualToString:PushOrderRemove]) {
+        if (isActive) {
+            [[EventsHub shared] orderUpdated:orderId action:type];
+        } else {
+            NSArray *navStack = @[[VCtrlOrders new]];
+            if (![type isEqualToString:PushOrderRemove]) {
+                navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:orderId]];
+            }
+            [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:NO];
+        }
+    }
+}
+
 - (void)startup
 {
     DispatchAfter(0.5, ^{

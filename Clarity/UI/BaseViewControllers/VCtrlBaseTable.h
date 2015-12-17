@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "VCtrlBaseProtocol.h"
-#import "VCtrlBase.h"
+#import "VCtrlBaseProtocolOld.h"
+#import "VCtrlBaseOld.h"
 #import "TableView.h"
 #import "TableContentCtrl.h"
 
 typedef BaseOnLoadMoreComplete BaseTableOnLoadMoreComplete;
 
-@interface VCtrlBaseTable : VCtrlBase
+@interface VCtrlBaseTable : VCtrlBaseOld
 
 @property (strong, nonatomic) IBOutlet TableView *tableView;
 

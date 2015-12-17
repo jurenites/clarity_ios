@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import "YYAppDelegate.h"
 #import "AppDelegate.h"
 #import "UIView+Utils.h"
 #import "ClarityApiManager.h"
+//#import "YYApi.h"
 
-@protocol VCtrlBaseProtocol <NSObject>
+@protocol VCtrlBaseProtocol <NSObject>//, AppDelegateDelegate>
 
 - (void)reportError:(NSError *)error;
 - (void)reportErrorString:(NSString *)string;
@@ -35,17 +37,8 @@
 
 - (void)viewWillFirstAppear;
 - (void)viewDidFirstLayoutSubviews;
-- (BOOL)needNavBar;
-- (BOOL)needBackButton;
-- (BOOL)needTimer;
-- (BOOL)needLock;
 
-//GAI
-- (BOOL)needTrackGAI;
-
-- (NSArray *)needCustomButtons;
 - (ApiCanceler *)baseReloadContent:(void(^)(BOOL hasMoreData, BOOL tryAgain))onComplete;
-
 
 - (void)keyboardWillShowWithSize:(CGSize)kbdSize duration:(NSTimeInterval)duration curve:(UIViewAnimationOptions)curve;
 - (void)keyboardDidShow;
@@ -54,6 +47,7 @@
 
 - (void)clearPendingRequest;
 
+//@property (readonly, nonatomic) YYApi *api;
 @property (readonly, nonatomic) ClarityApiManager *api;
 @property (strong, nonatomic) ApiCanceler *pendingRequest;
 

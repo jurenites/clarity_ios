@@ -10,12 +10,20 @@ import UIKit
 
 class MessageCell : UITableViewCell {
     
-    private static var dispatchToken: dispatch_once_t = 0
+    struct staticHolder {
+        static var dispatchToken: dispatch_once_t = 0
+        static var constHeight: CGFloat = 0
+        static var minTextHeight: CGFloat = 0
+        static var textWidth: CGFloat = 0
+        static var textFont: UIFont = UIFont()
+    }
+    
     var firstCell : Bool = false
     var _message: Message?
     
     @IBOutlet var uiText: UILabel!
     @IBOutlet var uiUserName: UILabel!
+    @IBOutlet var uiDate: UILabel!
     @IBOutlet var uiBackground: MessageBack!
     
     @IBOutlet var lcTopMargin: NSLayoutConstraint!
@@ -32,19 +40,13 @@ class MessageCell : UITableViewCell {
             self.lcTextHeight.constant = m.textHeight
             self.uiText.text = m.text
             self.uiUserName.text = m.authorName
+            self.uiDate.text = m.formattedDate
             self.uiBackground.leftSide = !GlobalEntitiesCtrl.shared().isMyId(m.authorId)
         }
     }
     
     class func messageLayout(message : String) -> (textHeight: CGFloat, cellHeight: CGFloat) {
-        struct staticHolder {
-            static var constHeight: CGFloat = 0
-            static var minTextHeight: CGFloat = 0
-            static var textWidth: CGFloat = 0
-            static var textFont: UIFont = UIFont()
-        }
-        
-        dispatch_once(&dispatchToken) {
+        dispatch_once(&staticHolder.dispatchToken) {
             CallSyncOnMainThread({
                 let cell = loadViewFromNib(self.nibName())
                 cell.contentView.width = UIScreen.mainScreen().bounds.size.width

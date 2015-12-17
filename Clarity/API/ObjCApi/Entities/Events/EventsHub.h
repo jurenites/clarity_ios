@@ -13,7 +13,9 @@
 
 + (EventsHub *)shared;
 
-- (void)chatWasUpdated:(NSInteger)chatId;
+- (void)chatUpdated:(NSInteger)chatId messageId:(NSInteger)messageId action:(NSString *)action;
+- (void)orderUpdated:(NSInteger)orderId action:(NSString *)action;
+
 - (void)addListener:(id<EventsHubProtocol>)listener;
 - (void)removeListener:(id<EventsHubProtocol>)listener;
 

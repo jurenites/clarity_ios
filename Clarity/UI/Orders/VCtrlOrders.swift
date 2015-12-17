@@ -8,13 +8,15 @@
 
 import UIKit
 
-class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol {
+class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlOrderDetailsProtocol, EventsHubProtocol {
     
     let _pageSize = 10
     var _orders = [ShortOrder]()
     
     var _filterString: String = ""
     var _needUpdate: Bool = false
+    
+    @IBOutlet var uiTableView: PtrTableView!
     
     @IBOutlet var uiTableHeader: UIView!
     @IBOutlet var uiFilter: SelectCtrl!
@@ -27,14 +29,6 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func needNavBar() -> Bool {
-        return true
-    }
-    
-    override func needBackButton() -> Bool {
-        return false
-    }
-    
     override func isNeedInfiniteScroll() -> Bool {
         return true
     }
@@ -43,13 +37,14 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         super.viewDidLoad()
         
         self.navigationItem.title = NSLocalizedString("Order List", comment: "")
-        self.tableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
+        self.uiTableView.registerNib(UINib(nibName: OrdersListCell.nibName(), bundle: nil), forCellReuseIdentifier: OrdersListCell.nibName())
         
         let accessoryView = DefaultAccessoryView.create()
         uiFilter.inputAccessoryView = accessoryView
         accessoryView.onDone = WrapAction(self, method: VCtrlOrders.actKbdDone)
         
         var selectItems = [SelectCtrlItem]()
+        var defaultItem = SelectCtrlItem()
         
         for str in GlobalEntitiesCtrl.shared().orderFilters{
             let item = SelectCtrlItem()
@@ -57,15 +52,21 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
             item.name = GlobalEntitiesCtrl.shared().orderFilterForKey(str as! String)
             
             selectItems.append(item)
+            
+            if "action_needed" == item.key as! String {
+                defaultItem = item
+                _filterString = item.key as! String
+            }
         }
         
         uiFilter.setItems(selectItems)
+        uiFilter.selectedItem = defaultItem
     }
     
     override func viewWillFirstAppear() {
         super.viewWillFirstAppear()
         if _orders.count == 0 {
-            self.tableView.alpha = 0;
+            self.uiTableView.alpha = 0;
             self.triggerReloadContent()
         }
     }
@@ -104,13 +105,17 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         if let currOrderIndex = _orders.indexOf({$0.orderId == shortOrder.orderId}) {
             if !delete {
                 _orders[currOrderIndex] = shortOrder
-                self.tableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.beginUpdates()
+                self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.endUpdates()
             } else {
                 if let nav = self.navigationController {
                     nav.popViewControllerAnimated(true)
                 }
                 _orders.removeAtIndex(currOrderIndex)
-                self.tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.beginUpdates()
+                self.uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                self.uiTableView.endUpdates()
             }
         }
     }
@@ -145,13 +150,13 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
             .success({ (orders : [ShortOrder]) in
                 self._orders = orders
                 self.uiTableHeader.hidden = false
-                self.tableView.reloadData()
+                self.uiTableView.reloadData()
                 UIView.animateWithDuration(0.33, animations: { () -> Void in
-                    self.tableView.alpha = 1;
+                    self.uiTableView.alpha = 1;
                 })
                 onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
-                self.tableView.alpha = 1
+                self.uiTableView.alpha = 1
                 self.uiTableHeader.hidden = true
                 self.reportError(error)
                 onComplete(false, true)
@@ -160,15 +165,15 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
         return ApiCancelerSignal.wrap(canceler)
     }
     
-    override func tableReloadContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+    override func ptrReloadContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         return self.baseReloadContent(onComplete)
     }
-    
-    override func tableLoadMoreContent(onComplete: BaseTableOnLoadMoreComplete!) -> ApiCanceler! {
+
+    override func ptrLoadMoreContent(onComplete: BaseOnLoadMoreComplete!) -> ApiCanceler! {
         let canceler = ClarityApi.shared().getOrders(_filterString, offset: self._orders.count, limit: 5)
             .success({ (orders : [ShortOrder]) in
                 self._orders += orders
-                self.tableView.reloadData()
+                self.uiTableView.reloadData()
                 onComplete(self._orders.count >= self._pageSize, true)
             }, error: { (error: NSError) in
                 self.reportError(error)
@@ -176,5 +181,42 @@ class VCtrlOrders: VCtrlBaseTable, UITableViewDelegate, UITableViewDataSource, V
             })
         
         return ApiCancelerSignal.wrap(canceler)
+    }
+    
+    
+    //MARK: EventsHubProtocol
+    func updateOrder(orderId: Int, action: String!) {
+        if !self.isOnScreen {
+            return
+        }
+        
+        let index = _orders.indexOf( {$0.orderId == orderId} )
+        
+        if action == PushOrderRemove && index != nil {
+            _orders.removeAtIndex(index!)
+            uiTableView.beginUpdates()
+            uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation:UITableViewRowAnimation.Fade)
+            uiTableView.endUpdates()
+            return
+        }
+        
+        if action == PushOrderNew || (action == PushOrderUpdate && index != nil) {
+            ClarityApi.shared().getOrder(orderId)
+                .success({ (order: Order) in
+                    if action == PushOrderUpdate {
+                        self._orders[index!] = order
+                        self.uiTableView.beginUpdates()
+                        self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.endUpdates()
+                    } else { //New
+                        self._orders.append(order)
+                        self.uiTableView.beginUpdates()
+                        self.uiTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.endUpdates()
+                    }
+                    }, error: { (error: NSError) in
+                        self.reportError(error)
+                })
+        }
     }
 }
