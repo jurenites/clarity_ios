@@ -938,36 +938,6 @@
 			name = Map;
 			sourceTree = "<group>";
 		};
-		5B59E5C81C070346000B7BD7 /* NewBase */ = {
-			isa = PBXGroup;
-			children = (
-				5B59E5C91C070346000B7BD7 /* TableVIew */,
-				5B59E5D61C070346000B7BD7 /* VCtrlBase.h */,
-				5B59E5D71C070346000B7BD7 /* VCtrlBase.m */,
-				5B59E5D81C070346000B7BD7 /* VCtrlBaseProtocol.h */,
-			);
-			path = NewBase;
-			sourceTree = "<group>";
-		};
-		5B59E5C91C070346000B7BD7 /* TableVIew */ = {
-			isa = PBXGroup;
-			children = (
-				5B59E5CA1C070346000B7BD7 /* PtrCollectionView.h */,
-				5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */,
-				5B59E5CC1C070346000B7BD7 /* PtrCtrl.h */,
-				5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */,
-				5B381E2B1C0DC514003C02FA /* RevercedPtrCtrl.h */,
-				5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */,
-				5B59E5CE1C070346000B7BD7 /* PtrCtrl_Private.h */,
-				5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */,
-				5B59E5D01C070346000B7BD7 /* PtrScrollView.h */,
-				5B59E5D11C070346000B7BD7 /* PtrScrollView.m */,
-				5B59E5D41C070346000B7BD7 /* PtrTableView.h */,
-				5B59E5D51C070346000B7BD7 /* PtrTableView.m */,
-			);
-			path = TableVIew;
-			sourceTree = "<group>";
-		};
 		5B5922651C16FFF0003B1836 /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -1001,6 +971,36 @@
 				5B88F30D1BB44885009F202C /* libsqlite3.0.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5B59E5C81C070346000B7BD7 /* NewBase */ = {
+			isa = PBXGroup;
+			children = (
+				5B59E5C91C070346000B7BD7 /* TableVIew */,
+				5B59E5D61C070346000B7BD7 /* VCtrlBase.h */,
+				5B59E5D71C070346000B7BD7 /* VCtrlBase.m */,
+				5B59E5D81C070346000B7BD7 /* VCtrlBaseProtocol.h */,
+			);
+			path = NewBase;
+			sourceTree = "<group>";
+		};
+		5B59E5C91C070346000B7BD7 /* TableVIew */ = {
+			isa = PBXGroup;
+			children = (
+				5B59E5CA1C070346000B7BD7 /* PtrCollectionView.h */,
+				5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */,
+				5B59E5CC1C070346000B7BD7 /* PtrCtrl.h */,
+				5B59E5CD1C070346000B7BD7 /* PtrCtrl.m */,
+				5B381E2B1C0DC514003C02FA /* RevercedPtrCtrl.h */,
+				5B381E2C1C0DC514003C02FA /* RevercedPtrCtrl.m */,
+				5B59E5CE1C070346000B7BD7 /* PtrCtrl_Private.h */,
+				5B59E5CF1C070346000B7BD7 /* PtrScrollProtocol.h */,
+				5B59E5D01C070346000B7BD7 /* PtrScrollView.h */,
+				5B59E5D11C070346000B7BD7 /* PtrScrollView.m */,
+				5B59E5D41C070346000B7BD7 /* PtrTableView.h */,
+				5B59E5D51C070346000B7BD7 /* PtrTableView.m */,
+			);
+			path = TableVIew;
 			sourceTree = "<group>";
 		};
 		5B7860ED1BDA77350073290A /* ClarityUITests */ = {
