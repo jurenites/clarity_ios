@@ -47,7 +47,7 @@ class Order: ShortOrder {
     var dateFrom: NSDate = NSDate.init()
     var reportType: String = ""
     var propertyType: String = ""
-    var contact: User? = nil
+    var contact: Contact? = nil
     var location: Location? = nil
     var canAccept: Bool = false
     var canAcceptWConditions: Bool = false
@@ -63,7 +63,7 @@ class Order: ShortOrder {
         reportType = ApiString(d["report_type"])
         propertyType = ApiString(d["property_type"])
         
-        let user = User()
+        let user = Contact()
         user.fillWithApiDict(AssureIsDict(d["contact"]))
         contact = user
         

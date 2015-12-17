@@ -45,7 +45,7 @@
                                             <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl3-iB-yL1" userLabel="Contact Button" customClass="CustomButton">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cl3-iB-yL1" userLabel="Contact Button" customClass="CustomButton">
                                             <rect key="frame" x="25" y="210" width="270" height="30"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jeremi Clarcson" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OeC-2K-uPr">
@@ -96,6 +96,7 @@
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                             <connections>
+                                                <action selector="actContact" destination="-1" eventType="touchUpInside" id="M70-sM-Jl9"/>
                                                 <outlet property="uiTitle" destination="OeC-2K-uPr" id="tbf-0u-YI8"/>
                                             </connections>
                                         </view>
@@ -723,7 +724,7 @@
                 <constraint firstItem="Fg2-FS-EG3" firstAttribute="top" secondItem="1v4-py-Jdz" secondAttribute="top" id="v2M-24-0Uo"/>
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
-            <point key="canvasLocation" x="486" y="382"/>
+            <point key="canvasLocation" x="762" y="399"/>
         </view>
     </objects>
     <resources>

@@ -16,6 +16,14 @@
 		5B52CEDB1BBA79D9009437C5 /* VCtrlChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */; };
 		5B52CEDF1BBA817A009437C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CEDE1BBA817A009437C5 /* MessageCell.swift */; };
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; };
+		5B5922671C170019003B1836 /* VCtrlContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5922661C170019003B1836 /* VCtrlContact.swift */; };
+		5B5922691C170266003B1836 /* VCtrlContact.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5922681C170266003B1836 /* VCtrlContact.xib */; };
+		5B59226B1C1703F8003B1836 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59226A1C1703F8003B1836 /* Contact.swift */; };
+		5B59226F1C180ACC003B1836 /* SharingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59226E1C180ACC003B1836 /* SharingHelper.m */; };
+		5B5922721C180B99003B1836 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922711C180B99003B1836 /* AddressBookUI.framework */; };
+		5B5922741C180BAB003B1836 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922731C180BAB003B1836 /* MessageUI.framework */; };
+		5B5922761C180BBE003B1836 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922751C180BBE003B1836 /* AddressBook.framework */; };
+		5B5922781C180BE0003B1836 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B5922771C180BE0003B1836 /* Social.framework */; };
 		5B5971D51BCE764800CED18C /* gray_hawk_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5971D41BCE764800CED18C /* gray_hawk_logo.png */; };
 		5B59E5C61C05E111000B7BD7 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5C51C05E111000B7BD7 /* Status.swift */; };
 		5B59E5D91C070346000B7BD7 /* PtrCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B59E5CB1C070346000B7BD7 /* PtrCollectionView.m */; };
@@ -365,6 +373,17 @@
 		5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlChat.xib; sourceTree = "<group>"; };
 		5B52CEDE1BBA817A009437C5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		5B5922661C170019003B1836 /* VCtrlContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlContact.swift; sourceTree = "<group>"; };
+		5B5922681C170266003B1836 /* VCtrlContact.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlContact.xib; sourceTree = "<group>"; };
+		5B59226A1C1703F8003B1836 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Entities/Contact.swift; sourceTree = "<group>"; };
+		5B59226D1C180ACC003B1836 /* SharingHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharingHelper.h; sourceTree = "<group>"; };
+		5B59226E1C180ACC003B1836 /* SharingHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharingHelper.m; sourceTree = "<group>"; };
+		5B5922711C180B99003B1836 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
+		5B5922731C180BAB003B1836 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		5B5922751C180BBE003B1836 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		5B5922771C180BE0003B1836 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		5B5922791C180DC4003B1836 /* Contacts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Contacts.framework; path = System/Library/Frameworks/Contacts.framework; sourceTree = SDKROOT; };
+		5B59227A1C180DC4003B1836 /* ContactsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ContactsUI.framework; path = System/Library/Frameworks/ContactsUI.framework; sourceTree = SDKROOT; };
 		5B5971D41BCE764800CED18C /* gray_hawk_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gray_hawk_logo.png; path = Resources/gray_hawk_logo.png; sourceTree = "<group>"; };
 		5B59E5C51C05E111000B7BD7 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Status.swift; path = Entities/Status.swift; sourceTree = "<group>"; };
 		5B59E5CA1C070346000B7BD7 /* PtrCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PtrCollectionView.h; sourceTree = "<group>"; };
@@ -873,6 +892,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B5922781C180BE0003B1836 /* Social.framework in Frameworks */,
+				5B5922721C180B99003B1836 /* AddressBookUI.framework in Frameworks */,
+				5B5922761C180BBE003B1836 /* AddressBook.framework in Frameworks */,
+				5B5922741C180BAB003B1836 /* MessageUI.framework in Frameworks */,
 				5B8B9DE21BB51D58006F3725 /* CoreText.framework in Frameworks */,
 				5B8B9DE01BB51D51006F3725 /* CoreFoundation.framework in Frameworks */,
 				5B8B9DDE1BB51A61006F3725 /* CoreGraphics.framework in Frameworks */,
@@ -945,6 +968,41 @@
 			path = TableVIew;
 			sourceTree = "<group>";
 		};
+		5B5922651C16FFF0003B1836 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				5B5922661C170019003B1836 /* VCtrlContact.swift */,
+				5B5922681C170266003B1836 /* VCtrlContact.xib */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		5B59226C1C180ACC003B1836 /* SharingHelper */ = {
+			isa = PBXGroup;
+			children = (
+				5B59226D1C180ACC003B1836 /* SharingHelper.h */,
+				5B59226E1C180ACC003B1836 /* SharingHelper.m */,
+			);
+			path = SharingHelper;
+			sourceTree = "<group>";
+		};
+		5B5922701C180B70003B1836 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5B5922791C180DC4003B1836 /* Contacts.framework */,
+				5B59227A1C180DC4003B1836 /* ContactsUI.framework */,
+				5B5922771C180BE0003B1836 /* Social.framework */,
+				5B5922751C180BBE003B1836 /* AddressBook.framework */,
+				5B5922731C180BAB003B1836 /* MessageUI.framework */,
+				5B5922711C180B99003B1836 /* AddressBookUI.framework */,
+				5B8B9DE11BB51D58006F3725 /* CoreText.framework */,
+				5B8B9DDF1BB51D51006F3725 /* CoreFoundation.framework */,
+				5B8B9DDD1BB51A61006F3725 /* CoreGraphics.framework */,
+				5B88F30D1BB44885009F202C /* libsqlite3.0.dylib */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		5B7860ED1BDA77350073290A /* ClarityUITests */ = {
 			isa = PBXGroup;
 			children = (
@@ -982,6 +1040,7 @@
 		5B88F3031BB41642009F202C /* OrderDetails */ = {
 			isa = PBXGroup;
 			children = (
+				5B5922651C16FFF0003B1836 /* Contact */,
 				5B52CEDD1BBA8153009437C5 /* Map */,
 				5B52CEDC1BBA814E009437C5 /* Chat */,
 				5BA7FD4C1BB9967E005951E7 /* VCtrlOrderDetails.swift */,
@@ -1034,13 +1093,10 @@
 		5BC79C061BB1ADE70040AF48 = {
 			isa = PBXGroup;
 			children = (
-				5B8B9DE11BB51D58006F3725 /* CoreText.framework */,
-				5B8B9DDF1BB51D51006F3725 /* CoreFoundation.framework */,
-				5B8B9DDD1BB51A61006F3725 /* CoreGraphics.framework */,
-				5B88F30D1BB44885009F202C /* libsqlite3.0.dylib */,
 				5BC79C111BB1ADE70040AF48 /* Clarity */,
 				5BC79C2B1BB1ADE70040AF48 /* ClarityTests */,
 				5B7860ED1BDA77350073290A /* ClarityUITests */,
+				5B5922701C180B70003B1836 /* Frameworks */,
 				5BC79C101BB1ADE70040AF48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1163,6 +1219,7 @@
 				5B8B9DE51BB556AC006F3725 /* Order.swift */,
 				5B88F2E61BB3C7DE009F202C /* User.swift */,
 				5B59E5C51C05E111000B7BD7 /* Status.swift */,
+				5B59226A1C1703F8003B1836 /* Contact.swift */,
 			);
 			name = Entities;
 			sourceTree = "<group>";
@@ -1355,6 +1412,7 @@
 		5BE5B4681BB286EF00671BFE /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				5B59226C1C180ACC003B1836 /* SharingHelper */,
 				5BE5B4691BB286EF00671BFE /* AlertView.h */,
 				5BE5B46A1BB286EF00671BFE /* AlertView.m */,
 				5BE5B46B1BB286EF00671BFE /* BadgeIcon.h */,
@@ -2043,6 +2101,7 @@
 				5BFB9D401BC5637000017FDA /* Login@2x.png in Resources */,
 				5BFB9D5C1BC5637000017FDA /* Completed@2x.png in Resources */,
 				5BFB9D431BC5637000017FDA /* Massages.png in Resources */,
+				5B5922691C170266003B1836 /* VCtrlContact.xib in Resources */,
 				5BC2406C1BD66CCE00023381 /* Address_white@2.png in Resources */,
 				5BFB9D441BC5637000017FDA /* Massages@2x.png in Resources */,
 				5BC2406D1BD66CCE00023381 /* Contac_white.png in Resources */,
@@ -2249,6 +2308,7 @@
 				5BE5B4E01BB286EF00671BFE /* UIScreen+Utils.m in Sources */,
 				5B9BC7D41BBE553A0087D001 /* ChatTextView.swift in Sources */,
 				5BE5B4BD1BB286EF00671BFE /* BBDeviceHardware.m in Sources */,
+				5B59226F1C180ACC003B1836 /* SharingHelper.m in Sources */,
 				5BE5B6061BB2E25500671BFE /* CircleProgressBar.m in Sources */,
 				5BE5B5BC1BB2B94200671BFE /* IORequestDataContainer.m in Sources */,
 				5B71CD031BBBC7310093833D /* Message.swift in Sources */,
@@ -2284,6 +2344,7 @@
 				5BE5B5CB1BB2B94200671BFE /* Canceler.swift in Sources */,
 				5BE5B5D01BB2B94200671BFE /* CollectionCacheCtrl.swift in Sources */,
 				5BE54E661BC2861F007E1173 /* MenuOverlay.swift in Sources */,
+				5B5922671C170019003B1836 /* VCtrlContact.swift in Sources */,
 				5BE5B61F1BB2E25500671BFE /* VCtrlSelectSingleContent.m in Sources */,
 				5BE5B5BF1BB2B94200671BFE /* PipelineItem.m in Sources */,
 				5BE5B5C01BB2B94200671BFE /* PLIBlock.m in Sources */,
@@ -2315,6 +2376,7 @@
 				5BE5B4DF1BB286EF00671BFE /* UILabel+Utils.m in Sources */,
 				5BC79D741BB1B75B0040AF48 /* ApiCancelerFlag.m in Sources */,
 				5BC79CC11BB1B42E0040AF48 /* VCtrlBaseOld.m in Sources */,
+				5B59226B1C1703F8003B1836 /* Contact.swift in Sources */,
 				5BE5B4CF1BB286EF00671BFE /* NSMutableDictionary+DB.m in Sources */,
 				5BE5B5BE1BB2B94200671BFE /* NSError+IO.m in Sources */,
 				5BE5B4CC1BB286EF00671BFE /* NSDictionary+DB.m in Sources */,

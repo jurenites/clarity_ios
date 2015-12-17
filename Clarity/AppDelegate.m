@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "DelegatesHolder.h"
+#import "BBDeviceHardware.h"
 
 @interface AppDelegate ()
 {
@@ -34,6 +35,8 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = [VCtrlRoot new];
     [self.window makeKeyAndVisible];
+    
+    [BBDeviceHardware iOS8AndHiger];
     
     return YES;
 }

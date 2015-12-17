@@ -26,6 +26,8 @@
 #import "SelectCtrl.h"
 #import "EventsHub.h"
 #import "NibLoader.h"
+#import "SharingHelper.h"
+#import "DeviceHardware.h"
 
 #import "PtrTableView.h"
 #import "TablePtrView.h"
