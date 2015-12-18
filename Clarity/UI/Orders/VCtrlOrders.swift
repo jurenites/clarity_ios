@@ -116,8 +116,14 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
                 self.uiTableView.endUpdates()
             } else {
                 if let nav = self.navigationController {
-                    nav.popViewControllerAnimated(true)
+                    if nav.viewControllers.count > 1 {
+                        nav.popToRootViewControllerAnimated(true)
+                        self.showNotice("\(NSLocalizedString("Order", comment: "")) \(shortOrder.orderId) \(NSLocalizedString("removed", comment: ""))")
+                    }
                 }
+//                if let nav = self.navigationController {
+//                    nav.popViewControllerAnimated(true)
+//                }
                 _orders.removeAtIndex(currOrderIndex)
                 self.uiTableView.beginUpdates()
                 self.uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
@@ -192,23 +198,17 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
     
     //MARK: EventsHubProtocol
     func updateOrder(orderId: Int, action: String!) {
+        if !self.isOnScreen {
+            return
+        }
+        
         let index = _orders.indexOf( {$0.orderId == orderId} )
         
         if action == PushOrderRemove && index != nil {
-            if let nav = self.navigationController {
-                if nav.viewControllers.count > 1 {
-                    nav.popToRootViewControllerAnimated(true)
-                    self.showNotice("\(NSLocalizedString("Order", comment: "")) \(orderId) \(NSLocalizedString("removed", comment: ""))")
-                }
-            }
             _orders.removeAtIndex(index!)
             uiTableView.beginUpdates()
             uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation:UITableViewRowAnimation.Fade)
             uiTableView.endUpdates()
-            return
-        }
-        
-        if !self.isOnScreen {
             return
         }
         

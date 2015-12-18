@@ -336,22 +336,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/API/ObjCApi/Entities/Events/EventsHub.m"
-            timestampString = "467902450.465147"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "-chatUpdated:messageId:action:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -419,76 +403,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/VCtrlOrders.swift"
-            timestampString = "472133063.075822"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "195"
-            endingLineNumber = "195"
-            landmarkName = "updateOrder(_:action:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Clarity.VCtrlOrders.updateOrder (Clarity.VCtrlOrders)(Swift.Int, action : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/VCtrlOrders.swift"
-                  timestampString = "472133064.297666"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "80">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Clarity.VCtrlOrders.(updateOrder (Clarity.VCtrlOrders) -&gt; (Swift.Int, action : Swift.ImplicitlyUnwrappedOptional&lt;Swift.String&gt;) -&gt; ()).(closure #1)"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/UI/Orders/VCtrlOrders.swift"
-                  timestampString = "472133064.298208"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "195"
-                  endingLineNumber = "195"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/VCtrlOrders.swift"
-            timestampString = "472133063.075822"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "198"
-            endingLineNumber = "198"
-            landmarkName = "updateOrder(_:action:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
-            timestampString = "472132883.508597"
+            timestampString = "472135128.634284"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
             landmarkName = "actChat()"
             landmarkType = "5">
          </BreakpointContent>
@@ -499,61 +419,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Clarity/API/ObjCApi/Entities/Events/EventsHub.m"
-            timestampString = "472132947.85265"
+            filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
+            timestampString = "472135064.169011"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "-orderUpdated:action:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[EventsHub orderUpdated:action:]"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/API/ObjCApi/Entities/Events/EventsHub.m"
-                  timestampString = "472133064.318339"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "104">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[EventsHub orderUpdated:action:]"
-                  moduleName = "Clarity"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/mascap/Documents/clarity_ios/Clarity/API/ObjCApi/Entities/Events/EventsHub.m"
-                  timestampString = "472133064.318625"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "128">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/API/ObjCApi/Entities/Events/EventsHub.m"
-            timestampString = "472132951.140855"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "-orderUpdated:action:"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
+            landmarkName = "updateOrder(_:action:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
