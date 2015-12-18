@@ -45,21 +45,10 @@ class ConditionsOverlay: BaseOverlay, UITextViewDelegate {
     }
     
     @IBAction func actNegative() {
-//        if let fn = _onTapFunc {
-//            fn()
-//        }
         self.view.endEditing(true)
         self.hide()
     }
     
-//    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-//        let currentString = NSString(string: textView.text)
-//        let newString = currentString.stringByReplacingCharactersInRange(range, withString: text)
-//        if newString.length == 0 {
-//            self.uiMessageInput.setNeedsDisplay()
-//        }
-//        return true
-//    }
     func textViewDidChange(textView: UITextView) {
         self.uiMessageInput.setNeedsDisplay()
     }

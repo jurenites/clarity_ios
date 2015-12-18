@@ -63,6 +63,7 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+    GHLog(@"%@", userInfo);
     [[VCtrlRoot current] processPush:userInfo active:application.applicationState == UIApplicationStateActive];
 }
 

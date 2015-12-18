@@ -375,4 +375,17 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
 //                        self.reportError(error)
 //                })
     }
+    
+    func updateOrder(orderId: Int, action: String!) {
+        if !self.isOnScreen || self.orderId != orderId {
+            return
+        }
+        
+        if action == PushOrderRemove {
+            if let nav = self.navigationController {
+                self.showNotice(NSLocalizedString("Order removed", comment: ""))
+                nav.popToRootViewControllerAnimated(true)
+            }
+        }
+    }
 }
