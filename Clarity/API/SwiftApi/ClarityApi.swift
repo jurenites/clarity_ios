@@ -85,7 +85,10 @@ import Foundation
             "filters[order_status]" : filter,
             "offset" : NSNumber(integer: offset),
             "limit" : NSNumber(integer: limit)])
-        .next(PliFromApiArray)
+            .next(PliFromApiArray)
+//            .nextFunc({ (orders: [ShortOrder]) -> [ShortOrder] in
+//                orders.sort({$0.dateFrom.compare($1.dateFrom) == NSComparisonResult.OrderedDescending })
+//        })
     }
     
     func getOrder(orderId: Int) -> Signal<Order> {

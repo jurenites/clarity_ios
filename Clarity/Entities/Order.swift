@@ -14,20 +14,26 @@ class ShortOrder: ApiEntity, Visitable {
     var price : Double = 0
     var address : String = ""
     var status : String = ""
-    var date: NSDate = NSDate.Empty
+//    var date: NSDate = NSDate.Empty
+    var dateTo: NSDate = NSDate.init()
+    var dateFrom: NSDate = NSDate.init()
     
     override func fillWithApiDict(d: NSDictionary) {
         orderId  = ApiInt(d["id"])
         price = ApiDouble(d["vendor_fee"])
         address = ApiString(d["property_address"])
         status = ApiString(d["order_status"])
+        dateFrom = FromServerDateTime(ApiString(d["created_at"]))
+        dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
     
     func visit(v: EntityVisitor) {
         v.field("id", &orderId)
-        .field("vendor_fee", &price)
-        .field("property_address", &address)
-        .field("order_status", &status)
+            .field("vendor_fee", &price)
+            .field("property_address", &address)
+            .field("order_status", &status)
+            .field("date_needed", &dateTo)
+            .field("created_at", &dateFrom)
     }
     
     func fromDict(d: NSDictionary) -> ShortOrder {
@@ -43,8 +49,6 @@ class Order: ShortOrder {
     
     var messagesCount: Int = 0
     var unreadMessagesCount : Int = 0
-    var dateTo: NSDate = NSDate.init()
-    var dateFrom: NSDate = NSDate.init()
     var reportType: String = ""
     var propertyType: String = ""
     var contact: Contact? = nil
@@ -73,8 +77,6 @@ class Order: ShortOrder {
         
         messagesCount = ApiInt(d["messages_count"])
         unreadMessagesCount = ApiInt(d["messages_unread"])
-        dateFrom = FromServerDateTime(ApiString(d["created_at"]))
-        dateTo = FromServerDate(ApiString(d["date_needed"]))
     }
     
     override func visit(v: EntityVisitor) {
@@ -82,8 +84,6 @@ class Order: ShortOrder {
         
         v.field("messanges", &messagesCount)
             .field("unreadMessagesCount", &unreadMessagesCount)
-            .field("date_needed", &dateTo)
-            .field("created_at", &dateFrom)
             .field("report_type", &reportType)
             .field("property_type", &propertyType)
             .field("contact", &contact)

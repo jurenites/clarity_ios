@@ -47,6 +47,7 @@ class Message: ApiEntity, Visitable {
             staticHolder.stringFormatter.dateFormat = "dd/MM/yyyy HH:mm aa"
         }
 
+        //dateFrom = FromServerDateTime(ApiString(d["created_at"])) !!!
         if let date = staticHolder.formatter.dateFromString(ApiString(d["created_at"])) {
             createdDate = date
         }
