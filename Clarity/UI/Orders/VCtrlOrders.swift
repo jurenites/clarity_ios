@@ -29,6 +29,10 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        EventsHub.shared().removeListener(self)
+    }
+    
     override func isNeedInfiniteScroll() -> Bool {
         return true
     }
@@ -61,6 +65,8 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         
         uiFilter.setItems(selectItems)
         uiFilter.selectedItem = defaultItem
+        
+        EventsHub.shared().addListener(self)
     }
     
     override func viewWillFirstAppear() {
@@ -186,17 +192,23 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
     
     //MARK: EventsHubProtocol
     func updateOrder(orderId: Int, action: String!) {
-        if !self.isOnScreen {
-            return
-        }
-        
         let index = _orders.indexOf( {$0.orderId == orderId} )
         
         if action == PushOrderRemove && index != nil {
+            if let nav = self.navigationController {
+                if nav.viewControllers.count > 1 {
+                    nav.popToRootViewControllerAnimated(true)
+                    self.showNotice("\(NSLocalizedString("Order", comment: "")) \(orderId) \(NSLocalizedString("removed", comment: ""))")
+                }
+            }
             _orders.removeAtIndex(index!)
             uiTableView.beginUpdates()
             uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation:UITableViewRowAnimation.Fade)
             uiTableView.endUpdates()
+            return
+        }
+        
+        if !self.isOnScreen {
             return
         }
         

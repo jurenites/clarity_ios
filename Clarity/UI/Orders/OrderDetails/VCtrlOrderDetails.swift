@@ -237,10 +237,7 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
     
     func updateOrder(orderId: Int, action: String!) {
         if self.isOnScreen && self.orderId == orderId {
-            if action == PushOrderRemove {
-                self.showNotice(NSLocalizedString("Order removed", comment: ""))
-                self.orderChanged(true)
-            } else {
+            if action != PushOrderRemove {
                 //WARNING: TODO - do I need to check if user changing status now?
                 self.triggerReloadContent()
             }
