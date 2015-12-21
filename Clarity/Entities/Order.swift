@@ -14,7 +14,6 @@ class ShortOrder: ApiEntity, Visitable {
     var price : Double = 0
     var address : String = ""
     var status : String = ""
-//    var date: NSDate = NSDate.Empty
     var dateTo: NSDate = NSDate.init()
     var dateFrom: NSDate = NSDate.init()
     

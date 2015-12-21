@@ -12,7 +12,6 @@ class Message: ApiEntity, Visitable {
     
     struct staticHolder {
         static var dispatchToken: dispatch_once_t = 0
-        static var formatter: NSDateFormatter = NSDateFormatter() //For (NSDate) createdDate
         static var stringFormatter: NSDateFormatter = NSDateFormatter() //For (String) formattedDate
     }
     
@@ -22,7 +21,7 @@ class Message: ApiEntity, Visitable {
     var authorName: String = ""
     var isRead: Bool = false
     var isEditable: Bool = false
-    var createdDate: NSDate = NSDate()
+    var createdDate: NSDate = NSDate.init()
     var formattedDate: String = ""
     
     //cell layout
@@ -38,20 +37,12 @@ class Message: ApiEntity, Visitable {
         isEditable = ApiBool(d["is_editable"])
         
         dispatch_once(&staticHolder.dispatchToken) {
-            staticHolder.formatter = NSDateFormatter()
-            staticHolder.formatter.locale = NSLocale(localeIdentifier: "en_US")
-            staticHolder.formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
             staticHolder.stringFormatter = NSDateFormatter()
             staticHolder.stringFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
             staticHolder.stringFormatter.dateFormat = "dd/MM/yyyy HH:mm aa"
         }
 
-        //dateFrom = FromServerDateTime(ApiString(d["created_at"])) !!!
-        if let date = staticHolder.formatter.dateFromString(ApiString(d["created_at"])) {
-            createdDate = date
-        }
-        
+        createdDate = FromServerDateTime(ApiString(d["created_at"]))
         formattedDate = staticHolder.stringFormatter.stringFromDate(createdDate)
         
         //cell layout
@@ -76,5 +67,4 @@ class Message: ApiEntity, Visitable {
     func toDict() -> NSDictionary {
         return DictArchiver.toDict(self)
     }
-
 }

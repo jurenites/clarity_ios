@@ -227,6 +227,7 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
         return ApiCancelerSignal.wrap(canceler)
     }
     
+    
     //MARK: EventsHubProtocol
     func updateChat(orderId: Int, messageId: Int, action: String!) {
         if self.isOnScreen && self.orderId == orderId {
