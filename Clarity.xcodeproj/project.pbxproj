@@ -16,6 +16,7 @@
 		5B52CEDB1BBA79D9009437C5 /* VCtrlChat.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */; };
 		5B52CEDF1BBA817A009437C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CEDE1BBA817A009437C5 /* MessageCell.swift */; };
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; };
+		5B5468A21C280798008456D7 /* splashImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5468A11C280798008456D7 /* splashImage@2x.png */; };
 		5B5922671C170019003B1836 /* VCtrlContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5922661C170019003B1836 /* VCtrlContact.swift */; };
 		5B5922691C170266003B1836 /* VCtrlContact.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5922681C170266003B1836 /* VCtrlContact.xib */; };
 		5B59226B1C1703F8003B1836 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59226A1C1703F8003B1836 /* Contact.swift */; };
@@ -373,6 +374,7 @@
 		5B52CEDA1BBA79D9009437C5 /* VCtrlChat.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlChat.xib; sourceTree = "<group>"; };
 		5B52CEDE1BBA817A009437C5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		5B5468A11C280798008456D7 /* splashImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splashImage@2x.png"; path = "Resources/splashImage@2x.png"; sourceTree = "<group>"; };
 		5B5922661C170019003B1836 /* VCtrlContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlContact.swift; sourceTree = "<group>"; };
 		5B5922681C170266003B1836 /* VCtrlContact.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlContact.xib; sourceTree = "<group>"; };
 		5B59226A1C1703F8003B1836 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Entities/Contact.swift; sourceTree = "<group>"; };
@@ -1169,6 +1171,7 @@
 		5BC79C3B1BB1AE630040AF48 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B5468A11C280798008456D7 /* splashImage@2x.png */,
 				5BC240621BD66CCE00023381 /* Extra_icons */,
 				5B5971D41BCE764800CED18C /* gray_hawk_logo.png */,
 				5BFB9CCA1BC5637000017FDA /* Application_icon */,
@@ -2047,6 +2050,7 @@
 			files = (
 				5BC79CC91BB1B42E0040AF48 /* TipOverlay.xib in Resources */,
 				5BFB9D661BC5637000017FDA /* in-Review@2x.png in Resources */,
+				5B5468A21C280798008456D7 /* splashImage@2x.png in Resources */,
 				5BFB9D3B1BC5637000017FDA /* Free.png in Resources */,
 				5BFB9D391BC5637000017FDA /* Date.png in Resources */,
 				5BFB9D301BC5637000017FDA /* 58.png in Resources */,

@@ -121,9 +121,7 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
                         self.showNotice("\(NSLocalizedString("Order", comment: "")) \(shortOrder.orderId) \(NSLocalizedString("removed", comment: ""))")
                     }
                 }
-//                if let nav = self.navigationController {
-//                    nav.popViewControllerAnimated(true)
-//                }
+
                 _orders.removeAtIndex(currOrderIndex)
                 self.uiTableView.beginUpdates()
                 self.uiTableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: currOrderIndex, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)

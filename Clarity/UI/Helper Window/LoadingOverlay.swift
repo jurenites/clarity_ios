@@ -56,6 +56,10 @@ class LoadingOverlay: UIViewController
             self._window.removeFromSuperview()
         })
     }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return UIStatusBarStyle.LightContent
+    }
 
     override func shouldAutorotate() -> Bool {
         return false

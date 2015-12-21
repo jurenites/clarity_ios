@@ -156,6 +156,12 @@ static const CGFloat PlaceholderWidth = 270;
 {
     return NO;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
 #pragma mark VCtrlBaseProtocol
 - (void)viewWillFirstAppear
 {
