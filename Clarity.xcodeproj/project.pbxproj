@@ -17,6 +17,7 @@
 		5B52CEDF1BBA817A009437C5 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B52CEDE1BBA817A009437C5 /* MessageCell.swift */; };
 		5B52CEE11BBA818E009437C5 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B52CEE01BBA818E009437C5 /* MessageCell.xib */; };
 		5B5468A21C280798008456D7 /* splashImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5468A11C280798008456D7 /* splashImage@2x.png */; };
+		5B5468A41C282DA8008456D7 /* splashImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B5468A31C282DA8008456D7 /* splashImage.png */; };
 		5B5922671C170019003B1836 /* VCtrlContact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B5922661C170019003B1836 /* VCtrlContact.swift */; };
 		5B5922691C170266003B1836 /* VCtrlContact.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5B5922681C170266003B1836 /* VCtrlContact.xib */; };
 		5B59226B1C1703F8003B1836 /* Contact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B59226A1C1703F8003B1836 /* Contact.swift */; };
@@ -375,6 +376,7 @@
 		5B52CEDE1BBA817A009437C5 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		5B52CEE01BBA818E009437C5 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		5B5468A11C280798008456D7 /* splashImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "splashImage@2x.png"; path = "Resources/splashImage@2x.png"; sourceTree = "<group>"; };
+		5B5468A31C282DA8008456D7 /* splashImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = splashImage.png; path = Resources/splashImage.png; sourceTree = "<group>"; };
 		5B5922661C170019003B1836 /* VCtrlContact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCtrlContact.swift; sourceTree = "<group>"; };
 		5B5922681C170266003B1836 /* VCtrlContact.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VCtrlContact.xib; sourceTree = "<group>"; };
 		5B59226A1C1703F8003B1836 /* Contact.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Contact.swift; path = Entities/Contact.swift; sourceTree = "<group>"; };
@@ -1171,6 +1173,7 @@
 		5BC79C3B1BB1AE630040AF48 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5B5468A31C282DA8008456D7 /* splashImage.png */,
 				5B5468A11C280798008456D7 /* splashImage@2x.png */,
 				5BC240621BD66CCE00023381 /* Extra_icons */,
 				5B5971D41BCE764800CED18C /* gray_hawk_logo.png */,
@@ -2072,6 +2075,7 @@
 				5BFB9D641BC5637000017FDA /* in-Progress@2x.png in Resources */,
 				5BE5B61E1BB2E25500671BFE /* VCtrlSelectMultiContent.xib in Resources */,
 				5BFB9D221BC5637000017FDA /* 1024.png in Resources */,
+				5B5468A41C282DA8008456D7 /* splashImage.png in Resources */,
 				5BFB9D231BC5637000017FDA /* 114.png in Resources */,
 				5BE5B60E1BB2E25500671BFE /* DefaultAccessoryView.xib in Resources */,
 				5B88F30C1BB44009009F202C /* Login.json in Resources */,

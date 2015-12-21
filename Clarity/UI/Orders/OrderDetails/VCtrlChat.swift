@@ -237,7 +237,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
         }
     }
     
-    func removeMessageWithId(messageId: NSInteger) {
+    private func removeMessageWithId(messageId: NSInteger) {
         if let idx = _messages.find({message in message.messageId == messageId}) {
             _messages.removeAtIndex(idx)
             self.uiTableView.reloadData()

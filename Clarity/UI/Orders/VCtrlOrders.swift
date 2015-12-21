@@ -76,10 +76,6 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
             self.triggerReloadContent()
         }
     }
-
-    private func populate() {
-        
-    }
     
     @IBAction func actFilterChanged() {
         let prevFilter = _filterString

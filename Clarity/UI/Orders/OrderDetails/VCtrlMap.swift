@@ -39,7 +39,7 @@ class VCtrlMap: VCtrlBase, MKMapViewDelegate {
         self.view.layoutIfNeeded()
     }
     
-    func populate() {
+    private func populate() {
         uiStreetLabel.text = "\(location.city) \(location.address_1)"
         uiStreetView.layer.borderColor = borderColor.CGColor
         uiStreetView.layer.borderWidth = 0.5

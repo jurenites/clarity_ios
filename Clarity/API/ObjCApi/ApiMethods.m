@@ -18,7 +18,7 @@
         //Auth
         @(AMLoginViaEmail)      :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/login"],
         @(AMLogout)             :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/logout"],
-        @(AMRecoverPassword)    :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/reset_password"],
+        @(AMRecoverPassword)    :   [ApiMethod srv:AMSLogin method:HttpMethodGet url:@"/auth/reset_password?username=:username"],
         @(AMSetAPNS)            :   [ApiMethod srv:AMSLogin method:HttpMethodPost url:@"/pushes"],
         
         //Orders

@@ -20,7 +20,7 @@
                     <animations/>
                 </imageView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="lcC-Z4-lpV">
-                    <rect key="frame" x="141" y="481" width="37" height="37"/>
+                    <rect key="frame" x="141" y="511" width="37" height="37"/>
                     <animations/>
                     <color key="color" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </activityIndicatorView>
@@ -35,7 +35,7 @@
                 <constraint firstAttribute="bottom" secondItem="Dso-lj-jg4" secondAttribute="bottom" id="84u-WJ-Ph7"/>
                 <constraint firstItem="Dso-lj-jg4" firstAttribute="leading" secondItem="Se1-85-kCO" secondAttribute="leading" id="9du-El-ozg"/>
                 <constraint firstAttribute="trailing" secondItem="Dso-lj-jg4" secondAttribute="trailing" id="I62-0x-f70"/>
-                <constraint firstAttribute="bottom" secondItem="lcC-Z4-lpV" secondAttribute="bottom" constant="50" id="PMy-aE-YWV"/>
+                <constraint firstAttribute="bottom" secondItem="lcC-Z4-lpV" secondAttribute="bottom" constant="20" id="PMy-aE-YWV"/>
                 <constraint firstItem="lcC-Z4-lpV" firstAttribute="top" secondItem="Dso-lj-jg4" secondAttribute="bottom" id="eGy-hd-BCp"/>
                 <constraint firstItem="Dso-lj-jg4" firstAttribute="top" secondItem="Se1-85-kCO" secondAttribute="top" id="peO-xF-Fxy"/>
             </constraints>

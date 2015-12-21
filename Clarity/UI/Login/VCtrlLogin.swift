@@ -156,8 +156,7 @@ class VCtrlLogin : VCtrlBaseOld, UITextFieldDelegate {
     @IBAction func actRecovery() {
         
         _isRecovering = !_isRecovering
-        
-//        uiPassword.hidden = _isRecovering
+
         uiPassContainer.hidden = _isRecovering
         uiRecoveryBtn.uiTitle.attributedText = _isRecovering ? self.makeUnderline("Cancel") : self.makeUnderline("Password recovery")
         uiLoginBtn.uiTitle.text = _isRecovering ? NSLocalizedString("Reset", comment: "") : NSLocalizedString("Login", comment: "")
