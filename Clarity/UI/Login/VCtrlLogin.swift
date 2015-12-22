@@ -130,8 +130,8 @@ class VCtrlLogin : VCtrlBaseOld, UITextFieldDelegate {
             self.view.endEditing(true)
             self.showLoadingOverlay()
             let canceler = ClarityApi.shared().login(uiLogin.text!, pass: uiPassword.text!)
-                .flatMap({ (user: User) -> PipelineResult<Signal<AnyObject>> in
-                    return PipelineResult(ClarityApi.shared().getCommonInfo())
+                .flatMap({ (user: User) -> PipelineResult<Signal<(AnyObject, AnyObject)>> in
+                    return PipelineResult(ClarityApi.shared().getInitialInfo())
                 })
                 .success({
                     self.hideLoadingOverlay()

@@ -73,10 +73,12 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
             uiPropertyType.uiTitle.text = ord.propertyType
             uiPropertyType.enabled = false
             
+            uiContact.enabled = false
             if let contact = ord.contact {
-                uiContact.uiTitle.text = contact.name
-            } else {
-                uiContact.enabled = false
+                if contact.name.length > 0 {
+                    uiContact.uiTitle.text = contact.name
+                    uiContact.enabled = true
+                }
             }
             
             uiFree.uiTitle.text = "$ \(ord.price)"
@@ -153,6 +155,9 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
             let chat = VCtrlChat(orderId: orderId)
             chat.delegate = self
             if let nav = self.navigationController {
+                if let unreadC = order?.unreadMessagesCount {
+                    GlobalEntitiesCtrl.shared().changeBadgeNumberBy(-unreadC)
+                }
                 nav.pushViewController(chat, animated: true)
             }
         }

@@ -37,7 +37,11 @@ static NSString * const PushOrderRemove     = @"RemoveOrder";
 - (void)fillOrderStatuses:(NSArray *)orderStatuses;
 - (Status *)orderStatusForKey:(NSString *)orderStatusKey;
 
+- (void)setBadgeNumber:(NSInteger)badgeNumber;
+- (void)changeBadgeNumberBy:(NSInteger)value;
+
 @property (readonly, nonatomic) User *currentUser;
 @property (readonly, nonatomic) NSArray *orderFilters;
+@property (readonly, nonatomic) NSInteger badgeNumber;
 
 @end

@@ -44,6 +44,8 @@ static NSString * const OrderFiltersDictKey = @"OrderFilters";
     _statuses = [NSMutableDictionary new];
     _orderFiltersDict = [NSMutableDictionary new];
     _orderFilters = [NSArray new];
+    
+    _badgeNumber = 0;
 
     [[AppDelegate shared] addDelegate:self];
     [[ApiRouter shared] addDelegate:self];
@@ -146,5 +148,48 @@ static NSString * const OrderFiltersDictKey = @"OrderFilters";
     }
     return status;
 }
+
+- (void)setBadgeNumber:(NSInteger)badgeNumber
+{
+    _badgeNumber = badgeNumber;
+    if (_badgeNumber < 0) {
+        _badgeNumber = 0;
+    }
+    [self setupAppBadgeNumber];
+}
+
+- (void)changeBadgeNumberBy:(NSInteger)value
+{
+    _badgeNumber += value;
+    if (_badgeNumber < 0) {
+        _badgeNumber = 0;
+    }
+    [self setupAppBadgeNumber];
+}
+
+- (void)setupAppBadgeNumber
+{
+    UIApplication *application = [UIApplication sharedApplication];
+    
+    if([DeviceHardware iOS8AndHiger]) {
+        if ([self checkNotificationType:UIUserNotificationTypeBadge]) {
+            GHLog(@"badge number changed to %ld", (long)_badgeNumber);
+            application.applicationIconBadgeNumber = _badgeNumber;
+        } else {
+            GHLog(@"access denied for UIUserNotificationTypeBadge");
+        }
+    } else {
+        application.applicationIconBadgeNumber = _badgeNumber;
+    }
+}
+
+#ifdef __IPHONE_8_0
+- (BOOL)checkNotificationType:(UIUserNotificationType)type
+{
+    UIUserNotificationSettings *currentSettings = [[UIApplication sharedApplication] currentUserNotificationSettings];
+    return (currentSettings.types & type);
+}
+#endif
+
 
 @end

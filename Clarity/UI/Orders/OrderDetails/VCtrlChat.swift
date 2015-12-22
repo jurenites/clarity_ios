@@ -343,6 +343,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                         }
                         
                         self._messagesCountChanged = true
+                        GlobalEntitiesCtrl.shared().changeBadgeNumberBy(-1)
                     }
                 }, error: { (error: NSError) in
                     self.reportError(error)

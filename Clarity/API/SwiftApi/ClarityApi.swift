@@ -50,11 +50,15 @@ import Foundation
             "device_token" : token])
     }
     
+    func getInitialInfo() -> Signal<(AnyObject, AnyObject)> {
+        return MultiplexSignals(getCommonInfo(), sig2: getUnreadMessagesCount())
+    }
+    
     //MARK: Orders
     func getCommonInfo() -> Signal<AnyObject> {
         return callMethod(ApiMethodID.AMGetCommonInfo)
             .next(PliIsApiDictionary)
-            .next(PLISwitchToMain)
+//            .next(PLISwitchToMain)
             .next({(res: NSDictionary) in
                 if let statuses = res["statuses"] as? NSArray {
                     var array = [Status]()
@@ -119,6 +123,19 @@ import Foundation
     }
     
     //MARK: Messages
+    func getUnreadMessagesCount() -> Signal<AnyObject> {
+        return callMethod(ApiMethodID.AMGetUMessagesCount)
+            .next(PliIsApiDictionary)
+//            .next(PLISwitchToMain)
+            .next({(res: NSDictionary) in
+                
+                if let count = res["unread_messages_count"] as? NSInteger {
+                    GlobalEntitiesCtrl.shared().setBadgeNumber(count)
+                }
+                return PipelineResult("")
+            })
+    }
+    
     func getMessage(orderId: Int, messageId: Int) -> Signal<Message> {
         return callMethod(ApiMethodID.AMGetMessage,
             urlParams: [

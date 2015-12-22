@@ -215,9 +215,9 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
                         self.uiTableView.reloadRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
                         self.uiTableView.endUpdates()
                     } else { //New
-                        self._orders.append(order)
+                        self._orders.insert(order, atIndex: 0) //For now newest orders come on the top, so new order is newest one.
                         self.uiTableView.beginUpdates()
-                        self.uiTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: index!, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
+                        self.uiTableView.insertRowsAtIndexPaths([NSIndexPath(forRow: 0, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Fade)
                         self.uiTableView.endUpdates()
                     }
                     }, error: { (error: NSError) in

@@ -90,10 +90,14 @@ static VCtrlRoot *Current = nil;
     }
     
     if ([type isEqualToString:PushMessageNew] || [type isEqualToString:PushMessageUpdate] || [type isEqualToString:PushMessageRemove]) {
+        [[GlobalEntitiesCtrl shared] setBadgeNumber:ToInt(pushInfo[@"unread_messages_count"])];
         if (isActive) {
             NSInteger messageId = ToInt(pushInfo[@"message_id"]);
             [[EventsHub shared] chatUpdated:orderId messageId:messageId action:type];
         } else {
+            if ([type isEqualToString:PushMessageNew]) {
+                [[GlobalEntitiesCtrl shared] changeBadgeNumberBy:-1];
+            }
             NSArray *navStack = @[[VCtrlOrders new], [[VCtrlOrderDetails alloc] initWithOrderId:orderId], [[VCtrlChat alloc] initWithOrderId:orderId]];
             [(UINavigationController *)_currentVCtrl setViewControllers:navStack animated:NO];
         }
