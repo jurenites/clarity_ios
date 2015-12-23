@@ -16,6 +16,9 @@ class MessageCell : UITableViewCell {
         static var minTextHeight: CGFloat = 0
         static var textWidth: CGFloat = 0
         static var textFont: UIFont = UIFont()
+
+        static var minHorisontalMargin: CGFloat = 10
+        static var maxHorisontalMargin: CGFloat = 10
     }
     
     var firstCell : Bool = false
@@ -29,6 +32,9 @@ class MessageCell : UITableViewCell {
     @IBOutlet var lcTopMargin: NSLayoutConstraint!
     @IBOutlet var lcTextHeight: NSLayoutConstraint!
     
+    @IBOutlet var lcLeftMargin: NSLayoutConstraint!
+    @IBOutlet var lcRightMargin: NSLayoutConstraint!
+    
     class func nibName() -> String! {
         return "MessageCell"
     }
@@ -41,7 +47,11 @@ class MessageCell : UITableViewCell {
             self.uiText.text = m.text
             self.uiUserName.text = m.authorName
             self.uiDate.text = m.formattedDate
-            self.uiBackground.leftSide = !GlobalEntitiesCtrl.shared().isMyId(m.authorId)
+            let leftSide = !GlobalEntitiesCtrl.shared().isMyId(m.authorId)
+            self.uiBackground.leftSide = leftSide
+            self.lcLeftMargin.constant = leftSide ? staticHolder.minHorisontalMargin : staticHolder.maxHorisontalMargin
+            self.lcRightMargin.constant = leftSide ? staticHolder.maxHorisontalMargin : staticHolder.minHorisontalMargin
+            self.contentView.layoutIfNeeded()
         }
     }
     
@@ -50,11 +60,12 @@ class MessageCell : UITableViewCell {
             CallSyncOnMainThread({
                 let cell = loadViewFromNib(self.nibName())
                 cell.contentView.width = UIScreen.mainScreen().bounds.size.width
+                staticHolder.maxHorisontalMargin = ceil(UIScreen.mainScreen().bounds.size.width / 7)
                 cell.contentView.layoutIfNeeded()
                 
                 staticHolder.minTextHeight = cell.uiText!.height
                 staticHolder.constHeight = cell.contentView.height - staticHolder.minTextHeight
-                staticHolder.textWidth = cell.uiText!.width
+                staticHolder.textWidth = cell.uiText!.width - staticHolder.minHorisontalMargin - staticHolder.maxHorisontalMargin
                 staticHolder.textFont = cell.uiText!.font
             })
         }
@@ -87,7 +98,7 @@ class MessageBack : UIView {
         CGContextBeginPath(context)
         CGContextSetLineWidth(context, thickness)
         CGContextSetStrokeColorWithColor(context, UIColor.grayColor().CGColor)
-        CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+        CGContextSetFillColorWithColor(context, leftSide ? UIColor.whiteColor().CGColor : UIColor(fromHex: "#ACD9FF").CGColor)
         
         let x = triangleSide/2 + thickness
         let lineEdge = thickness*0.5 //thickness
