@@ -31,6 +31,7 @@ class OrderStatusView: UIView {
                     "broadcasted" : "Broadcasted",
                     "declined_by_vendor" : "Declined-by-Vendor",
                     "corrections_requested_by_amc" : "Corrections-requested",
+                    "lender_corrections_request" : "Corrections-requested",
                     "accepted_by_vendor" : "Accepted-by-Vendor",
                     "submitted" : "Submitted",
                     "pending_approval" : "Pending-Approval",

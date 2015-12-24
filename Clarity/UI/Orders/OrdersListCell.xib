@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -96,34 +96,34 @@
                         </variation>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UM1-fM-DbS" userLabel="Status View" customClass="OrderStatusView" customModule="Clarity" customModuleProvider="target">
-                        <rect key="frame" x="25" y="69" width="78" height="25"/>
+                        <rect key="frame" x="25" y="69" width="77" height="30"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4za-Bb-m3V">
-                                <rect key="frame" x="35" y="4" width="38" height="18"/>
+                                <rect key="frame" x="34" y="6" width="38" height="18"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-0d-csy">
-                                <rect key="frame" x="5" y="0.0" width="25" height="25"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DZa-0d-csy">
+                                <rect key="frame" x="5" y="3" width="24" height="24"/>
                                 <animations/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="3QX-C5-cSQ"/>
-                                    <constraint firstAttribute="height" constant="25" id="rnL-oZ-ulC"/>
+                                    <constraint firstAttribute="width" constant="24" id="3QX-C5-cSQ"/>
+                                    <constraint firstAttribute="height" constant="24" id="rnL-oZ-ulC"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.42745098039215684" green="0.73333333333333328" blue="0.73725490196078436" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="DZa-0d-csy" secondAttribute="bottom" id="13m-dA-YBV"/>
+                            <constraint firstAttribute="bottom" secondItem="DZa-0d-csy" secondAttribute="bottom" constant="3" id="13m-dA-YBV"/>
                             <constraint firstAttribute="width" constant="160" id="7kV-9D-xVB"/>
                             <constraint firstItem="4za-Bb-m3V" firstAttribute="centerY" secondItem="UM1-fM-DbS" secondAttribute="centerY" id="7oD-fK-UJ0"/>
                             <constraint firstItem="4za-Bb-m3V" firstAttribute="leading" secondItem="DZa-0d-csy" secondAttribute="trailing" constant="5" id="9SY-nR-l3G"/>
                             <constraint firstItem="4za-Bb-m3V" firstAttribute="centerX" secondItem="UM1-fM-DbS" secondAttribute="centerX" id="ScB-gg-8bl"/>
-                            <constraint firstItem="DZa-0d-csy" firstAttribute="top" secondItem="UM1-fM-DbS" secondAttribute="top" id="UvJ-WQ-qkI"/>
-                            <constraint firstAttribute="height" constant="25" id="aRS-ll-BzW"/>
+                            <constraint firstItem="DZa-0d-csy" firstAttribute="top" secondItem="UM1-fM-DbS" secondAttribute="top" constant="3" id="UvJ-WQ-qkI"/>
+                            <constraint firstAttribute="height" constant="30" id="aRS-ll-BzW"/>
                             <constraint firstItem="DZa-0d-csy" firstAttribute="leading" secondItem="UM1-fM-DbS" secondAttribute="leading" constant="5" id="bBg-66-s2i"/>
                             <constraint firstAttribute="trailing" secondItem="4za-Bb-m3V" secondAttribute="trailing" constant="5" id="rZT-7a-qcu"/>
                         </constraints>
@@ -161,7 +161,7 @@
                     <constraint firstItem="74B-SZ-sTJ" firstAttribute="leading" secondItem="O5I-DQ-4dE" secondAttribute="leading" id="dU6-jc-i4D"/>
                     <constraint firstItem="UM1-fM-DbS" firstAttribute="top" secondItem="2kJ-t2-vRl" secondAttribute="bottom" constant="8" id="kWx-7A-SDF"/>
                     <constraint firstAttribute="trailing" secondItem="2kJ-t2-vRl" secondAttribute="trailing" constant="25" id="nHh-NA-e2x"/>
-                    <constraint firstAttribute="bottom" secondItem="UM1-fM-DbS" secondAttribute="bottom" constant="15" id="okh-w4-EB6"/>
+                    <constraint firstAttribute="bottom" secondItem="UM1-fM-DbS" secondAttribute="bottom" constant="10" id="okh-w4-EB6"/>
                 </constraints>
             </tableViewCellContentView>
             <animations/>

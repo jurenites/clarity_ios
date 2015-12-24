@@ -35,7 +35,7 @@
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cfi-xU-Ab4">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Cfi-xU-Ab4" secondAttribute="height" multiplier="1:1" id="i1F-9q-LcW"/>
@@ -45,11 +45,11 @@
                             <animations/>
                             <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="Cfi-xU-Ab4" secondAttribute="bottom" id="LYc-ib-kCd"/>
-                                <constraint firstItem="Cfi-xU-Ab4" firstAttribute="leading" secondItem="1J5-ks-vBl" secondAttribute="leading" id="WgF-B9-rfd"/>
-                                <constraint firstItem="Cfi-xU-Ab4" firstAttribute="top" secondItem="1J5-ks-vBl" secondAttribute="top" id="XXR-4T-Dkh"/>
+                                <constraint firstAttribute="bottom" secondItem="Cfi-xU-Ab4" secondAttribute="bottom" constant="3" id="LYc-ib-kCd"/>
+                                <constraint firstItem="Cfi-xU-Ab4" firstAttribute="leading" secondItem="1J5-ks-vBl" secondAttribute="leading" constant="3" id="WgF-B9-rfd"/>
+                                <constraint firstItem="Cfi-xU-Ab4" firstAttribute="top" secondItem="1J5-ks-vBl" secondAttribute="top" constant="3" id="XXR-4T-Dkh"/>
                                 <constraint firstAttribute="width" constant="30" id="YnO-LM-zG3"/>
-                                <constraint firstAttribute="trailing" secondItem="Cfi-xU-Ab4" secondAttribute="trailing" id="rZ5-BR-faj"/>
+                                <constraint firstAttribute="trailing" secondItem="Cfi-xU-Ab4" secondAttribute="trailing" constant="3" id="rZ5-BR-faj"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Work Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-f1-oKA">
@@ -98,7 +98,7 @@
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Frv-YP-1ht">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Frv-YP-1ht" secondAttribute="height" multiplier="1:1" id="GBi-2a-dDi"/>
@@ -108,11 +108,11 @@
                             <animations/>
                             <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="Frv-YP-1ht" secondAttribute="bottom" id="7jN-Ij-MHT"/>
-                                <constraint firstItem="Frv-YP-1ht" firstAttribute="top" secondItem="0WW-GD-c3s" secondAttribute="top" id="TMM-vy-Z71"/>
+                                <constraint firstAttribute="bottom" secondItem="Frv-YP-1ht" secondAttribute="bottom" constant="3" id="7jN-Ij-MHT"/>
+                                <constraint firstItem="Frv-YP-1ht" firstAttribute="top" secondItem="0WW-GD-c3s" secondAttribute="top" constant="3" id="TMM-vy-Z71"/>
                                 <constraint firstAttribute="width" constant="30" id="alM-PC-cEY"/>
-                                <constraint firstItem="Frv-YP-1ht" firstAttribute="leading" secondItem="0WW-GD-c3s" secondAttribute="leading" id="eP0-fC-baN"/>
-                                <constraint firstAttribute="trailing" secondItem="Frv-YP-1ht" secondAttribute="trailing" id="tFo-Oj-gZ3"/>
+                                <constraint firstItem="Frv-YP-1ht" firstAttribute="leading" secondItem="0WW-GD-c3s" secondAttribute="leading" constant="3" id="eP0-fC-baN"/>
+                                <constraint firstAttribute="trailing" secondItem="Frv-YP-1ht" secondAttribute="trailing" constant="3" id="tFo-Oj-gZ3"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Other Phone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkN-bC-hP1">
@@ -161,7 +161,7 @@
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="IEV-Pv-V2v">
-                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                    <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="IEV-Pv-V2v" secondAttribute="height" multiplier="1:1" id="p8T-Zt-atP"/>
@@ -171,11 +171,11 @@
                             <animations/>
                             <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
-                                <constraint firstItem="IEV-Pv-V2v" firstAttribute="top" secondItem="dig-9K-GGN" secondAttribute="top" id="JGo-Xm-HrT"/>
+                                <constraint firstItem="IEV-Pv-V2v" firstAttribute="top" secondItem="dig-9K-GGN" secondAttribute="top" constant="3" id="JGo-Xm-HrT"/>
                                 <constraint firstAttribute="width" constant="30" id="OlS-es-la9"/>
-                                <constraint firstAttribute="trailing" secondItem="IEV-Pv-V2v" secondAttribute="trailing" id="X4k-v2-AVR"/>
-                                <constraint firstAttribute="bottom" secondItem="IEV-Pv-V2v" secondAttribute="bottom" id="XAc-4O-slI"/>
-                                <constraint firstItem="IEV-Pv-V2v" firstAttribute="leading" secondItem="dig-9K-GGN" secondAttribute="leading" id="qCL-wu-aen"/>
+                                <constraint firstAttribute="trailing" secondItem="IEV-Pv-V2v" secondAttribute="trailing" constant="3" id="X4k-v2-AVR"/>
+                                <constraint firstAttribute="bottom" secondItem="IEV-Pv-V2v" secondAttribute="bottom" constant="3" id="XAc-4O-slI"/>
+                                <constraint firstItem="IEV-Pv-V2v" firstAttribute="leading" secondItem="dig-9K-GGN" secondAttribute="leading" constant="3" id="qCL-wu-aen"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No email address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajm-qP-cjB">
@@ -275,6 +275,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Address_white.png" width="12" height="12"/>
+        <image name="Address_white.png" width="24" height="24"/>
     </resources>
 </document>
