@@ -35,7 +35,12 @@ class OrderStatusView: UIView {
                     "accepted_by_vendor" : "Accepted-by-Vendor",
                     "submitted" : "Submitted",
                     "pending_approval" : "Pending-Approval",
-                    "completed" : "Completed"
+                    "completed" : "Completed",
+                    "bill_need_payment" : "Bill-Need-payment",
+                    "need_credit_card_payment" : "CreditCard-Need-payment",
+                    "vendor_submitted" : "Submitted",
+                    "scheduled_required" : "Scheduled",
+                    "action_needed" : "in-Progress"
                 ]
             })
         }
