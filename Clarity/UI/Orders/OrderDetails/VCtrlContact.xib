@@ -31,10 +31,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F0w-UM-rR7" userLabel="Work Phone Button" customClass="CustomButton">
                     <rect key="frame" x="25" y="121" width="270" height="30"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Xl-6b-UNg" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="239" y="0.0" width="1" height="30"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="Nhf-zu-KTa"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1J5-ks-vBl" userLabel="WP Icon container">
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cfi-xU-Ab4">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cfi-xU-Ab4">
                                     <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
@@ -43,7 +55,7 @@
                                 </imageView>
                             </subviews>
                             <animations/>
-                            <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Cfi-xU-Ab4" secondAttribute="bottom" constant="3" id="LYc-ib-kCd"/>
                                 <constraint firstItem="Cfi-xU-Ab4" firstAttribute="leading" secondItem="1J5-ks-vBl" secondAttribute="leading" constant="3" id="WgF-B9-rfd"/>
@@ -64,11 +76,14 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="1J5-ks-vBl" secondAttribute="trailing" id="0wk-XG-yFt"/>
+                        <constraint firstItem="1J5-ks-vBl" firstAttribute="leading" secondItem="4Xl-6b-UNg" secondAttribute="trailing" id="8oX-A9-x5Y"/>
                         <constraint firstAttribute="bottom" secondItem="1J5-ks-vBl" secondAttribute="bottom" id="9bp-De-Idg"/>
                         <constraint firstItem="1J5-ks-vBl" firstAttribute="top" secondItem="F0w-UM-rR7" secondAttribute="top" id="BtH-uv-qzw"/>
+                        <constraint firstAttribute="bottom" secondItem="4Xl-6b-UNg" secondAttribute="bottom" id="Nf2-PY-uGa"/>
                         <constraint firstAttribute="centerY" secondItem="cNV-f1-oKA" secondAttribute="centerY" id="Vap-Mt-g0J"/>
                         <constraint firstItem="cNV-f1-oKA" firstAttribute="leading" secondItem="F0w-UM-rR7" secondAttribute="leading" constant="10" id="WaO-PS-OrD"/>
                         <constraint firstAttribute="height" constant="30" id="hIH-se-kWf"/>
+                        <constraint firstItem="4Xl-6b-UNg" firstAttribute="top" secondItem="F0w-UM-rR7" secondAttribute="top" id="j7J-57-o69"/>
                         <constraint firstItem="1J5-ks-vBl" firstAttribute="leading" secondItem="cNV-f1-oKA" secondAttribute="trailing" constant="10" id="lpT-8K-pzi"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -94,10 +109,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vig-92-eTY" userLabel="Other Phone Button" customClass="CustomButton">
                     <rect key="frame" x="25" y="191" width="270" height="30"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M1G-zP-k3r" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="239" y="0.0" width="1" height="30"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="IqX-jX-hAh"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0WW-GD-c3s" userLabel="MP Icon container">
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="Frv-YP-1ht">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile.png" translatesAutoresizingMaskIntoConstraints="NO" id="Frv-YP-1ht">
                                     <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
@@ -106,7 +133,7 @@
                                 </imageView>
                             </subviews>
                             <animations/>
-                            <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="bottom" secondItem="Frv-YP-1ht" secondAttribute="bottom" constant="3" id="7jN-Ij-MHT"/>
                                 <constraint firstItem="Frv-YP-1ht" firstAttribute="top" secondItem="0WW-GD-c3s" secondAttribute="top" constant="3" id="TMM-vy-Z71"/>
@@ -132,6 +159,9 @@
                         <constraint firstItem="dkN-bC-hP1" firstAttribute="leading" secondItem="Vig-92-eTY" secondAttribute="leading" constant="10" id="R4D-2U-WRz"/>
                         <constraint firstItem="0WW-GD-c3s" firstAttribute="leading" secondItem="dkN-bC-hP1" secondAttribute="trailing" constant="10" id="Rvz-yb-IV5"/>
                         <constraint firstItem="0WW-GD-c3s" firstAttribute="top" secondItem="Vig-92-eTY" secondAttribute="top" id="SRe-Zf-27z"/>
+                        <constraint firstItem="0WW-GD-c3s" firstAttribute="leading" secondItem="M1G-zP-k3r" secondAttribute="trailing" id="Vbh-Jm-y7t"/>
+                        <constraint firstAttribute="bottom" secondItem="M1G-zP-k3r" secondAttribute="bottom" id="dOs-lR-LZi"/>
+                        <constraint firstItem="M1G-zP-k3r" firstAttribute="top" secondItem="Vig-92-eTY" secondAttribute="top" id="p8m-II-W6U"/>
                         <constraint firstAttribute="trailing" secondItem="0WW-GD-c3s" secondAttribute="trailing" id="plq-sd-KFF"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
@@ -157,10 +187,22 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-yh-Qia" userLabel="Email Button" customClass="CustomButton">
                     <rect key="frame" x="25" y="261" width="270" height="30"/>
                     <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2P-Ix-z83" userLabel="Separator" customClass="Separator">
+                            <rect key="frame" x="239" y="0.0" width="1" height="30"/>
+                            <animations/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="1" id="UaD-sq-J15"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="onePixel" value="YES"/>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="vertical" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dig-9K-GGN" userLabel="Email Icon container">
                             <rect key="frame" x="240" y="0.0" width="30" height="30"/>
                             <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Address_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="IEV-Pv-V2v">
+                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Mail.png" translatesAutoresizingMaskIntoConstraints="NO" id="IEV-Pv-V2v">
                                     <rect key="frame" x="3" y="3" width="24" height="24"/>
                                     <animations/>
                                     <constraints>
@@ -169,7 +211,7 @@
                                 </imageView>
                             </subviews>
                             <animations/>
-                            <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.3294117647" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstItem="IEV-Pv-V2v" firstAttribute="top" secondItem="dig-9K-GGN" secondAttribute="top" constant="3" id="JGo-Xm-HrT"/>
                                 <constraint firstAttribute="width" constant="30" id="OlS-es-la9"/>
@@ -190,12 +232,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="dig-9K-GGN" secondAttribute="trailing" id="1xf-L1-Gpc"/>
+                        <constraint firstItem="k2P-Ix-z83" firstAttribute="top" secondItem="kKm-yh-Qia" secondAttribute="top" id="50U-68-gVk"/>
                         <constraint firstAttribute="bottom" secondItem="dig-9K-GGN" secondAttribute="bottom" id="9SG-Rg-l46"/>
                         <constraint firstAttribute="centerY" secondItem="ajm-qP-cjB" secondAttribute="centerY" id="FmN-Pd-7io"/>
                         <constraint firstItem="ajm-qP-cjB" firstAttribute="leading" secondItem="kKm-yh-Qia" secondAttribute="leading" constant="10" id="KHS-Uh-KFN"/>
+                        <constraint firstItem="dig-9K-GGN" firstAttribute="leading" secondItem="k2P-Ix-z83" secondAttribute="trailing" id="OhL-dg-VeO"/>
                         <constraint firstAttribute="height" constant="30" id="XUF-bc-904"/>
                         <constraint firstItem="dig-9K-GGN" firstAttribute="top" secondItem="kKm-yh-Qia" secondAttribute="top" id="kPS-ek-fiX"/>
                         <constraint firstItem="dig-9K-GGN" firstAttribute="leading" secondItem="ajm-qP-cjB" secondAttribute="trailing" constant="10" id="omj-8Z-VKh"/>
+                        <constraint firstAttribute="bottom" secondItem="k2P-Ix-z83" secondAttribute="bottom" id="qIb-nZ-gBv"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -271,10 +316,12 @@
                 <constraint firstItem="Vig-92-eTY" firstAttribute="top" secondItem="F0w-UM-rR7" secondAttribute="bottom" constant="40" id="ke3-67-NeI"/>
                 <constraint firstItem="kKm-yh-Qia" firstAttribute="top" secondItem="Vig-92-eTY" secondAttribute="bottom" constant="40" id="sr1-u8-Ebb"/>
             </constraints>
-            <point key="canvasLocation" x="788" y="337"/>
+            <point key="canvasLocation" x="1107" y="363"/>
         </view>
     </objects>
     <resources>
-        <image name="Address_white.png" width="24" height="24"/>
+        <image name="Mail.png" width="24" height="24"/>
+        <image name="Phone.png" width="24" height="24"/>
+        <image name="mobile.png" width="24" height="24"/>
     </resources>
 </document>
