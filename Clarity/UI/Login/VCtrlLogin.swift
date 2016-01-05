@@ -103,7 +103,7 @@ class VCtrlLogin : VCtrlBaseOld, UITextFieldDelegate {
         if let error = NSString(string: uiLogin.text!).validateFullNameWithMaxLength(uiLogin.maxSymbolsCount) {//validateFullNameWithMaxLength(uiLogin.maxSymbolsCount) {//Name
             return error
         }
-        if _isRecovering {//If recover there will be no pass
+        if _isRecovering {//If recover there will be no pass field
             return nil
         }
         if let error = NSString(string: uiPassword.text!).validatePass() {//Pass

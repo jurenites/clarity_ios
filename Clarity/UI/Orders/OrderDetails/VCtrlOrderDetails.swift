@@ -127,6 +127,7 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
         }
         
         if byMe || hasUnreadMessages {
+            ClarityApi.shared().getUnreadMessagesCount()
             self.triggerReloadContent()
         }
     }

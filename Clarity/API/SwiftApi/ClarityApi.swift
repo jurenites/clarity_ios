@@ -90,9 +90,6 @@ import Foundation
             "offset" : NSNumber(integer: offset),
             "limit" : NSNumber(integer: limit)])
             .next(PliFromApiArray)
-//            .nextFunc({ (orders: [ShortOrder]) -> [ShortOrder] in
-//                orders.sort({$0.dateFrom.compare($1.dateFrom) == NSComparisonResult.OrderedDescending })
-//        })
     }
     
     func getOrder(orderId: Int) -> Signal<Order> {
@@ -126,7 +123,7 @@ import Foundation
     func getUnreadMessagesCount() -> Signal<AnyObject> {
         return callMethod(ApiMethodID.AMGetUMessagesCount)
             .next(PliIsApiDictionary)
-//            .next(PLISwitchToMain)
+            .next(PLISwitchToMain)
             .next({(res: NSDictionary) in
                 
                 if let count = res["unread_messages_count"] as? NSInteger {

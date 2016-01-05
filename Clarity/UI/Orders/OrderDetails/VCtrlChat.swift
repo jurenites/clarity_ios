@@ -198,6 +198,8 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                 self.showLoadingOverlay()
                 ClarityApi.shared().setMessageRead(self.orderId, messageId: mesage.messageId, isRead: false)
                     .success({
+                        self._messagesCountChanged = true
+                        GlobalEntitiesCtrl.shared().changeBadgeNumberBy(1)
                         self.hideLoadingOverlay()
                         mesage.isRead = false
                         self.uiTableView.reloadData()
@@ -337,7 +339,6 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                         self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
                         self.uiTableView.endUpdates()
                         
-                        //WARNING: TODO - Add here scroll to new message if needed
                         let bottomSpacing = self.uiTableView.contentSize.height - self.uiTableView.contentOffset.y - self.uiTableView.height
                         if bottomSpacing <= message.messageCellHeight*1.5 {
                             self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
@@ -350,31 +351,5 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     self.reportError(error)
             })
         }
-        
-//            ClarityApi.shared().getMessages(orderId, offset: 0, count: 1)
-//                .success({ (messages: [Message]) in
-//                    if let message = messages.first {
-//
-//                        if self._messages.contains( {$0.messageId == message.messageId} ) {
-//                           return
-//                        }
-//                        
-//                        let index = NSIndexPath(forRow: self._messages.count, inSection: 0)
-//                        self._messages.insertContentsOf([message], at: self._messages.count)
-//                        self.uiTableView.beginUpdates()
-//                        self.uiTableView.insertRowsAtIndexPaths([index], withRowAnimation: UITableViewRowAnimation.Bottom)
-//                        self.uiTableView.endUpdates()
-//                        
-//                        //WARNING: TODO - Add here scroll to new message if needed
-//                        let bottomSpacing = self.uiTableView.contentSize.height - self.uiTableView.contentOffset.y - self.uiTableView.height
-//                        if bottomSpacing <= message.messageCellHeight*1.5 {
-//                            self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: false)
-//                        }
-//                        
-//                        self._messagesCountChanged = true
-//                    }
-//                    }, error: { (error: NSError) in
-//                        self.reportError(error)
-//                })
     }
 }
