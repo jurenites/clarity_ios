@@ -129,7 +129,7 @@ class VCtrlChat: VCtrlBase, UITableViewDelegate, UITableViewDataSource, UITextVi
                     
                     self.hideLoadingOverlay()
                     self._messages += [message]
-                    //WARNING: TODO - insert rows to or reload all rows?
+                    //WARNING: TODO - Decide insert rows or reload all rows?
                     self.uiTableView.reloadData()
 
                     self.uiTableView.scrollToRowAtIndexPath(NSIndexPath(forRow: self._messages.count-1, inSection: 0), atScrollPosition: UITableViewScrollPosition.Bottom, animated: true)

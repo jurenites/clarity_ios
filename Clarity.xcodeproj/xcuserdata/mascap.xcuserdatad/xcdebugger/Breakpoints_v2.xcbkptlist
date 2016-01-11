@@ -356,44 +356,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Clarity/UI/Root hierarchy/VCtrlRoot.m"
-            timestampString = "472489334.291961"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "-processPush:active:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Root hierarchy/VCtrlRoot.m"
             timestampString = "472117193.310464"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "89"
             endingLineNumber = "89"
             landmarkName = "-processPush:active:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Orders/OrderDetails/VCtrlOrderDetails.swift"
-            timestampString = "473008263.998007"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "actChat()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -410,22 +378,6 @@
             startingLineNumber = "71"
             endingLineNumber = "71"
             landmarkName = "-orderUpdated:action:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Clarity/UI/Root hierarchy/VCtrlRoot.m"
-            timestampString = "473005071.226745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93"
-            landmarkName = "-processPush:active:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -490,6 +442,22 @@
             startingLineNumber = "173"
             endingLineNumber = "173"
             landmarkName = "-setupAppBadgeNumber"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Clarity/UI/Orders/VCtrlOrders.swift"
+            timestampString = "474197558.446409"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "210"
+            endingLineNumber = "210"
+            landmarkName = "updateOrder(_:action:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

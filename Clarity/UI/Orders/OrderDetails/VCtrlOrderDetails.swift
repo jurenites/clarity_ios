@@ -164,7 +164,7 @@ class VCtrlOrderDetails: VCtrlBase, VCtrlChatDelegate, EventsHubProtocol {
         }
     }
     
-    //would be greate to merge actAccept and actAcceptWConditions methods it one, and also on a serverside.
+    //would be greate to merge actAccept and actAcceptWConditions methods in one, and also on a serverside.
     @IBAction func actAccept() {
         self.showLoadingOverlay()
         ClarityApi.shared().acceptOrder(self.orderId)
