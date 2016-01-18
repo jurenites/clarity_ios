@@ -206,7 +206,7 @@ import Foundation
     }
     
     func loadCommonInfo(onSuccess: Void -> Void, onError: (NSError) -> Void) -> ApiCanceler {
-        let canceler = getCommonInfo()
+        let canceler = getInitialInfo()//getCommonInfo()
             .success({ () -> Void in
                 onSuccess()
                 },error: { (error: NSError) in

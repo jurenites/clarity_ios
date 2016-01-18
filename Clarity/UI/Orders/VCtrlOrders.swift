@@ -77,6 +77,7 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         }
     }
     
+    //MARK: Filter
     @IBAction func actFilterChanged() {
         let prevFilter = _filterString
         if let key = uiFilter.selectedItem {
@@ -94,7 +95,12 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
         }
     }
     
+    @IBAction func actFilterTap() {
+        self.uiTableView.userInteractionEnabled = false
+    }
+    
     private func actKbdDone() {
+        self.uiTableView.userInteractionEnabled = true
         if (_needUpdate) {
             _needUpdate = false
             self.triggerReloadContent()
@@ -149,6 +155,7 @@ class VCtrlOrders: VCtrlBase, UITableViewDelegate, UITableViewDataSource, VCtrlO
             nav.pushViewController(details, animated: true)
         }
     }
+    
     
     //MARK: Load Content
     override func baseReloadContent(onComplete: ((Bool, Bool) -> Void)!) -> ApiCanceler! {

@@ -513,6 +513,7 @@ static const CGFloat PlaceholderWidth = 270;
 
 - (void)keyboardWillShowWithSize:(CGSize)kbdSize duration:(NSTimeInterval)duration curve:(UIViewAnimationOptions)curve
 {
+    GHLog(@"keyboardWillShowWithSize");
 }
 
 - (void)keyboardDidShow
@@ -521,6 +522,7 @@ static const CGFloat PlaceholderWidth = 270;
 
 - (void)keyboardWillHideWithDuration:(NSTimeInterval)duration curve:(UIViewAnimationOptions)curve
 {
+    GHLog(@"keyboardWillHideWithDuration");
 }
 
 - (void)reportError:(NSError *)error
